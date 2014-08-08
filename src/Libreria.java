@@ -34,8 +34,9 @@ public class Libreria {
 	
 	public boolean quitarLibro(int id){
 		int i;
-		for(i = 0; libreria[i].getID() != id && i < ; i++);
+		for(i = 0; libreria[i].getID() != id && i < booklim; i++);
 		libreria[i] = null;
+		return true;
 	}
 	
 	public int rentarLibro(int id){

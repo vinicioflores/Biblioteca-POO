@@ -9,5 +9,6 @@
 public class MainClass {
 	public static void main(String[] args){
 		System.out.println("Cargando sistema bibliotecario Alejandria ...");
+		Registro padron = new Registro(800);
 	}	
 }

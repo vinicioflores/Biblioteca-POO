@@ -18,7 +18,8 @@ public class Cliente {
 	private String correo = "";
 	private int telefono = 0;
 	private int categoria = 0;
-	int[] libros_rentados = null;
+	private int[] libros_rentados = null;
+	private int ID = 0;
 	
 	public Cliente(int maxBookLim){
 		libros_rentados = new int[maxBookLim];
@@ -43,6 +44,10 @@ public class Cliente {
 	
 	public void setCategoria(int cat){
 		categoria = cat;
+	}
+	
+	public void setID(int id){
+		ID = id;
 	}
 	
 	public void rentar(int bookid){
@@ -70,5 +75,9 @@ public class Cliente {
 	
 	public String getMail() {
 		return correo;
+	}
+	
+	public int getID(){
+		return ID;
 	}
 }
