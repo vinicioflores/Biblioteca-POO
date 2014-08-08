@@ -38,5 +38,15 @@ public class Libreria {
 		libreria[i] = null;
 	}
 	
+	public int rentarLibro(int id){
+		int i;
+		for(i=0;i<booklim && libreria[i].getID() != id; i++);
+		return libreria[i].rentar();
+	}
 	
+	public int rentarLibroTitulo(String title){
+		int i;
+		for(i=0;i<booklim && libreria[i].getTitulo() != title; i++);
+		return libreria[i].rentar();
+	}
 }
