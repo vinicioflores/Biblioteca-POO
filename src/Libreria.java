@@ -12,9 +12,11 @@
 public class Libreria {
 	
 	private Libro[] libreria = null;
+	private int booklim = 0;
 	
 	public Libreria(int Maxbooklim){
 		libreria = new Libro[Maxbooklim];
+		booklim = Maxbooklim;
 	}
 	
 	/** Añade un nuevo libro a la biblioteca **/
@@ -29,4 +31,12 @@ public class Libreria {
 		
 		return true;
 	}
+	
+	public boolean quitarLibro(int id){
+		int i;
+		for(i = 0; libreria[i].getID() != id && i < ; i++);
+		libreria[i] = null;
+	}
+	
+	
 }
