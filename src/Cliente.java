@@ -19,6 +19,7 @@ public class Cliente {
 	private int telefono = 0;
 	private int categoria = 0;
 	private int[] libros_rentados = null;
+	private int libros_rentados_counter = 0;
 	private int ID = 0;
 	
 	public Cliente(int maxBookLim){
@@ -51,7 +52,8 @@ public class Cliente {
 	}
 	
 	public void rentar(int bookid){
-		
+		libros_rentados[libros_rentados_counter] = bookid;
+		libros_rentados_counter++;
 	}
 	
 	public int getCategoria(){
