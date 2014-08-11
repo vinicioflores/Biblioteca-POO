@@ -13,31 +13,56 @@
 import java.io.*;
 import java.util.Scanner;
 
+
 public class Registro {
-	private Cliente[] clientes = null;
+	private Cliente[] clientes = new Cliente[100];
 	private int max_client_lim = 0;
 	private int MAXBUF = 100; 
+	private int i_cli = 0;
+	private String STD_REGFILENAME = "clients.regf";
 	
+	// CONSTRUCTOR DEL REGISTRO DE CLIENTES
 	public Registro(int lim){
 		max_client_lim = lim;
-		clientes = new Cliente[max_client_lim]; 
-		load_file_register("regfile.regf");
+		clientes = new Cliente[max_client_lim];
+		load_file_register(STD_REGFILENAME);
 	}
 	
-	public int add(String name, String middlename, String lastname, String email, int tel, int category){
+	/* Lee la informacion de cada cliente en el registro y la retorna como un array de Strings */
+	public String[] getClientsInfo(){
+		int i = 0;
+		String inforow = "";
+		String[] info = new String[i_cli];
 		
-		int i;
-		for(i=0;i<max_client_lim && clientes[i].getID() != 0; i++);
-		clientes[i].setNombre(name);
-		clientes[i].setApellidos(middlename, lastname);
-		clientes[i].setMail(email);
-		clientes[i].setTel(tel);
-		clientes[i].setCategoria(category);
-		if (i != 0)
-			clientes[i].setID(clientes[i-1].getID()+1);
-		else
-			clientes[i].setID(clientes[i].getID()+1);	
-		return clientes[i].getID();
+		while(clientes[i] != null && i < i_cli){
+			inforow = clientes[i].getNombre()+'\n'+clientes[i].getApellidos()[0]+'\n'+clientes[i].getApellidos()[1]+'\n'+clientes[i].getMail()+'\n'+clientes[i].getTelefono()+'\n'+clientes[i].getID()+'\n';
+			
+			/* Como la categoria se representa como un entero, debo interpretar en palabras lo que representa dicho entero */
+			if(clientes[i].getCategoria() == 0) inforow += "Estudiante\n";
+			else if(clientes[i].getCategoria() == 1) inforow += "Colega\n";
+			else inforow += "Familiar\n";
+			info[i] = inforow;
+			
+			i++;
+		}
+		
+		return info;
+	}
+	
+	/* Agrega un nuevo cliente a la lista de clientes */
+	public void add(String name, String middlename, String lastname, String email, int tel, int category){
+				
+		clientes[i_cli] = new Cliente();
+		clientes[i_cli].setNombre(name);
+		clientes[i_cli].setApellidos(middlename, lastname);
+		clientes[i_cli].setMail(email);
+		clientes[i_cli].setTel(tel);
+		clientes[i_cli].setCategoria(category);
+		
+		if (i_cli != 0)  clientes[i_cli].setID(clientes[i_cli-1].getID() + 1);
+		else             clientes[i_cli].setID(1);
+		
+		i_cli++;
 	}
 	
 	// Este metodo carga información de registro de clientes desde un archivo de texto
@@ -54,17 +79,31 @@ public class Registro {
 				s = new Scanner(regfile);
 				int i = 0;
 				
+				System.out.printf("Leyendo archivo de registro %s  \n\n", regname);
 				String[] data = new String[MAXBUF];
+				String category="", row = "";
+				int n_cat = 0, n_tel=0;
+				
 				// Lee todas las lineas del archivo
 				while (s.hasNextLine() ){
-					String row = s.nextLine();
+					row = s.nextLine();
 					data[i] = row;
-					insert_regdata_client_list(data[i]);
-					System.out.printf("%s",data[i]);
+					category = getClientData(data[i], 6);
+					
+					if(category.equals("Estudiante") == true) n_cat = 0;
+					else if(category.equals("Colega") == true) n_cat = 1;
+					else n_cat = 2;
+					
+					try {
+						n_tel = Integer.parseInt( getClientData(data[i], 5) );
+					} catch (Exception e) {
+						n_tel = 0;
+					}
+			
+					add(getClientData(data[i], 1), getClientData(data[i], 2), getClientData(data[i], 3), getClientData(data[i], 4),  n_tel, n_cat);
+					//System.out.printf("\n%s\n",data[i]);
 					i++;
 				}
-				
-				System.out.printf("Leyendo archivo de registro %s  \n\n", regname);;
 				
 				s.close();
 			} catch (FileNotFoundException e) {
@@ -73,50 +112,7 @@ public class Registro {
 			
 		}
 	}
-	
-	/* 
-	 * Este metodo es de uso interno de esta clase, se encarga de 
-	 * de ir creando una instancia del objeto Cliente para cada linea de datos
-	 * correspondiente a cada persona y las inserta en la lista 
-	 * de clientes.
-	 */
-	private void insert_regdata_client_list(String data)
-	{
 		
-		if(data == "")
-		{
-			System.out.println("No hay información que registrar ... ");
-			return;
-		}
-		
-		int i;
-		
-		String name = getClientData(data, 1);
-		String ap1 = getClientData(data, 2);
-		String ap2 = getClientData(data, 3);
-		String mail = getClientData(data, 4);
-		String tel = getClientData(data, 5);
-		String id = getClientData(data, 6);
-		String category = getClientData(data, 7);
-		
-		int n_id = Integer.parseInt(id);
-		int n_tel = Integer.parseInt(tel), n_cat;
-		
-		if(category == "Estudiante") n_cat = 0;
-		else if(category == "Colega") n_cat = 1;
-		else n_cat = 2;
-		
-		for(i=0;i<max_client_lim;i++){
-			clientes[i].setNombre(name);
-			clientes[i].setApellidos(ap1, ap2);
-			clientes[i].setMail(mail);
-			clientes[i].setTel(n_tel);
-			clientes[i].setID(n_id);
-			clientes[i].setCategoria(n_cat);
-		}
-	}
-	
-	
 	// Este metodo obtiene un string de dato de cliente especifico, y devuelve el string solo
 	private String getClientData(String datarow, int n_token)
 	{
@@ -125,9 +121,8 @@ public class Registro {
 		String acum="";
 		boolean startacum = false;
 		
-		while(i < datarow.length() && acum != null)
+		while(i < datarow.length())
 		{
-			try {
 				if(startacum == true && datarow.charAt(i) == '#'){
 					startacum = false;
 					break;
@@ -139,14 +134,8 @@ public class Registro {
 					i_token++;
 				if(datarow.charAt(i) == '#' && i_token == n_token)
 					startacum = true;
-			} catch(StringIndexOutOfBoundsException e) {
-				break;
-				}
-			
 			i++;
-	}
-		
-		System.out.printf("acum=%s\t",acum);
+		}
 		return acum;
 	}
 
@@ -159,20 +148,20 @@ public class Registro {
 		PrintWriter pw = null;
 		
 		try {
-			fichero = new FileWriter(regname);
-			pw = new PrintWriter(fichero);
+			
 			if(client != null){
-				pw.printf("%%%s#%s#%s#%s#%d#%d#%d",client.getNombre(), client.getApellidos()[0], client.getApellidos()[1], client.getMail(), client.getTelefono(), client.getID() );
+				fichero   = new FileWriter(regname, true);
+				pw 		  = new PrintWriter(fichero);	
+				pw.print('#'+client.getNombre()+'#'+client.getApellidos()[0]+'#'+client.getApellidos()[1]+'#'+client.getMail() + '#' + String.valueOf(client.getTelefono()) +'#');
 				String cat_str = "";
-				if(client.getCategoria() == 0)
-					cat_str = "Estudiante";
-				else if(client.getCategoria() == 1)
-					cat_str = "Colega";
-				else
-					cat_str = "Familiar";
-				pw.printf("#%d%%\n", cat_str);
+				if(client.getCategoria() == 0) cat_str = "Estudiante";
+				else if(client.getCategoria() == 1) cat_str = "Colega";
+				else cat_str = "Familiar";
+				pw.println(cat_str);
 			} else {
-				pw.printf("%%");
+				fichero   = new FileWriter(regname);
+				pw 		  = new PrintWriter(fichero);
+				pw.print("");
 			}
 			
 		} catch (Exception e) {
@@ -185,5 +174,11 @@ public class Registro {
 				e2.printStackTrace();
 			}
 		}
+	}
+	
+	/* Retorna el numero total de clientes registrados hasta el momento */
+	public int getClientsTop()
+	{
+		return i_cli; 
 	}
 }

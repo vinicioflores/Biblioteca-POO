@@ -18,21 +18,34 @@ public class Cliente {
 	private String correo = "";
 	private int telefono = 0;
 	private int categoria = 0;
-	private int[] libros_rentados = null;
+	private int[] libros_rentados = new int[100];
 	private int libros_rentados_counter = 0;
 	private int ID = 0;
 	
-	public Cliente(int maxBookLim){
-		libros_rentados = new int[maxBookLim];
+	public Cliente(){
+		libros_rentados = new int[100];
+		nombre = "";
+		apellido1 = "";
+		apellido2 = "";
+		correo = "";
 	}
 	
 	public void setNombre(String name){
-		nombre = name;
+		try {
+			nombre = name;
+		} catch (NullPointerException e){
+			nombre = "";
+		}
 	}
 	
 	public void setApellidos(String primero, String segundo){
-		apellido1 = primero;
-		apellido2 = segundo;
+		try {
+			apellido1 = primero;
+			apellido2 = segundo;
+		} catch (NullPointerException e) {
+			apellido1 = "";
+			apellido2 = "";
+		}
 	}
 	
 	public void setMail(String mail){
