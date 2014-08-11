@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Registro {
 	private Cliente[] clientes = new Cliente[100];
 	private int max_client_lim = 0;
-	private int MAXBUF = 100; 
+	private int MAXBUF = 10000; 
 	private int i_cli = 0;
 	private String STD_REGFILENAME = "clients.regf";
 	
@@ -71,7 +71,7 @@ public class Registro {
 		
 		if( !regfile.exists() ){
 			System.out.printf("No se pudo encontrar archivo de registro de clientes: %s, se creara uno nuevo ... ", regname);
-			write_file_register(regname, null);
+			write_file_register(regname, null, false);
 		} else {
 			Scanner s;
 			
@@ -79,7 +79,7 @@ public class Registro {
 				s = new Scanner(regfile);
 				int i = 0;
 				
-				System.out.printf("Leyendo archivo de registro %s  \n\n", regname);
+				System.out.printf("Leyendo archivo de registro %s  \n", regname);
 				String[] data = new String[MAXBUF];
 				String category="", row = "";
 				int n_cat = 0, n_tel=0;
@@ -143,7 +143,7 @@ public class Registro {
 	
 	// Si el parametro client en este método es null, entonces solo crea un nuevo archivo de nombre regname, de lo contrario
 	// Escribe la informacion de client en dicho archivo
-	public void write_file_register(String regname, Cliente client){
+	public void write_file_register(String regname, Cliente client, boolean append){
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 		
@@ -180,5 +180,14 @@ public class Registro {
 	public int getClientsTop()
 	{
 		return i_cli; 
+	}
+	
+	/* Vuelca toda la informacion de todo el registro en el archivo de registro */
+	public void dump_register(){
+		int i;
+		write_file_register(STD_REGFILENAME, clientes[0], false);
+		for(i = 1; i < i_cli; i++){
+			write_file_register(STD_REGFILENAME, clientes[i], true);
+		}
 	}
 }

@@ -21,7 +21,7 @@ public class Libro {
 	private String Editorial = "";
 	private int Edicion = 0;
 	private String imgAddr = ".";
-	private float score = 0;
+	private int score = 0;
 	private boolean rentado = false;
 	private int ID = 0;
 	
@@ -45,12 +45,16 @@ public class Libro {
 		imgAddr = address;
 	}
 	
-	public void setScore(float nota){
+	public void setScore(int nota){
 		score = nota;
 	}
 	
 	public void setID(int id){
 		ID = id;
+	}
+	
+	public void setStatus(boolean s){
+		rentado = s;
 	}
 	
 	public int rentar(){
@@ -84,7 +88,7 @@ public class Libro {
 		return imgAddr;
 	}
 	
-	public float getScore(){
+	public int getScore(){
 		return score;
 	}
 	
