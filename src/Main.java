@@ -1,6 +1,6 @@
 /** 
- * En este archivo se encuentra la clase principal del programa de gestión bibliotecario Alejandría. 
- *  Desde este módulo se corre todo el programa  
+ * En este archivo se encuentra la clase principal del programa de gestiï¿½n bibliotecario Alejandrï¿½a. 
+ *  Desde este mï¿½dulo se corre todo el programa  
  *  
  *  **/
 
@@ -91,7 +91,7 @@ public class Main {
 		frmBibliotecaAlejandrina.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		frmBibliotecaAlejandrina.setTitle("Biblioteca Alejandrina");
 		frmBibliotecaAlejandrina.setBackground(new Color(240, 240, 240));
-		frmBibliotecaAlejandrina.setBounds(100, 100, 450, 300);
+		frmBibliotecaAlejandrina.setBounds(100, 100, 650, 500);
 		frmBibliotecaAlejandrina.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
