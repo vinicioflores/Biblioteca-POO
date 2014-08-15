@@ -91,7 +91,7 @@ public class Main {
 		frmBibliotecaAlejandrina.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		frmBibliotecaAlejandrina.setTitle("Biblioteca Alejandrina");
 		frmBibliotecaAlejandrina.setBackground(new Color(240, 240, 240));
-		frmBibliotecaAlejandrina.setBounds(100, 100, 650, 500);
+		frmBibliotecaAlejandrina.setBounds(100, 100, 550, 500);
 		frmBibliotecaAlejandrina.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
