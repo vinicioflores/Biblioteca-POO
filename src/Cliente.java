@@ -1,13 +1,13 @@
 /**
 *
-* @author Vinicio Flores Hern�ndez
+* @author Vinicio Flores Hernández
 * 
 * **/
 
 
 /** Esta clase define el objeto base Cliente, el cual representa a cada persona
- * dentro del registro bibliotecario que haya rentado algun libro, los datos de dicha persona,
- * su clasificacion interna (0: Estudiante, 1: Colega, 2: Familiar)   **/
+ * dentro del registro bibliotecario que haya rentado algún libro, los datos de dicha persona,
+ * su clasificación interna (0: Estudiante, 1: Colega, 2: Familiar)   **/
 
 
 public class Cliente {
@@ -30,8 +30,8 @@ public class Cliente {
 		correo = "";
 	}
 	
-	//----------------------------Definición de setters---------------------------------
-	
+	//----------------------------Conjunto de setters---------------------------------
+	//Define nombre del cliente. Recibe string (nombre) y retorna nada.
 	public void setNombre(String name){
 		try {
 			nombre = name;
@@ -40,6 +40,7 @@ public class Cliente {
 		}
 	}
 	
+	//Define apellidos del cliente. Recibe string (primer y segundo apellido respectivamente) y retorna nada.
 	public void setApellidos(String primero, String segundo){
 		try {
 			apellido1 = primero;
@@ -50,35 +51,44 @@ public class Cliente {
 		}
 	}
 	
+	//Define correo electrónico del cliente. Recibe string (mail) y retorna nada.
 	public void setMail(String mail){
 		correo = mail;
 	}
 	
+	//Define teléfono del cliente. Recibe integer (teléfono) y retorna nada.
 	public void setTel(int tel){
 		telefono = tel;
 	}
 	
+	//Define categoría del cliente. Recibe integer (categoría) y retorna nada.
 	public void setCategoria(int cat){
 		categoria = cat;
 	}
 	
+	//Define ID del cliente. Recibe integer (ID) y retorna nada.
 	public void setID(int id){
 		ID = id;
 	}
 	
+	//Guarda cantidad de libros prestados. Recibe integer (ID del libro) y retorna nada 
 	public void rentar(int bookid){
 		libros_rentados[libros_rentados_counter] = bookid;
 		libros_rentados_counter++;
 	}
 	
+	//----------------------------Conjunto de getters---------------------------------
+	//Regresa categoría del cliente. Recibe nada y retorna categoría del cliente.
 	public int getCategoria(){
 		return categoria;
 	}
 	
+	//Regresa nombre del cliente. Recibe nada y retorna nombre del cliente.
 	public String getNombre() {
 		return nombre;
 	}
 	
+	//Regresa apellidos del cliente. Recibe nada y retorna nombre del cliente.
 	public String[] getApellidos() {
 		String[] apellidos = new String[2];
 		apellidos[0] = apellido1;
@@ -86,14 +96,17 @@ public class Cliente {
 		return apellidos;
 	}
 	
+	//Regresa teléfono del cliente. Recibe nada y retorna teléfono del cliente.
 	public int getTelefono() {
 		return telefono;
 	}
 	
+	//Regresa correo electrónico del cliente. Recibe nada y retorna mail del cliente.
 	public String getMail() {
 		return correo;
 	}
 	
+	//Regresa ID del cliente. Recibe nada y retorna ID del cliente.
 	public int getID(){
 		return ID;
 	}
