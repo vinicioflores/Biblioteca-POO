@@ -1,6 +1,6 @@
 /**
 *
-* @author Vinicio Flores Hernández
+* @author Vinicio Flores Hernï¿½ndez
 * 
 * **/
 
@@ -29,6 +29,8 @@ public class Cliente {
 		apellido2 = "";
 		correo = "";
 	}
+	
+	//----------------------------DefiniciÃ³n de setters---------------------------------
 	
 	public void setNombre(String name){
 		try {
