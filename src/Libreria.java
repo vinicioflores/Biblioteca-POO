@@ -5,12 +5,15 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 /** 
- * 
- * 
- * @author Vinicio Flores Hernández
+ *  
+ * @author 	Roberto Chen Zheng
+ * 			Vinicio Flores HernÃ¡ndez
+ * 			Faubricio Forester Soto
+ * 			Pedro RodrÃ­guez de Oliveira
  *
- *	El objeto más importante del sistema, ya que en este se encuentran toda la lista
- *  de libros de la Biblioteca, aqui se renta un libro, se devuelve, etc.
+ *	El objeto mÃ¡s importante del sistema, ya que en este se encuentran toda la lista
+ *  de libros de la Biblioteca. AdemÃ¡s, aquÃ­ se renta un libro, se devuelve, entre
+ *  otras funciones.
  * 
  */
 
@@ -29,7 +32,7 @@ public class Libreria {
 		load_book_register(STD_BOOK_REGISTER);
 	}
 	
-	/** Devuelve un array de String con la información de todos los libros existentes en la colección **/
+	/** Devuelve un array de String con la informaciï¿½n de todos los libros existentes en la colecciï¿½n **/
 	public String[] getBooksInfo()
 	{
 		int i=0;
@@ -48,7 +51,7 @@ public class Libreria {
 	}
 	
 	
-	/** Añade un nuevo libro a la biblioteca **/
+	/** Aï¿½ade un nuevo libro a la biblioteca **/
 	public boolean nuevoLibro(Libro newbook){
 		try {
 			if (libreria[0] == null){
@@ -67,7 +70,7 @@ public class Libreria {
 		return true;
 	}
 	
-	/* Elimina un libro de la colección */
+	/* Elimina un libro de la colecciï¿½n */
 	public boolean quitarLibro(int id){
 		int i;
 		for(i = 0; libreria[i].getID() != id && i < booklim; i++);
@@ -103,7 +106,7 @@ public class Libreria {
 		return bookcount;
 	}
 	
-	/* Los siguientes metodos están dirigidos a la habilidad del objeto Libreria para cargar
+	/* Los siguientes metodos estï¿½n dirigidos a la habilidad del objeto Libreria para cargar
 	 * un registro de coleccion de libros desde un archivo de texto externo */
 	
 	public void load_book_register(String regname)

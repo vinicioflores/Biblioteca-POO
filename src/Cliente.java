@@ -1,7 +1,9 @@
 /**
 *
-* @author Vinicio Flores Hernández
-* 
+* @author 	Roberto Chen Zheng
+* 			Vinicio Flores Hernández
+* 			Faubricio Forester Soto
+* 			Pedro Rodríguez de Oliveira
 * **/
 
 
@@ -71,7 +73,7 @@ public class Cliente {
 		ID = id;
 	}
 	
-	//Guarda cantidad de libros prestados. Recibe integer (ID del libro) y retorna nada 
+	//Almacena libro prestado en su histórico de libros prestados. Recibe integer (ID del libro) y retorna nada 
 	public void rentar(int bookid){
 		libros_rentados[libros_rentados_counter] = bookid;
 		libros_rentados_counter++;

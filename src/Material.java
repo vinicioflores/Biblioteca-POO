@@ -3,16 +3,26 @@
  */
 
 /**
- * @author Vinicio Flores
+ * 
+ * @author 	Roberto Chen Zheng
+ * 			Vinicio Flores Hernández
+ * 			Faubricio Forester Soto
+ * 			Pedro Rodríguez de Oliveira
  *
  */
 
-/** Permite generar una extension del tipo de objetos que se pueden gestionar desde este sistema **
- * esto con el fin de no generar limitaci�n unicamente a libros, esta clase propone una mayor facilidad de extension  */
+/**
+  * Permite generar una extensión del tipo de objetos que se pueden gestionar desde este sistema,
+  * esto con el fin de no generar limitación únicamente a libros. Esta clase propone una mayor
+  * facilidad de extensión.
+  *
+  **/
+
 public class Material {
 	Libreria coleccion = null;
-	private static int MAX_BOOKS   = 18000;
-	// TO DO: Aqui se agregaran otros nuevos objetos de gestion de otros materiales 
+	private static int MAX_BOOKS = 18000;
+	
+	//Aquí se agregarán otros nuevos objetos de gestión de otros materiales 
 	public Material() {
 		coleccion = new Libreria(MAX_BOOKS);
 	}
