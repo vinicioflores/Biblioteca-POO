@@ -22,7 +22,6 @@ public class Registro {
 	private int MAXBUF = 10000; 
 	private int i_cli = 0;
 	private String STD_REGFILENAME = "clients.regf";
-	private int MAX_BOOKS_PER_CLIENT = 150;
 	
 	// CONSTRUCTOR DEL REGISTRO DE CLIENTES
 	public Registro(int lim){
@@ -32,28 +31,30 @@ public class Registro {
 	}
 	
 	/* Lee la informacion de cada cliente en el registro y la retorna como un array de Strings */
-	public String toString(){
+	public String[] getClientsInfo(){
 		int i = 0;
 		String inforow = "";
+		String[] info = new String[i_cli];
 		
 		while(clientes[i] != null && i < i_cli){
-			inforow += clientes[i].getNombre()+'\n'+clientes[i].getApellidos()[0]+'\n'+clientes[i].getApellidos()[1]+'\n'+clientes[i].getMail()+'\n'+clientes[i].getTelefono()+'\n'+clientes[i].getID()+'\n';
+			inforow = clientes[i].getNombre()+'\n'+clientes[i].getApellidos()[0]+'\n'+clientes[i].getApellidos()[1]+'\n'+clientes[i].getMail()+'\n'+clientes[i].getTelefono()+'\n'+clientes[i].getID()+'\n';
 			
 			/* Como la categoria se representa como un entero, debo interpretar en palabras lo que representa dicho entero */
 			if(clientes[i].getCategoria() == 0) inforow += "Estudiante\n";
 			else if(clientes[i].getCategoria() == 1) inforow += "Colega\n";
 			else inforow += "Familiar\n";
+			info[i] = inforow;
 			
 			i++;
 		}
 		
-		return (inforow);
+		return info;
 	}
 	
 	/* Agrega un nuevo cliente a la lista de clientes */
 	public void add(String name, String middlename, String lastname, String email, int tel, int category){
 				
-		clientes[i_cli] = new Cliente(MAX_BOOKS_PER_CLIENT);
+		clientes[i_cli] = new Cliente();
 		clientes[i_cli].setNombre(name);
 		clientes[i_cli].setApellidos(middlename, lastname);
 		clientes[i_cli].setMail(email);
@@ -151,7 +152,7 @@ public class Registro {
 		try {
 			
 			if(client != null){
-				fichero   = new FileWriter(regname, append);
+				fichero   = new FileWriter(regname, true);
 				pw 		  = new PrintWriter(fichero);	
 				pw.print('#'+client.getNombre()+'#'+client.getApellidos()[0]+'#'+client.getApellidos()[1]+'#'+client.getMail() + '#' + String.valueOf(client.getTelefono()) +'#');
 				String cat_str = "";
@@ -192,4 +193,3 @@ public class Registro {
 		}
 	}
 }
-

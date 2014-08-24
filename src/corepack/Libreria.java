@@ -35,18 +35,21 @@ public class Libreria {
 	}
 	
 	/** Devuelve un array de String con la informaci�n de todos los libros existentes en la colecci�n **/
-	public String toString()
+	public String[] getBooksInfo()
 	{
 		int i=0;
 	
 		String inforow="";
+		String[] info = new String[bookcount];
 		
 		while(libreria[i] != null && i < bookcount){
-			inforow += libreria[i].getTitulo()+'\n'+libreria[i].getAutores()+'\n'+libreria[i].getEditorial()+'\n'+  String.valueOf(libreria[i].getEdicion() ) +'\n'+libreria[i].getImg()+'\n';
+			inforow = libreria[i].getTitulo()+'\n'+libreria[i].getAutores()+'\n'+libreria[i].getEditorial()+'\n'+  String.valueOf(libreria[i].getEdicion() ) +'\n'+libreria[i].getImg()+'\n';
 			inforow += String.valueOf(libreria[i].getScore());
+			System.out.println(inforow);
+			info[i] = inforow;
 			i++;
 		}
-		return inforow;
+		return info;
 	}
 	
 	

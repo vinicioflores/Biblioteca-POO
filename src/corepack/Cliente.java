@@ -26,8 +26,8 @@ public class Cliente {
 	private int libros_rentados_counter = 0;
 	private int ID = 0;
 	
-	public Cliente(int maxBookLim){
-		libros_rentados = new int[maxBookLim];
+	public Cliente(){
+		libros_rentados = new int[100];
 		nombre = "";
 		apellido1 = "";
 		apellido2 = "";

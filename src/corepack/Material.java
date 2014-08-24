@@ -7,9 +7,9 @@ package corepack;
 /**
  * 
  * @author 	Roberto Chen Zheng
- * 			Vinicio Flores Hern�ndez
+ * 			Vinicio Flores Hernández
  * 			Faubricio Forester Soto
- * 			Pedro Rodr�guez de Oliveira
+ * 			Pedro Rodríguez de Oliveira
  *
  */
 
@@ -21,7 +21,7 @@ package corepack;
   **/
 
 public class Material {
-	public Libreria coleccion = null;
+	Libreria coleccion = null;
 	private static int MAX_BOOKS = 18000;
 	
 	//Aquí se agregarán otros nuevos objetos de gestión de otros materiales 
