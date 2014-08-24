@@ -1,3 +1,4 @@
+package app.model;
 /**
 *
 * @author 	Roberto Chen Zheng

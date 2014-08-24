@@ -1,3 +1,4 @@
+package app;
 /** 
  * En este archivo se encuentra la clase principal del programa de gesti�n bibliotecario Alejandr�a. 
  *  Desde este m�dulo se corre todo el programa  
@@ -23,25 +24,18 @@ import java.awt.Color;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+import app.model.Material;
+import app.model.Registro;
+
 import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
-import javax.swing.BoxLayout;
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
-
-import java.awt.BorderLayout;
-
-import javax.swing.JTabbedPane;
-import javax.swing.JLayeredPane;
-import javax.swing.Box;
 import javax.swing.AbstractAction;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.Action;
-import javax.swing.JSplitPane;
 
 
 public class Main {
