@@ -59,11 +59,13 @@ public class Libro {
 		rentado = s;
 	}
 	
+	// Marca el estado de este libro como rentado y devuelve el identificador numerico de este libro
 	public int rentar(){
 		rentado = true;
 		return ID;
 	}
 	
+	// Marca este libro como devuelto
 	public void devolver(){
 		rentado = false;
 	}

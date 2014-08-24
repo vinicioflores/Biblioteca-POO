@@ -1,6 +1,6 @@
 /** 
  * En este archivo se encuentra la clase principal del programa de gestiï¿½n bibliotecario Alejandrï¿½a. 
- *  Desde este mï¿½dulo se corre todo el programa  
+ *  Desde este módulo se corre todo el programa  
  *  
  *  **/
 
@@ -22,33 +22,38 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import java.awt.Color;
-
-import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
-import javax.swing.BoxLayout;
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
-
-import java.awt.BorderLayout;
-
-import javax.swing.JTabbedPane;
-import javax.swing.JLayeredPane;
-import javax.swing.Box;
 import javax.swing.AbstractAction;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.Action;
+import java.awt.List;
+import java.awt.BorderLayout;
+import java.awt.Label;
+import java.awt.ScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JInternalFrame;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JSeparator;
+import java.awt.FlowLayout;
+import java.awt.Component;
+import javax.swing.Box;
+import java.awt.Dimension;
+import javax.swing.JTabbedPane;
 
-
-public class MainGui {
+public class MainGUI {
 
 	private JFrame frmBibliotecaAlejandrina;
 	private final Action action = new SwingAction();
-	private static MainGui window;
+	private static MainGUI window;
 	
 	private static Registro padron;
 	private static Material material;
@@ -66,7 +71,7 @@ public class MainGui {
 				material 	= new Material();
 				
 				try {
-					window = new MainGui();
+					window = new MainGUI();
 					window.frmBibliotecaAlejandrina.setVisible(true);
 					window.frmBibliotecaAlejandrina.setTitle("Biblioteca Alejandrina");
 				} catch (Exception e) {
@@ -79,7 +84,7 @@ public class MainGui {
 	/**
 	 * Create the application.
 	 */
-	public MainGui() {
+	public MainGUI() {
 		initialize();
 	}
 
@@ -101,16 +106,16 @@ public class MainGui {
 		menuBar.add(mnArchivo);
 		
 		JMenuItem mntmCargarRegistro = new JMenuItem("Cargar Registro");
-		mntmCargarRegistro.setIcon(new ImageIcon(MainGui.class.getResource("/com/sun/java/swing/plaf/windows/icons/ListView.gif")));
+		mntmCargarRegistro.setIcon(new ImageIcon(MainGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/ListView.gif")));
 		mnArchivo.add(mntmCargarRegistro);
 		
 		JMenuItem mntmCargarColeccion = new JMenuItem("Cargar coleccion");
-		mntmCargarColeccion.setIcon(new ImageIcon(MainGui.class.getResource("/com/sun/java/swing/plaf/windows/icons/Directory.gif")));
+		mntmCargarColeccion.setIcon(new ImageIcon(MainGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/Directory.gif")));
 		mnArchivo.add(mntmCargarColeccion);
 		
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 		mntmSalir.setAction(action);
-		mntmSalir.setIcon(new ImageIcon(MainGui.class.getResource("/javax/swing/plaf/metal/icons/ocean/close.gif")));
+		mntmSalir.setIcon(new ImageIcon(MainGUI.class.getResource("/javax/swing/plaf/metal/icons/ocean/close.gif")));
 		mnArchivo.add(mntmSalir);
 		
 		JMenu mnRegistro = new JMenu("Registro");
@@ -142,8 +147,30 @@ public class MainGui {
 		
 		JMenuItem mntmAcercaDe = new JMenuItem("Acerca de ...");
 		mnAyuda.add(mntmAcercaDe);
+		
+		List list = new List();
+		frmBibliotecaAlejandrina.getContentPane().add(list, BorderLayout.WEST);
+		
+		List list_1 = new List();
+		frmBibliotecaAlejandrina.getContentPane().add(list_1, BorderLayout.EAST);
+		
+		JSplitPane splitPane = new JSplitPane();
+		frmBibliotecaAlejandrina.getContentPane().add(splitPane, BorderLayout.NORTH);
+		
+		JLabel lblRegistroDeClientes = new JLabel("Registro de Clientes");
+		splitPane.setLeftComponent(lblRegistroDeClientes);
+		
+		JLabel lblClecckl = new JLabel("Coleccion de la Biblioteca");
+		lblClecckl.setHorizontalAlignment(SwingConstants.RIGHT);
+		splitPane.setRightComponent(lblClecckl);
 	}
 	private class SwingAction extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+
 		public SwingAction() {
 			putValue(NAME, "Salir");
 			putValue(SHORT_DESCRIPTION, "Cierra la aplicacion");
