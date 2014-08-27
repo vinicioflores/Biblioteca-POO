@@ -13,13 +13,10 @@ package corepack;
 
 
 import java.io.*;
-import java.util.Scanner;
 
-
-public class Registro {
-	private Cliente[] clientes = new Cliente[100];
+public class Registro extends Listas {
+	private Cliente[] clientes = new Cliente[1000];
 	private int max_client_lim = 0;
-	private int MAXBUF = 10000; 
 	private int i_cli = 0;
 	private String STD_REGFILENAME = "clients.regf";
 	private int MAX_BOOKS_PER_CLIENT = 150;
@@ -74,107 +71,37 @@ public class Registro {
 			System.out.printf("No se pudo encontrar archivo de registro de clientes: %s, se creara uno nuevo ... ", regname);
 			write_file_register(regname, null, false);
 		} else {
-			Scanner s;
-			
-			try {
-				s = new Scanner(regfile);
 				int i = 0;
-				
 				System.out.printf("Leyendo archivo de registro %s  \n", regname);
 				String[] data = new String[MAXBUF];
-				String category="", row = "";
+				String category="";
 				int n_cat = 0, n_tel=0;
-				
+				data = readlines(regname);
 				// Lee todas las lineas del archivo
-				while (s.hasNextLine() ){
-					row = s.nextLine();
-					data[i] = row;
-					category = getClientData(data[i], 6);
+				while (data[i] != null && data[i].equals("") == false){
+					category = get_saved_data(data[i], 6);
 					
 					if(category.equals("Estudiante") == true) n_cat = 0;
 					else if(category.equals("Colega") == true) n_cat = 1;
 					else n_cat = 2;
 					
-					try {
-						n_tel = Integer.parseInt( getClientData(data[i], 5) );
-					} catch (Exception e) {
-						n_tel = 0;
-					}
-			
-					add(getClientData(data[i], 1), getClientData(data[i], 2), getClientData(data[i], 3), getClientData(data[i], 4),  n_tel, n_cat);
-					//System.out.printf("\n%s\n",data[i]);
+					try { n_tel = Integer.parseInt( get_saved_data(data[i], 5) ); } catch (Exception e) { n_tel = 0; }
+					add(get_saved_data(data[i], 1), get_saved_data(data[i], 2), get_saved_data(data[i], 3), get_saved_data(data[i], 4),  n_tel, n_cat);
+					
 					i++;
 				}
-				
-				s.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-			
 		}
 	}
 		
-	// Este metodo obtiene un string de dato de cliente especifico, y devuelve el string solo
-	private String getClientData(String datarow, int n_token)
-	{
-		int i_token = 0, i  = 0;
-		
-		String acum="";
-		boolean startacum = false;
-		
-		while(i < datarow.length())
-		{
-				if(startacum == true && datarow.charAt(i) == '#'){
-					startacum = false;
-					break;
-				}
-				if(startacum == true)
-					acum = acum + datarow.charAt(i);
-				
-				if(datarow.charAt(i) == '#' && i_token != n_token)
-					i_token++;
-				if(datarow.charAt(i) == '#' && i_token == n_token)
-					startacum = true;
-			i++;
-		}
-		return acum;
-	}
-
-	
-	
 	// Si el parametro client en este método es null, entonces solo crea un nuevo archivo de nombre regname, de lo contrario
 	// Escribe la informacion de client en dicho archivo
 	public void write_file_register(String regname, Cliente client, boolean append){
-		FileWriter fichero = null;
-		PrintWriter pw = null;
-		
-		try {
-			
-			if(client != null){
-				fichero   = new FileWriter(regname, append);
-				pw 		  = new PrintWriter(fichero);	
-				pw.print('#'+client.getNombre()+'#'+client.getApellidos()[0]+'#'+client.getApellidos()[1]+'#'+client.getMail() + '#' + String.valueOf(client.getTelefono()) +'#');
-				String cat_str = "";
-				if(client.getCategoria() == 0) cat_str = "Estudiante";
-				else if(client.getCategoria() == 1) cat_str = "Colega";
-				else cat_str = "Familiar";
-				pw.println(cat_str);
-			} else {
-				fichero   = new FileWriter(regname);
-				pw 		  = new PrintWriter(fichero);
-				pw.print("");
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (null != fichero)
-					fichero.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
+		String inforow = '#'+client.getNombre()+'#'+client.getApellidos()[0]+'#'+client.getApellidos()[1]+'#'+client.getMail() + '#' + String.valueOf(client.getTelefono()) +'#';
+		String cat_str = "";
+		if(client.getCategoria() == 0) 		cat_str = "Estudiante";
+		else if(client.getCategoria() == 1) cat_str = "Colega";
+		else 								cat_str = "Familiar";
+		write_register(regname, inforow+cat_str+'#', append);
 	}
 	
 	/* Retorna el numero total de clientes registrados hasta el momento */

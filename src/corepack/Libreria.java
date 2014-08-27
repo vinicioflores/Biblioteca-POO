@@ -1,11 +1,5 @@
 package corepack;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.util.Scanner;
-
 /** 
  *  
  * @author 	Roberto Chen Zheng
@@ -20,13 +14,12 @@ import java.util.Scanner;
  */
 
 
-public class Libreria {
+public class Libreria extends Listas {
 	
 	private String STD_BOOK_REGISTER = "collection.regf";
 	private Libro[] libreria = null;
 	private int booklim = 0;
-	private int bookcount = 0;
-	private int MAXBUF = 10000; 
+	private int bookcount = 0; 
 	
 	public Libreria(int Maxbooklim){
 		libreria = new Libro[Maxbooklim];
@@ -109,103 +102,28 @@ public class Libreria {
 	 * un registro de coleccion de libros desde un archivo de texto externo */
 	
 	public void load_book_register(String regname)
-	{
-		File regfile = new File(regname);
-		
-		if( !regfile.exists() ){
-			System.out.printf("No se pudo encontrar archivo de registro de clientes: %s, se creara uno nuevo ... ", regname);
-			write_book_register(regname, null, false);
-		} else {
-			Scanner s;
-			
-			try {
-				s = new Scanner(regfile);
-				int i = 0;
-				
-				System.out.printf("Leyendo archivo de registro %s  \n\n", regname);
-				String[] data = new String[MAXBUF];
-				String  row = "";
-	
-				// Lee todas las lineas del archivo
-				while (s.hasNextLine() ){
-					row = s.nextLine();
-					data[i] = row;
+	{				
+					int i = 0;
+					Libro tmpbook;
+					String[] data = readlines(regname);
 					
-					Libro tmpbook = new Libro();
-					
-					tmpbook.setTitulo(getBookData(data[i], 1));
-					tmpbook.setAutores(getBookData(data[i], 2));
-					tmpbook.setEditorial(getBookData(data[i], 3));
-					tmpbook.setEdicion(Integer.parseInt(getBookData(data[i], 4)));
-					tmpbook.setImg(getBookData(data[i], 5));
-					tmpbook.setScore(Integer.parseInt(getBookData(data[i], 6)));
-					tmpbook.setStatus(Boolean.parseBoolean(getBookData(data[i], 7)));
-					
-					nuevoLibro(tmpbook);
-					//System.out.printf("\n%s\n",data[i]);
-					i++;
-				}
-				
-				s.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-				}
-		}
-	}
-
-
-	private String getBookData(String datarow, int n_token)
-	{
-		int i_token = 0, i  = 0;
-		
-		String acum="";
-		boolean startacum = false;
-		
-		while(i < datarow.length())
-		{
-				if(startacum == true && datarow.charAt(i) == '#'){
-					startacum = false;
-					break;
-				}
-				if(startacum == true)
-					acum = acum + datarow.charAt(i);
-				
-				if(datarow.charAt(i) == '#' && i_token != n_token)
-					i_token++;
-				if(datarow.charAt(i) == '#' && i_token == n_token)
-					startacum = true;
-			i++;
-		}
-		return acum;
+					while (i < data.length){
+						tmpbook = new Libro();
+						tmpbook.setTitulo(get_saved_data(data[i], 1));
+						tmpbook.setAutores(get_saved_data(data[i], 2));
+						tmpbook.setEditorial(get_saved_data(data[i], 3));
+						tmpbook.setEdicion(Integer.parseInt(get_saved_data(data[i], 4)));
+						tmpbook.setImg(get_saved_data(data[i], 5));
+						tmpbook.setScore(Integer.parseInt(get_saved_data(data[i], 6)));
+						tmpbook.setStatus(Boolean.parseBoolean(get_saved_data(data[i], 7)));
+						nuevoLibro(tmpbook);
+						i++;
+					}
 	}
 	
 	/* Escribe la informacion de un libro al archivo de registro de libros */
 	public void write_book_register(String regname, Libro book, boolean append){
-		FileWriter fichero = null;
-		PrintWriter pw = null;
-		
-		try {
-			
-			if(book != null){
-				fichero   = new FileWriter(regname, append);
-				pw 		  = new PrintWriter(fichero);	
-				pw.println('#'+book.getTitulo()+'#'+book.getAutores()+'#'+book.getEditorial()+'#'+String.valueOf(book.getEdicion()) + '#' + book.getImg() + '#' + String.valueOf(book.getScore()) + '#' +String.valueOf(book.getEstado()) + '#');
-			} else {
-				fichero   = new FileWriter(regname);
-				pw 		  = new PrintWriter(fichero);
-				pw.print("");
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (null != fichero)
-					fichero.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
+		write_register(regname, '#'+book.getTitulo()+'#'+book.getAutores()+'#'+book.getEditorial()+'#'+String.valueOf(book.getEdicion()) + '#' + book.getImg() + '#' + String.valueOf(book.getScore()) + '#' +String.valueOf(book.getEstado()) + '#'  ,append);
 	}
 	
 	/* Vuelca toda la informacion de toda la coleccion en el archivo de registro */

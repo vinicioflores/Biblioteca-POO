@@ -32,23 +32,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.List;
 import java.awt.BorderLayout;
-import java.awt.Label;
-import java.awt.ScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.JInternalFrame;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import javax.swing.JPanel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-import javax.swing.JSeparator;
-import java.awt.FlowLayout;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.Dimension;
-import javax.swing.JTabbedPane;
-
 public class MainGUI {
 
 	private JFrame frmBibliotecaAlejandrina;
@@ -92,7 +78,7 @@ public class MainGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmBibliotecaAlejandrina = new JFrame();
+		frmBibliotecaAlejandrina =  new JFrame();
 		frmBibliotecaAlejandrina.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		frmBibliotecaAlejandrina.setTitle("Biblioteca Alejandrina");
 		frmBibliotecaAlejandrina.setBackground(new Color(240, 240, 240));
