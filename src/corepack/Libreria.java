@@ -107,7 +107,7 @@ public class Libreria extends Listas {
 					Libro tmpbook;
 					String[] data = readlines(regname);
 					
-					while (i < data.length){
+					while (data[i] != null && data[i].equals("") == false){
 						tmpbook = new Libro();
 						tmpbook.setTitulo(get_saved_data(data[i], 1));
 						tmpbook.setAutores(get_saved_data(data[i], 2));

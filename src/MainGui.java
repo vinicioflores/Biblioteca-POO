@@ -35,11 +35,11 @@ import java.awt.BorderLayout;
 import javax.swing.JSplitPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-public class MainGUI {
+public class MainGui {
 
 	private JFrame frmBibliotecaAlejandrina;
 	private final Action action = new SwingAction();
-	private static MainGUI window;
+	private static MainGui window;
 	
 	private static Registro padron;
 	private static Material material;
@@ -57,7 +57,7 @@ public class MainGUI {
 				material 	= new Material();
 				
 				try {
-					window = new MainGUI();
+					window = new MainGui();
 					window.frmBibliotecaAlejandrina.setVisible(true);
 					window.frmBibliotecaAlejandrina.setTitle("Biblioteca Alejandrina");
 				} catch (Exception e) {
@@ -70,7 +70,7 @@ public class MainGUI {
 	/**
 	 * Create the application.
 	 */
-	public MainGUI() {
+	public MainGui() {
 		initialize();
 	}
 
@@ -92,16 +92,16 @@ public class MainGUI {
 		menuBar.add(mnArchivo);
 		
 		JMenuItem mntmCargarRegistro = new JMenuItem("Cargar Registro");
-		mntmCargarRegistro.setIcon(new ImageIcon(MainGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/ListView.gif")));
+		mntmCargarRegistro.setIcon(new ImageIcon(MainGui.class.getResource("/com/sun/java/swing/plaf/windows/icons/ListView.gif")));
 		mnArchivo.add(mntmCargarRegistro);
 		
 		JMenuItem mntmCargarColeccion = new JMenuItem("Cargar coleccion");
-		mntmCargarColeccion.setIcon(new ImageIcon(MainGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/Directory.gif")));
+		mntmCargarColeccion.setIcon(new ImageIcon(MainGui.class.getResource("/com/sun/java/swing/plaf/windows/icons/Directory.gif")));
 		mnArchivo.add(mntmCargarColeccion);
 		
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 		mntmSalir.setAction(action);
-		mntmSalir.setIcon(new ImageIcon(MainGUI.class.getResource("/javax/swing/plaf/metal/icons/ocean/close.gif")));
+		mntmSalir.setIcon(new ImageIcon(MainGui.class.getResource("/javax/swing/plaf/metal/icons/ocean/close.gif")));
 		mnArchivo.add(mntmSalir);
 		
 		JMenu mnRegistro = new JMenu("Registro");
