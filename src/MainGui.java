@@ -1,14 +1,14 @@
 /** 
- * En este archivo se encuentra la clase principal del programa de gestiï¿½n bibliotecario Alejandrï¿½a. 
+ * En este archivo se encuentra la clase principal del programa de gestión bibliotecario Sarasvati. 
  *  Desde este módulo se corre todo el programa  
  *  
  *  **/
 
 /** 
- *  @authors Vinicio Flores Hernandez
+ *  @authors Vinicio Flores Hernández
  *  		 Pedro Rodriguez de Oliveira
  *  		 Faubricio Forester Soto
- *  		 Roberto
+ *  		 Roberto Chen Zheng
  */
 
 import corepack.Material;
@@ -51,7 +51,7 @@ public class MainGui {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				System.out.println("Cargando sistema bibliotecario Alejandria ...");
+				System.out.println("Cargando sistema bibliotecario Sarasvati ...");
 				
 				padron 		= new Registro(MAX_CLIENTS);
 				material 	= new Material();
@@ -59,7 +59,7 @@ public class MainGui {
 				try {
 					window = new MainGui();
 					window.frmBibliotecaAlejandrina.setVisible(true);
-					window.frmBibliotecaAlejandrina.setTitle("Biblioteca Alejandrina");
+					window.frmBibliotecaAlejandrina.setTitle("Gestion Bibliotecario Sarasvati");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
