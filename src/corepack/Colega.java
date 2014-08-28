@@ -1,5 +1,6 @@
 package corepack;
 
+
 public class Colega extends Persona {
 	
 	int nivelAmistad;    // Puntaje entero para clasificar al colega por cercanía amistosa

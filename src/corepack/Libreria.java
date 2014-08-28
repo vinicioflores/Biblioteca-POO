@@ -121,6 +121,7 @@ public class Libreria extends Listas {
 					}
 	}
 	
+	
 	/* Escribe la informacion de un libro al archivo de registro de libros */
 	public void write_book_register(String regname, Libro book, boolean append){
 		write_register(regname, '#'+book.getTitulo()+'#'+book.getAutores()+'#'+book.getEditorial()+'#'+String.valueOf(book.getEdicion()) + '#' + book.getImg() + '#' + String.valueOf(book.getScore()) + '#' +String.valueOf(book.getEstado()) + '#'  ,append);
