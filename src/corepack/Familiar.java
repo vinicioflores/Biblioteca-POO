@@ -4,6 +4,7 @@ public class Familiar extends Persona {
 
 	private String parentesco = "";
 	private int edad = 0;
+	public static int STD_EDAD = 15;
 	
 	public Familiar(int maxbooks) {
 		super(maxbooks);

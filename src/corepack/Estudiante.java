@@ -6,6 +6,7 @@ public class Estudiante extends Persona {
 	private double carnet;
 	private String institucion = "";
 	private int grado = 0;         // 1: Escolar  2: Colegial  3: Universitario
+	public static int STD_GRADO = 1;
 	
 	public Estudiante(int maxbooklim) { 
 		super(maxbooklim);

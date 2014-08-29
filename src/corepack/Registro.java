@@ -7,7 +7,10 @@ package corepack;
  */
 
 /**
- * @author Vinicio Flores HernÃ¡ndez
+ * @author  Vinicio Flores Hernández
+ * 			Pedro Rodríguez de Oliveira
+ * 			Faubricio Forester Soto
+ * 			Roberto Chen Zheng
  *
  */
 
@@ -15,21 +18,24 @@ package corepack;
 import java.io.*;
 
 public class Registro extends Listas {
-	private Estudiante[] estudiantes = new Estudiante[1000];
-	private Colega[] colegas = new Colega[1000];
+	private Estudiante[] estudiantes = new Estudiante[1000];	// Una lista de usuarios Estudiantes 
+	private Colega[] colegas = new Colega[1000];				// Una lista de usuarios Colegas
+	private Familiar[] familiares = new Familiar[100];			// Una lista de usuarios Familiares
 	private int max_client_lim = 0;
 	private int i_cli_est = 0;
 	private int i_cli_col = 0;
+	private int i_cli_fam = 0;
 	//private int i_cli_fam = 0;
 	private String STD_REGFILENAME = "clients.regf";
 	private int MAX_BOOKS_PER_CLIENT = 150;
 	
 	// CONSTRUCTOR DEL REGISTRO DE CLIENTES
-	public Registro(int lim){
+	public Registro(int lim){					// Aqui el limite de clientes es para CADA CATEGORIA POR APARTE!!, no en general
 		max_client_lim = lim;
+		familiares = new Familiar[max_client_lim];
 		estudiantes = new Estudiante[max_client_lim];
 		colegas = new Colega[max_client_lim];
-		load_file_register(STD_REGFILENAME);
+		load_file_register(STD_REGFILENAME);		// El constructor carga los usuarios del archivo de registro con toda su información
 	}
 	
 	/* Lee la informacion de cada cliente en el registro y la retorna como un array de Strings */
@@ -40,14 +46,17 @@ public class Registro extends Listas {
 		while(estudiantes[i] != null && i < i_cli_est){
 			inforow += estudiantes[i].getNombre()+'\n'+estudiantes[i].getApellidos()[0]+'\n'+estudiantes[i].getApellidos()[1]+'\n'+estudiantes[i].getMail()+'\n'+estudiantes[i].getTelefono()+'\n'+estudiantes[i].getID()+'\n'+"Estudiante\n";
 			i++;
-		}
-		i = 0;
+		} i = 0;
 
 		while(colegas[i] != null && i < i_cli_col) {
 			inforow += colegas[i].getNombre()+'\n'+colegas[i].getApellidos()[0]+'\n'+colegas[i].getApellidos()[1]+'\n'+colegas[i].getMail()+'\n'+colegas[i].getTelefono()+'\n'+colegas[i].getID()+'\n'+"Colega\n";
 			i++;
-		}
+		} i = 0;
 			
+		while(familiares[i] != null && i < i_cli_fam) {
+			inforow += familiares[i].getNombre()+'\n'+familiares[i].getApellidos()[0]+'\n'+familiares[i].getApellidos()[1]+'\n'+familiares[i].getMail()+'\n'+familiares[i].getTelefono()+'\n'+familiares[i].getID()+'\n'+"Familiar\n";
+			i++;
+		}
 		
 		return (inforow);
 	}
@@ -56,10 +65,7 @@ public class Registro extends Listas {
 	public void add_estudiante(String name, String middlename, String lastname, String email, int tel, double carnet, int pgrado, String inst){
 				
 		estudiantes[i_cli_est] = new Estudiante(MAX_BOOKS_PER_CLIENT);
-		estudiantes[i_cli_est].setNombre(name);
-		estudiantes[i_cli_est].setApellidos(middlename, lastname);
-		estudiantes[i_cli_est].setMail(email);
-		estudiantes[i_cli_est].setTel(tel);
+		estudiantes[i_cli_est].setInfo(name, middlename, lastname, email, tel);
 		estudiantes[i_cli_est].setCarnet(carnet);
 		estudiantes[i_cli_est].setInstitucion(inst);
 		estudiantes[i_cli_est].setGrado(pgrado);
@@ -73,10 +79,7 @@ public class Registro extends Listas {
 	public void add_colega(String name, String middlename, String lastname, String email, int tel, int nivel, String domicilio){
 		
 		colegas[i_cli_col] = new Colega(MAX_BOOKS_PER_CLIENT);
-		colegas[i_cli_col].setNombre(name);
-		colegas[i_cli_col].setApellidos(middlename, lastname);
-		colegas[i_cli_col].setMail(email);
-		colegas[i_cli_col].setTel(tel);
+		colegas[i_cli_col].setInfo(name, middlename, lastname, email, tel);
 		colegas[i_cli_col].setNivelAmistad(nivel);
 		colegas[i_cli_col].setDomicilio(domicilio);
 		
@@ -84,6 +87,18 @@ public class Registro extends Listas {
 		else                 colegas[i_cli_col].setID(1);
 		
 		i_cli_col++;
+	}
+	
+	public void add_familiar(String name, String middlename, String lastname, String email, int tel, String pParentesco, int edad){
+		familiares[i_cli_fam] = new Familiar(MAX_BOOKS_PER_CLIENT);
+		familiares[i_cli_fam].setInfo(name, middlename, lastname, email, tel);
+		familiares[i_cli_fam].setParentesco(pParentesco);
+		familiares[i_cli_fam].setEdad(edad);
+		
+		if (i_cli_fam != 0)  familiares[i_cli_fam].setID(familiares[i_cli_fam-1].getID() + 1);
+		else                 familiares[i_cli_fam].setID(1);
+		
+		i_cli_fam++;
 	}
 	
 	// Este metodo carga informaciÃ³n de registro de clientes desde un archivo de texto
@@ -108,15 +123,19 @@ public class Registro extends Listas {
 					
 					if(category.equals("Estudiante") == true) {
 						double dcarnet = Double.parseDouble(get_saved_data(data[i], 7));
-						int dgrado = Integer.parseInt(get_saved_data(data[i],8));
+						int dgrado;
+						try { dgrado = Integer.parseInt(get_saved_data(data[i],8)); } catch (Exception e) {dgrado = Estudiante.STD_GRADO; } 
 						String dinst = get_saved_data(data[i], 9);				
 						add_estudiante(get_saved_data(data[i], 1), get_saved_data(data[i], 2), get_saved_data(data[i], 3), get_saved_data(data[i], 4), n_tel, dcarnet, dgrado, dinst);
 					} else if(category.equals("Colega") == true) {
-						int dnivel = Integer.parseInt(get_saved_data(data[i], 7));
+						int dnivel;
+						try { dnivel = Integer.parseInt(get_saved_data(data[i], 7)); } catch (Exception e) {dnivel = Colega.STD_NIVEL; }
 						String ddom = get_saved_data(data[i], 8);
 						add_colega(get_saved_data(data[i], 1), get_saved_data(data[i], 2), get_saved_data(data[i], 3), get_saved_data(data[i], 4), n_tel, dnivel, ddom);
 					} else {
-						// TODO: Lo relacionado con la clase Familiar
+						int nedad;
+						try { nedad =  Integer.parseInt(get_saved_data(data[i], 8)); } catch (Exception e) { nedad =  Familiar.STD_EDAD; }
+						add_familiar(get_saved_data(data[i], 1), get_saved_data(data[i], 2), get_saved_data(data[i], 3), get_saved_data(data[i], 4), n_tel, get_saved_data(data[i], 7), nedad);
 					}
 					
 					i++;
@@ -126,34 +145,36 @@ public class Registro extends Listas {
 		
 	// Si el parametro client en este mÃ©todo es null, entonces solo crea un nuevo archivo de nombre regname, de lo contrario
 	// Escribe la informacion de client en dicho archivo
-	public void write_file_register_estudiante(String regname, Estudiante client, boolean append){
+	private void write_file_register_estudiante(String regname, Estudiante client, boolean append){
 		String inforow = '#'+client.getNombre()+'#'+client.getApellidos()[0]+'#'+client.getApellidos()[1]+'#'+client.getMail() + '#' + String.valueOf(client.getTelefono()) +'#';
-		String cat_str = "Estudiante"+String.valueOf(client.getCarnet()) + String.valueOf(client.getGrado()) + client.getInstitucion();
+		String cat_str = "Estudiante"+'#'+String.valueOf(client.getCarnet()) + '#' +String.valueOf(client.getGrado()) + '#' + client.getInstitucion();
 		write_register(regname, inforow+cat_str+'#', append);
 	}
 	
-	public void write_file_register_colega(String regname, Colega client, boolean append){
+	private void write_file_register_colega(String regname, Colega client, boolean append){
 		String inforow = '#'+client.getNombre()+'#'+client.getApellidos()[0]+'#'+client.getApellidos()[1]+'#'+client.getMail() + '#' + String.valueOf(client.getTelefono()) +'#';
-		String cat_str = "Colega"+String.valueOf(client.getNivelAmistad()) + client.getDomicilio();
+		String cat_str = "Colega"+'#'+String.valueOf(client.getNivelAmistad()) + '#' +client.getDomicilio();
 		write_register(regname, inforow+cat_str+'#', append);
 	}
 	
-	// TODO: write_file_register_familiar(String regname, Familiar client, boolean append)
+	private void write_file_register_familiar(String regname, Familiar client, boolean append) {
+		String inforow = '#'+client.getNombre()+'#'+client.getApellidos()[0]+'#'+client.getApellidos()[1]+'#'+client.getMail() + '#' + String.valueOf(client.getTelefono()) +'#';
+		String cat_str = "Familiar"+'#'+client.getParentesco() + '#' + String.valueOf(client.getEdad());
+		write_register(regname, inforow+cat_str+'#', append);
+	}
 	
 	/* Retorna el numero total de clientes estudiantes registrados hasta el momento */
-	public int getStudentsTop()     { return i_cli_est;  }
-	public int getColegasTop() 	    { return i_cli_col;  }
-	//public int getFamiliaresTop() { return i_cli_fam;  }
+	public int getEstudiantesTop()     	{ return i_cli_est;  }
+	public int getColegasTop() 	    	{ return i_cli_col;  }
+	public int getFamiliaresTop()   	{ return i_cli_fam;  }
 	
 	/* Vuelca toda la informacion de todo el registro en el archivo de registro */
 	public void dump_register(){
 		int i;
-		write_file_register_estudiante(STD_REGFILENAME, estudiantes[0], false);
-		for(i = 1; i < i_cli_est; i++){
-			write_file_register_estudiante(STD_REGFILENAME, estudiantes[i], true);
-		} for(i = 0; i < i_cli_col; i++){
-			write_file_register_colega(STD_REGFILENAME, colegas[i], true);
-		} // TODO: for(i = 0; i < i_cli_fam; i++) do : Añadir todos los clientes familiares
+		write_file_register_estudiante(STD_REGFILENAME, estudiantes[0], false);			// Escribimos en el archivo desde cero
+		for(i = 1; i < i_cli_est; i++)  write_file_register_estudiante(STD_REGFILENAME, estudiantes[i], true);  
+		for(i = 0; i < i_cli_col; i++)  write_file_register_colega(STD_REGFILENAME, colegas[i], true);          
+		for(i = 0; i < i_cli_fam; i++)  write_file_register_familiar(STD_REGFILENAME, familiares[i], true);    
 	}
 }
 
