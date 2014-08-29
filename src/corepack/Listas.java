@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author Vinicio Flores Hernández
  *	Tecnológico de Costa Rica, 2014
  */
-public class Listas {
+protected class Listas {
 	public int MAXBUF = 10000;			// Cantidad maxima de lineas, es publico para ser usada en clases hijas o descendientes
 	private String header;   			// Titulo de la Lista
 	

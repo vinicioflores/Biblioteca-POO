@@ -14,7 +14,7 @@ package corepack;
  */
 
 
-public class Libreria extends Listas {
+protected class Libreria extends Listas {
 	
 	private String STD_BOOK_REGISTER = "collection.regf";
 	private Libro[] libreria = null;

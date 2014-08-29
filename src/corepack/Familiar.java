@@ -1,6 +1,6 @@
 package corepack;
 
-public class Familiar extends Persona {
+protected class Familiar extends Persona {
 
 	private String parentesco = "";
 	private int edad = 0;

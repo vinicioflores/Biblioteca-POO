@@ -1,6 +1,6 @@
 package corepack;
 
-public class Estudiante extends Persona {
+protected class Estudiante extends Persona {
 	
 	
 	private double carnet;

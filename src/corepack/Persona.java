@@ -15,7 +15,7 @@ package corepack;
  * esta clase constituye a una persona usuaria de la biblioteca a rasgos generales   **/
 
 
-public class Persona {
+protected class Persona {
 	
 	private String nombre = "";
 	private String apellido1 = "";
