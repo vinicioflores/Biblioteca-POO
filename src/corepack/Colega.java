@@ -3,8 +3,8 @@ package corepack;
 
 public class Colega extends Persona {
 	
-	int nivelAmistad;    // Puntaje entero para clasificar al colega por cercanía amistosa
-	String domicilio;
+	private int nivelAmistad;    // Puntaje entero para clasificar al colega por cercanía amistosa
+	private String domicilio;
 	
 	public Colega(int maxbooklim) {
 		super(maxbooklim);

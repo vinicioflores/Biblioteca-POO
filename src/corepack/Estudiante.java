@@ -3,9 +3,9 @@ package corepack;
 public class Estudiante extends Persona {
 	
 	
-	double carnet;
-	String institucion = "";
-	int grado = 0;         // 1: Escolar  2: Colegial  3: Universitario
+	private double carnet;
+	private String institucion = "";
+	private int grado = 0;         // 1: Escolar  2: Colegial  3: Universitario
 	
 	public Estudiante(int maxbooklim) { 
 		super(maxbooklim);

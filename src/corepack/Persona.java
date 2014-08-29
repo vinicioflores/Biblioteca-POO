@@ -72,6 +72,15 @@ public class Persona {
 		libros_rentados_counter++;
 	}
 	
+	
+	public void setInfo(String name, String ap1, String ap2, String correo, int tel)
+	{
+		this.setNombre(name);
+		this.setApellidos(ap1, ap2);
+		this.setMail(correo);
+		this.setTel(tel);
+	}
+	
 	//----------------------------Conjunto de getters---------------------------------
 	
 	//Regresa nombre del cliente. Recibe nada y retorna nombre del cliente.
