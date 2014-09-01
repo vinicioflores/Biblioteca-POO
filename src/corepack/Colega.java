@@ -1,7 +1,7 @@
 package corepack;
 
 
-protected class Colega extends Persona {
+class Colega extends Persona {
 	
 	private int nivelAmistad;    // Puntaje entero para clasificar al colega por cercanía amistosa
 	private String domicilio;
