@@ -1,103 +1,69 @@
 package app.model;
 
-/**
-*
-* @author Vinicio Flores Hernández
-* 
-* **/
-
-
-
-/**  En esta clase se desarrolla el objeto Libro, el cual incorpora como atributos
- * caracteristicas basicas como titulo, autores, editorial, etc
- * Este objeto está asociado con la clase Cliente porque cada cliente
- * posee un arreglo de objetos Libro, donde se incorporan
- * sus libros rentados  **/
-
-
-public class Libro {
+public class Libro extends Pertenencia{
 	
-	private String Titulo = "";
-	private String Autores = "";
-	private String Editorial = "";
-	private int Edicion = 0;
-	private String imgAddr = ".";
-	private int score = 0;
+	String autor;
+	String editorial;
+	String edicion;
+	
+	/*
+	 * private int score = 0;
 	private boolean rentado = false;
 	private int ID = 0;
+	 */
 	
-	public void setTitulo(String title){
-		Titulo = title;
+	/**  En esta clase se desarrolla el objeto Libro, el cual incorpora como atributos
+	 * caracteristicas basicas como titulo, autores, editorial, etc
+	 * Este objeto está asociado con la clase Cliente porque cada cliente
+	 * posee un arreglo de objetos Libro, donde se incorporan
+	 * sus libros rentados  **/
+	
+	public Libro(String nombre, String imagen, int calificacion,
+			int vecesPrestado, Prestatario prestatario, String autor,
+			String editorial, String edicion) {
+		
+		super(nombre, imagen, calificacion, vecesPrestado, prestatario);
+		this.autor = autor;
+		this.editorial = editorial;
+		this.edicion = edicion;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public String getEditorial() {
+		return editorial;
+	}
+
+	public void setEditorial(String editorial) {
+		this.editorial = editorial;
+	}
+
+	public String getEdicion() {
+		return edicion;
+	}
+
+	public void setEdicion(String edicion) {
+		this.edicion = edicion;
+	}
+
+	@Override
+	public String toString() {
+		return "Libro1 [autor=" + autor + ", editorial=" + editorial
+				+ ", edicion=" + edicion + ", nombre=" + nombre + ", imagen="
+				+ imagen + ", calificacion=" + calificacion
+				+ ", vecesPrestado=" + vecesPrestado + ", prestatario="
+				+ prestatario + "]";
 	}
 	
-	public void setAutores(String authors){
-		Autores = authors;
-	}
 	
-	public void setEditorial(String editorial){
-		Editorial = editorial;
-	}
 	
-	public void setEdicion(int edition){
-		Edicion = edition;
-	}
 	
-	public void setImg(String address){
-		imgAddr = address;
-	}
-	
-	public void setScore(int nota){
-		score = nota;
-	}
-	
-	public void setID(int id){
-		ID = id;
-	}
-	
-	public void setStatus(boolean s){
-		rentado = s;
-	}
-	
-	public int rentar(){
-		rentado = true;
-		return ID;
-	}
-	
-	public void devolver(){
-		rentado = false;
-	}
-	
-	// ****************** Lectura externa a atributos
-	
-	public String getTitulo(){
-		return Titulo;
-	}
-	
-	public String getAutores(){
-		return Autores;
-	}
-	
-	public String getEditorial(){
-		return Editorial;
-	}
-	
-	public int getEdicion(){
-		return Edicion;
-	}
-	
-	public String getImg(){
-		return imgAddr;
-	}
-	
-	public int getScore(){
-		return score;
-	}
-	
-	public boolean getEstado(){
-		return rentado;
-	}
-	
-	public int getID(){
-		return ID;
-	}
+
 }
+
