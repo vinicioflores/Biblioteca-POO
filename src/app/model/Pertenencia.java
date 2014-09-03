@@ -1,7 +1,10 @@
 package app.model;
 
+// Clase Pertenencia 
+
 public class Pertenencia {
 	
+	// Atributos propios de la clase Pertenencia
 	String nombre;
 	String imagen;
 	int calificacion;
@@ -19,6 +22,8 @@ public class Pertenencia {
 		this.vecesPrestado = vecesPrestado;
 		this.prestatario = prestatario;
 	}
+	
+	// Getters y Setters
 
 	public String getNombre() {
 		return nombre;
@@ -58,6 +63,13 @@ public class Pertenencia {
 
 	public void setPrestatario(Prestatario prestatario) {
 		this.prestatario = prestatario;
+	}
+
+	@Override
+	public String toString() {
+		return "Pertenencia [nombre=" + nombre + ", imagen=" + imagen
+				+ ", calificacion=" + calificacion + ", vecesPrestado="
+				+ vecesPrestado + ", prestatario=" + prestatario + "]";
 	}
 	
 	
