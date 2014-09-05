@@ -1,16 +1,12 @@
 package app.model;
 
-// Clase Persona
-
 public class Persona {
 	
-	// Atributos propios que tiene la clase persona
 	String nombre;
 	String primerApellido;
 	String segundoApellido;
 	String telefono;
 	String correoE;
-	
 	
 	public Persona(String nombre, String primerApellido,
 			String segundoApellido, String telefono, String correoE) {
@@ -20,9 +16,6 @@ public class Persona {
 		this.telefono = telefono;
 		this.correoE = correoE;
 	}
-	
-	// Getters y Setters
-	
 	public String getNombre() {
 		return nombre;
 	}
@@ -52,13 +45,6 @@ public class Persona {
 	}
 	public void setCorreoE(String correoE) {
 		this.correoE = correoE;
-	}
-	
-	@Override
-	public String toString() {
-		return "Persona [nombre=" + nombre + ", primerApellido="
-				+ primerApellido + ", segundoApellido=" + segundoApellido
-				+ ", telefono=" + telefono + ", correoE=" + correoE + "]";
 	}
 	
 	
