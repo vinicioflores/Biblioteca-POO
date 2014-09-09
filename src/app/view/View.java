@@ -14,6 +14,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.FlowLayout;
 
 public class View extends JFrame {
 
@@ -44,9 +45,6 @@ public class View extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
-		JMenuBar menuBar_1 = new JMenuBar();
-		menuBar.add(menuBar_1);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -58,26 +56,26 @@ public class View extends JFrame {
 		contentPane.add(inicio, "name_268387601552984");
 		inicio.setLayout(new MigLayout("", "[][140.00,grow][46.00][349.00,grow][right]", "[][][grow][][grow][][grow]"));
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(255, 255, 255));
-		inicio.add(panel_4, "cell 0 0 1 7,grow");
-		panel_4.setLayout(new MigLayout("", "[100px][][][]", "[][][]"));
+		JPanel Opciones = new JPanel();
+		Opciones.setBackground(new Color(255, 255, 255));
+		inicio.add(Opciones, "cell 0 0 1 7,grow");
+		Opciones.setLayout(new MigLayout("", "[100px][][][]", "[][][]"));
 		
 		JButton button_1 = new JButton("");
 		button_1.setIcon(new ImageIcon(View.class.getResource("/image/magnifier13.png")));
-		panel_4.add(button_1, "flowy,cell 0 0");
+		Opciones.add(button_1, "flowy,cell 0 0");
 		
 		JButton button = new JButton("");
 		button.setIcon(new ImageIcon(View.class.getResource("/image/add70.png")));
-		panel_4.add(button, "cell 0 0");
+		Opciones.add(button, "cell 0 0");
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon(View.class.getResource("/image/new10.png")));
-		panel_4.add(btnNewButton, "cell 0 1");
+		Opciones.add(btnNewButton, "cell 0 1");
 		
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.setIcon(new ImageIcon(View.class.getResource("/image/three115.png")));
-		panel_4.add(btnNewButton_1, "cell 0 2");
+		Opciones.add(btnNewButton_1, "cell 0 2");
 		
 		JLabel lblMisPertenencias = new JLabel("Mis Pertenencias");
 		lblMisPertenencias.setFont(new Font("Consolas", Font.BOLD, 30));
@@ -86,8 +84,8 @@ public class View extends JFrame {
 		JLabel lblTodas = new JLabel("Todas");
 		inicio.add(lblTodas, "cell 1 1");
 		
-		JPanel panel_1 = new JPanel();
-		inicio.add(panel_1, "cell 1 2 3 1,grow");
+		JPanel All = new JPanel();
+		inicio.add(All, "cell 1 2 3 1,grow");
 		
 		JLabel lblPrestadas = new JLabel("Prestadas");
 		lblPrestadas.setFont(new Font("Consolas", Font.PLAIN, 21));
@@ -101,19 +99,22 @@ public class View extends JFrame {
 		lblBlank_1.setFont(new Font("Consolas", Font.ITALIC, 18));
 		inicio.add(lblBlank_1, "cell 3 3");
 		
-		JPanel panel_3 = new JPanel();
-		inicio.add(panel_3, "cell 1 4 3 1,grow");
+		JPanel Borrowed = new JPanel();
+		inicio.add(Borrowed, "cell 1 4 3 1,grow");
 		
 		JLabel lblTop = new JLabel("Top");
 		lblTop.setFont(new Font("Consolas", Font.PLAIN, 21));
 		inicio.add(lblTop, "cell 1 5");
 		
-		JPanel panel_2 = new JPanel();
-		inicio.add(panel_2, "cell 1 6 3 1,grow");
+		JPanel Top = new JPanel();
+		inicio.add(Top, "cell 1 6 3 1,grow");
 		
 		JPanel registroPrestatario = new JPanel();
 		contentPane.add(registroPrestatario, "name_440112681124098");
-		registroPrestatario.setLayout(new MigLayout("", "[grow]", "[][][][][]"));
+		registroPrestatario.setLayout(new MigLayout("", "[grow]", "[][][][][][][][][][][][][][]"));
+		
+		JButton btnVolver = new JButton("Volver");
+		registroPrestatario.add(btnVolver, "flowx,cell 0 0");
 		
 		JLabel lblRegistroDeNuevo = new JLabel("Registro de nuevo prestatario");
 		registroPrestatario.add(lblRegistroDeNuevo, "cell 0 0");
@@ -121,17 +122,21 @@ public class View extends JFrame {
 		JLabel lblSeleccionesElijaLa = new JLabel("Seleccione la categoria de prestatario a crear");
 		registroPrestatario.add(lblSeleccionesElijaLa, "cell 0 1");
 		
-		JButton btnFamiliar = new JButton("Familiar");
-		btnFamiliar.setIcon(new ImageIcon(View.class.getResource("/image/family25.png")));
-		registroPrestatario.add(btnFamiliar, "cell 0 2");
+		JPanel panel = new JPanel();
+		registroPrestatario.add(panel, "cell 0 2,grow");
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btnColega = new JButton("Colega");
-		btnColega.setIcon(new ImageIcon(View.class.getResource("/image/business53.png")));
-		registroPrestatario.add(btnColega, "cell 0 3");
+		JButton btnFamiliar = new JButton("Familiar");
+		panel.add(btnFamiliar);
+		btnFamiliar.setIcon(new ImageIcon(View.class.getResource("/image/family25.png")));
 		
 		JButton btnEstudiante = new JButton("Estudiante");
+		panel.add(btnEstudiante);
 		btnEstudiante.setIcon(new ImageIcon(View.class.getResource("/image/graduate9.png")));
-		registroPrestatario.add(btnEstudiante, "cell 0 4");
+		
+		JButton btnColega = new JButton("Colega");
+		panel.add(btnColega);
+		btnColega.setIcon(new ImageIcon(View.class.getResource("/image/business53.png")));
 		
 		JPanel registroFamiliar = new JPanel();
 		contentPane.add(registroFamiliar, "name_442060658397681");
