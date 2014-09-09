@@ -53,14 +53,14 @@ public class View extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		contentPane.add(panel, "name_268387601552984");
-		panel.setLayout(new MigLayout("", "[][140.00,grow][46.00][349.00,grow][right]", "[][][grow][][grow][][grow]"));
+		JPanel inicio = new JPanel();
+		inicio.setBackground(new Color(255, 255, 255));
+		contentPane.add(inicio, "name_268387601552984");
+		inicio.setLayout(new MigLayout("", "[][140.00,grow][46.00][349.00,grow][right]", "[][][grow][][grow][][grow]"));
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(255, 255, 255));
-		panel.add(panel_4, "cell 0 0 1 7,grow");
+		inicio.add(panel_4, "cell 0 0 1 7,grow");
 		panel_4.setLayout(new MigLayout("", "[100px][][][]", "[][][]"));
 		
 		JButton button_1 = new JButton("");
@@ -81,35 +81,66 @@ public class View extends JFrame {
 		
 		JLabel lblMisPertenencias = new JLabel("Mis Pertenencias");
 		lblMisPertenencias.setFont(new Font("Consolas", Font.BOLD, 30));
-		panel.add(lblMisPertenencias, "cell 1 0 3 1");
+		inicio.add(lblMisPertenencias, "cell 1 0 3 1");
 		
 		JLabel lblTodas = new JLabel("Todas");
-		panel.add(lblTodas, "cell 1 1");
+		inicio.add(lblTodas, "cell 1 1");
 		
 		JPanel panel_1 = new JPanel();
-		panel.add(panel_1, "cell 1 2 3 1,grow");
+		inicio.add(panel_1, "cell 1 2 3 1,grow");
 		
 		JLabel lblPrestadas = new JLabel("Prestadas");
 		lblPrestadas.setFont(new Font("Consolas", Font.PLAIN, 21));
-		panel.add(lblPrestadas, "cell 1 3");
+		inicio.add(lblPrestadas, "cell 1 3");
 		
 		JLabel lblTotal_1 = new JLabel("Total:");
 		lblTotal_1.setFont(new Font("Consolas", Font.ITALIC, 18));
-		panel.add(lblTotal_1, "cell 2 3");
+		inicio.add(lblTotal_1, "cell 2 3");
 		
 		JLabel lblBlank_1 = new JLabel("Blank");
 		lblBlank_1.setFont(new Font("Consolas", Font.ITALIC, 18));
-		panel.add(lblBlank_1, "cell 3 3");
+		inicio.add(lblBlank_1, "cell 3 3");
 		
 		JPanel panel_3 = new JPanel();
-		panel.add(panel_3, "cell 1 4 3 1,grow");
+		inicio.add(panel_3, "cell 1 4 3 1,grow");
 		
 		JLabel lblTop = new JLabel("Top");
 		lblTop.setFont(new Font("Consolas", Font.PLAIN, 21));
-		panel.add(lblTop, "cell 1 5");
+		inicio.add(lblTop, "cell 1 5");
 		
 		JPanel panel_2 = new JPanel();
-		panel.add(panel_2, "cell 1 6 3 1,grow");
+		inicio.add(panel_2, "cell 1 6 3 1,grow");
+		
+		JPanel registroPrestatario = new JPanel();
+		contentPane.add(registroPrestatario, "name_440112681124098");
+		registroPrestatario.setLayout(new MigLayout("", "[grow]", "[][][][][]"));
+		
+		JLabel lblRegistroDeNuevo = new JLabel("Registro de nuevo prestatario");
+		registroPrestatario.add(lblRegistroDeNuevo, "cell 0 0");
+		
+		JLabel lblSeleccionesElijaLa = new JLabel("Seleccione la categoria de prestatario a crear");
+		registroPrestatario.add(lblSeleccionesElijaLa, "cell 0 1");
+		
+		JButton btnFamiliar = new JButton("Familiar");
+		btnFamiliar.setIcon(new ImageIcon(View.class.getResource("/image/family25.png")));
+		registroPrestatario.add(btnFamiliar, "cell 0 2");
+		
+		JButton btnColega = new JButton("Colega");
+		btnColega.setIcon(new ImageIcon(View.class.getResource("/image/business53.png")));
+		registroPrestatario.add(btnColega, "cell 0 3");
+		
+		JButton btnEstudiante = new JButton("Estudiante");
+		btnEstudiante.setIcon(new ImageIcon(View.class.getResource("/image/graduate9.png")));
+		registroPrestatario.add(btnEstudiante, "cell 0 4");
+		
+		JPanel registroFamiliar = new JPanel();
+		contentPane.add(registroFamiliar, "name_442060658397681");
+		
+		JPanel registroEstudiante = new JPanel();
+		contentPane.add(registroEstudiante, "name_442145250348966");
+		
+		JPanel registroColega = new JPanel();
+		contentPane.add(registroColega, "name_442084621359804");
 	}
 
 }
