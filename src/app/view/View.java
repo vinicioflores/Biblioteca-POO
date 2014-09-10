@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JTextField;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class View extends JFrame {
 
@@ -41,6 +43,16 @@ public class View extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		
+		JMenu mnArchivo = new JMenu("Archivo");
+		menuBar.add(mnArchivo);
+		
+		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mntmSalir.setIcon(new ImageIcon(View.class.getResource("/javax/swing/plaf/metal/icons/ocean/error.png")));
+		mnArchivo.add(mntmSalir);
+		
+		JMenuBar menuBar_1 = new JMenuBar();
+		menuBar.add(menuBar_1);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -55,7 +67,7 @@ public class View extends JFrame {
 		JPanel Opciones = new JPanel();
 		Opciones.setBackground(new Color(255, 255, 255));
 		inicio.add(Opciones, "cell 0 0 1 7,grow");
-		Opciones.setLayout(new MigLayout("", "[100px][][][]", "[][][]"));
+		Opciones.setLayout(new MigLayout("", "[100px][][][]", "[][][][][][][][]"));
 		
 		JButton button_1 = new JButton("");
 		button_1.setIcon(new ImageIcon(View.class.getResource("/image/magnifier13.png")));
@@ -72,6 +84,12 @@ public class View extends JFrame {
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.setIcon(new ImageIcon(View.class.getResource("/image/three115.png")));
 		Opciones.add(btnNewButton_1, "cell 0 2");
+		
+		JButton btnManual = new JButton("Manual");
+		Opciones.add(btnManual, "cell 0 6,alignx center");
+		
+		JButton btnCrditos = new JButton("Créditos");
+		Opciones.add(btnCrditos, "cell 0 7,alignx center");
 		
 		JLabel lblMisPertenencias = new JLabel("Mis Pertenencias");
 		lblMisPertenencias.setFont(new Font("Consolas", Font.BOLD, 30));
