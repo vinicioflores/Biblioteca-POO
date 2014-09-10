@@ -18,6 +18,8 @@ import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class View extends JFrame {
 
@@ -28,6 +30,19 @@ public class View extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_11;
+	private JTextField textField_12;
+	private JTextField textField_13;
+	private JTextField textField_14;
+	private JTextField textField_15;
+	private JTextField textField_16;
+	private JTextField textField_17;
+	private JTextField textField_18;
 
 	/**
 	 * Launch the application.
@@ -218,7 +233,7 @@ public class View extends JFrame {
 		
 		JPanel registroEstudiante = new JPanel();
 		contentPane.add(registroEstudiante, "name_442145250348966");
-		registroEstudiante.setLayout(new MigLayout("", "[]", "[]"));
+		registroEstudiante.setLayout(new MigLayout("", "[][][159.00,grow][71.00]", "[][][][][][][][][][][]"));
 		
 		JButton btnVolver_2 = new JButton("Volver");
 		registroEstudiante.add(btnVolver_2, "flowx,cell 0 0");
@@ -226,15 +241,116 @@ public class View extends JFrame {
 		JLabel lblRegistroDeEstudiante = new JLabel("Registro de estudiante");
 		registroEstudiante.add(lblRegistroDeEstudiante, "cell 0 0");
 		
+		JLabel lblNombre_1 = new JLabel("Nombre:");
+		registroEstudiante.add(lblNombre_1, "cell 1 1,alignx trailing");
+		
+		textField_6 = new JTextField();
+		registroEstudiante.add(textField_6, "cell 2 1,growx");
+		textField_6.setColumns(10);
+		
+		JLabel lblPrimerApellido_1 = new JLabel("Primer apellido:");
+		registroEstudiante.add(lblPrimerApellido_1, "cell 1 2,alignx trailing");
+		
+		textField_7 = new JTextField();
+		registroEstudiante.add(textField_7, "cell 2 2,growx");
+		textField_7.setColumns(10);
+		
+		JLabel lblSegundoApellido_1 = new JLabel("Segundo apellido:");
+		registroEstudiante.add(lblSegundoApellido_1, "cell 1 3,alignx trailing");
+		
+		textField_8 = new JTextField();
+		registroEstudiante.add(textField_8, "cell 2 3,growx");
+		textField_8.setColumns(10);
+		
+		JLabel lblTelfono = new JLabel("Teléfono:");
+		registroEstudiante.add(lblTelfono, "cell 1 5,alignx trailing");
+		
+		textField_9 = new JTextField();
+		registroEstudiante.add(textField_9, "cell 2 5,growx");
+		textField_9.setColumns(10);
+		
+		JLabel lblCorreoElectrnico_1 = new JLabel("Correo electrónico:");
+		registroEstudiante.add(lblCorreoElectrnico_1, "cell 1 6,alignx trailing");
+		
+		textField_10 = new JTextField();
+		registroEstudiante.add(textField_10, "cell 2 6,growx");
+		textField_10.setColumns(10);
+		
+		JLabel lblInstitucinDondeEstudia = new JLabel("Institución donde estudia:");
+		registroEstudiante.add(lblInstitucinDondeEstudia, "cell 1 8,alignx trailing");
+		
+		textField_11 = new JTextField();
+		registroEstudiante.add(textField_11, "cell 2 8,growx");
+		textField_11.setColumns(10);
+		
+		JLabel lblCarnetDeEstudiante = new JLabel("Carnet de estudiante:");
+		registroEstudiante.add(lblCarnetDeEstudiante, "cell 1 9,alignx trailing");
+		
+		textField_12 = new JTextField();
+		registroEstudiante.add(textField_12, "cell 2 9,growx");
+		textField_12.setColumns(10);
+		
+		JButton btnRegistrarse = new JButton("Registrar");
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		registroEstudiante.add(btnRegistrarse, "cell 3 10");
+		
 		JPanel registroColega = new JPanel();
 		contentPane.add(registroColega, "name_442084621359804");
-		registroColega.setLayout(new MigLayout("", "[]", "[]"));
+		registroColega.setLayout(new MigLayout("", "[][][grow][]", "[][][][][][][][][][]"));
 		
 		JButton btnVolver_3 = new JButton("Volver");
 		registroColega.add(btnVolver_3, "flowx,cell 0 0");
 		
 		JLabel lblRegistroDeFamiliar = new JLabel("Registro de familiar");
 		registroColega.add(lblRegistroDeFamiliar, "cell 0 0");
+		
+		JLabel lblNombre_2 = new JLabel("Nombre:");
+		registroColega.add(lblNombre_2, "cell 1 1,alignx right");
+		
+		textField_13 = new JTextField();
+		registroColega.add(textField_13, "cell 2 1,growx");
+		textField_13.setColumns(10);
+		
+		JLabel lblPrimerApellido_2 = new JLabel("Primer apellido:");
+		registroColega.add(lblPrimerApellido_2, "cell 1 2,alignx right");
+		
+		textField_14 = new JTextField();
+		registroColega.add(textField_14, "cell 2 2,growx");
+		textField_14.setColumns(10);
+		
+		JLabel lblSegundoApellido_2 = new JLabel("Segundo apellido:");
+		registroColega.add(lblSegundoApellido_2, "cell 1 3,alignx right");
+		
+		textField_16 = new JTextField();
+		registroColega.add(textField_16, "cell 2 3,growx");
+		textField_16.setColumns(10);
+		
+		JLabel lblTelfono_1 = new JLabel("Teléfono:");
+		registroColega.add(lblTelfono_1, "cell 1 5,alignx right");
+		
+		textField_15 = new JTextField();
+		registroColega.add(textField_15, "cell 2 5,growx");
+		textField_15.setColumns(10);
+		
+		JLabel lblCorreoElectrnico_2 = new JLabel("Correo electrónico:");
+		registroColega.add(lblCorreoElectrnico_2, "cell 1 6,alignx right");
+		
+		textField_17 = new JTextField();
+		registroColega.add(textField_17, "cell 2 6,growx");
+		textField_17.setColumns(10);
+		
+		JLabel lblParentezco = new JLabel("Puesto:");
+		registroColega.add(lblParentezco, "cell 1 8,alignx right");
+		
+		textField_18 = new JTextField();
+		registroColega.add(textField_18, "cell 2 8,growx");
+		textField_18.setColumns(10);
+		
+		JButton btnRegistrar_1 = new JButton("Registrar");
+		registroColega.add(btnRegistrar_1, "cell 3 9");
 	}
 
 }
