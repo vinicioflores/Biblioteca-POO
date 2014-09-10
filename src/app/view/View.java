@@ -20,6 +20,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSplitPane;
 
 public class View extends JFrame {
 
@@ -73,6 +74,48 @@ public class View extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
+		
+		JPanel creditos = new JPanel();
+		contentPane.add(creditos, "name_5917427800206");
+		creditos.setLayout(new MigLayout("", "[356.00px][714.00px]", "[15px][][][][][][][][][][][][][]"));
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));
+		creditos.add(label_1, "cell 0 0 2 1,alignx center,aligny top");
+		
+		JLabel lblCreadoressDelProyecto = new JLabel("Proyecto creado por:");
+		creditos.add(lblCreadoressDelProyecto, "cell 0 1 2 1");
+		
+		JLabel lblRobertoChenZheng = new JLabel("Roberto Chen Zheng");
+		creditos.add(lblRobertoChenZheng, "cell 1 2");
+		
+		JLabel lblVinicioFloresHernndez = new JLabel("Vinicio Flores Hernández");
+		creditos.add(lblVinicioFloresHernndez, "cell 1 3");
+		
+		JLabel lblFaubricioForesterSoto = new JLabel("Faubricio Forester Soto");
+		creditos.add(lblFaubricioForesterSoto, "cell 1 4");
+		
+		JLabel lblPedroRodrguezDe = new JLabel("Pedro Rodríguez de Oliveira");
+		creditos.add(lblPedroRodrguezDe, "cell 1 5");
+		
+		JLabel lblCreadoraDelLogo = new JLabel("Creadora del logo:");
+		creditos.add(lblCreadoraDelLogo, "cell 0 7");
+		
+		JButton btnVolverAlMen = new JButton("Volver a la ventana principal");
+		btnVolverAlMen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		JLabel lblDayanMndezSalas = new JLabel("Dayana Méndez Salas");
+		creditos.add(lblDayanMndezSalas, "cell 1 8");
+		
+		JLabel lblVersin = new JLabel("Versión:");
+		creditos.add(lblVersin, "cell 0 10");
+		
+		JLabel label_2 = new JLabel("0.5");
+		creditos.add(label_2, "cell 1 11");
+		creditos.add(btnVolverAlMen, "cell 1 13,alignx right");
 		
 		JPanel inicio = new JPanel();
 		inicio.setBackground(new Color(255, 255, 255));
