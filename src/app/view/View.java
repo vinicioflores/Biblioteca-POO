@@ -15,10 +15,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import javax.swing.JTextField;
 
 public class View extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
 
 	/**
 	 * Launch the application.
@@ -82,7 +89,16 @@ public class View extends JFrame {
 		inicio.add(lblMisPertenencias, "cell 1 0 3 1");
 		
 		JLabel lblTodas = new JLabel("Todas");
+		lblTodas.setFont(new Font("Consolas", Font.PLAIN, 21));
 		inicio.add(lblTodas, "cell 1 1");
+		
+		JLabel label = new JLabel("Total:");
+		label.setFont(new Font("Consolas", Font.ITALIC, 18));
+		inicio.add(label, "cell 2 1");
+		
+		JLabel totalAll = new JLabel("Blank");
+		totalAll.setFont(new Font("Consolas", Font.ITALIC, 18));
+		inicio.add(totalAll, "cell 3 1");
 		
 		JPanel All = new JPanel();
 		inicio.add(All, "cell 1 2 3 1,grow");
@@ -91,13 +107,13 @@ public class View extends JFrame {
 		lblPrestadas.setFont(new Font("Consolas", Font.PLAIN, 21));
 		inicio.add(lblPrestadas, "cell 1 3");
 		
-		JLabel lblTotal_1 = new JLabel("Total:");
-		lblTotal_1.setFont(new Font("Consolas", Font.ITALIC, 18));
-		inicio.add(lblTotal_1, "cell 2 3");
+		JLabel TotalB = new JLabel("Total:");
+		TotalB.setFont(new Font("Consolas", Font.ITALIC, 18));
+		inicio.add(TotalB, "cell 2 3");
 		
-		JLabel lblBlank_1 = new JLabel("Blank");
-		lblBlank_1.setFont(new Font("Consolas", Font.ITALIC, 18));
-		inicio.add(lblBlank_1, "cell 3 3");
+		JLabel TotalBorrowed = new JLabel("Blank");
+		TotalBorrowed.setFont(new Font("Consolas", Font.ITALIC, 18));
+		inicio.add(TotalBorrowed, "cell 3 3");
 		
 		JPanel Borrowed = new JPanel();
 		inicio.add(Borrowed, "cell 1 4 3 1,grow");
@@ -140,12 +156,78 @@ public class View extends JFrame {
 		
 		JPanel registroFamiliar = new JPanel();
 		contentPane.add(registroFamiliar, "name_442060658397681");
+		registroFamiliar.setLayout(new MigLayout("", "[][][grow][]", "[][][][][][][][][][]"));
+		
+		JButton btnVolver_1 = new JButton("Volver");
+		registroFamiliar.add(btnVolver_1, "flowx,cell 0 0");
+		
+		JLabel lblRegistroDeFamiliar_1 = new JLabel("Registro de familiar");
+		registroFamiliar.add(lblRegistroDeFamiliar_1, "cell 0 0");
+		
+		JLabel lblNombre = new JLabel("Nombre:");
+		registroFamiliar.add(lblNombre, "cell 1 1,alignx trailing");
+		
+		textField = new JTextField();
+		registroFamiliar.add(textField, "cell 2 1,growx");
+		textField.setColumns(10);
+		
+		JLabel lblPrimerApellido = new JLabel("Primer apellido:");
+		registroFamiliar.add(lblPrimerApellido, "cell 1 2,alignx trailing");
+		
+		textField_1 = new JTextField();
+		registroFamiliar.add(textField_1, "cell 2 2,growx");
+		textField_1.setColumns(10);
+		
+		JLabel lblSegundoApellido = new JLabel("Segundo apellido:");
+		registroFamiliar.add(lblSegundoApellido, "cell 1 3,alignx trailing");
+		
+		textField_2 = new JTextField();
+		registroFamiliar.add(textField_2, "cell 2 3,growx");
+		textField_2.setColumns(10);
+		
+		JLabel lblTelefono = new JLabel("Tel\u00E9fono:");
+		registroFamiliar.add(lblTelefono, "cell 1 5,alignx trailing");
+		
+		textField_3 = new JTextField();
+		registroFamiliar.add(textField_3, "cell 2 5,growx");
+		textField_3.setColumns(10);
+		
+		JLabel lblCorreoElectrnico = new JLabel("Correo electr\u00F3nico:");
+		registroFamiliar.add(lblCorreoElectrnico, "cell 1 6,alignx trailing");
+		
+		textField_4 = new JTextField();
+		registroFamiliar.add(textField_4, "cell 2 6,growx");
+		textField_4.setColumns(10);
+		
+		JLabel lblParentesco = new JLabel("Parentesco:");
+		registroFamiliar.add(lblParentesco, "cell 1 8,alignx trailing");
+		
+		textField_5 = new JTextField();
+		registroFamiliar.add(textField_5, "cell 2 8,growx");
+		textField_5.setColumns(10);
+		
+		JButton btnRegistrar = new JButton("Registrar");
+		registroFamiliar.add(btnRegistrar, "cell 3 9");
 		
 		JPanel registroEstudiante = new JPanel();
 		contentPane.add(registroEstudiante, "name_442145250348966");
+		registroEstudiante.setLayout(new MigLayout("", "[]", "[]"));
+		
+		JButton btnVolver_2 = new JButton("Volver");
+		registroEstudiante.add(btnVolver_2, "flowx,cell 0 0");
+		
+		JLabel lblRegistroDeEstudiante = new JLabel("Registro de estudiante");
+		registroEstudiante.add(lblRegistroDeEstudiante, "cell 0 0");
 		
 		JPanel registroColega = new JPanel();
 		contentPane.add(registroColega, "name_442084621359804");
+		registroColega.setLayout(new MigLayout("", "[]", "[]"));
+		
+		JButton btnVolver_3 = new JButton("Volver");
+		registroColega.add(btnVolver_3, "flowx,cell 0 0");
+		
+		JLabel lblRegistroDeFamiliar = new JLabel("Registro de familiar");
+		registroColega.add(lblRegistroDeFamiliar, "cell 0 0");
 	}
 
 }
