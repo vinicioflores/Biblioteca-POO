@@ -18,18 +18,15 @@ public class Libro extends Pertenencia{
 	 * posee un arreglo de objetos Libro, donde se incorporan
 	 * sus libros rentados  **/
 	
-	public Libro(String nombre, String imagen, int calificacion,
-			int vecesPrestado, Prestatario prestatario, String autor,
-			String editorial, String edicion) {
-		
-		super(nombre, imagen, calificacion, vecesPrestado, prestatario);
-		this.autor = autor;
-		this.editorial = editorial;
-		this.edicion = edicion;
-	}
+
 
 	public String getAutor() {
 		return autor;
+	}
+
+	public Libro(String nombre, String imagen, int calificacion) {
+		super(nombre, imagen, calificacion);
+		// TODO Auto-generated constructor stub
 	}
 
 	public void setAutor(String autor) {

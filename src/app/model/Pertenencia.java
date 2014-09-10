@@ -13,15 +13,12 @@ public class Pertenencia {
 	boolean isPrestado = false;
 	DateTime fechaUltimoPrestamo; 
 	
-	public Pertenencia(String nombre, String imagen, int calificacion,
-			int vecesPrestado, Prestatario prestatario) {
+	public Pertenencia(String nombre, String imagen, int calificacion) {
 		super();
 		
 		this.nombre = nombre;
 		this.imagen = imagen;
 		this.calificacion = calificacion;
-		this.vecesPrestado = vecesPrestado;
-		this.prestatario = prestatario;
 	}
 
 	public String getNombre() {

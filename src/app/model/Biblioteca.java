@@ -47,12 +47,6 @@ public class Biblioteca {
 	public void setDiasTolerancia(int diasTolerancia) {
 		this.diasTolerancia = diasTolerancia;
 	}
-	public int getDiasAdvertencia() {
-		return diasAdvertencia;
-	}
-	public void setDiasAdvertencia(int diasAdvertencia) {
-		this.diasAdvertencia = diasAdvertencia;
-	}
 	public int getTopX() {
 		return topX;
 	}

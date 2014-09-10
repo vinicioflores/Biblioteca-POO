@@ -46,6 +46,13 @@ public class Persona {
 	public void setCorreoE(String correoE) {
 		this.correoE = correoE;
 	}
+	@Override
+	public String toString() {
+		return "Persona: " + nombre + "\nPrimer apellido: "
+				+ primerApellido + "\nSegundo apellido: " + segundoApellido
+				+ "Telefono: " + telefono + "\nCorreo electronico: " + correoE + "\n";
+	}
+	
 	
 	
 

@@ -6,13 +6,11 @@ public class Pelicula extends Pertenencia{
 	String director;
 	String anhoPublicacion;
 	
-	public Pelicula(String nombre, String imagen, int calificacion,
-			int vecesPrestado, Prestatario prestatario, String genero,
-			String director, String anhoPublicacion) {
-		super(nombre, imagen, calificacion, vecesPrestado, prestatario);
-		this.genero = genero;
-		this.director = director;
-		this.anhoPublicacion = anhoPublicacion;
+	
+
+	public Pelicula(String nombre, String imagen, int calificacion) {
+		super(nombre, imagen, calificacion);
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getGenero() {
