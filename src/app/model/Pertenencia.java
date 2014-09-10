@@ -1,5 +1,7 @@
 package app.model;
 
+import org.joda.time.DateTime;
+
 public class Pertenencia {
 	
 	String nombre;
