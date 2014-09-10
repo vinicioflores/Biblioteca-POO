@@ -2,6 +2,7 @@ package app.testing;
 
 import org.joda.time.DateTime; 
 import org.joda.time.Days;
+import java.lang.Math;
 
 /**
  * 
@@ -16,9 +17,10 @@ public class TimeTesting {
 		DateTime diaAntes = new DateTime(2014, 2, 1, 0, 0); // 1ro de febrero de 2014, 00:00
 		
 		DateTime diaHoy = new DateTime(); //Día de hoy
+		diaHoy.plusDays(2);
 		
-		Days d = Days.daysBetween(diaAntes, diaHoy);
-	    int days = d.getDays();
+		Days d = Days.daysBetween(diaHoy, diaAntes);
+	    int days = Math.abs(d.getDays());
 	    		
 		System.out.println(days);
 	}
