@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class Biblioteca {
 	
-	private ArrayList<Libro> libros;
+	private ArrayList<Pertenencia> pertenencias;
 	int diasBase;
 	int diasTolerancia;
-	int diasAdvertencia;
 	int topX;
 	int tiempoBusquedaMeses;
 	int cantidasVecesBusqueda;
@@ -16,10 +15,9 @@ public class Biblioteca {
 	
 	public Biblioteca() {
 		super();
-		this.libros = new ArrayList<Libro>();
+		this.pertenencias = new ArrayList<Pertenencia>();
 		this.diasBase = 30;
 		this.diasTolerancia = 10;
-		this.diasAdvertencia = 10;
 		this.topX = 10;
 		this.tiempoBusquedaMeses = 3;
 		this.cantidasVecesBusqueda = 2;
@@ -27,9 +25,11 @@ public class Biblioteca {
 	 
 	ArrayList<Libro> buscarLibrosPorAutor(String autor){
 		ArrayList<Libro> matches = new ArrayList<Libro>();
-		for (int i = 0; i < libros.size(); i++){
-			if(libros.get(i).getAutor().equals(autor)){
-				matches.add(libros.get(i));				
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Libro){
+				if( ((Libro)pertenencias.get(i)).getAutor().equals(autor) ){
+					matches.add( ((Libro)pertenencias.get(i)));
+				}
 			}
 		}
 		return matches;

@@ -8,6 +8,8 @@ public class Pertenencia {
 	int vecesPrestado;
 	static int codigo = 0;
 	Prestatario prestatario;
+	boolean isPrestado = false;
+	DateTime fechaUltimoPrestamo; 
 	
 	public Pertenencia(String nombre, String imagen, int calificacion,
 			int vecesPrestado, Prestatario prestatario) {

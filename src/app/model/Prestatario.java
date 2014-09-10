@@ -12,6 +12,8 @@ public class Prestatario extends Persona{
 		super(nombre, primerApellido, segundoApellido, telefono, correoE);
 		librosPrestados = new ArrayList<Pertenencia>();
 	}
+	
+	
 
 	
 	

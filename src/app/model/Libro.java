@@ -54,11 +54,11 @@ public class Libro extends Pertenencia{
 
 	@Override
 	public String toString() {
-		return "Libro1 [autor=" + autor + ", editorial=" + editorial
-				+ ", edicion=" + edicion + ", nombre=" + nombre + ", imagen="
-				+ imagen + ", calificacion=" + calificacion
-				+ ", vecesPrestado=" + vecesPrestado + ", prestatario="
-				+ prestatario + "]";
+		return "\nLibro: " + nombre +"\nAutor: " + autor + "\nEditorial: " + editorial
+				+ "\nEdicion: " + edicion + "\nPath de la imagen: "
+				+ imagen + "/nCalificacion=" + calificacion
+				+ "/nVeces prestado: " + vecesPrestado + ", Prestatario:"
+				+ prestatario.toString() + "\n";
 	}
 	
 	
