@@ -6,11 +6,12 @@ public class Pelicula extends Pertenencia{
 	String director;
 	String anhoPublicacion;
 	
-	
-
-	public Pelicula(String nombre, String imagen, int calificacion) {
+	public Pelicula(String nombre, String imagen, int calificacion,
+			String genero, String director, String anhoPublicacion) {
 		super(nombre, imagen, calificacion);
-		// TODO Auto-generated constructor stub
+		this.genero = genero;
+		this.director = director;
+		this.anhoPublicacion = anhoPublicacion;
 	}
 
 	public String getGenero() {
@@ -39,10 +40,15 @@ public class Pelicula extends Pertenencia{
 
 	@Override
 	public String toString() {
-		return "Pelicula [genero=" + genero + ", director=" + director
-				+ ", anhoPublicacion=" + anhoPublicacion + ", nombre=" + nombre
-				+ ", imagen=" + imagen + ", calificacion=" + calificacion
-				+ ", vecesPrestado=" + vecesPrestado + ", prestatario="
-				+ prestatario + "]";
+		String msj = "\nPelicula: "+ nombre + "\nGenero: " + genero + "\nDirector: " + director
+				+ "\nAnho publicacion: " + anhoPublicacion  
+				+ "\nPath de la imagen: " + imagen + "\nCalificación=" + calificacion
+				+ "\nVeces prestado=" + vecesPrestado + "";
+		
+		if (prestatario != null){
+			msj += "\nPrestatario: " + prestatario.toString() + "\n";
+		}
+		
+		return msj;
 	}
 }

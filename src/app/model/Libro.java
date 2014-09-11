@@ -23,10 +23,20 @@ public class Libro extends Pertenencia{
 	public String getAutor() {
 		return autor;
 	}
-
-	public Libro(String nombre, String imagen, int calificacion) {
+	/**
+	 * 
+	 * @param nombre
+	 * @param imagen
+	 * @param calificacion
+	 * @param autor
+	 * @param editorial
+	 * @param edicion
+	 */
+	public Libro(String nombre, String imagen, int calificacion, String autor, String editorial, String edicion) {
 		super(nombre, imagen, calificacion);
-		// TODO Auto-generated constructor stub
+		this.autor = autor;
+		this.editorial = editorial;
+		this.edicion = edicion;
 	}
 
 	public void setAutor(String autor) {
@@ -51,11 +61,14 @@ public class Libro extends Pertenencia{
 
 	@Override
 	public String toString() {
-		return "\nLibro: " + nombre +"\nAutor: " + autor + "\nEditorial: " + editorial
+		String msj =   "\nLibro: " + nombre +"\nAutor: " + autor + "\nEditorial: " + editorial
 				+ "\nEdicion: " + edicion + "\nPath de la imagen: "
-				+ imagen + "/nCalificacion=" + calificacion
-				+ "/nVeces prestado: " + vecesPrestado + ", Prestatario:"
-				+ prestatario.toString() + "\n";
+				+ imagen + "\nCalificacion=" + calificacion
+				+ "\nVeces prestado: " + vecesPrestado;
+		if (prestatario!=null){
+			msj += "Prestatario: " + prestatario.toString();
+		}
+		return msj;
 	}
 	
 	

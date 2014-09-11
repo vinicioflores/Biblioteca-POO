@@ -21,6 +21,30 @@ public class Pertenencia {
 		this.calificacion = calificacion;
 	}
 
+	public boolean isPrestado() {
+		return isPrestado;
+	}
+
+	public void devolver() {
+		this.isPrestado = false;
+	}
+	
+	public void prestar() {
+		this.isPrestado = true;
+	}
+
+	public DateTime getFechaUltimoPrestamo() {
+		return fechaUltimoPrestamo;
+	}
+	
+	public String getFechaUltimoPrestamoString() {
+		return fechaUltimoPrestamo.toString("MM/dd/yyyy");
+	}
+
+	public void setFechaUltimoPrestamo(DateTime fechaUltimoPrestamo) {
+		this.fechaUltimoPrestamo = fechaUltimoPrestamo;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

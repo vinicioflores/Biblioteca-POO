@@ -22,18 +22,28 @@ public class Biblioteca {
 		this.tiempoBusquedaMeses = 3;
 		this.cantidasVecesBusqueda = 2;
 	}
+	
+	public void agregarNuevaPertenencia(Pertenencia pertenencia){
+		pertenencias.add(pertenencia);
+	}
 	 
-	ArrayList<Libro> buscarLibrosPorAutor(String autor){
+	public ArrayList<Libro> buscarLibrosPorAutor(String autor){
+		
 		ArrayList<Libro> matches = new ArrayList<Libro>();
 		for (int i = 0; i < pertenencias.size(); i++){
+			
 			if (pertenencias.get(i) instanceof Libro){
+				
 				if( ((Libro)pertenencias.get(i)).getAutor().equals(autor) ){
+					
 					matches.add( ((Libro)pertenencias.get(i)));
 				}
 			}
 		}
 		return matches;
 	}
+	
+	
 	
 	public int getDiasBase() {
 		return diasBase;
@@ -65,8 +75,33 @@ public class Biblioteca {
 	public void setCantidasVecesBusqueda(int cantidasVecesBusqueda) {
 		this.cantidasVecesBusqueda = cantidasVecesBusqueda;
 	}
-	public ArrayList getPertenencias() {
+	public ArrayList<Pertenencia> getPertenencias() {
 		return pertenencias;
+	}
+
+	@Override
+	public String toString() {
+		String msj;
+		msj = "Pertenencias en Biblioteca: \n";
+		for(int i = 0; i < pertenencias.size(); i++){
+			if(pertenencias.get(i) instanceof Libro){
+				
+				msj += ((Libro)pertenencias.get(i)).toString() + "\n";
+				
+			}
+			else if(pertenencias.get(i) instanceof Revista){
+				
+				msj += ((Revista)pertenencias.get(i)).toString() + "\n";
+				
+			}
+			else if(pertenencias.get(i) instanceof Pelicula){
+				
+				msj += ((Pelicula)pertenencias.get(i)).toString() + "\n";
+				
+			}
+			
+		}
+		return msj;
 	}
 	
 	
