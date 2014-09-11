@@ -50,7 +50,7 @@ public class Persona {
 	public String toString() {
 		return "Persona: " + nombre + "\nPrimer apellido: "
 				+ primerApellido + "\nSegundo apellido: " + segundoApellido
-				+ "Telefono: " + telefono + "\nCorreo electronico: " + correoE + "\n";
+				+ "\nTelefono: " + telefono + "\nCorreo electronico: " + correoE + "\n";
 	}
 	
 	
