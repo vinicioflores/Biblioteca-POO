@@ -24,6 +24,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JSplitPane;
 
 import net.miginfocom.swing.MigLayout;
+import javax.swing.JSpinner;
+import javax.swing.JRadioButton;
 
 public class View extends JFrame {
 
@@ -81,6 +83,31 @@ public class View extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
+		
+		JPanel busquedaMaterial = new JPanel();
+		contentPane.add(busquedaMaterial, "name_10085986187124");
+		busquedaMaterial.setLayout(new MigLayout("", "[701.00]", "[][][]"));
+		
+		JButton btnVolver_4 = new JButton("Volver");
+		busquedaMaterial.add(btnVolver_4, "flowx,cell 0 0");
+		
+		JLabel lblBsqueda = new JLabel("Búsqueda");
+		busquedaMaterial.add(lblBsqueda, "cell 0 0");
+		
+		JLabel lblTipoDeMaterial = new JLabel("Seleccione el tipo de material que desea buscar");
+		busquedaMaterial.add(lblTipoDeMaterial, "cell 0 1");
+		
+		JButton btnLibro = new JButton("Libro");
+		btnLibro.setIcon(new ImageIcon(View.class.getResource("/image/book139.png")));
+		busquedaMaterial.add(btnLibro, "flowx,cell 0 2,alignx center,aligny center");
+		
+		JButton btnRevista = new JButton("Revista");
+		btnRevista.setIcon(new ImageIcon(View.class.getResource("/image/magazine.png")));
+		busquedaMaterial.add(btnRevista, "cell 0 2,alignx center,aligny center");
+		
+		JButton btnPelcula = new JButton("Película");
+		btnPelcula.setIcon(new ImageIcon(View.class.getResource("/image/film50.png")));
+		busquedaMaterial.add(btnPelcula, "cell 0 2,aligny center");
 		
 		JPanel creditos = new JPanel();
 		contentPane.add(creditos, "name_5917427800206");
@@ -232,7 +259,7 @@ public class View extends JFrame {
 		
 		JPanel registroFamiliar = new JPanel();
 		contentPane.add(registroFamiliar, "name_442060658397681");
-		registroFamiliar.setLayout(new MigLayout("", "[][][grow][]", "[][][][][][][][][][]"));
+		registroFamiliar.setLayout(new MigLayout("", "[252.00][188.00][grow][]", "[][][][][][][][][][]"));
 		
 		JButton btnVolver_1 = new JButton("Volver");
 		registroFamiliar.add(btnVolver_1, "flowx,cell 0 0");
@@ -353,7 +380,7 @@ public class View extends JFrame {
 		
 		JPanel registroColega = new JPanel();
 		contentPane.add(registroColega, "name_442084621359804");
-		registroColega.setLayout(new MigLayout("", "[][][grow][]", "[][][][][][][][][][]"));
+		registroColega.setLayout(new MigLayout("", "[][226.00][grow][]", "[][][][][][][][][][]"));
 		
 		JButton btnVolver_3 = new JButton("Volver");
 		registroColega.add(btnVolver_3, "flowx,cell 0 0");
