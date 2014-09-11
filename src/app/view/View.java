@@ -2,25 +2,28 @@ package app.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.CardLayout;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.CardLayout;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
-import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JSplitPane;
+
+import net.miginfocom.swing.MigLayout;
 
 public class View extends JFrame {
 
@@ -57,18 +60,22 @@ public class View extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 747, 524);
 		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
+		JMenuBar menuSup = new JMenuBar();
+		setJMenuBar(menuSup);
 		
-		JMenu mnArchivo = new JMenu("Archivo");
-		menuBar.add(mnArchivo);
+		JMenu subMenuArchivo = new JMenu("Archivo");
+		menuSup.add(subMenuArchivo);
 		
-		JMenuItem mntmSalir = new JMenuItem("Salir");
-		mntmSalir.setIcon(new ImageIcon(View.class.getResource("/javax/swing/plaf/metal/icons/ocean/error.png")));
-		mnArchivo.add(mntmSalir);
+		JMenuItem opcionSalir = new JMenuItem("Salir");
+		opcionSalir.setIcon(new ImageIcon(View.class.getResource("/javax/swing/plaf/metal/icons/ocean/error.png")));
+		subMenuArchivo.add(opcionSalir);
+		
+		JLabel logoMenu = new JLabel("");
+		logoMenu.setIcon(new ImageIcon(View.class.getResource("/image/logo_small.png")));
+		menuSup.add(logoMenu);
 		
 		JMenuBar menuBar_1 = new JMenuBar();
-		menuBar.add(menuBar_1);
+		menuSup.add(menuBar_1);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -79,43 +86,43 @@ public class View extends JFrame {
 		contentPane.add(creditos, "name_5917427800206");
 		creditos.setLayout(new MigLayout("", "[356.00px][714.00px]", "[15px][][][][][][][][][][][][][]"));
 		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));
-		creditos.add(label_1, "cell 0 0 2 1,alignx center,aligny top");
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));
+		creditos.add(lblLogo, "cell 0 0 2 1,alignx center,aligny top");
 		
-		JLabel lblCreadoressDelProyecto = new JLabel("Proyecto creado por:");
-		creditos.add(lblCreadoressDelProyecto, "cell 0 1 2 1");
+		JLabel lblCreadores = new JLabel("Proyecto creado por:");
+		creditos.add(lblCreadores, "cell 0 1 2 1");
 		
-		JLabel lblRobertoChenZheng = new JLabel("Roberto Chen Zheng");
-		creditos.add(lblRobertoChenZheng, "cell 1 2");
+		JLabel lblRoberto = new JLabel("Roberto Chen Zheng");
+		creditos.add(lblRoberto, "cell 1 2");
 		
-		JLabel lblVinicioFloresHernndez = new JLabel("Vinicio Flores Hernández");
-		creditos.add(lblVinicioFloresHernndez, "cell 1 3");
+		JLabel lblVinicio = new JLabel("Vinicio Flores Hernández");
+		creditos.add(lblVinicio, "cell 1 3");
 		
-		JLabel lblFaubricioForesterSoto = new JLabel("Faubricio Forester Soto");
-		creditos.add(lblFaubricioForesterSoto, "cell 1 4");
+		JLabel lblFaubricio = new JLabel("Faubricio Forester Soto");
+		creditos.add(lblFaubricio, "cell 1 4");
 		
-		JLabel lblPedroRodrguezDe = new JLabel("Pedro Rodríguez de Oliveira");
-		creditos.add(lblPedroRodrguezDe, "cell 1 5");
+		JLabel lblPedro = new JLabel("Pedro Rodríguez de Oliveira");
+		creditos.add(lblPedro, "cell 1 5");
 		
-		JLabel lblCreadoraDelLogo = new JLabel("Creadora del logo:");
-		creditos.add(lblCreadoraDelLogo, "cell 0 7");
+		JLabel lblCreadoraLogo = new JLabel("Creadora del logo:");
+		creditos.add(lblCreadoraLogo, "cell 0 7");
 		
-		JButton btnVolverAlMen = new JButton("Volver a la ventana principal");
-		btnVolverAlMen.addActionListener(new ActionListener() {
+		JButton botonVolver = new JButton("Volver a la ventana principal");
+		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
-		JLabel lblDayanMndezSalas = new JLabel("Dayana Méndez Salas");
-		creditos.add(lblDayanMndezSalas, "cell 1 8");
+		JLabel lblDayana = new JLabel("Dayana Méndez Salas");
+		creditos.add(lblDayana, "cell 1 8");
 		
-		JLabel lblVersin = new JLabel("Versión:");
-		creditos.add(lblVersin, "cell 0 10");
+		JLabel lblVersion = new JLabel("Versión:");
+		creditos.add(lblVersion, "cell 0 10");
 		
-		JLabel label_2 = new JLabel("0.5");
-		creditos.add(label_2, "cell 1 11");
-		creditos.add(btnVolverAlMen, "cell 1 13,alignx right");
+		JLabel lblVersionNum = new JLabel("0.5");
+		creditos.add(lblVersionNum, "cell 1 11");
+		creditos.add(botonVolver, "cell 1 13,alignx right");
 		
 		JPanel inicio = new JPanel();
 		inicio.setBackground(new Color(255, 255, 255));
@@ -127,27 +134,27 @@ public class View extends JFrame {
 		inicio.add(Opciones, "cell 0 0 1 7,grow");
 		Opciones.setLayout(new MigLayout("", "[100px][][][]", "[][][][][][][][]"));
 		
-		JButton button_1 = new JButton("");
-		button_1.setIcon(new ImageIcon(View.class.getResource("/image/magnifier13.png")));
-		Opciones.add(button_1, "flowy,cell 0 0");
+		JButton botonBusqueda = new JButton("");
+		botonBusqueda.setIcon(new ImageIcon(View.class.getResource("/image/magnifier13.png")));
+		Opciones.add(botonBusqueda, "flowy,cell 0 0");
 		
-		JButton button = new JButton("");
-		button.setIcon(new ImageIcon(View.class.getResource("/image/add70.png")));
-		Opciones.add(button, "cell 0 0");
+		JButton botonAgregarPrest = new JButton("");
+		botonAgregarPrest.setIcon(new ImageIcon(View.class.getResource("/image/add70.png")));
+		Opciones.add(botonAgregarPrest, "cell 0 1");
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(View.class.getResource("/image/new10.png")));
-		Opciones.add(btnNewButton, "cell 0 1");
+		JButton botonAgregarLibro = new JButton("");
+		botonAgregarLibro.setIcon(new ImageIcon(View.class.getResource("/image/new10.png")));
+		Opciones.add(botonAgregarLibro, "cell 0 2");
 		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setIcon(new ImageIcon(View.class.getResource("/image/three115.png")));
-		Opciones.add(btnNewButton_1, "cell 0 2");
+		JButton botonConfiguracion = new JButton("");
+		botonConfiguracion.setIcon(new ImageIcon(View.class.getResource("/image/three115.png")));
+		Opciones.add(botonConfiguracion, "cell 0 3");
 		
-		JButton btnManual = new JButton("Manual");
-		Opciones.add(btnManual, "cell 0 6,alignx center");
+		JButton botonManual = new JButton("Manual");
+		Opciones.add(botonManual, "cell 0 6,alignx center");
 		
-		JButton btnCrditos = new JButton("Créditos");
-		Opciones.add(btnCrditos, "cell 0 7,alignx center");
+		JButton botonCreditos = new JButton("Créditos");
+		Opciones.add(botonCreditos, "cell 0 7,alignx center");
 		
 		JLabel lblMisPertenencias = new JLabel("Mis Pertenencias");
 		lblMisPertenencias.setFont(new Font("Consolas", Font.BOLD, 30));
@@ -157,13 +164,13 @@ public class View extends JFrame {
 		lblTodas.setFont(new Font("Consolas", Font.PLAIN, 21));
 		inicio.add(lblTodas, "cell 1 1");
 		
-		JLabel label = new JLabel("Total:");
-		label.setFont(new Font("Consolas", Font.ITALIC, 18));
-		inicio.add(label, "cell 2 1");
+		JLabel lblTotal1 = new JLabel("Total:");
+		lblTotal1.setFont(new Font("Consolas", Font.ITALIC, 18));
+		inicio.add(lblTotal1, "cell 2 1");
 		
-		JLabel totalAll = new JLabel("Blank");
-		totalAll.setFont(new Font("Consolas", Font.ITALIC, 18));
-		inicio.add(totalAll, "cell 3 1");
+		JLabel lblBlank1 = new JLabel("Blank");
+		lblBlank1.setFont(new Font("Consolas", Font.ITALIC, 18));
+		inicio.add(lblBlank1, "cell 3 1");
 		
 		JPanel All = new JPanel();
 		inicio.add(All, "cell 1 2 3 1,grow");
@@ -172,13 +179,13 @@ public class View extends JFrame {
 		lblPrestadas.setFont(new Font("Consolas", Font.PLAIN, 21));
 		inicio.add(lblPrestadas, "cell 1 3");
 		
-		JLabel TotalB = new JLabel("Total:");
-		TotalB.setFont(new Font("Consolas", Font.ITALIC, 18));
-		inicio.add(TotalB, "cell 2 3");
+		JLabel lblTotal2 = new JLabel("Total:");
+		lblTotal2.setFont(new Font("Consolas", Font.ITALIC, 18));
+		inicio.add(lblTotal2, "cell 2 3");
 		
-		JLabel TotalBorrowed = new JLabel("Blank");
-		TotalBorrowed.setFont(new Font("Consolas", Font.ITALIC, 18));
-		inicio.add(TotalBorrowed, "cell 3 3");
+		JLabel lblBlank2 = new JLabel("Blank");
+		lblBlank2.setFont(new Font("Consolas", Font.ITALIC, 18));
+		inicio.add(lblBlank2, "cell 3 3");
 		
 		JPanel Borrowed = new JPanel();
 		inicio.add(Borrowed, "cell 1 4 3 1,grow");
@@ -195,6 +202,10 @@ public class View extends JFrame {
 		registroPrestatario.setLayout(new MigLayout("", "[grow]", "[][][][][][][][][][][][][][]"));
 		
 		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		registroPrestatario.add(btnVolver, "flowx,cell 0 0");
 		
 		JLabel lblRegistroDeNuevo = new JLabel("Registro de nuevo prestatario");
@@ -395,5 +406,7 @@ public class View extends JFrame {
 		JButton btnRegistrar_1 = new JButton("Registrar");
 		registroColega.add(btnRegistrar_1, "cell 3 9");
 	}
+	
+	
 
 }

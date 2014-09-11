@@ -1,17 +1,17 @@
 /** 
- * En este archivo se encuentra la clase principal del programa de gestión bibliotecario Sarasvati. 
- *  Desde este módulo se corre todo el programa  
+ * En este archivo se encuentra la clase principal del programa de gestiï¿½n bibliotecario Sarasvati. 
+ *  Desde este mï¿½dulo se corre todo el programa  
  *  
  *  **/
 
 /** 
- *  @authors Vinicio Flores Hernández
+ *  @authors Vinicio Flores Hernï¿½ndez
  *  		 Pedro Rodriguez de Oliveira
  *  		 Faubricio Forester Soto
  *  		 Roberto Chen Zheng
  */
 
-import corepack.Material;
+import corepack.Material; 
 import corepack.Registro;
 
 import java.awt.EventQueue;
@@ -89,7 +89,7 @@ public class MainGui {
 	private void initialize() {
 		frmBibliotecaAlejandrina =  new JFrame();
 		frmBibliotecaAlejandrina.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
-		frmBibliotecaAlejandrina.setTitle("Gestión Bibliotecaria Sarasvati");
+		frmBibliotecaAlejandrina.setTitle("Gestiï¿½n Bibliotecaria Sarasvati");
 		frmBibliotecaAlejandrina.setBackground(new Color(240, 240, 240));
 		frmBibliotecaAlejandrina.setBounds(100, 100, 550, 500);
 		frmBibliotecaAlejandrina.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
