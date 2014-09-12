@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="joda-time-2.4-javadoc.jar"/>
 	<classpathentry kind="lib" path="joda-time-2.4.jar"/>
 	<classpathentry kind="lib" path="joda-time-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="javax.mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

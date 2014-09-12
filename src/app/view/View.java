@@ -26,6 +26,7 @@ import javax.swing.JSplitPane;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JSpinner;
 import javax.swing.JRadioButton;
+import java.awt.Toolkit;
 
 public class View extends JFrame {
 
@@ -59,6 +60,7 @@ public class View extends JFrame {
 	 * Create the frame.
 	 */
 	public View() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(View.class.getResource("/image/logo_small.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 747, 524);
 		
@@ -83,73 +85,6 @@ public class View extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
-		
-		JPanel busquedaMaterial = new JPanel();
-		contentPane.add(busquedaMaterial, "name_10085986187124");
-		busquedaMaterial.setLayout(new MigLayout("", "[701.00]", "[][][]"));
-		
-		JButton btnVolver_4 = new JButton("Volver");
-		busquedaMaterial.add(btnVolver_4, "flowx,cell 0 0");
-		
-		JLabel lblBsqueda = new JLabel("Búsqueda");
-		busquedaMaterial.add(lblBsqueda, "cell 0 0");
-		
-		JLabel lblTipoDeMaterial = new JLabel("Seleccione el tipo de material que desea buscar");
-		busquedaMaterial.add(lblTipoDeMaterial, "cell 0 1");
-		
-		JButton btnLibro = new JButton("Libro");
-		btnLibro.setIcon(new ImageIcon(View.class.getResource("/image/book139.png")));
-		busquedaMaterial.add(btnLibro, "flowx,cell 0 2,alignx center,aligny center");
-		
-		JButton btnRevista = new JButton("Revista");
-		btnRevista.setIcon(new ImageIcon(View.class.getResource("/image/magazine.png")));
-		busquedaMaterial.add(btnRevista, "cell 0 2,alignx center,aligny center");
-		
-		JButton btnPelcula = new JButton("Película");
-		btnPelcula.setIcon(new ImageIcon(View.class.getResource("/image/film50.png")));
-		busquedaMaterial.add(btnPelcula, "cell 0 2,aligny center");
-		
-		JPanel creditos = new JPanel();
-		contentPane.add(creditos, "name_5917427800206");
-		creditos.setLayout(new MigLayout("", "[356.00px][714.00px]", "[15px][][][][][][][][][][][][][]"));
-		
-		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));
-		creditos.add(lblLogo, "cell 0 0 2 1,alignx center,aligny top");
-		
-		JLabel lblCreadores = new JLabel("Proyecto creado por:");
-		creditos.add(lblCreadores, "cell 0 1 2 1");
-		
-		JLabel lblRoberto = new JLabel("Roberto Chen Zheng");
-		creditos.add(lblRoberto, "cell 1 2");
-		
-		JLabel lblVinicio = new JLabel("Vinicio Flores Hernández");
-		creditos.add(lblVinicio, "cell 1 3");
-		
-		JLabel lblFaubricio = new JLabel("Faubricio Forester Soto");
-		creditos.add(lblFaubricio, "cell 1 4");
-		
-		JLabel lblPedro = new JLabel("Pedro Rodríguez de Oliveira");
-		creditos.add(lblPedro, "cell 1 5");
-		
-		JLabel lblCreadoraLogo = new JLabel("Creadora del logo:");
-		creditos.add(lblCreadoraLogo, "cell 0 7");
-		
-		JButton botonVolver = new JButton("Volver a la ventana principal");
-		botonVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		JLabel lblDayana = new JLabel("Dayana Méndez Salas");
-		creditos.add(lblDayana, "cell 1 8");
-		
-		JLabel lblVersion = new JLabel("Versión:");
-		creditos.add(lblVersion, "cell 0 10");
-		
-		JLabel lblVersionNum = new JLabel("0.5");
-		creditos.add(lblVersionNum, "cell 1 11");
-		creditos.add(botonVolver, "cell 1 13,alignx right");
 		
 		JPanel inicio = new JPanel();
 		inicio.setBackground(new Color(255, 255, 255));
@@ -223,6 +158,73 @@ public class View extends JFrame {
 		
 		JPanel Top = new JPanel();
 		inicio.add(Top, "cell 1 6 3 1,grow");
+		
+		JPanel busquedaMaterial = new JPanel();
+		contentPane.add(busquedaMaterial, "name_10085986187124");
+		busquedaMaterial.setLayout(new MigLayout("", "[701.00]", "[][][]"));
+		
+		JButton btnVolver_4 = new JButton("Volver");
+		busquedaMaterial.add(btnVolver_4, "flowx,cell 0 0");
+		
+		JLabel lblBsqueda = new JLabel("Búsqueda");
+		busquedaMaterial.add(lblBsqueda, "cell 0 0");
+		
+		JLabel lblTipoDeMaterial = new JLabel("Seleccione el tipo de material que desea buscar");
+		busquedaMaterial.add(lblTipoDeMaterial, "cell 0 1");
+		
+		JButton btnLibro = new JButton("Libro");
+		btnLibro.setIcon(new ImageIcon(View.class.getResource("/image/book139.png")));
+		busquedaMaterial.add(btnLibro, "flowx,cell 0 2,alignx center,aligny center");
+		
+		JButton btnRevista = new JButton("Revista");
+		btnRevista.setIcon(new ImageIcon(View.class.getResource("/image/magazine.png")));
+		busquedaMaterial.add(btnRevista, "cell 0 2,alignx center,aligny center");
+		
+		JButton btnPelcula = new JButton("Película");
+		btnPelcula.setIcon(new ImageIcon(View.class.getResource("/image/film50.png")));
+		busquedaMaterial.add(btnPelcula, "cell 0 2,aligny center");
+		
+		JPanel creditos = new JPanel();
+		contentPane.add(creditos, "name_5917427800206");
+		creditos.setLayout(new MigLayout("", "[356.00px][714.00px]", "[15px][][][][][][][][][][][][][]"));
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));
+		creditos.add(lblLogo, "cell 0 0 2 1,alignx center,aligny top");
+		
+		JLabel lblCreadores = new JLabel("Proyecto creado por:");
+		creditos.add(lblCreadores, "cell 0 1 2 1");
+		
+		JLabel lblRoberto = new JLabel("Roberto Chen Zheng");
+		creditos.add(lblRoberto, "cell 1 2");
+		
+		JLabel lblVinicio = new JLabel("Vinicio Flores Hernández");
+		creditos.add(lblVinicio, "cell 1 3");
+		
+		JLabel lblFaubricio = new JLabel("Faubricio Forester Soto");
+		creditos.add(lblFaubricio, "cell 1 4");
+		
+		JLabel lblPedro = new JLabel("Pedro Rodríguez de Oliveira");
+		creditos.add(lblPedro, "cell 1 5");
+		
+		JLabel lblCreadoraLogo = new JLabel("Creadora del logo:");
+		creditos.add(lblCreadoraLogo, "cell 0 7");
+		
+		JButton botonVolver = new JButton("Volver a la ventana principal");
+		botonVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		JLabel lblDayana = new JLabel("Dayana Méndez Salas");
+		creditos.add(lblDayana, "cell 1 8");
+		
+		JLabel lblVersion = new JLabel("Versión:");
+		creditos.add(lblVersion, "cell 0 10");
+		
+		JLabel lblVersionNum = new JLabel("0.5");
+		creditos.add(lblVersionNum, "cell 1 11");
+		creditos.add(botonVolver, "cell 1 13,alignx right");
 		
 		JPanel registroPrestatario = new JPanel();
 		contentPane.add(registroPrestatario, "name_440112681124098");
