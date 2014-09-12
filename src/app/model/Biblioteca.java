@@ -26,7 +26,25 @@ public class Biblioteca {
 	public void agregarNuevaPertenencia(Pertenencia pertenencia){
 		pertenencias.add(pertenencia);
 	}
-	 
+	 	
+	//-----------------------------------------------------------
+	//  Libros
+	//-----------------------------------------------------------
+
+	//Título
+	public ArrayList<Libro> buscarLibrosPorTitulo(String titulo){
+		ArrayList<Libro> matches = new ArrayList<Libro>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Libro){
+				if( ((Libro)pertenencias.get(i)).getNombre().equals(titulo) ){
+					matches.add( ((Libro)pertenencias.get(i)));
+				}
+			}
+		}
+		return matches;
+	}
+
+	//Autor
 	public ArrayList<Libro> buscarLibrosPorAutor(String autor){
 		
 		ArrayList<Libro> matches = new ArrayList<Libro>();
@@ -43,7 +61,109 @@ public class Biblioteca {
 		return matches;
 	}
 	
-	
+	//Editorial
+	public ArrayList<Libro> buscarLibrosPorEditorial(String editorial){
+		ArrayList<Libro> matches = new ArrayList<Libro>();
+		for (int i = 0; i < pertenencias.size(); i++){
+
+			if (pertenencias.get(i) instanceof Libro){
+
+				if( ((Libro)pertenencias.get(i)).getEditorial().equals(editorial) ){
+
+					matches.add( ((Libro)pertenencias.get(i)));
+				}
+			}
+		}
+		return matches;
+	}
+
+	//-----------------------------------------------------------
+	//  Revista
+	//-----------------------------------------------------------
+
+	//Título
+	public ArrayList<Revista> buscarRevistasPorTitulo(String titulo){
+		ArrayList<Revista> matches = new ArrayList<Revista>();
+		for (int i = 0; i < pertenencias.size(); i++){
+
+			if (pertenencias.get(i) instanceof Revista){
+
+				if( ((Revista)pertenencias.get(i)).getNombre().equals(titulo) ){
+
+					matches.add( ((Revista)pertenencias.get(i)));
+				}
+			}
+		}
+		return matches;
+	}
+
+	//Tematica
+	public ArrayList<Revista> buscarRevistasPorTematica(String tematica){
+		ArrayList<Revista> matches = new ArrayList<Revista>();
+		for (int i = 0; i < pertenencias.size(); i++){
+
+			if (pertenencias.get(i) instanceof Revista){
+
+				if( ((Revista)pertenencias.get(i)).getTematica().equals(tematica) ){
+
+					matches.add( ((Revista)pertenencias.get(i)));
+				}
+			}
+		}
+		return matches;
+	}
+
+	//-----------------------------------------------------------
+	//  Película
+	//-----------------------------------------------------------
+
+	//Título
+	public ArrayList<Pelicula> buscarPeliculasPorTitulo(String titulo){
+		ArrayList<Pelicula> matches = new ArrayList<Pelicula>();
+		for (int i = 0; i < pertenencias.size(); i++){
+
+			if (pertenencias.get(i) instanceof Pelicula){
+
+				if( ((Pelicula)pertenencias.get(i)).getNombre().equals(titulo) ){
+
+					matches.add( ((Pelicula)pertenencias.get(i)));
+				}
+			}
+		}
+		return matches;
+	}
+
+	//Género
+	public ArrayList<Pelicula> buscarPeliculasPorGenero(String genero){
+		ArrayList<Pelicula> matches = new ArrayList<Pelicula>();
+		for (int i = 0; i < pertenencias.size(); i++){
+
+			if (pertenencias.get(i) instanceof Pelicula){
+
+				if( ((Pelicula)pertenencias.get(i)).getGenero().equals(genero) ){
+
+					matches.add( ((Pelicula)pertenencias.get(i)));
+				}
+			}
+		}
+		return matches;
+	}
+
+	//Director
+	public ArrayList<Pelicula> buscarPeliculasPorDirector(String director){
+		ArrayList<Pelicula> matches = new ArrayList<Pelicula>();
+		for (int i = 0; i < pertenencias.size(); i++){
+
+			if (pertenencias.get(i) instanceof Pelicula){
+
+				if( ((Pelicula)pertenencias.get(i)).getDirector().equals(director) ){
+
+					matches.add( ((Pelicula)pertenencias.get(i)));
+				}
+			}
+		}
+		return matches;
+	}
 	
 	public int getDiasBase() {
 		return diasBase;

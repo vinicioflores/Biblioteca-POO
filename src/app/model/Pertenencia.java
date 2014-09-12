@@ -84,9 +84,5 @@ public class Pertenencia {
 	public void setPrestatario(Prestatario prestatario) {
 		this.prestatario = prestatario;
 	}
-	
-	
-	
-	
 
 }
