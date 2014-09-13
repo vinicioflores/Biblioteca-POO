@@ -32,6 +32,11 @@ import app.controller.Controller;
 import app.model.Model;
 
 import java.awt.Toolkit;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JScrollBar;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JScrollPane;
 
 public class View extends JFrame {
 	
@@ -93,6 +98,82 @@ public class View extends JFrame {
 	private JButton MagazineSearchBtn;
 	private JButton MovieSearchBtn;
 	private JButton SearchBackBtn;
+	private JPanel BelongingRegistrationPnl;
+	private JPanel MagazineRegistrationPnl;
+	private JPanel BookRegistrationPnl;
+	private JPanel MovieRegistrationPnl;
+	private JPanel SettingPnl;
+	private JPanel BookSearchPnl;
+	private JPanel MagazineSearchPnl;
+	private JPanel MovieSearchPnl;
+	private JPanel BelongingSearch;
+	private JButton newBookBtn;
+	private JButton newMagazineBtn;
+	private JButton newMovieBtn;
+	private JLabel lblRating;
+	private JLabel lblGenre;
+	private JLabel lblDirector;
+	private JLabel lblReleaseDate;
+	private JTextField MovieName;
+	private JTextField MovieGenre;
+	private JTextField MovieDirector;
+	private JButton MovieRegistrationBtn;
+	private JLabel lblName_1;
+	private JLabel lblAuthor;
+	private JLabel lblEditorial;
+	private JLabel lblEdition;
+	private JLabel lblImage_1;
+	private JLabel lblRating_1;
+	private JTextField BookName;
+	private JTextField BookAuthor;
+	private JTextField BookEditorial;
+	private JTextField BookEdition;
+	private JButton BookRegistrationBtn;
+	private JLabel lblTopx;
+	private JButton SettingsChangeTopXBtn;
+	private JLabel lblLoanDays;
+	private JLabel lblToleranceDays;
+	private JButton SettingsChangeLoanDaysBtn;
+	private JButton SettingsChangeToleranceDaysBtn;
+	private JLabel lblTimesborrowed;
+	private JLabel lblMonths;
+	private JSpinner SettingsChangeMonthsSpn;
+	private JLabel lblSettings;
+	private JSpinner SettingsChangeTimesBorrowedSpn;
+	private JLabel lblSpecialSearch;
+	private JButton SettingsChangeTimesBorrowedBtn;
+	private JButton SettingsChangeMonthsBtn;
+	private JLabel lblSystemDate;
+	private JSpinner SettingsChangeLoanDaysSpn;
+	private JSpinner SettingsChangeToleranceDaysSpn;
+	private JSpinner SettingsChangeTopXSpn;
+	private JLabel label;
+	private JLabel lblDaysIntoThe;
+	private JSpinner SettingsGoToTheFutureSpn;
+	private JButton SettingsGoToTheFutureBtn;
+	private JLabel SettingsCurrentLoanDaysLbl;
+	private JLabel SettingsCurrentToleranceDaysLbl;
+	private JLabel lblCurrent;
+	private JLabel SettingsCurrentTopXLbl;
+	private JLabel lblExplanation;
+	private JLabel lblExplanation_1;
+	private JLabel lblExplanation_2;
+	private JLabel lblCurrent_1;
+	private JLabel lblCurrent_2;
+	private JLabel lblExplanation_3;
+	private JLabel lblCurrent_3;
+	private JLabel SettingsCurrentTimesBorrowedLbl;
+	private JLabel lblCurrent_4;
+	private JLabel lblExplanation_4;
+	private JLabel SettingsCurrentMonthsLbl;
+	private JLabel lblCurrentDate;
+	private JLabel SettingsCurrentDateLbl;
+	private JButton HistoryBtn;
+	private JLabel lblSearchParameter;
+	private JComboBox BookSearchParametersComboBox;
+	private JTextField textField;
+	private JButton button;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -110,7 +191,7 @@ public class View extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				View.class.getResource("/image/icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 747, 524);
+		setBounds(100, 100, 801, 607);
 
 		JMenuBar menuSup = new JMenuBar();
 		setJMenuBar(menuSup);
@@ -138,8 +219,7 @@ public class View extends JFrame {
 		JPanel MainPanelOptions = new JPanel();
 		MainPanelOptions.setBackground(new Color(255, 255, 255));
 		StartPnl.add(MainPanelOptions, "cell 0 0 1 7,grow");
-		MainPanelOptions.setLayout(new MigLayout("", "[100px][][][]",
-				"[][][][][][][][]"));
+		MainPanelOptions.setLayout(new MigLayout("", "[100px][][][]", "[][][][][][][][][][][][]"));
 
 		searchBtn = new JButton("");
 		searchBtn.setIcon(new ImageIcon(View.class
@@ -160,12 +240,15 @@ public class View extends JFrame {
 		settingsBtn.setIcon(new ImageIcon(View.class
 				.getResource("/image/three115.png")));
 		MainPanelOptions.add(settingsBtn, "cell 0 3");
-
-		JButton botonManual = new JButton("Manual");
-		MainPanelOptions.add(botonManual, "cell 0 6,alignx center");
-
-		CreditsBtn = new JButton("Créditos");
-		MainPanelOptions.add(CreditsBtn, "cell 0 7,alignx center");
+						
+						HistoryBtn = new JButton("History");
+						MainPanelOptions.add(HistoryBtn, "cell 0 9,alignx center");
+				
+						JButton ManualBtn = new JButton("Manual");
+						MainPanelOptions.add(ManualBtn, "cell 0 10,alignx center");
+		
+				CreditsBtn = new JButton("Credits");
+				MainPanelOptions.add(CreditsBtn, "cell 0 11,alignx center");
 
 		JLabel MyBelongingLbl = new JLabel("Mis Pertenencias");
 		MyBelongingLbl.setFont(new Font("Consolas", Font.BOLD, 30));
@@ -222,8 +305,8 @@ public class View extends JFrame {
 				"Seleccione el tipo de material que desea buscar");
 		SearchPnl.add(lblTipoDeMaterial, "cell 0 1");
 		
-		JButton btnBelonging = new JButton("Belonging");
-		SearchPnl.add(btnBelonging, "cell 0 2,alignx center");
+		JButton GeneralSearchBtn = new JButton("Belonging");
+		SearchPnl.add(GeneralSearchBtn, "cell 0 2,alignx center");
 
 		BookSearchBtn = new JButton("Book");
 		BookSearchBtn.setIcon(new ImageIcon(View.class
@@ -242,28 +325,55 @@ public class View extends JFrame {
 				.getResource("/image/film50.png")));
 		SearchPnl.add(MovieSearchBtn, "cell 0 3,aligny center");
 		
-		JPanel BookSearchPnl = new JPanel();
+		BookSearchPnl = new JPanel();
+		BookSearchPnl.setBackground(new Color(255, 255, 255));
 		contentPane.add(BookSearchPnl, "name_69265426665252");
-		BookSearchPnl.setLayout(new MigLayout("", "[]", "[]"));
+		BookSearchPnl.setLayout(new MigLayout("", "[][][][][grow]", "[][][][grow]"));
 		
 		BookSearchBackBtn = new JButton("Back");
-		BookSearchPnl.add(BookSearchBackBtn, "cell 0 0");
+		BookSearchPnl.add(BookSearchBackBtn, "flowx,cell 0 0");
 		
-		JPanel MagazineSearchPnl = new JPanel();
+		JLabel lblBookSearch = new JLabel("Book search");
+		BookSearchPnl.add(lblBookSearch, "cell 0 0");
+		
+		lblSearchParameter = new JLabel("Search parameter:");
+		BookSearchPnl.add(lblSearchParameter, "cell 0 1");
+		
+		BookSearchParametersComboBox = new JComboBox();
+		BookSearchParametersComboBox.setModel(new DefaultComboBoxModel(new String[] {"Title", "Author", "Editorial", "Edition"}));
+		BookSearchPnl.add(BookSearchParametersComboBox, "flowx,cell 0 2,growx");
+		
+		textField = new JTextField();
+		BookSearchPnl.add(textField, "cell 1 2");
+		textField.setColumns(10);
+		
+		button = new JButton("New button");
+		BookSearchPnl.add(button, "cell 2 2");
+		
+		scrollPane = new JScrollPane();
+		BookSearchPnl.add(scrollPane, "cell 0 3 5 1,grow");
+		
+		MagazineSearchPnl = new JPanel();
 		contentPane.add(MagazineSearchPnl, "name_69270385054519");
 		MagazineSearchPnl.setLayout(new MigLayout("", "[]", "[]"));
 		
 		JButton MagazineSearchBackBtn = new JButton("Back");
-		MagazineSearchPnl.add(MagazineSearchBackBtn, "cell 0 0");
+		MagazineSearchPnl.add(MagazineSearchBackBtn, "flowx,cell 0 0");
 		
-		JPanel MovieSearchPnl = new JPanel();
+		JLabel lblMagazineSearch = new JLabel("Magazine search");
+		MagazineSearchPnl.add(lblMagazineSearch, "cell 0 0");
+		
+		MovieSearchPnl = new JPanel();
 		contentPane.add(MovieSearchPnl, "name_69274240397564");
 		MovieSearchPnl.setLayout(new MigLayout("", "[]", "[]"));
 		
 		JButton MovieSearchBackBtn = new JButton("Back");
-		MovieSearchPnl.add(MovieSearchBackBtn, "cell 0 0");
+		MovieSearchPnl.add(MovieSearchBackBtn, "flowx,cell 0 0");
 		
-		JPanel BelongingSearch = new JPanel();
+		JLabel lblMovieSearch = new JLabel("Movie search");
+		MovieSearchPnl.add(lblMovieSearch, "cell 0 0");
+		
+		BelongingSearch = new JPanel();
 		contentPane.add(BelongingSearch, "name_69278881556951");
 		BelongingSearch.setLayout(new MigLayout("", "[]", "[]"));
 		
@@ -545,40 +655,294 @@ public class View extends JFrame {
 		RelativeRegistrationBtn = new JButton("Registrar");
 		RelativeRegistrationPnl.add(RelativeRegistrationBtn, "cell 1 9");
 		
-		JPanel BelongingRegistrationPnl = new JPanel();
+		BelongingRegistrationPnl = new JPanel();
 		contentPane.add(BelongingRegistrationPnl, "name_69061404162527");
-		BelongingRegistrationPnl.setLayout(new MigLayout("", "[][]", "[][]"));
+		BelongingRegistrationPnl.setLayout(new MigLayout("", "[][]", "[][][]"));
 		
 		BelongingRegistrationBackBtn = new JButton("Back");
-		BelongingRegistrationPnl.add(BelongingRegistrationBackBtn, "cell 0 0,alignx left");
+		BelongingRegistrationPnl.add(BelongingRegistrationBackBtn, "flowx,cell 0 0,alignx left");
 		
-		JPanel MagazineRegistrationPnl = new JPanel();
+		JLabel lblBelongingRegistration = new JLabel("Belonging registration");
+		BelongingRegistrationPnl.add(lblBelongingRegistration, "cell 0 0");
+		
+		newBookBtn = new JButton("");
+		newBookBtn.setIcon(new ImageIcon(View.class.getResource("/image/book139.png")));
+		BelongingRegistrationPnl.add(newBookBtn, "flowx,cell 1 2");
+		
+		newMagazineBtn = new JButton("");
+		newMagazineBtn.setIcon(new ImageIcon(View.class.getResource("/image/magazine.png")));
+		BelongingRegistrationPnl.add(newMagazineBtn, "cell 1 2");
+		
+		newMovieBtn = new JButton("");
+		newMovieBtn.setIcon(new ImageIcon(View.class.getResource("/image/film50.png")));
+		BelongingRegistrationPnl.add(newMovieBtn, "cell 1 2");
+		
+		MagazineRegistrationPnl = new JPanel();
 		contentPane.add(MagazineRegistrationPnl, "name_69108422085933");
 		MagazineRegistrationPnl.setLayout(new MigLayout("", "[]", "[]"));
 		
 		MagazineRegistrationBackBtn = new JButton("Back");
-		MagazineRegistrationPnl.add(MagazineRegistrationBackBtn, "cell 0 0");
+		MagazineRegistrationPnl.add(MagazineRegistrationBackBtn, "flowx,cell 0 0");
 		
-		JPanel BookRegistrationPnl = new JPanel();
+		JLabel lblMagazineRegistration = new JLabel("Magazine registration");
+		MagazineRegistrationPnl.add(lblMagazineRegistration, "cell 0 0");
+		
+		BookRegistrationPnl = new JPanel();
 		contentPane.add(BookRegistrationPnl, "name_69114565454795");
-		BookRegistrationPnl.setLayout(new MigLayout("", "[]", "[]"));
+		BookRegistrationPnl.setLayout(new MigLayout("", "[][][grow]", "[][][][][][][][][][]"));
 		
 		BookRegistrationBackBtn = new JButton("Back");
-		BookRegistrationPnl.add(BookRegistrationBackBtn, "cell 0 0");
+		BookRegistrationPnl.add(BookRegistrationBackBtn, "flowx,cell 0 0");
 		
-		JPanel MovieRegistrationPnl = new JPanel();
+		JLabel lblBookRegistration = new JLabel("Book registration");
+		BookRegistrationPnl.add(lblBookRegistration, "cell 0 0");
+		
+		lblName_1 = new JLabel("Name:");
+		BookRegistrationPnl.add(lblName_1, "cell 1 1,alignx trailing");
+		
+		BookName = new JTextField();
+		BookRegistrationPnl.add(BookName, "cell 2 1,growx");
+		BookName.setColumns(10);
+		
+		lblAuthor = new JLabel("Author:");
+		BookRegistrationPnl.add(lblAuthor, "cell 1 2,alignx trailing");
+		
+		BookAuthor = new JTextField();
+		BookRegistrationPnl.add(BookAuthor, "cell 2 2,growx");
+		BookAuthor.setColumns(10);
+		
+		lblEditorial = new JLabel("Editorial:");
+		BookRegistrationPnl.add(lblEditorial, "cell 1 3,alignx trailing");
+		
+		BookEditorial = new JTextField();
+		BookRegistrationPnl.add(BookEditorial, "cell 2 3,growx");
+		BookEditorial.setColumns(10);
+		
+		lblEdition = new JLabel("Edition:");
+		BookRegistrationPnl.add(lblEdition, "cell 1 4,alignx trailing");
+		
+		BookEdition = new JTextField();
+		BookRegistrationPnl.add(BookEdition, "cell 2 4,growx");
+		BookEdition.setColumns(10);
+		
+		lblImage_1 = new JLabel("Image");
+		BookRegistrationPnl.add(lblImage_1, "cell 1 6");
+		
+		lblRating_1 = new JLabel("Rating");
+		BookRegistrationPnl.add(lblRating_1, "cell 1 8");
+		
+		BookRegistrationBtn = new JButton("Register");
+		BookRegistrationPnl.add(BookRegistrationBtn, "cell 2 9");
+		
+		MovieRegistrationPnl = new JPanel();
 		contentPane.add(MovieRegistrationPnl, "name_69169014990127");
-		MovieRegistrationPnl.setLayout(new MigLayout("", "[]", "[]"));
+		MovieRegistrationPnl.setLayout(new MigLayout("", "[][][grow][]", "[][][][][][][][][][]"));
 		
 		MovieRegistrationBackBtn = new JButton("Back");
-		MovieRegistrationPnl.add(MovieRegistrationBackBtn, "cell 0 0");
+		MovieRegistrationPnl.add(MovieRegistrationBackBtn, "flowx,cell 0 0");
 		
-		JPanel SettingPnl = new JPanel();
+		JLabel lblMovieRegistration = new JLabel("Movie registration");
+		MovieRegistrationPnl.add(lblMovieRegistration, "cell 0 0");
+		
+		JLabel lblName = new JLabel("Name:");
+		MovieRegistrationPnl.add(lblName, "cell 1 1,alignx trailing");
+		
+		MovieName = new JTextField();
+		MovieRegistrationPnl.add(MovieName, "cell 2 1,growx");
+		MovieName.setColumns(10);
+		
+		JLabel lblImage = new JLabel("Image:");
+		MovieRegistrationPnl.add(lblImage, "cell 1 2");
+		
+		lblRating = new JLabel("Rating:");
+		MovieRegistrationPnl.add(lblRating, "cell 1 4");
+		
+		lblGenre = new JLabel("Genre:");
+		MovieRegistrationPnl.add(lblGenre, "cell 1 6,alignx trailing");
+		
+		MovieGenre = new JTextField();
+		MovieRegistrationPnl.add(MovieGenre, "cell 2 6,growx");
+		MovieGenre.setColumns(10);
+		
+		lblDirector = new JLabel("Director:");
+		MovieRegistrationPnl.add(lblDirector, "cell 1 7,alignx trailing");
+		
+		MovieDirector = new JTextField();
+		MovieRegistrationPnl.add(MovieDirector, "cell 2 7,growx");
+		MovieDirector.setColumns(10);
+		
+		lblReleaseDate = new JLabel("Release date:");
+		MovieRegistrationPnl.add(lblReleaseDate, "cell 1 8");
+		
+		MovieRegistrationBtn = new JButton("Register");
+		MovieRegistrationPnl.add(MovieRegistrationBtn, "cell 2 9,alignx right");
+		
+		SettingPnl = new JPanel();
 		contentPane.add(SettingPnl, "name_69192387445960");
-		SettingPnl.setLayout(new MigLayout("", "[]", "[]"));
+		SettingPnl.setLayout(new MigLayout("", "[][439.00][grow][]", "[][][][][][][][][][][][][][][][][][][][][][][]"));
 		
 		SettingBackBtn = new JButton("Back");
+		SettingBackBtn.setFont(new Font("Consolas", Font.PLAIN, 11));
 		SettingPnl.add(SettingBackBtn, "cell 0 0");
+		
+		lblSettings = new JLabel("Settings");
+		lblSettings.setFont(new Font("Consolas", Font.PLAIN, 24));
+		SettingPnl.add(lblSettings, "cell 1 0");
+		
+		lblLoanDays = new JLabel("Loan days");
+		lblLoanDays.setFont(new Font("Consolas", Font.BOLD, 16));
+		SettingPnl.add(lblLoanDays, "flowx,cell 1 1");
+		
+		lblCurrent_2 = new JLabel("Current:");
+		lblCurrent_2.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(lblCurrent_2, "flowx,cell 1 2");
+		
+		SettingsCurrentLoanDaysLbl = new JLabel("0000");
+		SettingsCurrentLoanDaysLbl.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsCurrentLoanDaysLbl, "cell 1 2");
+		
+		SettingsChangeLoanDaysSpn = new JSpinner();
+		SettingsChangeLoanDaysSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingsChangeLoanDaysSpn.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+		SettingPnl.add(SettingsChangeLoanDaysSpn, "flowx,cell 1 3");
+		
+		lblToleranceDays = new JLabel("Tolerance days");
+		lblToleranceDays.setFont(new Font("Consolas", Font.BOLD, 16));
+		SettingPnl.add(lblToleranceDays, "flowx,cell 1 4");
+		
+		lblCurrent_1 = new JLabel("Current:");
+		lblCurrent_1.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(lblCurrent_1, "flowx,cell 1 5");
+		
+		SettingsCurrentToleranceDaysLbl = new JLabel("0000");
+		SettingsCurrentToleranceDaysLbl.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsCurrentToleranceDaysLbl, "cell 1 5");
+		
+		SettingsChangeToleranceDaysSpn = new JSpinner();
+		SettingsChangeToleranceDaysSpn.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+		SettingsChangeToleranceDaysSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsChangeToleranceDaysSpn, "flowx,cell 1 6");
+		
+		lblTopx = new JLabel("TopX");
+		lblTopx.setFont(new Font("Consolas", Font.BOLD, 16));
+		SettingPnl.add(lblTopx, "flowx,cell 1 7");
+		
+		lblCurrent = new JLabel("Current:");
+		lblCurrent.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(lblCurrent, "flowx,cell 1 8");
+		
+		SettingsChangeTopXSpn = new JSpinner();
+		SettingsChangeTopXSpn.setModel(new SpinnerNumberModel(new Integer(2), new Integer(2), null, new Integer(1)));
+		SettingsChangeTopXSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsChangeTopXSpn, "flowx,cell 1 9");
+		
+		lblSpecialSearch = new JLabel("Special search");
+		lblSpecialSearch.setFont(new Font("Consolas", Font.BOLD, 16));
+		SettingPnl.add(lblSpecialSearch, "flowx,cell 1 11");
+		
+		lblTimesborrowed = new JLabel("Times borrowed:");
+		lblTimesborrowed.setFont(new Font("Consolas", Font.PLAIN, 15));
+		SettingPnl.add(lblTimesborrowed, "cell 1 12");
+		
+		lblCurrent_3 = new JLabel("Current:");
+		lblCurrent_3.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(lblCurrent_3, "flowx,cell 1 13");
+		
+		SettingsChangeTimesBorrowedSpn = new JSpinner();
+		SettingsChangeTimesBorrowedSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingsChangeTimesBorrowedSpn.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+		SettingPnl.add(SettingsChangeTimesBorrowedSpn, "flowx,cell 1 14");
+		
+		lblMonths = new JLabel("Months:");
+		lblMonths.setFont(new Font("Consolas", Font.PLAIN, 15));
+		SettingPnl.add(lblMonths, "cell 1 15");
+		
+		lblCurrent_4 = new JLabel("Current:");
+		lblCurrent_4.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(lblCurrent_4, "flowx,cell 1 16");
+		
+		SettingsChangeMonthsSpn = new JSpinner();
+		SettingsChangeMonthsSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingsChangeMonthsSpn.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+		SettingPnl.add(SettingsChangeMonthsSpn, "flowx,cell 1 17");
+		
+		lblSystemDate = new JLabel("System date");
+		lblSystemDate.setFont(new Font("Consolas", Font.BOLD, 16));
+		SettingPnl.add(lblSystemDate, "flowx,cell 1 19");
+		
+		lblCurrentDate = new JLabel("Current date:");
+		SettingPnl.add(lblCurrentDate, "flowy,cell 1 20");
+		
+		label = new JLabel("");
+		SettingPnl.add(label, "flowx,cell 1 21");
+		
+		lblDaysIntoThe = new JLabel("Days into the future:");
+		lblDaysIntoThe.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(lblDaysIntoThe, "cell 1 21");
+		
+		SettingsCurrentTopXLbl = new JLabel("0000");
+		SettingsCurrentTopXLbl.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsCurrentTopXLbl, "cell 1 8");
+		
+		lblExplanation = new JLabel("Explanation");
+		lblExplanation.setFont(new Font("Consolas", Font.ITALIC, 11));
+		SettingPnl.add(lblExplanation, "cell 1 7");
+		
+		lblExplanation_1 = new JLabel("Explanation");
+		lblExplanation_1.setFont(new Font("Consolas", Font.ITALIC, 11));
+		SettingPnl.add(lblExplanation_1, "cell 1 1");
+		
+		lblExplanation_2 = new JLabel("Explanation");
+		lblExplanation_2.setFont(new Font("Consolas", Font.ITALIC, 11));
+		SettingPnl.add(lblExplanation_2, "cell 1 4");
+		
+		lblExplanation_3 = new JLabel("Explanation");
+		lblExplanation_3.setFont(new Font("Consolas", Font.ITALIC, 11));
+		SettingPnl.add(lblExplanation_3, "cell 1 11");
+		
+		SettingsCurrentTimesBorrowedLbl = new JLabel("0000");
+		SettingsCurrentTimesBorrowedLbl.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsCurrentTimesBorrowedLbl, "cell 1 13");
+		
+		SettingsCurrentMonthsLbl = new JLabel("0000");
+		SettingsCurrentMonthsLbl.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsCurrentMonthsLbl, "cell 1 16");
+		
+		lblExplanation_4 = new JLabel("Explanation");
+		lblExplanation_4.setFont(new Font("Consolas", Font.ITALIC, 11));
+		SettingPnl.add(lblExplanation_4, "cell 1 19");
+		
+		SettingsGoToTheFutureSpn = new JSpinner();
+		SettingsGoToTheFutureSpn.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+		SettingsGoToTheFutureSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsGoToTheFutureSpn, "flowx,cell 1 22");
+		
+		SettingsGoToTheFutureBtn = new JButton("Go!");
+		SettingsGoToTheFutureBtn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsGoToTheFutureBtn, "cell 1 22");
+		
+		SettingsCurrentDateLbl = new JLabel("00/00/0000");
+		SettingPnl.add(SettingsCurrentDateLbl, "cell 1 20");
+		
+		SettingsChangeLoanDaysBtn = new JButton("Change");
+		SettingsChangeLoanDaysBtn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsChangeLoanDaysBtn, "cell 1 3");
+		
+		SettingsChangeToleranceDaysBtn = new JButton("Change");
+		SettingsChangeToleranceDaysBtn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsChangeToleranceDaysBtn, "cell 1 6");
+		
+		SettingsChangeTopXBtn = new JButton("Change");
+		SettingsChangeTopXBtn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsChangeTopXBtn, "cell 1 9");
+		
+		SettingsChangeTimesBorrowedBtn = new JButton("Change");
+		SettingsChangeTimesBorrowedBtn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsChangeTimesBorrowedBtn, "cell 1 14");
+		
+		SettingsChangeMonthsBtn = new JButton("Change");
+		SettingsChangeMonthsBtn.setFont(new Font("Consolas", Font.PLAIN, 11));
+		SettingPnl.add(SettingsChangeMonthsBtn, "cell 1 17");
 	}
 
 	private void addEvents() {
@@ -609,7 +973,17 @@ public class View extends JFrame {
 		MagazineSearchBtn.addActionListener(controller);
 		MovieSearchBtn.addActionListener(controller);
 		SearchBackBtn.addActionListener(controller);
-		
+		newBookBtn.addActionListener(controller);
+		newMagazineBtn.addActionListener(controller);
+		newMovieBtn.addActionListener(controller);
+		MovieRegistrationBtn.addActionListener(controller);
+		BookRegistrationBtn.addActionListener(controller);
+		SettingsChangeTopXBtn.addActionListener(controller);
+		SettingsChangeLoanDaysBtn.addActionListener(controller);
+		SettingsChangeToleranceDaysBtn.addActionListener(controller);
+		SettingsChangeTimesBorrowedBtn.addActionListener(controller);
+		SettingsChangeMonthsBtn.addActionListener(controller);
+		SettingsGoToTheFutureBtn.addActionListener(controller);
 		
 	}
 
@@ -819,5 +1193,96 @@ public class View extends JFrame {
 	}
 	public JButton getSearchBackBtn() {
 		return SearchBackBtn;
+	}
+	public JPanel getBelongingRegistrationPnl() {
+		return BelongingRegistrationPnl;
+	}
+	public JPanel getMagazineRegistrationPnl() {
+		return MagazineRegistrationPnl;
+	}
+	public JPanel getBookRegistrationPnl() {
+		return BookRegistrationPnl;
+	}
+	public JPanel getMovieRegistrationPnl() {
+		return MovieRegistrationPnl;
+	}
+	public JPanel getSettingPnl() {
+		return SettingPnl;
+	}
+	public JPanel getBookSearchPnl() {
+		return BookSearchPnl;
+	}
+	public JPanel getMagazineSearchPnl() {
+		return MagazineSearchPnl;
+	}
+	public JPanel getMovieSearchPnl() {
+		return MovieSearchPnl;
+	}
+	public JPanel getBelongingSearch() {
+		return BelongingSearch;
+	}
+	public JButton getNewBookBtn() {
+		return newBookBtn;
+	}
+	public JButton getNewMagazineBtn() {
+		return newMagazineBtn;
+	}
+	public JButton getNewMovieBtn() {
+		return newMovieBtn;
+	}
+	public JButton getSettingsChangeLoanDaysBtn() {
+		return SettingsChangeLoanDaysBtn;
+	}
+	public JButton getSettingsChangeToleranceDaysBtn() {
+		return SettingsChangeToleranceDaysBtn;
+	}
+	public JButton getSettingsChangeTopXBtn() {
+		return SettingsChangeTopXBtn;
+	}
+	public JLabel getSettingsCurrentTimesBorrowedLbl() {
+		return SettingsCurrentTimesBorrowedLbl;
+	}
+	public JSpinner getSettingChangeTimesBorrowedSpn() {
+		return SettingsChangeTimesBorrowedSpn;
+	}
+	public JSpinner getSettingsChangeLoanDaysSpn() {
+		return SettingsChangeLoanDaysSpn;
+	}
+	public JLabel getSettingsCurrentLoanDaysLbl() {
+		return SettingsCurrentLoanDaysLbl;
+	}
+	
+	public JLabel getSettingsCurrentToleranceDaysLbl() {
+		return SettingsCurrentToleranceDaysLbl;
+	}
+	public JSpinner getSettingsChangeToleranceDaysSpn() {
+		return SettingsChangeToleranceDaysSpn;
+	}
+	public JLabel getSettingsCurrentTopXLbl() {
+		return SettingsCurrentTopXLbl;
+	}
+	public JSpinner getSettingsChangeTopXSpn() {
+		return SettingsChangeTopXSpn;
+	}
+	public JButton getSettingsChangeTimesBorrowedBtn() {
+		return SettingsChangeTimesBorrowedBtn;
+	}
+	public JSpinner getSettingsChangeMonthsSpn() {
+		return SettingsChangeMonthsSpn;
+	}
+	public JButton getSettingsChangeMonthsBtn() {
+		return SettingsChangeMonthsBtn;
+	}
+	public JSpinner getSettingsGoToTheFutureSpn() {
+		return SettingsGoToTheFutureSpn;
+	}
+	public JButton getSettingsGoToTheFutureBtn() {
+		return SettingsGoToTheFutureBtn;
+	}
+	public JLabel getSettingsCurrentDateLbl() {
+		return SettingsCurrentDateLbl;
+	}
+	public JLabel getSettingsCurrentMonthsLbl() {
+		return SettingsCurrentMonthsLbl;
 	}
 }
