@@ -2,14 +2,17 @@ package app.model;
 
 import java.util.ArrayList;
 
+import org.joda.time.DateTime;
+
 public class Biblioteca {
 	
 	private ArrayList<Pertenencia> pertenencias;
-	int diasBase;
-	int diasTolerancia;
-	int topX;
-	int tiempoBusquedaMeses;
-	int cantidasVecesBusqueda;
+	private int diasBase;
+	private int diasTolerancia;
+	private int topX;
+	private int tiempoBusquedaMeses;
+	private int cantidasVecesBusqueda;
+	private DateTime fechaSistema;
 	
 	
 	
