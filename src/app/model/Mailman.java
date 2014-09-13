@@ -106,14 +106,6 @@ public class Mailman {
             //return false;
         }        
     }
-    
-    public static void main(String[] args){ 
-        Mailman envio = new Mailman("robacz0695@hotmail.com","Asunto","Prueba de la biblioteca para mandar un email");
-        if (envio.sendMail()){
-            JOptionPane.showMessageDialog(null,"El correo se envió correctamente");
-        }else{
-            JOptionPane.showMessageDialog(null,"El correo no se envió correctamente");
-        }
-    }
+  
 
 }
