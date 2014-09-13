@@ -99,6 +99,13 @@ public class Controller implements ActionListener{
         	view.getStartPnl().setVisible(false);
         	
         }
+        ///
+        else if(source == view.getCreditsBackBtn()){
+        	
+        	view.getStartPnl().setVisible(true);
+        	view.getCreditsPnl().setVisible(false);
+            	
+        }
         //
         else if(source == view.getSettingsBtn()){
         	

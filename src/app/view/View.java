@@ -81,6 +81,18 @@ public class View extends JFrame {
 	private JButton newStudentBtn;
 	private JButton newCoworkerBtn;
 	private JButton BorrowerRegistrationBackBtn;
+	private JButton CreditsBackBtn;
+	private JButton BelongingRegistrationBackBtn;
+	private JButton BookRegistrationBackBtn;
+	private JButton MagazineRegistrationBackBtn;
+	private JButton MovieRegistrationBackBtn;
+	private JButton SettingBackBtn;
+	private JButton BookSearchBackBtn;
+	private JButton BelongingSearchBackBtn;
+	private JButton BookSearchBtn;
+	private JButton MagazineSearchBtn;
+	private JButton MovieSearchBtn;
+	private JButton SearchBackBtn;
 
 	/**
 	 * Launch the application.
@@ -198,46 +210,65 @@ public class View extends JFrame {
 
 		SearchPnl = new JPanel();
 		contentPane.add(SearchPnl, "name_10085986187124");
-		SearchPnl.setLayout(new MigLayout("", "[701.00]", "[][][]"));
+		SearchPnl.setLayout(new MigLayout("", "[701.00]", "[][][][]"));
 
-		JButton SearchPnlBackBtn = new JButton("Back");
-		SearchPnl.add(SearchPnlBackBtn, "flowx,cell 0 0");
+		SearchBackBtn = new JButton("Back");
+		SearchPnl.add(SearchBackBtn, "flowx,cell 0 0");
 
-		JLabel lblBsqueda = new JLabel("Búsqueda");
+		JLabel lblBsqueda = new JLabel("Search");
 		SearchPnl.add(lblBsqueda, "cell 0 0");
 
 		JLabel lblTipoDeMaterial = new JLabel(
 				"Seleccione el tipo de material que desea buscar");
 		SearchPnl.add(lblTipoDeMaterial, "cell 0 1");
+		
+		JButton btnBelonging = new JButton("Belonging");
+		SearchPnl.add(btnBelonging, "cell 0 2,alignx center");
 
-		JButton BookSearchBtn = new JButton("Libro");
+		BookSearchBtn = new JButton("Book");
 		BookSearchBtn.setIcon(new ImageIcon(View.class
 				.getResource("/image/book139.png")));
 		SearchPnl.add(BookSearchBtn,
-				"flowx,cell 0 2,alignx center,aligny center");
+				"flowx,cell 0 3,alignx center,aligny center");
 
-		JButton MagazineSearchBtn = new JButton("Revista");
+		MagazineSearchBtn = new JButton("Magazine");
 		MagazineSearchBtn.setIcon(new ImageIcon(View.class
 				.getResource("/image/magazine.png")));
 		SearchPnl
-				.add(MagazineSearchBtn, "cell 0 2,alignx center,aligny center");
+				.add(MagazineSearchBtn, "cell 0 3,alignx center,aligny center");
 
-		JButton MovieSearchBtn = new JButton("Película");
+		MovieSearchBtn = new JButton("Movie");
 		MovieSearchBtn.setIcon(new ImageIcon(View.class
 				.getResource("/image/film50.png")));
-		SearchPnl.add(MovieSearchBtn, "cell 0 2,aligny center");
+		SearchPnl.add(MovieSearchBtn, "cell 0 3,aligny center");
 		
 		JPanel BookSearchPnl = new JPanel();
 		contentPane.add(BookSearchPnl, "name_69265426665252");
+		BookSearchPnl.setLayout(new MigLayout("", "[]", "[]"));
+		
+		BookSearchBackBtn = new JButton("Back");
+		BookSearchPnl.add(BookSearchBackBtn, "cell 0 0");
 		
 		JPanel MagazineSearchPnl = new JPanel();
 		contentPane.add(MagazineSearchPnl, "name_69270385054519");
+		MagazineSearchPnl.setLayout(new MigLayout("", "[]", "[]"));
+		
+		JButton MagazineSearchBackBtn = new JButton("Back");
+		MagazineSearchPnl.add(MagazineSearchBackBtn, "cell 0 0");
 		
 		JPanel MovieSearchPnl = new JPanel();
 		contentPane.add(MovieSearchPnl, "name_69274240397564");
+		MovieSearchPnl.setLayout(new MigLayout("", "[]", "[]"));
+		
+		JButton MovieSearchBackBtn = new JButton("Back");
+		MovieSearchPnl.add(MovieSearchBackBtn, "cell 0 0");
 		
 		JPanel BelongingSearch = new JPanel();
 		contentPane.add(BelongingSearch, "name_69278881556951");
+		BelongingSearch.setLayout(new MigLayout("", "[]", "[]"));
+		
+		BelongingSearchBackBtn = new JButton("Back");
+		BelongingSearch.add(BelongingSearchBackBtn, "cell 0 0,alignx left");
 
 		CreditsPnl = new JPanel();
 		contentPane.add(CreditsPnl, "name_5917427800206");
@@ -266,8 +297,8 @@ public class View extends JFrame {
 		JLabel lblCreadoraLogo = new JLabel("Creadora del logo:");
 		CreditsPnl.add(lblCreadoraLogo, "cell 0 7");
 
-		JButton botonVolver = new JButton("Volver a la ventana principal");
-		botonVolver.addActionListener(new ActionListener() {
+		CreditsBackBtn = new JButton("Volver a la ventana principal");
+		CreditsBackBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -280,7 +311,7 @@ public class View extends JFrame {
 
 		JLabel lblVersionNum = new JLabel("0.5");
 		CreditsPnl.add(lblVersionNum, "cell 1 11");
-		CreditsPnl.add(botonVolver, "cell 1 13,alignx right");
+		CreditsPnl.add(CreditsBackBtn, "cell 1 13,alignx right");
 
 		BorrowerRegistrationPnl = new JPanel();
 		contentPane.add(BorrowerRegistrationPnl, "name_440112681124098");
@@ -516,21 +547,42 @@ public class View extends JFrame {
 		
 		JPanel BelongingRegistrationPnl = new JPanel();
 		contentPane.add(BelongingRegistrationPnl, "name_69061404162527");
+		BelongingRegistrationPnl.setLayout(new MigLayout("", "[][]", "[][]"));
+		
+		BelongingRegistrationBackBtn = new JButton("Back");
+		BelongingRegistrationPnl.add(BelongingRegistrationBackBtn, "cell 0 0,alignx left");
 		
 		JPanel MagazineRegistrationPnl = new JPanel();
 		contentPane.add(MagazineRegistrationPnl, "name_69108422085933");
+		MagazineRegistrationPnl.setLayout(new MigLayout("", "[]", "[]"));
+		
+		MagazineRegistrationBackBtn = new JButton("Back");
+		MagazineRegistrationPnl.add(MagazineRegistrationBackBtn, "cell 0 0");
 		
 		JPanel BookRegistrationPnl = new JPanel();
 		contentPane.add(BookRegistrationPnl, "name_69114565454795");
+		BookRegistrationPnl.setLayout(new MigLayout("", "[]", "[]"));
+		
+		BookRegistrationBackBtn = new JButton("Back");
+		BookRegistrationPnl.add(BookRegistrationBackBtn, "cell 0 0");
 		
 		JPanel MovieRegistrationPnl = new JPanel();
 		contentPane.add(MovieRegistrationPnl, "name_69169014990127");
+		MovieRegistrationPnl.setLayout(new MigLayout("", "[]", "[]"));
+		
+		MovieRegistrationBackBtn = new JButton("Back");
+		MovieRegistrationPnl.add(MovieRegistrationBackBtn, "cell 0 0");
 		
 		JPanel SettingPnl = new JPanel();
 		contentPane.add(SettingPnl, "name_69192387445960");
+		SettingPnl.setLayout(new MigLayout("", "[]", "[]"));
+		
+		SettingBackBtn = new JButton("Back");
+		SettingPnl.add(SettingBackBtn, "cell 0 0");
 	}
 
 	private void addEvents() {
+		//TODO
 		RelativeRegistrationBackBtn.addActionListener(controller);
 		RelativeRegistrationBtn.addActionListener(controller);
 		StudentRegistrationBackBtn.addActionListener(controller);
@@ -545,6 +597,18 @@ public class View extends JFrame {
 		newStudentBtn.addActionListener(controller);
 		newCoworkerBtn.addActionListener(controller);
 		BorrowerRegistrationBackBtn.addActionListener(controller);
+		CreditsBackBtn.addActionListener(controller);
+		BelongingRegistrationBackBtn.addActionListener(controller);
+		BookRegistrationBackBtn.addActionListener(controller);
+		MagazineRegistrationBackBtn.addActionListener(controller);
+		MovieRegistrationBackBtn.addActionListener(controller);
+		SettingBackBtn.addActionListener(controller);
+		BookSearchBackBtn.addActionListener(controller);
+		BelongingSearchBackBtn.addActionListener(controller);
+		BookSearchBtn.addActionListener(controller);
+		MagazineSearchBtn.addActionListener(controller);
+		MovieSearchBtn.addActionListener(controller);
+		SearchBackBtn.addActionListener(controller);
 		
 		
 	}
@@ -719,5 +783,41 @@ public class View extends JFrame {
 	}
 	public JButton getBorrowerRegistrationBackBtn() {
 		return BorrowerRegistrationBackBtn;
+	}
+	public JButton getCreditsBackBtn() {
+		return CreditsBackBtn;
+	}
+	public JButton getBelongingRegistrationBackBtn() {
+		return BelongingRegistrationBackBtn;
+	}
+	public JButton getBookRegistrationBackBtn() {
+		return BookRegistrationBackBtn;
+	}
+	public JButton getMagazineRegistrationBackBtn() {
+		return MagazineRegistrationBackBtn;
+	}
+	public JButton getMovieRegistrationBackBtn() {
+		return MovieRegistrationBackBtn;
+	}
+	public JButton getSettingBackBtn() {
+		return SettingBackBtn;
+	}
+	public JButton getBookSearchBackBtn() {
+		return BookSearchBackBtn;
+	}
+	public JButton getBelongingSearchBackBtn() {
+		return BelongingSearchBackBtn;
+	}
+	public JButton getBookSearchBtn() {
+		return BookSearchBtn;
+	}
+	public JButton getMagazineSearchBtn() {
+		return MagazineSearchBtn;
+	}
+	public JButton getMovieSearchBtn() {
+		return MovieSearchBtn;
+	}
+	public JButton getSearchBackBtn() {
+		return SearchBackBtn;
 	}
 }
