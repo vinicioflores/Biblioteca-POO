@@ -2,7 +2,10 @@ package app.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Enumeration;
 
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 import app.model.*;
@@ -21,21 +24,127 @@ public class Controller implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evt){
 		Object source = evt.getSource();
-        //Search botton
+        //Start panel :: Search botton
 		if(source == view.getSearchBtn()){
 			view.getSearchPnl().setVisible(true);
 			view.getStartPnl().setVisible(false);
-		}///
+		}///search panel :: back botton
 		else if(source == view.getSearchBackBtn()){
 			view.getStartPnl().setVisible(true);
 			view.getSearchPnl().setVisible(false);
+		}
+		///book search
+		else if(source == view.getBookCSearchBtn()){
+			String parameter = getSelectedRadioButtonInGroupText(view.getBookBottonGroup());
+			
+			if( parameter.equals("All")){
+				
+				view.getAllBookSearchPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+				
+			}
+			else if(parameter.equals("Borrowed")){
+				
+				view.getBorrowedBooksPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+				
+			}
+			else if(parameter.equals("Available")){
+				
+				view.getAvailableBooksPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+				
+			}
+			else if(parameter.equals("Top")){
+				
+				view.getTopBooksPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+			}
+			else if(parameter.equals("Special search")){
+				
+				view.getSpecialSBooksPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+			}
+			else{
+				
+			}
+		}
+		else if(source == view.getMovieCSearchBtn()){
+			String parameter = getSelectedRadioButtonInGroupText(view.getMovieBottonGroup());
+			
+			if( parameter.equals("All")){
+				
+				view.getAllMovieSearchPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+				
+			}
+			else if(parameter.equals("Borrowed")){
+				
+				view.getBorrowedMoviesPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+				
+			}
+			else if(parameter.equals("Available")){
+				
+				view.getAvailableMoviesPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+				
+			}
+			else if(parameter.equals("Top")){
+				
+				view.getTopMoviesPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+			}
+			else if(parameter.equals("Special search")){
+				
+				view.getSpecialSMoviesPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+			}
+			else{
+				
+			}
+		}
+		else if(source == view.getMagazineCSearchBtn()){
+			String parameter = getSelectedRadioButtonInGroupText(view.getMagazineBottonGroup());
+			
+			if( parameter.equals("All")){
+				
+				view.getAllMagazineSearchPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+				
+			}
+			else if(parameter.equals("Borrowed")){
+				
+				view.getBorrowedMagazinesPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+				
+			}
+			else if(parameter.equals("Available")){
+				
+				view.getAvailableMagazinesPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+				
+			}
+			else if(parameter.equals("Top")){
+				
+				view.getTopMagazinesPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+			}
+			else if(parameter.equals("Special search")){
+				
+				view.getSpecialSMagazinesPnl().setVisible(true);
+				view.getSearchPnl().setVisible(false);
+			}
+			else{
+				
+			}
 		}
 		//start panel :: new belonging botton
 		else if (source == view.getNewBelongingBtn()){
 			view.getBelongingRegistrationPnl().setVisible(true);
 			view.getStartPnl().setVisible(false);
 		}
-		///belonging registrtion pnl :: back botton
+		///belonging registration panel :: back botton
 		else if(source == view.getBelongingRegistrationBackBtn()){
 			view.getStartPnl().setVisible(true);
 			view.getBelongingRegistrationPnl().setVisible(false);
@@ -182,6 +291,11 @@ public class Controller implements ActionListener{
         	view.getStartPnl().setVisible(false);
         	
         }
+        ///settings panel : back bottom
+        else if(source == view.getSettingBackBtn()){
+        	view.getStartPnl().setVisible(true);
+        	view.getSettingPnl().setVisible(false);
+        }
         //
         else if(source == view.getSearchBtn()){
         	
@@ -194,11 +308,7 @@ public class Controller implements ActionListener{
         	
         	
         	
-        }
-        else if(source == view.getSettingsBtn()){
- 	
-        }
-        
+        }       
 
 	}
 
@@ -256,6 +366,20 @@ public class Controller implements ActionListener{
 
 	private void registerCoworker() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	private String getSelectedRadioButtonInGroupText(ButtonGroup group){
+			
+		for (Enumeration<AbstractButton> buttons = group.getElements(); buttons.hasMoreElements();) {
+	            AbstractButton button = buttons.nextElement();
+
+	            if (button.isSelected()) {
+	                return button.getText();
+	            }
+	        
+	    }
+		return null;
 		
 	}
 	
