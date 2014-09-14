@@ -8,12 +8,14 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.ImageIcon;
@@ -123,7 +125,6 @@ public class View extends JFrame {
 	private JLabel lblAuthor;
 	private JLabel lblEditorial;
 	private JLabel lblEdition;
-	private JLabel lblImage_1;
 	private JLabel lblRating_1;
 	private JTextField BookName;
 	private JTextField BookAuthor;
@@ -248,6 +249,9 @@ public class View extends JFrame {
 	private JTextField MagazineRegistrationName;
 	private JTextField MagazineRegistrationPublicationPeriod;
 	private JTextField MagazineRegistrationTheme;
+	private JLabel lblImage_1;
+	private JButton btnSearchImage;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -605,8 +609,7 @@ public class View extends JFrame {
 		AllMagazineSearchPnl.add(lblSearchParameter_1, "cell 1 1");
 
 		AllMagazineComboBox = new JComboBox();
-		AllMagazineComboBox.setModel(new DefaultComboBoxModel(new String[] { "Title",
-				"Borrower" }));
+		AllMagazineComboBox.setModel(new DefaultComboBoxModel(new String[] { "Title","Borrower" }));
 		AllMagazineSearchPnl.add(AllMagazineComboBox, "cell 0 2,alignx left");
 
 		AllMagazineFilterParameter = new JTextField();
@@ -961,8 +964,7 @@ public class View extends JFrame {
 
 		BookRegistrationPnl = new JPanel();
 		contentPane.add(BookRegistrationPnl, "name_69114565454795");
-		BookRegistrationPnl.setLayout(new MigLayout("", "[][][grow]",
-				"[][][][][][][][][][]"));
+		BookRegistrationPnl.setLayout(new MigLayout("", "[][][][86.00]", "[][][][][][][154.00][][][]"));
 
 		BookRegistrationBackBtn = new JButton("Back");
 		BookRegistrationPnl.add(BookRegistrationBackBtn, "flowx,cell 0 0");
@@ -997,18 +999,37 @@ public class View extends JFrame {
 		BookEdition = new JTextField();
 		BookRegistrationPnl.add(BookEdition, "cell 2 4,growx");
 		BookEdition.setColumns(10);
-
-		lblImage_1 = new JLabel("Image");
-		BookRegistrationPnl.add(lblImage_1, "cell 1 6");
-
-		lblRating_1 = new JLabel("Rating");
-		BookRegistrationPnl.add(lblRating_1, "cell 1 8");
+		
+				lblRating_1 = new JLabel("Rating:");
+				BookRegistrationPnl.add(lblRating_1, "cell 1 5,alignx right");
 		
 		PruebaCombobox BookRatingCombobox = new PruebaCombobox();  // Combobox rating de registrar libro, el combobox es una clase
-		BookRegistrationPnl.add(BookRatingCombobox, "cell 2 8");
-
-		BookRegistrationBtn = new JButton("Register");
-		BookRegistrationPnl.add(BookRegistrationBtn, "cell 2 9");
+		BookRegistrationPnl.add(BookRatingCombobox, "cell 2 5");
+				
+				lblImage_1 = new JLabel("Image:");
+				BookRegistrationPnl.add(lblImage_1, "cell 1 6");
+				
+				lblNewLabel = new JLabel("");
+				lblNewLabel.setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
+				BookRegistrationPnl.add(lblNewLabel, "cell 2 6");
+				
+				btnSearchImage = new JButton("Search Image");
+				btnSearchImage.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						JFileChooser chooser = new JFileChooser(); //Creamos objeto de JFileChooser
+						int opcion = chooser.showOpenDialog(contentPane);//Abrir ventana de dialogo para escoger imagen
+						if (opcion == JFileChooser.APPROVE_OPTION) { //Si hacemos click en Abrir o Aceptar
+			            	String archivo = chooser.getSelectedFile().getPath(); //Obtener nombre del archivo
+			                ImageIcon imagen = new ImageIcon(archivo); //Imagen nueva
+			                imagen = new ImageIcon(imagen.getImage().getScaledInstance(256, 256, Image.SCALE_DEFAULT)); //resize imagen
+			                lblNewLabel.setIcon(imagen);
+		               	BookRegistrationPnl.add(lblNewLabel, "cell 2 6");
+					}}
+				});
+				BookRegistrationPnl.add(btnSearchImage, "cell 3 6,aligny bottom");
+				
+						BookRegistrationBtn = new JButton("Register");
+						BookRegistrationPnl.add(BookRegistrationBtn, "cell 2 9,alignx center");
 
 		MovieRegistrationPnl = new JPanel();
 		contentPane.add(MovieRegistrationPnl, "name_69169014990127");
