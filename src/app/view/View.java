@@ -1792,7 +1792,7 @@ public class View extends JFrame {
 		return SettingBackBtn;
 	}
 
-	public JButton getBookSearchBackBtn() {
+	public JButton getAllBookSearchBackBtn() {
 		return AllBookSearchBackBtn;
 	}
 

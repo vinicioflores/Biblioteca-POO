@@ -33,7 +33,7 @@ public class Controller implements ActionListener{
 			view.getStartPnl().setVisible(true);
 			view.getSearchPnl().setVisible(false);
 		}
-		///book search
+		///seach :: book search
 		else if(source == view.getBookCSearchBtn()){
 			String parameter = getSelectedRadioButtonInGroupText(view.getBookBottonGroup());
 			
@@ -68,7 +68,35 @@ public class Controller implements ActionListener{
 			else{
 				
 			}
+		}///search :: movie 
+		////////////Back buttons :: Book searches
+		else if(source == view.getAllBookSearchBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getAllBookSearchPnl().setVisible(false);
+			
 		}
+		else if(source == view.getBorrowedBooksBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getBorrowedBooksPnl().setVisible(false);
+			
+		}
+		else if(source == view.getTopBooksBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getTopBooksPnl().setVisible(false);
+			
+		}
+		else if(source == view.getAvailableBooksBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getAvailableBooksPnl().setVisible(false);
+			
+		}
+		else if(source == view.getSpecialSBooksBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getSpecialSBooksPnl().setVisible(false);
+			
+		}
+		////////////////////////////////////////////////
+		
 		else if(source == view.getMovieCSearchBtn()){
 			String parameter = getSelectedRadioButtonInGroupText(view.getMovieBottonGroup());
 			
@@ -104,6 +132,34 @@ public class Controller implements ActionListener{
 				
 			}
 		}
+		
+			////////////Back buttons :: Movies searches
+			else if(source == view.getAllMoviesBackBtn()){
+				view.getSearchPnl().setVisible(true);
+				view.getAllMovieSearchPnl().setVisible(false);
+		
+			}
+			else if(source == view.getBorrowedMoviesBackBtn()){
+				view.getSearchPnl().setVisible(true);
+				view.getBorrowedMoviesPnl().setVisible(false);
+		
+			}
+			else if(source == view.getTopMoviesBackBtn()){
+				view.getSearchPnl().setVisible(true);
+				view.getTopMoviesPnl().setVisible(false);
+		
+			}
+			else if(source == view.getAvailableMoviesBackBtn()){
+				view.getSearchPnl().setVisible(true);
+				view.getAvailableMoviesPnl().setVisible(false);
+		
+			}
+			else if(source == view.getSpecialSMoviesBackBtn()){
+				view.getSearchPnl().setVisible(true);
+				view.getSpecialSMoviesPnl().setVisible(false);
+		
+			}
+	////////////////////////////////////////////////
 		else if(source == view.getMagazineCSearchBtn()){
 			String parameter = getSelectedRadioButtonInGroupText(view.getMagazineBottonGroup());
 			
@@ -139,6 +195,35 @@ public class Controller implements ActionListener{
 				
 			}
 		}
+		
+////////////Back buttons :: Magzines searches
+		else if(source == view.getAllMagazineSearchBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getAllMagazineSearchPnl().setVisible(false);
+	
+		}
+		else if(source == view.getBorrowedMagazinesBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getBorrowedMagazinesPnl().setVisible(false);
+	
+		}
+		else if(source == view.getTopMagazinesBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getTopMagazinesPnl().setVisible(false);
+	
+		}
+		else if(source == view.getAvailableMagazinesBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getAvailableMagazinesPnl().setVisible(false);
+	
+		}
+		else if(source == view.getSpecialSMagazinesBackBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getSpecialSMagazinesPnl().setVisible(false);
+	
+		}
+////////////////////////////////////////////////
+		
 		//start panel :: new belonging botton
 		else if (source == view.getNewBelongingBtn()){
 			view.getBelongingRegistrationPnl().setVisible(true);
