@@ -203,11 +203,17 @@ public class Controller implements ActionListener{
 
 	private void registerNewMovie() {
 		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(view, "new book registered.");
+		
+		//move to start panel
+		view.getStartPnl().setVisible(true); 
+		view.getMovieRegistrationPnl().setVisible(false);
 		
 	}
 
 	private void registerNewMagazine() {
 		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(view, "new book registered.");
 		
 	}
 
