@@ -1,4 +1,7 @@
+/app/
+/corepack/
 /image/
+/org/
 /Cliente.class
 /Libreria.class
 /Libro.class
@@ -6,6 +9,3 @@
 /MainGui$SwingAction.class
 /MainGui.class
 /Registro.class
-/app/
-/corepack/
-/org/
