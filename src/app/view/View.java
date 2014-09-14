@@ -291,6 +291,8 @@ public class View extends JFrame {
 	private JScrollPane SpecialSMoviesSPane;
 	private JScrollPane AllMoviesSPane;
 	private JButton AllMoviesBackBtn;
+	private JLabel lblCurrentDate_1;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Launch the application.
@@ -337,8 +339,7 @@ public class View extends JFrame {
 		JPanel MainPanelOptions = new JPanel();
 		MainPanelOptions.setBackground(new Color(255, 255, 255));
 		StartPnl.add(MainPanelOptions, "cell 0 0 1 7,grow");
-		MainPanelOptions.setLayout(new MigLayout("", "[100px][][][]",
-				"[][][][][][][][][][][][]"));
+		MainPanelOptions.setLayout(new MigLayout("", "[100px][][][]", "[][][][][][][][][][][][][]"));
 
 		searchBtn = new JButton("");
 		searchBtn.setIcon(new ImageIcon(View.class
@@ -359,15 +360,21 @@ public class View extends JFrame {
 		settingsBtn.setIcon(new ImageIcon(View.class
 				.getResource("/image/three115.png")));
 		MainPanelOptions.add(settingsBtn, "cell 0 3");
+		
+		lblCurrentDate_1 = new JLabel("Current date:");
+		MainPanelOptions.add(lblCurrentDate_1, "cell 0 8");
+		
+		lblNewLabel_1 = new JLabel("New label");
+		MainPanelOptions.add(lblNewLabel_1, "cell 0 9");
 
 		HistoryBtn = new JButton("History");
-		MainPanelOptions.add(HistoryBtn, "cell 0 9,alignx center");
+		MainPanelOptions.add(HistoryBtn, "cell 0 10,alignx center");
 
 		JButton ManualBtn = new JButton("Manual");
-		MainPanelOptions.add(ManualBtn, "cell 0 10,alignx center");
+		MainPanelOptions.add(ManualBtn, "cell 0 11,alignx center");
 
 		CreditsBtn = new JButton("Credits");
-		MainPanelOptions.add(CreditsBtn, "cell 0 11,alignx center");
+		MainPanelOptions.add(CreditsBtn, "cell 0 12,alignx center");
 
 		JLabel MyBelongingLbl = new JLabel("Mis Pertenencias");
 		MyBelongingLbl.setFont(new Font("Consolas", Font.BOLD, 30));
