@@ -293,7 +293,19 @@ public class View extends JFrame {
 	private JButton AllMoviesBackBtn;
 	private JLabel lblCurrentDate_1;
 	private JLabel lblNewLabel_1;
-
+	private JPanel LendingPnl;
+	private JButton btnBack; 
+	private JLabel lblMaterialStatus;
+	private JLabel lblLendingAndDevolution;
+	private JLabel lblDevolution;
+	private JLabel lblLending;
+	private JLabel lblWhoIsBorrowing;
+	private JLabel lblNewLabel_2;
+	private JButton btnDevolveMaterial;
+	private JButton btnLendMaterial;
+	private JComboBox comboBox;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -329,6 +341,40 @@ public class View extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 
+        LendingPnl = new JPanel();
+        contentPane.add(LendingPnl, "name_12656327016431");
+        LendingPnl.setLayout(new MigLayout("", "[grow]", "[][][][][][][][][][]"));
+
+        btnBack = new JButton("Back");
+        LendingPnl.add(btnBack, "flowx,cell 0 0");
+
+        lblLendingAndDevolution = new JLabel("Lending and Devolution");
+        LendingPnl.add(lblLendingAndDevolution, "cell 0 0");
+
+        lblMaterialStatus = new JLabel("Material current status:");
+        LendingPnl.add(lblMaterialStatus, "flowx,cell 0 1");
+
+        lblDevolution = new JLabel("Devolution");
+        LendingPnl.add(lblDevolution, "cell 0 3");
+
+        btnDevolveMaterial = new JButton("Devolve Material");
+        LendingPnl.add(btnDevolveMaterial, "cell 0 4,alignx right");
+
+        lblLending = new JLabel("Lending");
+        LendingPnl.add(lblLending, "cell 0 6");
+
+        lblWhoIsBorrowing = new JLabel("Who is borrowing it?");
+        LendingPnl.add(lblWhoIsBorrowing, "cell 0 7");
+
+        comboBox = new JComboBox();
+        LendingPnl.add(comboBox, "cell 0 8,growx");
+
+        btnLendMaterial = new JButton("Lend Material");
+        LendingPnl.add(btnLendMaterial, "cell 0 9,alignx right");
+
+        lblNewLabel_2 = new JLabel("New label");
+		LendingPnl.add(lblNewLabel_2, "cell 0 1");
+		
 		StartPnl = new JPanel();
 		StartPnl.setBackground(new Color(255, 255, 255));
 		contentPane.add(StartPnl, "name_268387601552984");
@@ -1237,7 +1283,7 @@ public class View extends JFrame {
 		lblRating = new JLabel("Rating:");
 		MovieRegistrationPnl.add(lblRating, "cell 1 4");
 		
-		PruebaCombobox MovieRatingCombobox = new PruebaCombobox();  // Combobox rating de película, combobox es una clase
+		PruebaCombobox MovieRatingCombobox = new PruebaCombobox();  // Combobox rating de pelï¿½cula, combobox es una clase
 		MovieRegistrationPnl.add(MovieRatingCombobox, "cell 2 4");
 
 		lblGenre = new JLabel("Genre:");
