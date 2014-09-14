@@ -12,23 +12,12 @@ public class Model {
 		this.biblioteca = new Biblioteca();
 		this.prestatarios = new RegistroPrestatarios();
 	}
-	public void agregarColega(){
+	public void addBelonging(Pertenencia belonging){
+		biblioteca.agregarNuevaPertenencia(belonging);
 		
 	}
-	public void agregarFamiliar(){
-		
-	}
-	public void agregarEstudiante(){
-		
-	}
-	public void agregarLibro(){
-		
-	}
-	public void agregarPelicula(){
-		
-	}
-	public void agregarRevista(){
-		
+	public void addBorrower(Prestatario borrower){
+		prestatarios.agregarPrestatario(borrower);
 	}
 
 }

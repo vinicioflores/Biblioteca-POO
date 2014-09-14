@@ -19,8 +19,18 @@ public class Controller implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evt){
 		Object source = evt.getSource();
-        //
-        if (source == view.getNewBorrowerBtn()) {
+        //Search botton
+		if(source == view.getSearchBtn()){
+			view.getSearchPnl().setVisible(true);
+			view.getStartPnl().setVisible(false);
+		}
+		else if(source == view.getSearchBackBtn()){
+			view.getStartPnl().setVisible(true);
+			view.getSearchPnl().setVisible(false);
+		}
+		
+		//
+		else if (source == view.getNewBorrowerBtn()) {
         	
         	view.getBorrowerRegistrationPnl().setVisible(true);
         	view.getStartPnl().setVisible(false);      	
@@ -92,7 +102,7 @@ public class Controller implements ActionListener{
        	
         	
         }
-        //
+        //Credits
         else if(source == view.getCreditsBtn()){
         	
         	view.getCreditsPnl().setVisible(true);
@@ -121,6 +131,24 @@ public class Controller implements ActionListener{
 	}
 
 	private void registrateRelative() {
+		try {
+		String name = view.getRelativeName().getText();
+		String lastName1 = view.getRelativeFirstName().getText();
+		String lastName2 = view.getRelativeSecondLastName().getText();
+		String kin = view.getRelativeKinship().getText();
+		String email = view.getRelativeEmail().getText();
+		String phone = view.getRelativePhoneNumber().getText();
+		Familiar relative = new Familiar(name, lastName1, lastName2,phone, email, kin);
+		System.out.println(relative.toString());
+		model.addBorrower(relative);
+		}catch(Exception e){
+			ShowDialog("Incorrect registration");
+		}
+		
+		//TODO show success dialog
+	}
+
+	private void ShowDialog(String string) {
 		// TODO Auto-generated method stub
 		
 	}

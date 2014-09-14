@@ -32,11 +32,15 @@ import app.controller.Controller;
 import app.model.Model;
 
 import java.awt.Toolkit;
+
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JScrollBar;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JScrollPane;
+import javax.swing.JFormattedTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.ButtonGroup;
 
 public class View extends JFrame {
 	
@@ -92,20 +96,17 @@ public class View extends JFrame {
 	private JButton MagazineRegistrationBackBtn;
 	private JButton MovieRegistrationBackBtn;
 	private JButton SettingBackBtn;
-	private JButton BookSearchBackBtn;
+	private JButton AllBookSearchBackBtn;
 	private JButton BelongingSearchBackBtn;
-	private JButton BookSearchBtn;
-	private JButton MagazineSearchBtn;
-	private JButton MovieSearchBtn;
 	private JButton SearchBackBtn;
 	private JPanel BelongingRegistrationPnl;
 	private JPanel MagazineRegistrationPnl;
 	private JPanel BookRegistrationPnl;
 	private JPanel MovieRegistrationPnl;
 	private JPanel SettingPnl;
-	private JPanel BookSearchPnl;
-	private JPanel MagazineSearchPnl;
-	private JPanel MovieSearchPnl;
+	private JPanel AllBookSearchPnl;
+	private JPanel AllMagazineSearchPnl;
+	private JPanel AllMovieSearchPnl;
 	private JPanel BelongingSearch;
 	private JButton newBookBtn;
 	private JButton newMagazineBtn;
@@ -170,10 +171,73 @@ public class View extends JFrame {
 	private JLabel SettingsCurrentDateLbl;
 	private JButton HistoryBtn;
 	private JLabel lblSearchParameter;
-	private JComboBox BookSearchParametersComboBox;
+	private JComboBox<String> BookSearchParametersComboBox;
+	private JTextField BookSearch;
+	private JButton AllBookSearchGoBtn;
+	private JScrollPane AllBooksSPane;
+	private JLabel lblFilterBy;
+	private JLabel lblFilterBy_1;
 	private JTextField textField;
-	private JButton button;
+	private JLabel lblSearchParameter_1;
+	private JButton btnGo;
+	private JComboBox comboBox;
+	private JScrollPane scrollPane_1;
+	private JLabel lblFilterBy_2;
+	private JComboBox comboBox_1;
+	private JLabel lblSearchParameter_2;
+	private JTextField textField_1;
+	private JButton btnGo_1;
+	private JPanel BorrowedBooksPnl;
+	private JButton BorrowedBooksBackBtn;
+	private JLabel lblBorrowersName;
+	private JTextField textField_2;
+	private JButton btnFilter;
 	private JScrollPane scrollPane;
+	private JLabel lblBorrowedBooks;
+	private JPanel AvailableBooksPnl;
+	private JButton btnBack;
+	private JLabel lblAvailableBooks;
+	private JScrollPane AvailableBooksSPane;
+	private JPanel TopBooksPnl;
+	private JButton TopBooksBackBtn;
+	private JLabel lblTopOfThe;
+	private JScrollPane TopBooksSPane;
+	private JPanel AvailableMoviesPnl;
+	private JPanel BorrowedMoviesPnl;
+	private JPanel TopMoviesPnl;
+	private JPanel panel_1;
+	private JLabel lblBooks;
+	private JRadioButton lblAll;
+	private JRadioButton lblBorrowed;
+	private JRadioButton lblAvailable;
+	private JRadioButton lblTop_1;
+	private JLabel label_1;
+	private JLabel lblTypeOfSearch;
+	private JRadioButton rdbtnSpecialSearch;
+	private JButton btnNewButton;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JPanel panel_2;
+	private JPanel panel_3;
+	private JLabel lblMagazines;
+	private JLabel lblMovies;
+	private JLabel lblTypeOfSearch_1;
+	private JLabel label_2;
+	private JRadioButton rdbtnAll;
+	private JRadioButton rdbtnBorrowed;
+	private JRadioButton rdbtnAvailable;
+	private JRadioButton rdbtnTop;
+	private JRadioButton rdbtnSpecialSearch_1;
+	private JButton btnNewButton_1;
+	private JLabel lblTypeOfSearch_2;
+	private JRadioButton rdbtnAll_1;
+	private JRadioButton rdbtnBorrowed_1;
+	private JRadioButton rdbtnAvailable_1;
+	private JRadioButton rdbtnTop_1;
+	private JRadioButton rdbtnSpecialSearch_2;
+	private JButton btnNewButton_2;
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
+	private JLabel label_3;
 
 	/**
 	 * Launch the application.
@@ -293,135 +357,279 @@ public class View extends JFrame {
 
 		SearchPnl = new JPanel();
 		contentPane.add(SearchPnl, "name_10085986187124");
-		SearchPnl.setLayout(new MigLayout("", "[701.00]", "[][][][]"));
+		SearchPnl.setLayout(new MigLayout("", "[269.00,grow]", "[][][grow][][][grow]"));
 
 		SearchBackBtn = new JButton("Back");
 		SearchPnl.add(SearchBackBtn, "flowx,cell 0 0");
 
 		JLabel lblBsqueda = new JLabel("Search");
-		SearchPnl.add(lblBsqueda, "cell 0 0");
+		SearchPnl.add(lblBsqueda, "cell 0 0 3 1");
 
 		JLabel lblTipoDeMaterial = new JLabel(
-				"Seleccione el tipo de material que desea buscar");
+				"Select the type of Belonging, and type of search you wish to use");
 		SearchPnl.add(lblTipoDeMaterial, "cell 0 1");
 		
-		JButton GeneralSearchBtn = new JButton("Belonging");
-		SearchPnl.add(GeneralSearchBtn, "cell 0 2,alignx center");
-
-		BookSearchBtn = new JButton("Book");
-		BookSearchBtn.setIcon(new ImageIcon(View.class
-				.getResource("/image/book139.png")));
-		SearchPnl.add(BookSearchBtn,
-				"flowx,cell 0 3,alignx center,aligny center");
-
-		MagazineSearchBtn = new JButton("Magazine");
-		MagazineSearchBtn.setIcon(new ImageIcon(View.class
-				.getResource("/image/magazine.png")));
-		SearchPnl
-				.add(MagazineSearchBtn, "cell 0 3,alignx center,aligny center");
-
-		MovieSearchBtn = new JButton("Movie");
-		MovieSearchBtn.setIcon(new ImageIcon(View.class
-				.getResource("/image/film50.png")));
-		SearchPnl.add(MovieSearchBtn, "cell 0 3,aligny center");
+		panel_1 = new JPanel();
+		SearchPnl.add(panel_1, "flowx,cell 0 2,alignx center,growy");
+		panel_1.setLayout(new MigLayout("", "[][][]", "[][][][][][][][]"));
 		
-		BookSearchPnl = new JPanel();
-		BookSearchPnl.setBackground(new Color(255, 255, 255));
-		contentPane.add(BookSearchPnl, "name_69265426665252");
-		BookSearchPnl.setLayout(new MigLayout("", "[][][][][grow]", "[][][][grow]"));
+		lblBooks = new JLabel("Books");
+		lblBooks.setFont(new Font("Consolas", Font.PLAIN, 20));
+		panel_1.add(lblBooks, "cell 0 0");
 		
-		BookSearchBackBtn = new JButton("Back");
-		BookSearchPnl.add(BookSearchBackBtn, "flowx,cell 0 0");
+		lblTypeOfSearch = new JLabel("Type of search:");
+		panel_1.add(lblTypeOfSearch, "cell 0 1 2 1");
 		
-		JLabel lblBookSearch = new JLabel("Book search");
-		BookSearchPnl.add(lblBookSearch, "cell 0 0");
+		label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(View.class.getResource("/image/book139.png")));
+		panel_1.add(label_1, "cell 0 2 1 4");
+		
+		lblAll = new JRadioButton("All");
+		buttonGroup.add(lblAll);
+		panel_1.add(lblAll, "cell 1 2,growx");
+		
+		lblBorrowed = new JRadioButton("Borrowed");
+		buttonGroup.add(lblBorrowed);
+		panel_1.add(lblBorrowed, "cell 1 3");
+		
+		lblAvailable = new JRadioButton("Available");
+		buttonGroup.add(lblAvailable);
+		panel_1.add(lblAvailable, "cell 1 4");
+		
+		lblTop_1 = new JRadioButton("Top");
+		buttonGroup.add(lblTop_1);
+		panel_1.add(lblTop_1, "cell 1 5");
+		
+		rdbtnSpecialSearch = new JRadioButton("Special search");
+		buttonGroup.add(rdbtnSpecialSearch);
+		panel_1.add(rdbtnSpecialSearch, "cell 1 6");
+		
+		btnNewButton = new JButton("Search");
+		panel_1.add(btnNewButton, "cell 0 7 2 1,alignx center");
+		
+		panel_2 = new JPanel();
+		SearchPnl.add(panel_2, "cell 0 2,alignx center,growy");
+		panel_2.setLayout(new MigLayout("", "[][]", "[][][][][][][][]"));
+		
+		lblMagazines = new JLabel("Magazines");
+		lblMagazines.setFont(new Font("Consolas", Font.PLAIN, 20));
+		panel_2.add(lblMagazines, "cell 0 0 2 1");
+		
+		lblTypeOfSearch_1 = new JLabel("Type of search:");
+		panel_2.add(lblTypeOfSearch_1, "cell 0 1 2 1");
+		
+		label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(View.class.getResource("/image/magazine.png")));
+		panel_2.add(label_2, "cell 0 2 1 5");
+		
+		rdbtnAll = new JRadioButton("All");
+		buttonGroup_1.add(rdbtnAll);
+		panel_2.add(rdbtnAll, "cell 1 2");
+		
+		rdbtnBorrowed = new JRadioButton("Borrowed");
+		buttonGroup_1.add(rdbtnBorrowed);
+		panel_2.add(rdbtnBorrowed, "cell 1 3");
+		
+		rdbtnAvailable = new JRadioButton("Available");
+		buttonGroup_1.add(rdbtnAvailable);
+		panel_2.add(rdbtnAvailable, "cell 1 4");
+		
+		rdbtnTop = new JRadioButton("Top");
+		buttonGroup_1.add(rdbtnTop);
+		panel_2.add(rdbtnTop, "cell 1 5");
+		
+		rdbtnSpecialSearch_1 = new JRadioButton("Special search");
+		buttonGroup_1.add(rdbtnSpecialSearch_1);
+		panel_2.add(rdbtnSpecialSearch_1, "cell 1 6");
+		
+		btnNewButton_1 = new JButton("Search");
+		panel_2.add(btnNewButton_1, "cell 0 7 2 1,alignx center");
+		
+		panel_3 = new JPanel();
+		SearchPnl.add(panel_3, "cell 0 2,alignx center,growy");
+		panel_3.setLayout(new MigLayout("", "[][]", "[][][][][][][][]"));
+		
+		lblMovies = new JLabel("Movies");
+		lblMovies.setFont(new Font("Consolas", Font.PLAIN, 20));
+		panel_3.add(lblMovies, "cell 0 0 2 1");
+		
+		lblTypeOfSearch_2 = new JLabel("Type of search:");
+		panel_3.add(lblTypeOfSearch_2, "cell 0 1 2 1");
+		
+		label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(View.class.getResource("/image/film50.png")));
+		panel_3.add(label_3, "cell 0 2 1 5");
+		
+		rdbtnAll_1 = new JRadioButton("All");
+		buttonGroup_2.add(rdbtnAll_1);
+		panel_3.add(rdbtnAll_1, "cell 1 2");
+		
+		rdbtnBorrowed_1 = new JRadioButton("Borrowed");
+		buttonGroup_2.add(rdbtnBorrowed_1);
+		panel_3.add(rdbtnBorrowed_1, "cell 1 3");
+		
+		rdbtnAvailable_1 = new JRadioButton("Available");
+		buttonGroup_2.add(rdbtnAvailable_1);
+		panel_3.add(rdbtnAvailable_1, "cell 1 4");
+		
+		rdbtnTop_1 = new JRadioButton("Top");
+		buttonGroup_2.add(rdbtnTop_1);
+		panel_3.add(rdbtnTop_1, "cell 1 5");
+		
+		rdbtnSpecialSearch_2 = new JRadioButton("Special search");
+		buttonGroup_2.add(rdbtnSpecialSearch_2);
+		panel_3.add(rdbtnSpecialSearch_2, "cell 1 6");
+		
+		btnNewButton_2 = new JButton("Search");
+		panel_3.add(btnNewButton_2, "cell 0 7 2 1,alignx center");
+		
+		AllBookSearchPnl = new JPanel();
+		AllBookSearchPnl.setBackground(new Color(255, 255, 255));
+		contentPane.add(AllBookSearchPnl, "name_69265426665252");
+		AllBookSearchPnl.setLayout(new MigLayout("", "[][125.00][][][grow]", "[][][][grow]"));
+		
+		AllBookSearchBackBtn = new JButton("Back");
+		AllBookSearchPnl.add(AllBookSearchBackBtn, "flowx,cell 0 0 2 1");
+		
+		JLabel lblBookSearch = new JLabel("All books search");
+		AllBookSearchPnl.add(lblBookSearch, "cell 0 0");
+		
+		lblFilterBy = new JLabel("Filter by:");
+		AllBookSearchPnl.add(lblFilterBy, "cell 0 1");
 		
 		lblSearchParameter = new JLabel("Search parameter:");
-		BookSearchPnl.add(lblSearchParameter, "cell 0 1");
+		AllBookSearchPnl.add(lblSearchParameter, "cell 1 1");
 		
-		BookSearchParametersComboBox = new JComboBox();
+		BookSearchParametersComboBox = new JComboBox<String>();
 		BookSearchParametersComboBox.setModel(new DefaultComboBoxModel(new String[] {"Title", "Author", "Editorial", "Edition"}));
-		BookSearchPnl.add(BookSearchParametersComboBox, "flowx,cell 0 2,growx");
+		AllBookSearchPnl.add(BookSearchParametersComboBox, "flowx,cell 0 2,alignx left");
 		
-		textField = new JTextField();
-		BookSearchPnl.add(textField, "cell 1 2");
-		textField.setColumns(10);
+		BookSearch = new JTextField();
+		AllBookSearchPnl.add(BookSearch, "cell 1 2,growx");
+		BookSearch.setColumns(10);
 		
-		button = new JButton("New button");
-		BookSearchPnl.add(button, "cell 2 2");
+		AllBookSearchGoBtn = new JButton("Go!");
+		AllBookSearchPnl.add(AllBookSearchGoBtn, "cell 2 2");
+		
+		AllBooksSPane = new JScrollPane();
+		AllBookSearchPnl.add(AllBooksSPane, "cell 0 3 5 1,grow");
+		
+		BorrowedBooksPnl = new JPanel();
+		BorrowedBooksPnl.setBackground(new Color(255, 255, 255));
+		contentPane.add(BorrowedBooksPnl, "name_142213558231291");
+		BorrowedBooksPnl.setLayout(new MigLayout("", "[][][grow]", "[][][][grow]"));
+		
+		BorrowedBooksBackBtn = new JButton("Back");
+		BorrowedBooksPnl.add(BorrowedBooksBackBtn, "flowx,cell 0 0");
+		
+		lblBorrowersName = new JLabel("Borrower's name:");
+		BorrowedBooksPnl.add(lblBorrowersName, "cell 0 1");
+		
+		textField_2 = new JTextField();
+		BorrowedBooksPnl.add(textField_2, "cell 0 2,growx");
+		textField_2.setColumns(10);
+		
+		btnFilter = new JButton("Filter");
+		BorrowedBooksPnl.add(btnFilter, "cell 1 2");
+		
+		lblBorrowedBooks = new JLabel("Borrowed books");
+		BorrowedBooksPnl.add(lblBorrowedBooks, "cell 0 0");
 		
 		scrollPane = new JScrollPane();
-		BookSearchPnl.add(scrollPane, "cell 0 3 5 1,grow");
+		BorrowedBooksPnl.add(scrollPane, "cell 0 3 3 1,grow");
 		
-		MagazineSearchPnl = new JPanel();
-		contentPane.add(MagazineSearchPnl, "name_69270385054519");
-		MagazineSearchPnl.setLayout(new MigLayout("", "[]", "[]"));
+		AvailableBooksPnl = new JPanel();
+		AvailableBooksPnl.setBackground(new Color(255, 255, 255));
+		contentPane.add(AvailableBooksPnl, "name_143497875137437");
+		AvailableBooksPnl.setLayout(new MigLayout("", "[][][grow]", "[][grow]"));
+		
+		btnBack = new JButton("Back");
+		AvailableBooksPnl.add(btnBack, "cell 0 0");
+		
+		lblAvailableBooks = new JLabel("Available books");
+		AvailableBooksPnl.add(lblAvailableBooks, "cell 1 0");
+		
+		AvailableBooksSPane = new JScrollPane();
+		AvailableBooksPnl.add(AvailableBooksSPane, "cell 0 1 3 1,grow");
+		
+		TopBooksPnl = new JPanel();
+		TopBooksPnl.setBackground(new Color(255, 255, 255));
+		contentPane.add(TopBooksPnl, "name_143792841267241");
+		TopBooksPnl.setLayout(new MigLayout("", "[][][grow]", "[][grow]"));
+		
+		TopBooksBackBtn = new JButton("Back");
+		TopBooksPnl.add(TopBooksBackBtn, "cell 0 0");
+		
+		lblTopOfThe = new JLabel("Top of the most borrowed books");
+		TopBooksPnl.add(lblTopOfThe, "cell 1 0");
+		
+		TopBooksSPane = new JScrollPane();
+		TopBooksPnl.add(TopBooksSPane, "cell 0 1 3 1,grow");
+		
+		AllMagazineSearchPnl = new JPanel();
+		contentPane.add(AllMagazineSearchPnl, "name_69270385054519");
+		AllMagazineSearchPnl.setLayout(new MigLayout("", "[][][][grow]", "[][][][grow]"));
 		
 		JButton MagazineSearchBackBtn = new JButton("Back");
-		MagazineSearchPnl.add(MagazineSearchBackBtn, "flowx,cell 0 0");
+		AllMagazineSearchPnl.add(MagazineSearchBackBtn, "flowx,cell 0 0");
 		
 		JLabel lblMagazineSearch = new JLabel("Magazine search");
-		MagazineSearchPnl.add(lblMagazineSearch, "cell 0 0");
+		AllMagazineSearchPnl.add(lblMagazineSearch, "cell 0 0");
 		
-		MovieSearchPnl = new JPanel();
-		contentPane.add(MovieSearchPnl, "name_69274240397564");
-		MovieSearchPnl.setLayout(new MigLayout("", "[]", "[]"));
+		lblFilterBy_1 = new JLabel("Filter by:");
+		AllMagazineSearchPnl.add(lblFilterBy_1, "cell 0 1");
+		
+		lblSearchParameter_1 = new JLabel("Search parameter:");
+		AllMagazineSearchPnl.add(lblSearchParameter_1, "cell 1 1");
+		
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Title", "Borrower"}));
+		AllMagazineSearchPnl.add(comboBox, "cell 0 2,alignx left");
+		
+		textField = new JTextField();
+		AllMagazineSearchPnl.add(textField, "cell 1 2,growx");
+		textField.setColumns(10);
+		
+		btnGo = new JButton("Go!");
+		AllMagazineSearchPnl.add(btnGo, "cell 2 2");
+		
+		scrollPane_1 = new JScrollPane();
+		AllMagazineSearchPnl.add(scrollPane_1, "cell 0 3 4 1,grow");
+		
+		BorrowedMoviesPnl = new JPanel();
+		contentPane.add(BorrowedMoviesPnl, "name_145417321054389");
+		
+		AvailableMoviesPnl = new JPanel();
+		contentPane.add(AvailableMoviesPnl, "name_145402808945152");
+		
+		TopMoviesPnl = new JPanel();
+		contentPane.add(TopMoviesPnl, "name_145477900267668");
+		
+		AllMovieSearchPnl = new JPanel();
+		contentPane.add(AllMovieSearchPnl, "name_69274240397564");
+		AllMovieSearchPnl.setLayout(new MigLayout("", "[][grow][]", "[][][]"));
 		
 		JButton MovieSearchBackBtn = new JButton("Back");
-		MovieSearchPnl.add(MovieSearchBackBtn, "flowx,cell 0 0");
+		AllMovieSearchPnl.add(MovieSearchBackBtn, "flowx,cell 0 0");
 		
 		JLabel lblMovieSearch = new JLabel("Movie search");
-		MovieSearchPnl.add(lblMovieSearch, "cell 0 0");
+		AllMovieSearchPnl.add(lblMovieSearch, "cell 0 0");
 		
-		BelongingSearch = new JPanel();
-		contentPane.add(BelongingSearch, "name_69278881556951");
-		BelongingSearch.setLayout(new MigLayout("", "[]", "[]"));
+		lblFilterBy_2 = new JLabel("Filter by:");
+		AllMovieSearchPnl.add(lblFilterBy_2, "cell 0 1");
 		
-		BelongingSearchBackBtn = new JButton("Back");
-		BelongingSearch.add(BelongingSearchBackBtn, "cell 0 0,alignx left");
-
-		CreditsPnl = new JPanel();
-		contentPane.add(CreditsPnl, "name_5917427800206");
-		CreditsPnl.setLayout(new MigLayout("", "[356.00px][714.00px]",
-				"[15px][][][][][][][][][][][][][]"));
-
-		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));
-		CreditsPnl.add(lblLogo, "cell 0 0 2 1,alignx center,aligny top");
-
-		JLabel lblCreadores = new JLabel("Proyecto creado por:");
-		CreditsPnl.add(lblCreadores, "cell 0 1 2 1");
-
-		JLabel lblRoberto = new JLabel("Roberto Chen Zheng");
-		CreditsPnl.add(lblRoberto, "cell 1 2");
-
-		JLabel lblVinicio = new JLabel("Vinicio Flores Hernández");
-		CreditsPnl.add(lblVinicio, "cell 1 3");
-
-		JLabel lblFaubricio = new JLabel("Faubricio Forester Soto");
-		CreditsPnl.add(lblFaubricio, "cell 1 4");
-
-		JLabel lblPedro = new JLabel("Pedro Rodríguez de Oliveira");
-		CreditsPnl.add(lblPedro, "cell 1 5");
-
-		JLabel lblCreadoraLogo = new JLabel("Creadora del logo:");
-		CreditsPnl.add(lblCreadoraLogo, "cell 0 7");
-
-		CreditsBackBtn = new JButton("Volver a la ventana principal");
-		CreditsBackBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-
-		JLabel lblDayana = new JLabel("Dayana Méndez Salas");
-		CreditsPnl.add(lblDayana, "cell 1 8");
-
-		JLabel lblVersion = new JLabel("Versión:");
-		CreditsPnl.add(lblVersion, "cell 0 10");
-
-		JLabel lblVersionNum = new JLabel("0.5");
-		CreditsPnl.add(lblVersionNum, "cell 1 11");
-		CreditsPnl.add(CreditsBackBtn, "cell 1 13,alignx right");
+		lblSearchParameter_2 = new JLabel("Search parameter:");
+		AllMovieSearchPnl.add(lblSearchParameter_2, "cell 1 1");
+		
+		comboBox_1 = new JComboBox();
+		AllMovieSearchPnl.add(comboBox_1, "cell 0 2,growx");
+		
+		textField_1 = new JTextField();
+		AllMovieSearchPnl.add(textField_1, "flowx,cell 1 2,growx");
+		textField_1.setColumns(10);
+		
+		btnGo_1 = new JButton("Go!");
+		AllMovieSearchPnl.add(btnGo_1, "cell 2 2");
 
 		BorrowerRegistrationPnl = new JPanel();
 		contentPane.add(BorrowerRegistrationPnl, "name_440112681124098");
@@ -527,73 +735,72 @@ public class View extends JFrame {
 
 		StudentRegistrationPnl = new JPanel();
 		contentPane.add(StudentRegistrationPnl, "name_442145250348966");
-		StudentRegistrationPnl.setLayout(new MigLayout("",
-				"[][202.00][159.00,grow][71.00]", "[][][][][][][][][][][]"));
+		StudentRegistrationPnl.setLayout(new MigLayout("", "[][202.00][159.00,grow][71.00]", "[][][][][][][][][][][][]"));
 
 		StudentRegistrationBackBtn = new JButton("Back");
 		StudentRegistrationPnl.add(StudentRegistrationBackBtn, "flowx,cell 0 0");
 
-		JLabel StudentRegistrationLbl = new JLabel("Registro de estudiante");
+		JLabel StudentRegistrationLbl = new JLabel("Student registration");
 		StudentRegistrationPnl.add(StudentRegistrationLbl, "cell 0 0");
 
-		JLabel lblNombre_1 = new JLabel("Nombre:");
-		StudentRegistrationPnl.add(lblNombre_1, "cell 0 1,alignx trailing");
-
-		StudentName = new JTextField();
-		StudentRegistrationPnl.add(StudentName, "cell 1 1,growx");
-		StudentName.setColumns(10);
+		JLabel lblNombre_1 = new JLabel("Name:");
+		StudentRegistrationPnl.add(lblNombre_1, "cell 0 1,alignx left");
+		
+				StudentName = new JTextField();
+				StudentRegistrationPnl.add(StudentName, "cell 0 2,growx");
+				StudentName.setColumns(10);
 
 		JLabel lblPrimerApellido_1 = new JLabel("Primer apellido:");
 		StudentRegistrationPnl.add(lblPrimerApellido_1,
-				"cell 0 2,alignx trailing");
+				"cell 0 3,alignx trailing");
 
 		StudentFirstLastName = new JTextField();
-		StudentRegistrationPnl.add(StudentFirstLastName, "cell 1 2,growx");
+		StudentRegistrationPnl.add(StudentFirstLastName, "cell 1 3,growx");
 		StudentFirstLastName.setColumns(10);
 
 		JLabel lblSegundoApellido_1 = new JLabel("Segundo apellido:");
 		StudentRegistrationPnl.add(lblSegundoApellido_1,
-				"cell 0 3,alignx trailing");
+				"cell 0 4,alignx trailing");
 
 		StudentSecondLastName = new JTextField();
-		StudentRegistrationPnl.add(StudentSecondLastName, "cell 1 3,growx");
+		StudentRegistrationPnl.add(StudentSecondLastName, "cell 1 4,growx");
 		StudentSecondLastName.setColumns(10);
 
 		JLabel lblTelfono = new JLabel("Teléfono:");
-		StudentRegistrationPnl.add(lblTelfono, "cell 0 5,alignx trailing");
+		StudentRegistrationPnl.add(lblTelfono, "cell 0 6,alignx trailing");
 
 		StudentPhoneNumber = new JTextField();
-		StudentRegistrationPnl.add(StudentPhoneNumber, "cell 1 5,growx");
+		StudentRegistrationPnl.add(StudentPhoneNumber, "cell 1 6,growx");
 		StudentPhoneNumber.setColumns(10);
 
 		JLabel lblCorreoElectrnico_1 = new JLabel("Correo electrónico:");
 		StudentRegistrationPnl.add(lblCorreoElectrnico_1,
-				"cell 0 6,alignx trailing");
+				"cell 0 7,alignx trailing");
 
 		StudentEmail = new JTextField();
-		StudentRegistrationPnl.add(StudentEmail, "cell 1 6,growx");
+		StudentRegistrationPnl.add(StudentEmail, "cell 1 7,growx");
 		StudentEmail.setColumns(10);
 
 		JLabel lblInstitucinDondeEstudia = new JLabel(
 				"Institución donde estudia:");
 		StudentRegistrationPnl.add(lblInstitucinDondeEstudia,
-				"cell 0 8,alignx trailing");
+				"cell 0 9,alignx trailing");
 
 		StudentEducationalCenter = new JTextField();
-		StudentRegistrationPnl.add(StudentEducationalCenter, "cell 1 8,growx");
+		StudentRegistrationPnl.add(StudentEducationalCenter, "cell 1 9,growx");
 		StudentEducationalCenter.setColumns(10);
 
 		JLabel lblCarnetDeEstudiante = new JLabel("Carnet de estudiante:");
 		StudentRegistrationPnl.add(lblCarnetDeEstudiante,
-				"cell 0 9,alignx trailing");
+				"cell 0 10,alignx trailing");
 
 		StudentID = new JTextField();
-		StudentRegistrationPnl.add(StudentID, "cell 1 9,growx");
+		StudentRegistrationPnl.add(StudentID, "cell 1 10,growx");
 		StudentID.setColumns(10);
 
-		StudentRegistrationBtn = new JButton("Registrar");
+		StudentRegistrationBtn = new JButton("Register");
 		StudentRegistrationPnl.add(StudentRegistrationBtn,
-				"cell 1 10,alignx right");
+				"cell 1 11,alignx right");
 
 		RelativeRegistrationPnl = new JPanel();
 		contentPane.add(RelativeRegistrationPnl, "name_442084621359804");
@@ -943,10 +1150,61 @@ public class View extends JFrame {
 		SettingsChangeMonthsBtn = new JButton("Change");
 		SettingsChangeMonthsBtn.setFont(new Font("Consolas", Font.PLAIN, 11));
 		SettingPnl.add(SettingsChangeMonthsBtn, "cell 1 17");
+				
+				BelongingSearch = new JPanel();
+				contentPane.add(BelongingSearch, "name_69278881556951");
+				BelongingSearch.setLayout(new MigLayout("", "[]", "[]"));
+				
+				BelongingSearchBackBtn = new JButton("Back");
+				BelongingSearch.add(BelongingSearchBackBtn, "cell 0 0,alignx left");
+		
+				CreditsPnl = new JPanel();
+				contentPane.add(CreditsPnl, "name_5917427800206");
+				CreditsPnl.setLayout(new MigLayout("", "[356.00px][714.00px]",
+						"[15px][][][][][][][][][][][][][]"));
+				
+						JLabel lblLogo = new JLabel("");
+						lblLogo.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));
+						CreditsPnl.add(lblLogo, "cell 0 0 2 1,alignx center,aligny top");
+						
+								JLabel lblCreadores = new JLabel("Proyecto creado por:");
+								CreditsPnl.add(lblCreadores, "cell 0 1 2 1");
+								
+										JLabel lblRoberto = new JLabel("Roberto Chen Zheng");
+										CreditsPnl.add(lblRoberto, "cell 1 2");
+										
+												JLabel lblVinicio = new JLabel("Vinicio Flores Hernández");
+												CreditsPnl.add(lblVinicio, "cell 1 3");
+												
+														JLabel lblFaubricio = new JLabel("Faubricio Forester Soto");
+														CreditsPnl.add(lblFaubricio, "cell 1 4");
+														
+																JLabel lblPedro = new JLabel("Pedro Rodríguez de Oliveira");
+																CreditsPnl.add(lblPedro, "cell 1 5");
+																
+																		JLabel lblCreadoraLogo = new JLabel("Creadora del logo:");
+																		CreditsPnl.add(lblCreadoraLogo, "cell 0 7");
+																		
+																				CreditsBackBtn = new JButton("Volver a la ventana principal");
+																				CreditsBackBtn.addActionListener(new ActionListener() {
+																					public void actionPerformed(ActionEvent e) {
+																					}
+																				});
+																				
+																						JLabel lblDayana = new JLabel("Dayana Méndez Salas");
+																						CreditsPnl.add(lblDayana, "cell 1 8");
+																						
+																								JLabel lblVersion = new JLabel("Versión:");
+																								CreditsPnl.add(lblVersion, "cell 0 10");
+																								
+																										JLabel lblVersionNum = new JLabel("0.5");
+																										CreditsPnl.add(lblVersionNum, "cell 1 11");
+																										CreditsPnl.add(CreditsBackBtn, "cell 1 13,alignx right");
 	}
 
 	private void addEvents() {
 		//TODO
+		searchBtn.addActionListener(controller);
 		RelativeRegistrationBackBtn.addActionListener(controller);
 		RelativeRegistrationBtn.addActionListener(controller);
 		StudentRegistrationBackBtn.addActionListener(controller);
@@ -967,11 +1225,8 @@ public class View extends JFrame {
 		MagazineRegistrationBackBtn.addActionListener(controller);
 		MovieRegistrationBackBtn.addActionListener(controller);
 		SettingBackBtn.addActionListener(controller);
-		BookSearchBackBtn.addActionListener(controller);
+		AllBookSearchBackBtn.addActionListener(controller);
 		BelongingSearchBackBtn.addActionListener(controller);
-		BookSearchBtn.addActionListener(controller);
-		MagazineSearchBtn.addActionListener(controller);
-		MovieSearchBtn.addActionListener(controller);
 		SearchBackBtn.addActionListener(controller);
 		newBookBtn.addActionListener(controller);
 		newMagazineBtn.addActionListener(controller);
@@ -1177,19 +1432,10 @@ public class View extends JFrame {
 		return SettingBackBtn;
 	}
 	public JButton getBookSearchBackBtn() {
-		return BookSearchBackBtn;
+		return AllBookSearchBackBtn;
 	}
 	public JButton getBelongingSearchBackBtn() {
 		return BelongingSearchBackBtn;
-	}
-	public JButton getBookSearchBtn() {
-		return BookSearchBtn;
-	}
-	public JButton getMagazineSearchBtn() {
-		return MagazineSearchBtn;
-	}
-	public JButton getMovieSearchBtn() {
-		return MovieSearchBtn;
 	}
 	public JButton getSearchBackBtn() {
 		return SearchBackBtn;
@@ -1210,13 +1456,13 @@ public class View extends JFrame {
 		return SettingPnl;
 	}
 	public JPanel getBookSearchPnl() {
-		return BookSearchPnl;
+		return AllBookSearchPnl;
 	}
 	public JPanel getMagazineSearchPnl() {
-		return MagazineSearchPnl;
+		return AllMagazineSearchPnl;
 	}
 	public JPanel getMovieSearchPnl() {
-		return MovieSearchPnl;
+		return AllMovieSearchPnl;
 	}
 	public JPanel getBelongingSearch() {
 		return BelongingSearch;
