@@ -953,6 +953,9 @@ public class View extends JFrame {
 		lblRating_2 = new JLabel("Rating:");
 		MagazineRegistrationPnl.add(lblRating_2, "cell 1 7,alignx trailing");
 		
+		PruebaCombobox combobox3 = new PruebaCombobox();   // Combobox de revista, combobox es una clase (PruebaCombobox)
+		MagazineRegistrationPnl.add(combobox3, "cell 2 7");
+		
 		MagazineRegistrationBtn = new JButton("Register");
 		MagazineRegistrationPnl.add(MagazineRegistrationBtn, "cell 1 8");
 
@@ -1000,6 +1003,9 @@ public class View extends JFrame {
 
 		lblRating_1 = new JLabel("Rating");
 		BookRegistrationPnl.add(lblRating_1, "cell 1 8");
+		
+		PruebaCombobox combobox = new PruebaCombobox();  // Combobox rating de registrar libro, el combobox es una clase
+		BookRegistrationPnl.add(combobox, "cell 2 8");
 
 		BookRegistrationBtn = new JButton("Register");
 		BookRegistrationPnl.add(BookRegistrationBtn, "cell 2 9");
@@ -1027,6 +1033,9 @@ public class View extends JFrame {
 
 		lblRating = new JLabel("Rating:");
 		MovieRegistrationPnl.add(lblRating, "cell 1 4");
+		
+		PruebaCombobox combobox2 = new PruebaCombobox();  // Combobox rating de película, combobox es una clase
+		MovieRegistrationPnl.add(combobox2, "cell 2 4");
 
 		lblGenre = new JLabel("Genre:");
 		MovieRegistrationPnl.add(lblGenre, "cell 1 6,alignx trailing");
