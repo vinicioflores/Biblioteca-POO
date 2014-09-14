@@ -226,8 +226,8 @@ public class Biblioteca {
 		return top;
 	}
 	//Special search function: Looks for material which was lent X times on the recent Y months, being X and Y modifiable parameters.
-	//Receives two integers indicating the time the books were lent and the quantity of latter months user wishes to consult and a Da-
-	//teTime with the actual date and returns an ArrayList<Pertenencia> with the list of books.
+	//Receives two integers indicating the time the books were lent and the quantity of latter months user wishes to consult and re-
+	//turns an ArrayList<Pertenencia> with the list of books.
 	public ArrayList<Pertenencia> specialSearch(int timesLent, int monthsToConsult){
 		ArrayList<Pertenencia> specialList = new ArrayList<Pertenencia>();
 		int daysDifference = Days.daysBetween(getSystemDate().minusMonths(monthsToConsult), getSystemDate()).getDays();
