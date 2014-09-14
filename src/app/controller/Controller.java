@@ -1,11 +1,14 @@
 package app.controller;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import app.model.*;
@@ -248,6 +251,7 @@ public class Controller implements ActionListener{
 		}
 		////
 		else if(source == view.getBookRegistrationBtn()){
+			
 			registerNewBook();
 		}
 		
@@ -393,21 +397,36 @@ public class Controller implements ActionListener{
         	
         	
         	
-        }       
+        }
+        else if(source == view.getBookSearchImageBn()){
+        	JFileChooser chooser = new JFileChooser(); //Creamos objeto de JFileChooser
+			int opcion = chooser.showOpenDialog(view);//Abrir ventana de dialogo para escoger imagen
+			if (opcion == JFileChooser.APPROVE_OPTION) { //Si hacemos click en Abrir o Aceptar
+            	String archivo = chooser.getSelectedFile().getPath(); //Obtener nombre del archivo
+                ImageIcon imagen = new ImageIcon(archivo); //Imagen nueva
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(256, 256, Image.SCALE_DEFAULT)); //resize imagen
+                //BookImageLbl.setIcon(imagen);//Antes 
+                view.getBookImageLbl().setIcon(imagen);
+                //BookRegistrationPnl.add(BookImageLbl, "cell 2 6");
+                view.getBookRegistrationPnl().add(view.getBookImageLbl(), "cell 2 6");
+			}}
 
 	}
 
 	private void registerNewMovie() {
+		System.out.println("registering movie");
 		// TODO Auto-generated method stub
 		JOptionPane.showMessageDialog(view, "new book registered.");
 		
 		//move to start panel
+		/*
 		view.getStartPnl().setVisible(true); 
 		view.getMovieRegistrationPnl().setVisible(false);
-		
+		*/
 	}
 
 	private void registerNewMagazine() {
+		System.out.println("registering magazine");
 		// TODO Auto-generated method stub
 		JOptionPane.showMessageDialog(view, "new book registered.");
 		
@@ -415,12 +434,24 @@ public class Controller implements ActionListener{
 
 	private void registerNewBook() {
 		// TODO 
-		System.out.println("BookRegistration");
+		System.out.println("Book Registration");
+		String name = view.getBookName().getText();
+		String author = view.getBookAuthor().getText();
+		String editorial = view.getBookEditorial().getText();
+		String edition = view.getBookEdition().getText();
+		int rating;
+		view.getBookRatingCombobox();
+		//rating = ; //se debe obtener un int de lo de arriba
+		
+		String imgPath;
+		view.getBookSearchImageBn();
+		
 		JOptionPane.showMessageDialog(view, "new book registered.");
 		
 	}
 
 	private void registerRelative() {
+		System.out.println("registering relative");
 		try {
 		String name = view.getRelativeName().getText();
 		String lastName1 = view.getRelativeFirstName().getText();
@@ -439,18 +470,22 @@ public class Controller implements ActionListener{
 	}
 
 	private void ShowDialog(String string) {
+		System.out.println("registering coworker");
+		JOptionPane.showMessageDialog(view, string);
 		// TODO Auto-generated method stub
 		
 	}
 
 	private void registerStudent() {
+		System.out.println("registering student");
 		String studentId;
 		// TODO Auto-generated method stub
 		
 	}
 
 	private void registerCoworker() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub;
+		System.out.println("registering coworker");
 		
 	}
 	

@@ -248,8 +248,8 @@ public class View extends JFrame {
 	private JTextField MagazineRegistrationPublicationPeriod;
 	private JTextField MagazineRegistrationTheme;
 	private JLabel lblImage_1;
-	private JButton btnSearchImage;
-	private JLabel lblNewLabel;
+	private JButton BookSearchImageBn;
+	private JLabel BookImageLbl;
 	private JPanel SpecialSBooksPnl;
 	private JButton SpecialSBooksBackBtn;
 	private JLabel lblSpecialSearch_1;
@@ -304,6 +304,7 @@ public class View extends JFrame {
 	private JButton btnDevolveMaterial;
 	private JButton btnLendMaterial;
 	private JComboBox comboBox;
+	private PruebaCombobox BookRatingCombobox;
 	
 	
 	/**
@@ -340,40 +341,6 @@ public class View extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
-
-        LendingPnl = new JPanel();
-        contentPane.add(LendingPnl, "name_12656327016431");
-        LendingPnl.setLayout(new MigLayout("", "[grow]", "[][][][][][][][][][]"));
-
-        btnBack = new JButton("Back");
-        LendingPnl.add(btnBack, "flowx,cell 0 0");
-
-        lblLendingAndDevolution = new JLabel("Lending and Devolution");
-        LendingPnl.add(lblLendingAndDevolution, "cell 0 0");
-
-        lblMaterialStatus = new JLabel("Material current status:");
-        LendingPnl.add(lblMaterialStatus, "flowx,cell 0 1");
-
-        lblDevolution = new JLabel("Devolution");
-        LendingPnl.add(lblDevolution, "cell 0 3");
-
-        btnDevolveMaterial = new JButton("Devolve Material");
-        LendingPnl.add(btnDevolveMaterial, "cell 0 4,alignx right");
-
-        lblLending = new JLabel("Lending");
-        LendingPnl.add(lblLending, "cell 0 6");
-
-        lblWhoIsBorrowing = new JLabel("Who is borrowing it?");
-        LendingPnl.add(lblWhoIsBorrowing, "cell 0 7");
-
-        comboBox = new JComboBox();
-        LendingPnl.add(comboBox, "cell 0 8,growx");
-
-        btnLendMaterial = new JButton("Lend Material");
-        LendingPnl.add(btnLendMaterial, "cell 0 9,alignx right");
-
-        lblNewLabel_2 = new JLabel("New label");
-		LendingPnl.add(lblNewLabel_2, "cell 0 1");
 		
 		StartPnl = new JPanel();
 		StartPnl.setBackground(new Color(255, 255, 255));
@@ -462,6 +429,40 @@ public class View extends JFrame {
 
 		topBorrowedBelongingsPnl = new JPanel();
 		StartPnl.add(topBorrowedBelongingsPnl, "cell 1 6 3 1,grow");
+		
+		        LendingPnl = new JPanel();
+		        contentPane.add(LendingPnl, "name_12656327016431");
+		        LendingPnl.setLayout(new MigLayout("", "[grow]", "[][][][][][][][][][]"));
+		        
+		                btnBack = new JButton("Back");
+		                LendingPnl.add(btnBack, "flowx,cell 0 0");
+		                
+		                        lblLendingAndDevolution = new JLabel("Lending and Devolution");
+		                        LendingPnl.add(lblLendingAndDevolution, "cell 0 0");
+		                        
+		                                lblMaterialStatus = new JLabel("Material current status:");
+		                                LendingPnl.add(lblMaterialStatus, "flowx,cell 0 1");
+		                                
+		                                        lblDevolution = new JLabel("Devolution");
+		                                        LendingPnl.add(lblDevolution, "cell 0 3");
+		                                        
+		                                                btnDevolveMaterial = new JButton("Devolve Material");
+		                                                LendingPnl.add(btnDevolveMaterial, "cell 0 4,alignx right");
+		                                                
+		                                                        lblLending = new JLabel("Lending");
+		                                                        LendingPnl.add(lblLending, "cell 0 6");
+		                                                        
+		                                                                lblWhoIsBorrowing = new JLabel("Who is borrowing it?");
+		                                                                LendingPnl.add(lblWhoIsBorrowing, "cell 0 7");
+		                                                                
+		                                                                        comboBox = new JComboBox();
+		                                                                        LendingPnl.add(comboBox, "cell 0 8,growx");
+		                                                                        
+		                                                                                btnLendMaterial = new JButton("Lend Material");
+		                                                                                LendingPnl.add(btnLendMaterial, "cell 0 9,alignx right");
+		                                                                                
+		                                                                                        lblNewLabel_2 = new JLabel("New label");
+		                                                                                        LendingPnl.add(lblNewLabel_2, "cell 0 1");
 
 		SearchPnl = new JPanel();
 		contentPane.add(SearchPnl, "name_10085986187124");
@@ -1231,30 +1232,19 @@ public class View extends JFrame {
 				lblRating_1 = new JLabel("Rating:");
 				BookRegistrationPnl.add(lblRating_1, "cell 1 5,alignx right");
 		
-		PruebaCombobox BookRatingCombobox = new PruebaCombobox();  // Combobox rating de registrar libro, el combobox es una clase
+		BookRatingCombobox = new PruebaCombobox();  // Combobox rating de registrar libro, el combobox es una clase
 		BookRegistrationPnl.add(BookRatingCombobox, "cell 2 5");
 				
 				lblImage_1 = new JLabel("Image:");
 				BookRegistrationPnl.add(lblImage_1, "cell 1 6");
 				
-				lblNewLabel = new JLabel("");
-				lblNewLabel.setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
-				BookRegistrationPnl.add(lblNewLabel, "cell 2 6");
+				BookImageLbl = new JLabel("");
+				BookImageLbl.setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
+				BookRegistrationPnl.add(BookImageLbl, "cell 2 6");
 				
-				btnSearchImage = new JButton("Search Image");
-				btnSearchImage.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						JFileChooser chooser = new JFileChooser(); //Creamos objeto de JFileChooser
-						int opcion = chooser.showOpenDialog(contentPane);//Abrir ventana de dialogo para escoger imagen
-						if (opcion == JFileChooser.APPROVE_OPTION) { //Si hacemos click en Abrir o Aceptar
-			            	String archivo = chooser.getSelectedFile().getPath(); //Obtener nombre del archivo
-			                ImageIcon imagen = new ImageIcon(archivo); //Imagen nueva
-			                imagen = new ImageIcon(imagen.getImage().getScaledInstance(256, 256, Image.SCALE_DEFAULT)); //resize imagen
-			                lblNewLabel.setIcon(imagen);
-		               	BookRegistrationPnl.add(lblNewLabel, "cell 2 6");
-					}}
-				});
-				BookRegistrationPnl.add(btnSearchImage, "cell 3 6,aligny bottom");
+				BookSearchImageBn = new JButton("Search Image");
+				
+				BookRegistrationPnl.add(BookSearchImageBn, "cell 3 6,aligny bottom");
 				
 						BookRegistrationBtn = new JButton("Register");
 						BookRegistrationPnl.add(BookRegistrationBtn, "cell 2 9,alignx center");
@@ -1641,7 +1631,7 @@ public class View extends JFrame {
 		AllMoviesFilterBtn.addActionListener(controller);
 		AllMoviesBackBtn.addActionListener(controller);
 		
-		
+		BookSearchImageBn.addActionListener(controller);
 		//TODO
 	}
 
@@ -2180,5 +2170,14 @@ public class View extends JFrame {
 	}
 	public JButton getAllMoviesFilterBtn() {
 		return AllMoviesFilterBtn;
+	}
+	public PruebaCombobox getBookRatingCombobox() {
+		return BookRatingCombobox;
+	}
+	public JLabel getBookImageLbl() {
+		return BookImageLbl;
+	}
+	public JButton getBookSearchImageBn() {
+		return BookSearchImageBn;
 	}
 }
