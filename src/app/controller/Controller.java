@@ -179,6 +179,7 @@ public class Controller implements ActionListener{
         //
         else if(source == view.getSettingsBtn()){
         	view.getSettingPnl().setVisible(true);
+        	view.getStartPnl().setVisible(false);
         	
         }
         //
