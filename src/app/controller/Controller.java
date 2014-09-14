@@ -23,10 +23,72 @@ public class Controller implements ActionListener{
 		if(source == view.getSearchBtn()){
 			view.getSearchPnl().setVisible(true);
 			view.getStartPnl().setVisible(false);
-		}
+		}///
 		else if(source == view.getSearchBackBtn()){
 			view.getStartPnl().setVisible(true);
 			view.getSearchPnl().setVisible(false);
+		}
+		//
+		else if (source == view.getNewBelongingBtn()){
+			view.getBelongingRegistrationPnl().setVisible(true);
+			view.getStartPnl().setVisible(false);
+		}
+		///
+		else if(source == view.getBelongingRegistrationBackBtn()){
+			view.getStartPnl().setVisible(true);
+			view.getBelongingRegistrationPnl().setVisible(false);
+							
+		}		
+		///
+		else if(source == view.getNewBookBtn()){
+			view.getBookRegistrationPnl().setVisible(true);
+			view.getBelongingRegistrationPnl().setVisible(false);
+		}
+		////
+		else if(source == view.getBookRegistrationBackBtn()){
+			
+			view.getBelongingRegistrationPnl().setVisible(true);
+			view.getBookRegistrationPnl().setVisible(false);
+		}
+		////
+		else if(source == view.getBookRegistrationBtn()){
+			registerNewBook();
+		}
+		
+		///
+		else if(source == view.getNewMagazineBtn()){
+			view.getMagazineRegistrationPnl().setVisible(true);
+			view.getBelongingRegistrationPnl().setVisible(false);
+					
+		}
+		////
+		else if(source == view.getMagazineRegistrationBackBtn()){
+			view.getBelongingRegistrationPnl().setVisible(true);
+			view.getMagazineRegistrationPnl().setVisible(false);
+
+		}
+		////
+		else if(source == view.getMagazineRegistrationBtn()){
+			registerNewMagazine();
+			
+		}
+		///
+		else if(source == view.getNewMovieBtn()){
+			view.getMovieRegistrationPnl().setVisible(true);
+			view.getBelongingRegistrationPnl().setVisible(false);
+							
+		}
+		////
+		else if(source == view.getMovieRegistrationBackBtn()){
+			view.getBelongingRegistrationPnl().setVisible(true);
+			view.getMovieRegistrationPnl().setVisible(false);
+
+			
+		}
+		////
+		else if(source == view.getMovieRegistrationBtn()){
+			registerNewMovie();
+			
 		}
 		
 		//
@@ -118,6 +180,7 @@ public class Controller implements ActionListener{
         }
         //
         else if(source == view.getSettingsBtn()){
+        	view.getSettingPnl().setVisible(true);
         	
         }
         //
@@ -127,7 +190,32 @@ public class Controller implements ActionListener{
         	view.getStartPnl().setVisible(false);
         	
         }
+        else if(source == view.getAllMagazineSearchBackBtn()){
+        	view.getSearchPnl().setVisible(true);
+        	
+        	
+        	
+        }
+        else if(source == view.getSettingsBtn()){
+ 	
+        }
+        
 
+	}
+
+	private void registerNewMovie() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void registerNewMagazine() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void registerNewBook() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void registrateRelative() {
