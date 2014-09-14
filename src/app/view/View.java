@@ -311,6 +311,7 @@ public class View extends JFrame {
 	private JTextField MovieReleaseDate;
 	private JLabel MovieImagelbl;
 	private JButton MovieSearchImageBn;
+	private JLabel lblChooseBelongingsType;
 	
 	
 	/**
@@ -335,13 +336,13 @@ public class View extends JFrame {
 		JMenuBar menuSup = new JMenuBar();
 		setJMenuBar(menuSup);
 
-		JMenu subMenuArchivo = new JMenu("Archivo");
-		menuSup.add(subMenuArchivo);
+		JMenu subMenuFile = new JMenu("File");
+		menuSup.add(subMenuFile);
 
-		JMenuItem opcionSalir = new JMenuItem("Salir");
-		opcionSalir.setIcon(new ImageIcon(View.class
+		JMenuItem optionExit = new JMenuItem("Exit");
+		optionExit.setIcon(new ImageIcon(View.class
 				.getResource("/javax/swing/plaf/metal/icons/ocean/error.png")));
-		subMenuArchivo.add(opcionSalir);
+		subMenuFile.add(optionExit);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -395,11 +396,11 @@ public class View extends JFrame {
 		CreditsBtn = new JButton("Credits");
 		MainPanelOptions.add(CreditsBtn, "cell 0 12,alignx center");
 
-		JLabel MyBelongingLbl = new JLabel("Mis Pertenencias");
+		JLabel MyBelongingLbl = new JLabel("My Belongings");
 		MyBelongingLbl.setFont(new Font("Consolas", Font.BOLD, 30));
 		StartPnl.add(MyBelongingLbl, "cell 1 0 3 1");
 
-		JLabel lblTodas = new JLabel("Todas");
+		JLabel lblTodas = new JLabel("All");
 		lblTodas.setFont(new Font("Consolas", Font.PLAIN, 21));
 		StartPnl.add(lblTodas, "cell 1 1");
 
@@ -414,7 +415,7 @@ public class View extends JFrame {
 		JPanel allBelongingsPnl = new JPanel();
 		StartPnl.add(allBelongingsPnl, "cell 1 2 3 1,grow");
 
-		JLabel lblPrestadas = new JLabel("Prestadas");
+		JLabel lblPrestadas = new JLabel("Lent");
 		lblPrestadas.setFont(new Font("Consolas", Font.PLAIN, 21));
 		StartPnl.add(lblPrestadas, "cell 1 3");
 
@@ -897,7 +898,7 @@ public class View extends JFrame {
 		BorrowerRegistrationPnl.setLayout(new MigLayout("", "[grow]",
 				"[][][][][][][][][][][][][][]"));
 
-		BorrowerRegistrationBackBtn = new JButton("Volver");
+		BorrowerRegistrationBackBtn = new JButton("Back");
 		BorrowerRegistrationBackBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -905,28 +906,28 @@ public class View extends JFrame {
 		BorrowerRegistrationPnl.add(BorrowerRegistrationBackBtn,
 				"flowx,cell 0 0");
 
-		JLabel lblRegistroDeNuevo = new JLabel("Registro de nuevo prestatario");
+		JLabel lblRegistroDeNuevo = new JLabel("New Borrower's Register");
 		BorrowerRegistrationPnl.add(lblRegistroDeNuevo, "cell 0 0");
 
 		JLabel lblSeleccionesElijaLa = new JLabel(
-				"Seleccione la categoria de prestatario a crear");
+				"Choose the borrower's category to create");
 		BorrowerRegistrationPnl.add(lblSeleccionesElijaLa, "cell 0 1");
 
 		JPanel panel = new JPanel();
 		BorrowerRegistrationPnl.add(panel, "cell 0 2,grow");
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		newRelativeBtn = new JButton("Familiar");
+		newRelativeBtn = new JButton("Relative");
 		panel.add(newRelativeBtn);
 		newRelativeBtn.setIcon(new ImageIcon(View.class
 				.getResource("/image/family25.png")));
 
-		newStudentBtn = new JButton("Estudiante");
+		newStudentBtn = new JButton("Student");
 		panel.add(newStudentBtn);
 		newStudentBtn.setIcon(new ImageIcon(View.class
 				.getResource("/image/graduate9.png")));
 
-		newCoworkerBtn = new JButton("Colega");
+		newCoworkerBtn = new JButton("Coworker");
 		panel.add(newCoworkerBtn);
 		newCoworkerBtn.setIcon(new ImageIcon(View.class
 				.getResource("/image/business53.png")));
@@ -952,7 +953,7 @@ public class View extends JFrame {
 		CoworkerRegistrationPnl.add(CoworkerName, "cell 1 1,growx");
 		CoworkerName.setColumns(10);
 
-		JLabel lblPrimerApellido = new JLabel("First lastname:");
+		JLabel lblPrimerApellido = new JLabel("First last name:");
 		CoworkerRegistrationPnl.add(lblPrimerApellido,
 				"cell 0 2,alignx trailing");
 
@@ -960,7 +961,7 @@ public class View extends JFrame {
 		CoworkerRegistrationPnl.add(CoworkerFirstLastName, "cell 1 2,growx");
 		CoworkerFirstLastName.setColumns(10);
 
-		JLabel lblSegundoApellido = new JLabel("Second lastname:");
+		JLabel lblSegundoApellido = new JLabel("Second last name:");
 		CoworkerRegistrationPnl.add(lblSegundoApellido,
 				"cell 0 3,alignx trailing");
 
@@ -1044,13 +1045,13 @@ public class View extends JFrame {
 		StudentEmail = new JTextField();
 		StudentRegistrationPnl.add(StudentEmail, "cell 1 7,growx");
 		StudentEmail.setColumns(10);
-				
-						JLabel lblCarnetDeEstudiante = new JLabel("ID:");
-						StudentRegistrationPnl.add(lblCarnetDeEstudiante,
-								"cell 0 8,alignx trailing");
+		
+				JLabel lblCarnetDeEstudiante = new JLabel("ID:");
+				StudentRegistrationPnl.add(lblCarnetDeEstudiante,
+						"cell 0 9,alignx trailing");
 		
 				StudentID = new JTextField();
-				StudentRegistrationPnl.add(StudentID, "cell 1 8,growx");
+				StudentRegistrationPnl.add(StudentID, "cell 1 9,growx");
 				StudentID.setColumns(10);
 
 		StudentRegistrationBtn = new JButton("Register");
@@ -1120,29 +1121,32 @@ public class View extends JFrame {
 
 		BelongingRegistrationPnl = new JPanel();
 		contentPane.add(BelongingRegistrationPnl, "name_69061404162527");
-		BelongingRegistrationPnl.setLayout(new MigLayout("", "[][]", "[][][]"));
+		BelongingRegistrationPnl.setLayout(new MigLayout("", "[778.00]", "[][][]"));
 
 		BelongingRegistrationBackBtn = new JButton("Back");
 		BelongingRegistrationPnl.add(BelongingRegistrationBackBtn,
 				"flowx,cell 0 0,alignx left");
 
-		JLabel lblBelongingRegistration = new JLabel("Belonging registration");
+		JLabel lblBelongingRegistration = new JLabel("New Belonging's Registration");
 		BelongingRegistrationPnl.add(lblBelongingRegistration, "cell 0 0");
-
-		newBookBtn = new JButton("");
-		newBookBtn.setIcon(new ImageIcon(View.class
-				.getResource("/image/book139.png")));
-		BelongingRegistrationPnl.add(newBookBtn, "flowx,cell 1 2");
-
-		newMagazineBtn = new JButton("");
-		newMagazineBtn.setIcon(new ImageIcon(View.class
-				.getResource("/image/magazine.png")));
-		BelongingRegistrationPnl.add(newMagazineBtn, "cell 1 2");
-
-		newMovieBtn = new JButton("");
-		newMovieBtn.setIcon(new ImageIcon(View.class
-				.getResource("/image/film50.png")));
-		BelongingRegistrationPnl.add(newMovieBtn, "cell 1 2");
+				
+				lblChooseBelongingsType = new JLabel("Choose belonging's type to create");
+				BelongingRegistrationPnl.add(lblChooseBelongingsType, "cell 0 1");
+		
+				newBookBtn = new JButton("Book");
+				newBookBtn.setIcon(new ImageIcon(View.class
+						.getResource("/image/book139.png")));
+				BelongingRegistrationPnl.add(newBookBtn, "flowx,cell 0 2,alignx center");
+		
+				newMagazineBtn = new JButton("Magazine");
+				newMagazineBtn.setIcon(new ImageIcon(View.class
+						.getResource("/image/magazine.png")));
+				BelongingRegistrationPnl.add(newMagazineBtn, "cell 0 2");
+				
+						newMovieBtn = new JButton("Movie");
+						newMovieBtn.setIcon(new ImageIcon(View.class
+								.getResource("/image/film50.png")));
+						BelongingRegistrationPnl.add(newMovieBtn, "cell 0 2");
 
 		MagazineRegistrationPnl = new JPanel();
 		contentPane.add(MagazineRegistrationPnl, "name_69108422085933");
@@ -1269,43 +1273,43 @@ public class View extends JFrame {
 		MovieName = new JTextField();
 		MovieRegistrationPnl.add(MovieName, "cell 2 1,growx");
 		MovieName.setColumns(10);
-		
-				lblGenre = new JLabel("Genre:");
-				MovieRegistrationPnl.add(lblGenre, "cell 1 3,alignx trailing");
+								
+										lblGenre = new JLabel("Genre:");
+										MovieRegistrationPnl.add(lblGenre, "cell 1 2,alignx trailing");
 						
 								MovieGenre = new JTextField();
-								MovieRegistrationPnl.add(MovieGenre, "cell 2 3,growx");
+								MovieRegistrationPnl.add(MovieGenre, "cell 2 2,growx");
 								MovieGenre.setColumns(10);
-				
-						lblDirector = new JLabel("Director:");
-						MovieRegistrationPnl.add(lblDirector, "cell 1 4,alignx trailing");
-				
-						MovieDirector = new JTextField();
-						MovieRegistrationPnl.add(MovieDirector, "cell 2 4,growx");
-						MovieDirector.setColumns(10);
+						
+								lblDirector = new JLabel("Director:");
+								MovieRegistrationPnl.add(lblDirector, "cell 1 3,alignx trailing");
+						
+								MovieDirector = new JTextField();
+								MovieRegistrationPnl.add(MovieDirector, "cell 2 3,growx");
+								MovieDirector.setColumns(10);
 				
 						lblReleaseDate = new JLabel("Release date:");
-						MovieRegistrationPnl.add(lblReleaseDate, "cell 1 5,alignx trailing");
-				
-				MovieReleaseDate = new JTextField();
-				MovieRegistrationPnl.add(MovieReleaseDate, "cell 2 5,growx");
-				MovieReleaseDate.setColumns(10);
+						MovieRegistrationPnl.add(lblReleaseDate, "cell 1 4,alignx trailing");
+						
+						MovieReleaseDate = new JTextField();
+						MovieRegistrationPnl.add(MovieReleaseDate, "cell 2 4,growx");
+						MovieReleaseDate.setColumns(10);
 				
 						lblRating = new JLabel("Rating:");
-						MovieRegistrationPnl.add(lblRating, "cell 1 6,alignx right");
+						MovieRegistrationPnl.add(lblRating, "cell 1 5,alignx right");
 				
 				MovieRatingCombobox = new PruebaCombobox();  // Combobox rating de pel�cula, combobox es una clase
-				MovieRegistrationPnl.add(MovieRatingCombobox, "cell 2 6");
+				MovieRegistrationPnl.add(MovieRatingCombobox, "cell 2 5");
 		
 				JLabel lblImage = new JLabel("Image:");
-				MovieRegistrationPnl.add(lblImage, "cell 1 7,alignx right");
+				MovieRegistrationPnl.add(lblImage, "cell 1 6,alignx right");
 		
 		MovieImagelbl = new JLabel("");
 		MovieImagelbl.setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
-		MovieRegistrationPnl.add(MovieImagelbl, "cell 2 7");
+		MovieRegistrationPnl.add(MovieImagelbl, "cell 2 6");
 		
 		MovieSearchImageBn = new JButton("Search Image");
-		MovieRegistrationPnl.add(MovieSearchImageBn, "cell 3 7,aligny bottom");
+		MovieRegistrationPnl.add(MovieSearchImageBn, "cell 3 6,aligny bottom");
 
 		MovieRegistrationBtn = new JButton("Register");
 		MovieRegistrationPnl.add(MovieRegistrationBtn, "cell 2 9,alignx center");

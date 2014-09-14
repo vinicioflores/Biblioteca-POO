@@ -22,6 +22,7 @@ public class Sarasvati {
 		frame.addWindowListener(new WindowCloseManager());
         frame.pack();
         frame.setVisible(true);
+        frame.setTitle("Sarasvati");
 	}
 	
 	private static class WindowCloseManager extends WindowAdapter {
