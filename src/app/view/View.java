@@ -766,14 +766,14 @@ public class View extends JFrame {
 		StudentRegistrationPnl.add(StudentSecondLastName, "cell 1 4,growx");
 		StudentSecondLastName.setColumns(10);
 
-		JLabel lblTelfono = new JLabel("Teléfono:");
+		JLabel lblTelfono = new JLabel("Phone:");
 		StudentRegistrationPnl.add(lblTelfono, "cell 0 6,alignx trailing");
 
 		StudentPhoneNumber = new JTextField();
 		StudentRegistrationPnl.add(StudentPhoneNumber, "cell 1 6,growx");
 		StudentPhoneNumber.setColumns(10);
 
-		JLabel lblCorreoElectrnico_1 = new JLabel("Correo electrónico:");
+		JLabel lblCorreoElectrnico_1 = new JLabel("Email:");
 		StudentRegistrationPnl.add(lblCorreoElectrnico_1,
 				"cell 0 7,alignx trailing");
 
