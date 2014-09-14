@@ -3,6 +3,8 @@ package app.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import app.model.*;
 import app.view.*;
 
@@ -28,12 +30,12 @@ public class Controller implements ActionListener{
 			view.getStartPnl().setVisible(true);
 			view.getSearchPnl().setVisible(false);
 		}
-		//
+		//start panel :: new belonging botton
 		else if (source == view.getNewBelongingBtn()){
 			view.getBelongingRegistrationPnl().setVisible(true);
 			view.getStartPnl().setVisible(false);
 		}
-		///
+		///belonging registrtion pnl :: back botton
 		else if(source == view.getBelongingRegistrationBackBtn()){
 			view.getStartPnl().setVisible(true);
 			view.getBelongingRegistrationPnl().setVisible(false);
@@ -121,7 +123,7 @@ public class Controller implements ActionListener{
         ////
         else if (source == view.getCoworkerRegistrationBtn()) {
         	
-        	registrateCoworker();
+        	registerCoworker();
        
         }///
         else if (source == view.getNewStudentBtn()) {
@@ -139,7 +141,7 @@ public class Controller implements ActionListener{
         }////
         else if (source == view.getStudentRegistrationBtn()) {
         	
-        	registrateStudent();
+        	registerStudent();
        
         }///
         else if (source == view.getNewRelativeBtn()) {
@@ -157,12 +159,8 @@ public class Controller implements ActionListener{
         }////
         else if (source == view.getRelativeRegistrationBtn()) {
         	
-        	registrateRelative();
+        	registerRelative();
        
-        }//
-        else if (source == view.getNewBelongingBtn()) {
-       	
-        	
         }
         //Credits
         else if(source == view.getCreditsBtn()){
@@ -214,11 +212,13 @@ public class Controller implements ActionListener{
 	}
 
 	private void registerNewBook() {
-		// TODO Auto-generated method stub
+		// TODO 
+		System.out.println("BookRegistration");
+		JOptionPane.showMessageDialog(view, "new book registered.");
 		
 	}
 
-	private void registrateRelative() {
+	private void registerRelative() {
 		try {
 		String name = view.getRelativeName().getText();
 		String lastName1 = view.getRelativeFirstName().getText();
@@ -241,12 +241,13 @@ public class Controller implements ActionListener{
 		
 	}
 
-	private void registrateStudent() {
+	private void registerStudent() {
+		String studentId;
 		// TODO Auto-generated method stub
 		
 	}
 
-	private void registrateCoworker() {
+	private void registerCoworker() {
 		// TODO Auto-generated method stub
 		
 	}
