@@ -1,8 +1,9 @@
 package app.model;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;  
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 
 import app.model.Pertenencia;
 
@@ -14,7 +15,7 @@ public class Biblioteca {
 	private int topX;
 	private int tiempoBusquedaMeses;
 	private int cantidasVecesBusqueda;
-	private DateTime fechaSistema;
+	private DateTime systemDate;
 	
 	
 	
@@ -26,6 +27,7 @@ public class Biblioteca {
 		this.topX = 10;
 		this.tiempoBusquedaMeses = 3;
 		this.cantidasVecesBusqueda = 2;
+		setSystemDate();
 	}
 	
 	public void agregarNuevaPertenencia(Pertenencia pertenencia){
@@ -169,64 +171,85 @@ public class Biblioteca {
 		}
 		return matches;
 	}
-	
 	//Lower element of ArrayList<Pertenencia>
-		//Receives an ArrayList<Pertenencia> y returns index of least rented material from list
-		private int indexLowerElement(ArrayList<Pertenencia> top){
-			int index = 0;
-			int lowerElem = top.get(0).getVecesPrestado(); 
-			for (int i = 1; i < top.size(); i++){
-				if (lowerElem > top.get(i).getVecesPrestado()){
-					index = i;
-					lowerElem = top.get(i).getVecesPrestado();
+	//Receives an ArrayList<Pertenencia> y returns index of least rented material from list
+	private int indexLowerElement(ArrayList<Pertenencia> top){
+		int index = 0;
+		int lowerElem = top.get(0).getVecesPrestado(); 
+		for (int i = 1; i < top.size(); i++){
+			if (lowerElem > top.get(i).getVecesPrestado()){
+				index = i;
+				lowerElem = top.get(i).getVecesPrestado();
+			}
+		}
+		return index;
+	}
+	//Orders top X in descending order.
+	//Receives ArrayList<Pertenencia> y returns same ArrayList<Pertenencia> ordered in descending order according to rented times.
+	//Based on Selection Sort.
+	private ArrayList<Pertenencia> order(ArrayList<Pertenencia> list){
+		int indexHigherElem = 0;
+		ArrayList<Pertenencia> modifiedTop = new ArrayList<Pertenencia>();
+		while(list.size() != 1){
+			indexHigherElem = 0;
+			for(int j = 1; j < list.size(); j++){
+				if (list.get(indexHigherElem).getVecesPrestado() < list.get(j).getVecesPrestado()){
+					indexHigherElem = j;
 				}
 			}
-			return index;
+			modifiedTop.add(list.get(indexHigherElem));
+			list.remove(indexHigherElem);
 		}
-		//Orders top X in descending order.
-		//Receives ArrayList<Pertenencia> y returns same ArrayList<Pertenencia> ordered in descending order according to rented times.
-		//Based on Selection Sort.
-		private ArrayList<Pertenencia> order(ArrayList<Pertenencia> list){
-			int indexHigherElem = 0;
-			ArrayList<Pertenencia> modifiedTop = new ArrayList<Pertenencia>();
-			while(list.size() != 1){
-				indexHigherElem = 0;
-				for(int j = 1; j < list.size(); j++){
-					if (list.get(indexHigherElem).getVecesPrestado() < list.get(j).getVecesPrestado()){
-						indexHigherElem = j;
-					}
-				}
-				modifiedTop.add(list.get(indexHigherElem));
-				list.remove(indexHigherElem);
+		modifiedTop.add(list.get(0));
+		return modifiedTop;
+	}	
+	//Top X
+	//It doesn't receive parameters and returns an ArrayList<Pertenencias> as an top X
+	public ArrayList<Pertenencia> topX(){
+		ArrayList<Pertenencia> top = new ArrayList<Pertenencia>();
+		int listelem = 0;
+		int index;
+		for(int i = 0; i < pertenencias.size(); i++){
+			if (listelem != getTopX()){
+				top.add(pertenencias.get(i));
+				listelem++;
 			}
-			modifiedTop.add(list.get(0));
-			return modifiedTop;
-		}
-		
-		
-		//Top X
-		//It doesn't receive parameters and returns an ArrayList<Pertenencias> as an top X
-		public ArrayList<Pertenencia> topX(){
-			ArrayList<Pertenencia> top = new ArrayList<Pertenencia>();
-			int listelem = 0;
-			int index;
-			for(int i = 0; i < pertenencias.size(); i++){
-				if (listelem != getTopX()){
+			else{
+				index = indexLowerElement(top);
+				if (top.get(index).getVecesPrestado() < pertenencias.get(i).getVecesPrestado()){
+					top.remove(index);
 					top.add(pertenencias.get(i));
-					listelem++;
-				}
-				else{
-					index = indexLowerElement(top);
-					if (top.get(index).getVecesPrestado() < pertenencias.get(i).getVecesPrestado()){
-						top.remove(index);
-						top.add(pertenencias.get(i));
-					}
 				}
 			}
-			top = order(top);
-			return top;
 		}
-	
+		top = order(top);
+		return top;
+	}
+	//Special search function: Looks for material which was lent X times on the recent Y months, being X and Y modifiable parameters.
+	//Receives two integers indicating the time the books were lent and the quantity of latter months user wishes to consult and a Da-
+	//teTime with the actual date and returns an ArrayList<Pertenencia> with the list of books.
+	public ArrayList<Pertenencia> specialSearch(int timesLent, int monthsToConsult){
+		ArrayList<Pertenencia> specialList = new ArrayList<Pertenencia>();
+		int daysDifference = Days.daysBetween(getSystemDate().minusMonths(monthsToConsult), getSystemDate()).getDays();
+		int counter;
+		int quantityLendings;
+		int fecha1;
+		for(int i = 0; i < pertenencias.size(); i++){
+			counter = 0;
+			quantityLendings = 0;
+			while (counter < pertenencias.get(i).getLendingLog().size()){
+				fecha1 = Days.daysBetween(pertenencias.get(i).getLendingLog().get(counter).getLendingDate(), getSystemDate()).getDays();
+				if (fecha1 < daysDifference){
+					quantityLendings++;
+				}
+				counter++;
+			}
+			if (quantityLendings >= timesLent){
+				specialList.add(pertenencias.get(i));
+			}
+		}
+		return specialList;
+	}
 	public int getDiasBase() {
 		return diasBase;
 	}
@@ -260,7 +283,27 @@ public class Biblioteca {
 	public ArrayList<Pertenencia> getPertenencias() {
 		return pertenencias;
 	}
-
+	//Getter for the systemDate attribute.
+	//Receives nothing and returns a String indicating the date the system is working.
+	public String getSystemDateString(){
+		return systemDate.toString("dd/MM/yyyy");
+	}
+	//Getter for the systemDate attribute.
+	//Receives nothing and returns a String indicating the date the system is working.
+	public DateTime getSystemDate(){
+		return systemDate;
+	}
+	//Setter for the systemDate attribute.
+	//Receives and returns nothing.
+	public void setSystemDate(){
+		this.systemDate = new DateTime();
+	}
+	//Setter for the systemDate attribute.
+	//Receives a DateTime with the system date and returns nothing.
+	public void setSystemDate(DateTime systemDate){
+		this.systemDate = systemDate;
+	}
+	
 	@Override
 	public String toString() {
 		String msj;

@@ -1,6 +1,12 @@
 package app.model;
 
+import java.util.ArrayList;
+
 import org.joda.time.DateTime;
+
+import app.model.Lending;
+
+import java.util.ArrayList;
 
 public class Pertenencia {
 	
@@ -12,6 +18,7 @@ public class Pertenencia {
 	Prestatario prestatario;
 	boolean isPrestado = false;
 	DateTime fechaUltimoPrestamo; 
+	ArrayList<Lending> lendingLog;
 	
 	public Pertenencia(String nombre, String imagen, int calificacion) {
 		super();
@@ -83,6 +90,21 @@ public class Pertenencia {
 
 	public void setPrestatario(Prestatario prestatario) {
 		this.prestatario = prestatario;
+	}
+	//Getter for the lendingLog attribute.
+	//Receives nothing and returns an ArrayList<Lending> with the lending history.
+	public ArrayList<Lending> getLendingLog(){
+		return lendingLog;
+	}
+	//Getter for the lendingLog attribute. Works like a toString() function.
+	//Receives nothing and returns a String with the lending history.
+	public String getLendingLogString(){
+		String msg;
+		msg = "\tBorrower \t                Lending date \n";
+		for(int i = 0; i < lendingLog.size(); i++){
+			msg += lendingLog.get(i).toString();
+		}
+		return msg;
 	}
 
 }
