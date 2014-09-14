@@ -60,7 +60,6 @@ public class View extends JFrame {
 	private JTextField StudentSecondLastName;
 	private JTextField StudentPhoneNumber;
 	private JTextField StudentEmail;
-	private JTextField StudentEducationalCenter;
 	private JTextField StudentID;
 	private JTextField RelativeName;
 	private JTextField RelativeFirstName;
@@ -305,6 +304,13 @@ public class View extends JFrame {
 	private JButton btnLendMaterial;
 	private JComboBox comboBox;
 	private PruebaCombobox BookRatingCombobox;
+	private PruebaCombobox MovieRatingCombobox;
+	private PruebaCombobox MagazineRatingCombobox;
+	private JButton MagazineSearchImageBn;
+	private JLabel MagazineImagelbl;
+	private JTextField MovieReleaseDate;
+	private JLabel MovieImagelbl;
+	private JButton MovieSearchImageBn;
 	
 	
 	/**
@@ -1000,15 +1006,15 @@ public class View extends JFrame {
 
 		JLabel StudentRegistrationLbl = new JLabel("Student registration");
 		StudentRegistrationPnl.add(StudentRegistrationLbl, "cell 0 0");
+				
+						JLabel lblNombre_1 = new JLabel("Name:");
+						StudentRegistrationPnl.add(lblNombre_1, "cell 0 2,alignx right");
+		
+				StudentName = new JTextField();
+				StudentRegistrationPnl.add(StudentName, "cell 1 2,growx");
+				StudentName.setColumns(10);
 
-		JLabel lblNombre_1 = new JLabel("Name:");
-		StudentRegistrationPnl.add(lblNombre_1, "cell 0 1,alignx left");
-
-		StudentName = new JTextField();
-		StudentRegistrationPnl.add(StudentName, "cell 0 2,growx");
-		StudentName.setColumns(10);
-
-		JLabel lblPrimerApellido_1 = new JLabel("Primer apellido:");
+		JLabel lblPrimerApellido_1 = new JLabel("First last name:");
 		StudentRegistrationPnl.add(lblPrimerApellido_1,
 				"cell 0 3,alignx trailing");
 
@@ -1016,7 +1022,7 @@ public class View extends JFrame {
 		StudentRegistrationPnl.add(StudentFirstLastName, "cell 1 3,growx");
 		StudentFirstLastName.setColumns(10);
 
-		JLabel lblSegundoApellido_1 = new JLabel("Segundo apellido:");
+		JLabel lblSegundoApellido_1 = new JLabel("Second last name:");
 		StudentRegistrationPnl.add(lblSegundoApellido_1,
 				"cell 0 4,alignx trailing");
 
@@ -1024,37 +1030,28 @@ public class View extends JFrame {
 		StudentRegistrationPnl.add(StudentSecondLastName, "cell 1 4,growx");
 		StudentSecondLastName.setColumns(10);
 
-		JLabel lblTelfono = new JLabel("Teléfono:");
+		JLabel lblTelfono = new JLabel("Phone number:");
 		StudentRegistrationPnl.add(lblTelfono, "cell 0 6,alignx trailing");
 
 		StudentPhoneNumber = new JTextField();
 		StudentRegistrationPnl.add(StudentPhoneNumber, "cell 1 6,growx");
 		StudentPhoneNumber.setColumns(10);
 
-		JLabel lblCorreoElectrnico_1 = new JLabel("Correo electrónico:");
+		JLabel lblCorreoElectrnico_1 = new JLabel("Email:");
 		StudentRegistrationPnl.add(lblCorreoElectrnico_1,
 				"cell 0 7,alignx trailing");
 
 		StudentEmail = new JTextField();
 		StudentRegistrationPnl.add(StudentEmail, "cell 1 7,growx");
 		StudentEmail.setColumns(10);
-
-		JLabel lblInstitucinDondeEstudia = new JLabel(
-				"Institución donde estudia:");
-		StudentRegistrationPnl.add(lblInstitucinDondeEstudia,
-				"cell 0 9,alignx trailing");
-
-		StudentEducationalCenter = new JTextField();
-		StudentRegistrationPnl.add(StudentEducationalCenter, "cell 1 9,growx");
-		StudentEducationalCenter.setColumns(10);
-
-		JLabel lblCarnetDeEstudiante = new JLabel("Carnet de estudiante:");
-		StudentRegistrationPnl.add(lblCarnetDeEstudiante,
-				"cell 0 10,alignx trailing");
-
-		StudentID = new JTextField();
-		StudentRegistrationPnl.add(StudentID, "cell 1 10,growx");
-		StudentID.setColumns(10);
+				
+						JLabel lblCarnetDeEstudiante = new JLabel("ID:");
+						StudentRegistrationPnl.add(lblCarnetDeEstudiante,
+								"cell 0 8,alignx trailing");
+		
+				StudentID = new JTextField();
+				StudentRegistrationPnl.add(StudentID, "cell 1 8,growx");
+				StudentID.setColumns(10);
 
 		StudentRegistrationBtn = new JButton("Register");
 		StudentRegistrationPnl.add(StudentRegistrationBtn,
@@ -1149,7 +1146,7 @@ public class View extends JFrame {
 
 		MagazineRegistrationPnl = new JPanel();
 		contentPane.add(MagazineRegistrationPnl, "name_69108422085933");
-		MagazineRegistrationPnl.setLayout(new MigLayout("", "[][][grow]", "[][][][][][][][][]"));
+		MagazineRegistrationPnl.setLayout(new MigLayout("", "[][][][159.00]", "[][][][][][][][][]"));
 
 		MagazineRegistrationBackBtn = new JButton("Back");
 		MagazineRegistrationPnl.add(MagazineRegistrationBackBtn,
@@ -1179,17 +1176,24 @@ public class View extends JFrame {
 		MagazineRegistrationPnl.add(MagazineRegistrationTheme, "cell 2 3,growx");
 		MagazineRegistrationTheme.setColumns(10);
 		
+		lblRating_2 = new JLabel("Rating:");
+		MagazineRegistrationPnl.add(lblRating_2, "cell 1 4,alignx trailing");
+		
+		MagazineRatingCombobox = new PruebaCombobox();   // Combobox de revista, combobox es una clase (PruebaCombobox)
+		MagazineRegistrationPnl.add(MagazineRatingCombobox, "cell 2 4");
+		
 		lblImage_2 = new JLabel("Image:");
 		MagazineRegistrationPnl.add(lblImage_2, "cell 1 5,alignx trailing");
 		
-		lblRating_2 = new JLabel("Rating:");
-		MagazineRegistrationPnl.add(lblRating_2, "cell 1 7,alignx trailing");
+		MagazineImagelbl = new JLabel("");
+		MagazineImagelbl.setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
+		MagazineRegistrationPnl.add(MagazineImagelbl, "cell 2 5");
 		
-		PruebaCombobox MagazineRatingCombobox = new PruebaCombobox();   // Combobox de revista, combobox es una clase (PruebaCombobox)
-		MagazineRegistrationPnl.add(MagazineRatingCombobox, "cell 2 7");
+		MagazineSearchImageBn = new JButton("Search Image");
+		MagazineRegistrationPnl.add(MagazineSearchImageBn, "cell 3 5,aligny baseline");
 		
 		MagazineRegistrationBtn = new JButton("Register");
-		MagazineRegistrationPnl.add(MagazineRegistrationBtn, "cell 2 8");
+		MagazineRegistrationPnl.add(MagazineRegistrationBtn, "cell 2 8,alignx center");
 
 		BookRegistrationPnl = new JPanel();
 		contentPane.add(BookRegistrationPnl, "name_69114565454795");
@@ -1251,8 +1255,7 @@ public class View extends JFrame {
 
 		MovieRegistrationPnl = new JPanel();
 		contentPane.add(MovieRegistrationPnl, "name_69169014990127");
-		MovieRegistrationPnl.setLayout(new MigLayout("", "[][][grow][]",
-				"[][][][][][][][][][]"));
+		MovieRegistrationPnl.setLayout(new MigLayout("", "[][][257.00][]", "[][][][][][][][][][]"));
 
 		MovieRegistrationBackBtn = new JButton("Back");
 		MovieRegistrationPnl.add(MovieRegistrationBackBtn, "flowx,cell 0 0");
@@ -1266,35 +1269,46 @@ public class View extends JFrame {
 		MovieName = new JTextField();
 		MovieRegistrationPnl.add(MovieName, "cell 2 1,growx");
 		MovieName.setColumns(10);
-
-		JLabel lblImage = new JLabel("Image:");
-		MovieRegistrationPnl.add(lblImage, "cell 1 2");
-
-		lblRating = new JLabel("Rating:");
-		MovieRegistrationPnl.add(lblRating, "cell 1 4");
 		
-		PruebaCombobox MovieRatingCombobox = new PruebaCombobox();  // Combobox rating de pel�cula, combobox es una clase
-		MovieRegistrationPnl.add(MovieRatingCombobox, "cell 2 4");
-
-		lblGenre = new JLabel("Genre:");
-		MovieRegistrationPnl.add(lblGenre, "cell 1 6,alignx trailing");
-
-		MovieGenre = new JTextField();
-		MovieRegistrationPnl.add(MovieGenre, "cell 2 6,growx");
-		MovieGenre.setColumns(10);
-
-		lblDirector = new JLabel("Director:");
-		MovieRegistrationPnl.add(lblDirector, "cell 1 7,alignx trailing");
-
-		MovieDirector = new JTextField();
-		MovieRegistrationPnl.add(MovieDirector, "cell 2 7,growx");
-		MovieDirector.setColumns(10);
-
-		lblReleaseDate = new JLabel("Release date:");
-		MovieRegistrationPnl.add(lblReleaseDate, "cell 1 8");
+				lblGenre = new JLabel("Genre:");
+				MovieRegistrationPnl.add(lblGenre, "cell 1 3,alignx trailing");
+						
+								MovieGenre = new JTextField();
+								MovieRegistrationPnl.add(MovieGenre, "cell 2 3,growx");
+								MovieGenre.setColumns(10);
+				
+						lblDirector = new JLabel("Director:");
+						MovieRegistrationPnl.add(lblDirector, "cell 1 4,alignx trailing");
+				
+						MovieDirector = new JTextField();
+						MovieRegistrationPnl.add(MovieDirector, "cell 2 4,growx");
+						MovieDirector.setColumns(10);
+				
+						lblReleaseDate = new JLabel("Release date:");
+						MovieRegistrationPnl.add(lblReleaseDate, "cell 1 5,alignx trailing");
+				
+				MovieReleaseDate = new JTextField();
+				MovieRegistrationPnl.add(MovieReleaseDate, "cell 2 5,growx");
+				MovieReleaseDate.setColumns(10);
+				
+						lblRating = new JLabel("Rating:");
+						MovieRegistrationPnl.add(lblRating, "cell 1 6,alignx right");
+				
+				MovieRatingCombobox = new PruebaCombobox();  // Combobox rating de pel�cula, combobox es una clase
+				MovieRegistrationPnl.add(MovieRatingCombobox, "cell 2 6");
+		
+				JLabel lblImage = new JLabel("Image:");
+				MovieRegistrationPnl.add(lblImage, "cell 1 7,alignx right");
+		
+		MovieImagelbl = new JLabel("");
+		MovieImagelbl.setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
+		MovieRegistrationPnl.add(MovieImagelbl, "cell 2 7");
+		
+		MovieSearchImageBn = new JButton("Search Image");
+		MovieRegistrationPnl.add(MovieSearchImageBn, "cell 3 7,aligny bottom");
 
 		MovieRegistrationBtn = new JButton("Register");
-		MovieRegistrationPnl.add(MovieRegistrationBtn, "cell 2 9,alignx right");
+		MovieRegistrationPnl.add(MovieRegistrationBtn, "cell 2 9,alignx center");
 
 		SettingPnl = new JPanel();
 		contentPane.add(SettingPnl, "name_69192387445960");
@@ -1632,6 +1646,8 @@ public class View extends JFrame {
 		AllMoviesBackBtn.addActionListener(controller);
 		
 		BookSearchImageBn.addActionListener(controller);
+		MagazineSearchImageBn.addActionListener(controller);
+		MovieSearchImageBn.addActionListener(controller);
 		//TODO
 	}
 
@@ -1681,10 +1697,6 @@ public class View extends JFrame {
 
 	public JTextField getStudentEmail() {
 		return StudentEmail;
-	}
-
-	public JTextField getStudentEducationalCenter() {
-		return StudentEducationalCenter;
 	}
 
 	public JTextField getStudentID() {
@@ -1846,9 +1858,32 @@ public class View extends JFrame {
 	public JPanel getBelongingRegistrationPnl() {
 		return BelongingRegistrationPnl;
 	}
+	
+	////////////////////////////////////////////////////////
+	/// MOVIE REGISTRATION /////////////
 
-	public JPanel getMagazineRegistrationPnl() {
-		return MagazineRegistrationPnl;
+	public JPanel getMovieRegistrationPnl() {
+		return MovieRegistrationPnl;
+	}
+	
+	public JTextField getMovieRegistrationName() {
+		return MovieName;
+	}
+	
+	public JTextField getMovieRegistrationGenre() {
+		return MovieGenre;
+	}
+
+	public JTextField getMovieRegistrationDirector() {
+		return MovieDirector;
+	}
+	
+	public JTextField getMovieRegistrationReleaseDate() {
+		return MovieReleaseDate;
+	}
+	
+	public PruebaCombobox getMovieRatingCombobox() {
+		return MovieRatingCombobox;
 	}
 	
 	////////////////////////////////////////////////////// 
@@ -1874,14 +1909,34 @@ public class View extends JFrame {
 		return BookEdition;
 	}
 	
+	public PruebaCombobox getBookRatingCombobox() {
+		return BookRatingCombobox;
+	}
 	
 	
 	/////////////////////////////////////////////////////////
-	/// MOVIE REGISTRATION  ///////
+	/// MAGAZINE REGISTRATION  ///////
 
-	public JPanel getMovieRegistrationPnl() {
-		return MovieRegistrationPnl;
+	public JPanel getMagazineRegistrationPnl() {
+		return MagazineRegistrationPnl;
 	}
+	
+	public JTextField getMagazineRegistrationName() {
+		return MagazineRegistrationName;
+	}
+	
+	public JTextField getMagazineRegistrationPublicPeriod() {
+		return MagazineRegistrationPublicationPeriod;
+	}
+	public JTextField getMagazineRegistrationTheme() {
+		return MagazineRegistrationTheme;
+	}
+	
+	public PruebaCombobox getMagazineRatingCombobox() {
+		return MagazineRatingCombobox;
+	}
+	//////////////////////////////////////////////////////////
+	
 
 	public JPanel getSettingPnl() {
 		return SettingPnl;
@@ -2171,13 +2226,22 @@ public class View extends JFrame {
 	public JButton getAllMoviesFilterBtn() {
 		return AllMoviesFilterBtn;
 	}
-	public PruebaCombobox getBookRatingCombobox() {
-		return BookRatingCombobox;
-	}
 	public JLabel getBookImageLbl() {
 		return BookImageLbl;
 	}
 	public JButton getBookSearchImageBn() {
 		return BookSearchImageBn;
+	}
+	public JLabel getMagazineImagelbl() {
+		return MagazineImagelbl;
+	}
+	public JButton getMagazineSearchImageBn() {
+		return MagazineSearchImageBn;
+	}
+	public JLabel getMovieImagelbl() {
+		return MovieImagelbl;
+	}
+	public JButton getMovieSearchImageBn() {
+		return MovieSearchImageBn;
 	}
 }

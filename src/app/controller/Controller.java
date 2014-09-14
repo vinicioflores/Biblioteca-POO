@@ -18,6 +18,7 @@ public class Controller implements ActionListener{
 	
 	private Model model;
 	private View view;
+	static String archivo;
 	
 	public Controller(Model model, View view) {
 		super();
@@ -267,6 +268,20 @@ public class Controller implements ActionListener{
 			view.getMagazineRegistrationPnl().setVisible(false);
 
 		}
+		///
+		else if (source == view.getMagazineSearchImageBn()) {
+			JFileChooser chooser = new JFileChooser(); //Creamos objeto de JFileChooser
+			int opcion = chooser.showOpenDialog(view);//Abrir ventana de dialogo para escoger imagen
+			if (opcion == JFileChooser.APPROVE_OPTION) { //Si hacemos click en Abrir o Aceptar
+            	archivo= chooser.getSelectedFile().getPath(); //Obtener nombre del archivo
+                ImageIcon imagen = new ImageIcon(archivo); //Imagen nueva
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(256, 256, Image.SCALE_DEFAULT)); //resize imagen
+                //BookImageLbl.setIcon(imagen);//Antes 
+                view.getMagazineImagelbl().setIcon(imagen);
+                //BookRegistrationPnl.add(BookImageLbl, "cell 2 6");
+                view.getMagazineRegistrationPnl().add(view.getMagazineImagelbl(), "cell 2 5");
+			}
+		}
 		////
 		else if(source == view.getMagazineRegistrationBtn()){
 			registerNewMagazine();
@@ -284,6 +299,20 @@ public class Controller implements ActionListener{
 			view.getMovieRegistrationPnl().setVisible(false);
 
 			
+		}
+		///
+		else if (source == view.getMovieSearchImageBn()) {
+			JFileChooser chooser = new JFileChooser(); //Creamos objeto de JFileChooser
+			int opcion = chooser.showOpenDialog(view);//Abrir ventana de dialogo para escoger imagen
+			if (opcion == JFileChooser.APPROVE_OPTION) { //Si hacemos click en Abrir o Aceptar
+            	archivo= chooser.getSelectedFile().getPath(); //Obtener nombre del archivo
+                ImageIcon imagen = new ImageIcon(archivo); //Imagen nueva
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(256, 256, Image.SCALE_DEFAULT)); //resize imagen
+                //BookImageLbl.setIcon(imagen);//Antes 
+                view.getMovieImagelbl().setIcon(imagen);
+                //BookRegistrationPnl.add(BookImageLbl, "cell 2 6");
+                view.getMovieRegistrationPnl().add(view.getMovieImagelbl(), "cell 2 7");
+			}
 		}
 		////
 		else if(source == view.getMovieRegistrationBtn()){
@@ -402,7 +431,7 @@ public class Controller implements ActionListener{
         	JFileChooser chooser = new JFileChooser(); //Creamos objeto de JFileChooser
 			int opcion = chooser.showOpenDialog(view);//Abrir ventana de dialogo para escoger imagen
 			if (opcion == JFileChooser.APPROVE_OPTION) { //Si hacemos click en Abrir o Aceptar
-            	String archivo = chooser.getSelectedFile().getPath(); //Obtener nombre del archivo
+            	archivo= chooser.getSelectedFile().getPath(); //Obtener nombre del archivo
                 ImageIcon imagen = new ImageIcon(archivo); //Imagen nueva
                 imagen = new ImageIcon(imagen.getImage().getScaledInstance(256, 256, Image.SCALE_DEFAULT)); //resize imagen
                 //BookImageLbl.setIcon(imagen);//Antes 
@@ -414,9 +443,21 @@ public class Controller implements ActionListener{
 	}
 
 	private void registerNewMovie() {
-		System.out.println("registering movie");
-		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(view, "new book registered.");
+		System.out.println("Movie Registration");
+		String name = view.getMovieRegistrationName().getText();
+		String genre = view.getMovieRegistrationGenre().getText();
+		String director = view.getMovieRegistrationDirector().getText();
+		String releaseDate = view.getMovieRegistrationReleaseDate().getText();
+		
+		int rating;
+		view.getMovieRatingCombobox();
+		
+		String imgPath = archivo;
+		CopiarArchivo.getInstance().copiar(imgPath, "C:/Users/Roberto/git/Biblioteca-POO/src/image/"+name+".png");
+		//view.getBookSearchImageBn();
+		
+		
+		JOptionPane.showMessageDialog(view, "New Movie Registered: " + name);
 		
 		//move to start panel
 		/*
@@ -426,9 +467,21 @@ public class Controller implements ActionListener{
 	}
 
 	private void registerNewMagazine() {
-		System.out.println("registering magazine");
-		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(view, "new book registered.");
+		System.out.println("Magazine Registration");
+		
+		String name = view.getMagazineRegistrationName().getText();
+		String publicationPeriod = view.getMagazineRegistrationPublicPeriod().getText();
+		String theme = view.getMagazineRegistrationTheme().getText();
+		
+		int rating;
+		view.getMagazineRatingCombobox();
+		
+		String imgPath = archivo;
+		
+		CopiarArchivo.getInstance().copiar(imgPath, "C:/Users/Roberto/git/Biblioteca-POO/src/image/"+name+".png");
+		//view.getBookSearchImageBn();
+		
+		JOptionPane.showMessageDialog(view, "new magazine registered: "+ name);
 		
 	}
 
@@ -442,11 +495,11 @@ public class Controller implements ActionListener{
 		int rating;
 		view.getBookRatingCombobox();
 		//rating = ; //se debe obtener un int de lo de arriba
+		String imgPath = archivo;
+		CopiarArchivo.getInstance().copiar(imgPath, "C:/Users/Roberto/git/Biblioteca-POO/src/image/"+name+".png");
+		//view.getBookSearchImageBn();
 		
-		String imgPath;
-		view.getBookSearchImageBn();
-		
-		JOptionPane.showMessageDialog(view, "new book registered.");
+		JOptionPane.showMessageDialog(view, "new book registered: "+ name);
 		
 	}
 

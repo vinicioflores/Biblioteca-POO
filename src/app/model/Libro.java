@@ -58,6 +58,7 @@ public class Libro extends Pertenencia{
 	public void setEdicion(String edicion) {
 		this.edicion = edicion;
 	}
+	
 
 	@Override
 	public String toString() {
