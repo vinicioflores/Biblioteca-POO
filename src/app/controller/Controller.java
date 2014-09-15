@@ -865,6 +865,8 @@ public class Controller implements ActionListener{
 		
 	}
 	private void updateCurrentValues(){
+		view.getCurrentSystemDate().setText(model.getCurrentSystemDate().toString("dd/MM/yyyy"));
+		view.getTotalBelongingsLblM().setText(""+model.totalBelongings());
 		
 		
 	}

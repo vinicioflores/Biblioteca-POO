@@ -30,6 +30,10 @@ public class Biblioteca {
 		setSystemDate();
 	}
 	
+	public int totalBelongings(){
+		return pertenencias.size();
+	}
+	
 	public void agregarNuevaPertenencia(Pertenencia pertenencia){
 		pertenencias.add(pertenencia);
 	}

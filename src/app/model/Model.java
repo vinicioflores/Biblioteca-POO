@@ -1,5 +1,7 @@
 package app.model;
 
+import org.joda.time.DateTime;
+
 public class Model {
 	
 	private Biblioteca biblioteca;
@@ -21,6 +23,12 @@ public class Model {
 	}
 	public int getNumberLentBelongings(){
 		return biblioteca.getNumberOfLendedBelongings();
+	}
+	public DateTime getCurrentSystemDate(){
+		return biblioteca.getSystemDate();
+	}
+	public int totalBelongings(){
+		return biblioteca.totalBelongings();
 	}
 
 }

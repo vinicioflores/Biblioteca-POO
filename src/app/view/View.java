@@ -291,7 +291,7 @@ public class View extends JFrame {
 	private JScrollPane AllMoviesSPane;
 	private JButton AllMoviesBackBtn;
 	private JLabel lblCurrentDate_1;
-	private JLabel lblNewLabel_1;
+	private JLabel currentSystemDate;
 	private JPanel LendingPnl;
 	private JButton btnBack; 
 	private JLabel lblMaterialStatus;
@@ -313,6 +313,7 @@ public class View extends JFrame {
 	private JSpinner MovieRatingSpinner;
 	private JSpinner MagazineRatingSpinner;
 	private JLabel TotalBorrowedLblM;
+	private JLabel TotalBelongingsLblM;
 	
 	
 	/**
@@ -385,8 +386,8 @@ public class View extends JFrame {
 		lblCurrentDate_1 = new JLabel("Current date:");
 		MainPanelOptions.add(lblCurrentDate_1, "cell 0 8");
 		
-		lblNewLabel_1 = new JLabel("New label");
-		MainPanelOptions.add(lblNewLabel_1, "cell 0 9");
+		currentSystemDate = new JLabel("New label");
+		MainPanelOptions.add(currentSystemDate, "cell 0 9");
 
 		HistoryBtn = new JButton("History");
 		MainPanelOptions.add(HistoryBtn, "cell 0 10,alignx center");
@@ -409,7 +410,7 @@ public class View extends JFrame {
 		lblTotal1.setFont(new Font("Consolas", Font.ITALIC, 18));
 		StartPnl.add(lblTotal1, "cell 2 1");
 
-		JLabel TotalBelongingsLblM = new JLabel("Blank");
+		TotalBelongingsLblM = new JLabel("Blank");
 		TotalBelongingsLblM.setFont(new Font("Consolas", Font.ITALIC, 18));
 		StartPnl.add(TotalBelongingsLblM, "cell 3 1");
 
@@ -2256,5 +2257,11 @@ public class View extends JFrame {
 	}
 	public JLabel getTotalBorrowedLblM() {
 		return TotalBorrowedLblM;
+	}
+	public JLabel getCurrentSystemDate() {
+		return currentSystemDate;
+	}
+	public JLabel getTotalBelongingsLblM() {
+		return TotalBelongingsLblM;
 	}
 }
