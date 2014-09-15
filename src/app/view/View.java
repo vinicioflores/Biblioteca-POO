@@ -43,6 +43,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JFormattedTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.ButtonGroup;
+import java.awt.GridLayout;
 
 public class View extends JFrame {
 
@@ -416,6 +417,7 @@ public class View extends JFrame {
 
 		JPanel allBelongingsPnl = new JPanel();
 		StartPnl.add(allBelongingsPnl, "cell 1 2 3 1,grow");
+		allBelongingsPnl.setLayout(new GridLayout(1, 0, 0, 0));
 
 		JLabel lblPrestadas = new JLabel("Lent");
 		lblPrestadas.setFont(new Font("Consolas", Font.PLAIN, 21));
