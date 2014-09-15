@@ -10,6 +10,10 @@ import app.model.Model;
 import app.model.Persona;
 import app.view.View;
 
+/**Responsable of creating the main function
+ * 
+ * 
+ * /
 public class Sarasvati {
 	public static void main(String[] args) {
 		Model model = new Model();
