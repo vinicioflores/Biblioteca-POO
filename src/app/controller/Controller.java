@@ -3,6 +3,7 @@ package app.controller;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
@@ -18,7 +19,7 @@ public class Controller implements ActionListener{
 	
 	private Model model;
 	private View view;
-	static String archivo;
+	static String archivo = null;
 	
 	public Controller(Model model, View view) {
 		super();
@@ -444,17 +445,31 @@ public class Controller implements ActionListener{
 
 	private void registerNewMovie() {
 		System.out.println("Movie Registration");
-		String name = view.getMovieRegistrationName().getText();
-		String genre = view.getMovieRegistrationGenre().getText();
-		String director = view.getMovieRegistrationDirector().getText();
-		String releaseDate = view.getMovieRegistrationReleaseDate().getText();
 		
-		int rating;
-		view.getMovieRatingCombobox();
+		boolean validTF = false;
+		boolean validPath = false;
 		
+		String name = view.getMovieRegistrationName().getText().trim();
+		String genre = view.getMovieRegistrationGenre().getText().trim();
+		String director = view.getMovieRegistrationDirector().getText().trim();
+		String releaseDate = view.getMovieRegistrationReleaseDate().getText().trim();
+		
+		
+		int rating = (Integer)view.getMovieRatingSpinner().getValue();
+		
+		if(name.isEmpty()||genre.isEmpty()||director.isEmpty()||releaseDate.isEmpty()){
+			validTF = false;
+		}else{
+			validTF = true;
+		}
+		
+		if(archivo == null){
+			validPath = false;
+		}else{
+			validPath = true;
 		String imgPath = archivo;
-		CopiarArchivo.getInstance().copiar(imgPath, "C:/Users/Roberto/git/Biblioteca-POO/src/image/"+name+".png");
-		//view.getBookSearchImageBn();
+		CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+name+".png");
+		}
 		
 		
 		JOptionPane.showMessageDialog(view, "New Movie Registered: " + name);
@@ -468,44 +483,103 @@ public class Controller implements ActionListener{
 
 	private void registerNewMagazine() {
 		System.out.println("Magazine Registration");
+		boolean validTF = false;
+		boolean validPath = false;
+				
+		String name = view.getMagazineRegistrationName().getText().trim();
 		
-		String name = view.getMagazineRegistrationName().getText();
-		String publicationPeriod = view.getMagazineRegistrationPublicPeriod().getText();
-		String theme = view.getMagazineRegistrationTheme().getText();
+		String publicationPeriod = view.getMagazineRegistrationPublicPeriod().getText().trim();
+				
+		String theme = view.getMagazineRegistrationTheme().getText().trim();
 		
-		int rating;
-		view.getMagazineRatingCombobox();
+		if(name.isEmpty()||publicationPeriod.isEmpty()||theme.isEmpty()){
+			validTF = false;
+			
+		}else{
+			validTF = true;
+		}
 		
-		String imgPath = archivo;
+		int rating = (Integer)view.getBookRatingSpinner().getValue();
 		
-		CopiarArchivo.getInstance().copiar(imgPath, "C:/Users/Roberto/git/Biblioteca-POO/src/image/"+name+".png");
-		//view.getBookSearchImageBn();
+		if(archivo == null){
+			validPath = false;
+		}
+		else{
+			validPath = true;
+			String imgPath = archivo;
+			CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+name+".png");
+		}
 		
-		JOptionPane.showMessageDialog(view, "new magazine registered: "+ name);
+		if(validTF&&validPath){
+			
+			Revista mag = new Revista(name,".\\src\\image\\"+name+".png", rating,theme, publicationPeriod );
+			System.out.println(mag.toString());
+			
+			JOptionPane.showMessageDialog(view, "New magazine was registered: "+ name);
+			
+			//Add to the database
+			model.addBelonging(mag);
+			
+			//Move to start?
+			view.getStartPnl().setVisible(true); 
+			view.getMagazineRegistrationPnl().setVisible(false);
+			
+			//clean
+			archivo = null;
+			view.getMagazineRegistrationName().setText("");
+			view.getMagazineRegistrationPublicPeriod().setText("");
+			view.getMagazineRegistrationTheme().setText("");
+			view.getBookRatingSpinner().setValue(0);
+			view.getMagazineImagelbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
+			
+		}else{
+			if(!validTF){
+				ShowDialog("Incomplete data");
+				
+			}
+			else if(!validPath){
+				ShowDialog("You must choose an image file first");
+				
+			}
+		}
+		
+		
 		
 	}
 
 	private void registerNewBook() {
 		// TODO 
-		System.out.println("Book Registration");
-		String name = view.getBookName().getText();
-		String author = view.getBookAuthor().getText();
-		String editorial = view.getBookEditorial().getText();
-		String edition = view.getBookEdition().getText();
-		int rating;
-		view.getBookRatingCombobox();
-		//rating = ; //se debe obtener un int de lo de arriba
-		String imgPath = archivo;
-		CopiarArchivo.getInstance().copiar(imgPath, "C:/Users/Roberto/git/Biblioteca-POO/src/image/"+name+".png");
-		//view.getBookSearchImageBn();
 		
+		System.out.println("Book Registration");
+		boolean validTF = false;
+		boolean validPath = false;
+		
+		String name = view.getBookName().getText().trim();
+		String author = view.getBookAuthor().getText().trim();
+		String editorial = view.getBookEditorial().getText().trim();
+		String edition = view.getBookEdition().getText().trim();
+		int rating = (Integer)view.getBookRatingSpinner().getValue();
+		
+		
+		if(archivo!=null){
+			validPath = true;
+		String imgPath = archivo;
+		CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+name+".png");
+		}else{
+			
+			
+		}
+		
+		archivo = null;
 		JOptionPane.showMessageDialog(view, "new book registered: "+ name);
 		
 	}
 
 	private void registerRelative() {
 		System.out.println("registering relative");
-		try {
+		boolean validTF = false;
+		boolean validPath = false;
+		
 		String name = view.getRelativeName().getText();
 		String lastName1 = view.getRelativeFirstName().getText();
 		String lastName2 = view.getRelativeSecondLastName().getText();
@@ -515,9 +589,7 @@ public class Controller implements ActionListener{
 		Familiar relative = new Familiar(name, lastName1, lastName2,phone, email, kin);
 		System.out.println(relative.toString());
 		model.addBorrower(relative);
-		}catch(Exception e){
-			ShowDialog("Incorrect registration");
-		}
+		
 		
 		//TODO show success dialog
 	}
@@ -531,6 +603,9 @@ public class Controller implements ActionListener{
 
 	private void registerStudent() {
 		System.out.println("registering student");
+		boolean validTF = false;
+		boolean validPath = false;
+		
 		String studentId;
 		// TODO Auto-generated method stub
 		
@@ -539,7 +614,30 @@ public class Controller implements ActionListener{
 	private void registerCoworker() {
 		// TODO Auto-generated method stub;
 		System.out.println("registering coworker");
+		boolean validTF = false;
+		boolean validEmail = false;
 		
+		String email = view.getCoworkerEmail().getText().trim();
+		String lastn1 = view.getCoworkerFirstLastName().getText().trim();
+		String name = view.getCoworkerName().getText().trim();
+		String phone = view.getCoworkerPhoneNumber().getText().trim();
+		String lastn2 = view.getCoworkerSecondLastName().getText().trim();
+		String workpos = view.getCoworkerWorkPosition().getText().trim();
+		
+		
+		if(email.isEmpty()||lastn1.isEmpty()||name.isEmpty()||phone.isEmpty()||lastn2.isEmpty()||workpos.isEmpty()){
+			validTF = false;
+		}else{
+			validTF = true;
+		}
+		
+		if(isCorreoValido(email)){
+			validEmail = true;
+		}
+		
+		if(validTF){
+			
+		}
 	}
 	
 	private String getSelectedRadioButtonInGroupText(ButtonGroup group){
@@ -553,6 +651,51 @@ public class Controller implements ActionListener{
 	        
 	    }
 		return null;
+		
+	}
+	private static boolean isCorreoValido(String correo){
+		char caracterLeido;
+		int posArroba = 0;
+		
+		//Revisión del arroba.
+		posArroba = correo.indexOf("@");
+		if (posArroba <= 0){
+			return false; //Caso el arroba no esté presente, o esté presente en primera posición del string, no es válido.
+		}
+		
+		//Comprobar que antes del arroba hayan caracteres válidos.
+		//Dividimos correo en dos Strings: Antes y después del arroba.
+		String antesArroba = correo.substring(0, posArroba);
+		String despuesArroba = correo.substring(posArroba+1);
+		
+		//Verificaremos si hay caracteres válidos en el String antes del arroba (A-Z, a-z, 0-9, punto, guión y guión bajo).
+		for(int i = 0; i<antesArroba.length(); i++){
+			caracterLeido = antesArroba.charAt(i);
+			if (!(caracterLeido > '/' && caracterLeido < ':' ||
+					caracterLeido > '@' && caracterLeido < '[' ||
+					caracterLeido > '`' && caracterLeido < '{' ||
+					caracterLeido == '-' || caracterLeido == '.' ||
+					caracterLeido == '_')){
+				return false; //Caso los caracteres anteriores al arroba no sean los válidos, invalida el correo.
+			}
+		}
+		
+		//Comprobaremos que después del arroba hayan caracteres válidos.
+		//Verificaremos si hay al menos un punto para el dominio. 
+		if (despuesArroba.indexOf(".") <= 1){
+			return false;
+		}
+		for(int i = 0; i<despuesArroba.length(); i++){
+			caracterLeido = despuesArroba.charAt(i);
+			if (!(caracterLeido > '/' && caracterLeido < ':' ||
+					caracterLeido > '@' && caracterLeido < '[' ||
+					caracterLeido > '`' && caracterLeido < '{' ||
+					caracterLeido == '-' || caracterLeido == '.' ||
+					caracterLeido == '_')){
+				return false; //Caso los caracteres posteriores al arroba sean inválidos
+			}
+		}
+		return true;
 		
 	}
 	

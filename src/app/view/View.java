@@ -303,15 +303,15 @@ public class View extends JFrame {
 	private JButton btnDevolveMaterial;
 	private JButton btnLendMaterial;
 	private JComboBox comboBox;
-	private PruebaCombobox BookRatingCombobox;
-	private PruebaCombobox MovieRatingCombobox;
-	private PruebaCombobox MagazineRatingCombobox;
 	private JButton MagazineSearchImageBn;
 	private JLabel MagazineImagelbl;
 	private JTextField MovieReleaseDate;
 	private JLabel MovieImagelbl;
 	private JButton MovieSearchImageBn;
 	private JLabel lblChooseBelongingsType;
+	private JSpinner BookRatingSpinner;
+	private JSpinner MovieRatingSpinner;
+	private JSpinner MagazineRatingSpinner;
 	
 	
 	/**
@@ -1063,7 +1063,7 @@ public class View extends JFrame {
 		RelativeRegistrationPnl.setLayout(new MigLayout("",
 				"[][226.00][grow][]", "[][][][][][][][][][]"));
 
-		RelativeRegistrationBackBtn = new JButton("Volver");
+		RelativeRegistrationBackBtn = new JButton("Back");
 		RelativeRegistrationPnl.add(RelativeRegistrationBackBtn,
 				"flowx,cell 0 0");
 
@@ -1116,7 +1116,7 @@ public class View extends JFrame {
 		RelativeRegistrationPnl.add(RelativeKinship, "cell 1 8,growx");
 		RelativeKinship.setColumns(10);
 
-		RelativeRegistrationBtn = new JButton("Registrar");
+		RelativeRegistrationBtn = new JButton("Register");
 		RelativeRegistrationPnl.add(RelativeRegistrationBtn, "cell 1 9");
 
 		BelongingRegistrationPnl = new JPanel();
@@ -1183,8 +1183,9 @@ public class View extends JFrame {
 		lblRating_2 = new JLabel("Rating:");
 		MagazineRegistrationPnl.add(lblRating_2, "cell 1 4,alignx trailing");
 		
-		MagazineRatingCombobox = new PruebaCombobox();   // Combobox de revista, combobox es una clase (PruebaCombobox)
-		MagazineRegistrationPnl.add(MagazineRatingCombobox, "cell 2 4");
+		MagazineRatingSpinner = new JSpinner();
+		MagazineRatingSpinner.setModel(new SpinnerNumberModel(0, 0, 5, 1));
+		MagazineRegistrationPnl.add(MagazineRatingSpinner, "cell 2 4");
 		
 		lblImage_2 = new JLabel("Image:");
 		MagazineRegistrationPnl.add(lblImage_2, "cell 1 5,alignx trailing");
@@ -1239,9 +1240,10 @@ public class View extends JFrame {
 		
 				lblRating_1 = new JLabel("Rating:");
 				BookRegistrationPnl.add(lblRating_1, "cell 1 5,alignx right");
-		
-		BookRatingCombobox = new PruebaCombobox();  // Combobox rating de registrar libro, el combobox es una clase
-		BookRegistrationPnl.add(BookRatingCombobox, "cell 2 5");
+				
+				BookRatingSpinner = new JSpinner();
+				BookRatingSpinner.setModel(new SpinnerNumberModel(0, 0, 5, 1));
+				BookRegistrationPnl.add(BookRatingSpinner, "cell 2 5");
 				
 				lblImage_1 = new JLabel("Image:");
 				BookRegistrationPnl.add(lblImage_1, "cell 1 6");
@@ -1298,8 +1300,9 @@ public class View extends JFrame {
 						lblRating = new JLabel("Rating:");
 						MovieRegistrationPnl.add(lblRating, "cell 1 5,alignx right");
 				
-				MovieRatingCombobox = new PruebaCombobox();  // Combobox rating de pel�cula, combobox es una clase
-				MovieRegistrationPnl.add(MovieRatingCombobox, "cell 2 5");
+				MovieRatingSpinner = new JSpinner();
+				MovieRatingSpinner.setModel(new SpinnerNumberModel(0, 0, 5, 1));
+				MovieRegistrationPnl.add(MovieRatingSpinner, "cell 2 5");
 		
 				JLabel lblImage = new JLabel("Image:");
 				MovieRegistrationPnl.add(lblImage, "cell 1 6,alignx right");
@@ -1886,9 +1889,7 @@ public class View extends JFrame {
 		return MovieReleaseDate;
 	}
 	
-	public PruebaCombobox getMovieRatingCombobox() {
-		return MovieRatingCombobox;
-	}
+
 	
 	////////////////////////////////////////////////////// 
 	// BOOK REGISTRATION /////
@@ -1913,9 +1914,6 @@ public class View extends JFrame {
 		return BookEdition;
 	}
 	
-	public PruebaCombobox getBookRatingCombobox() {
-		return BookRatingCombobox;
-	}
 	
 	
 	/////////////////////////////////////////////////////////
@@ -1936,9 +1934,7 @@ public class View extends JFrame {
 		return MagazineRegistrationTheme;
 	}
 	
-	public PruebaCombobox getMagazineRatingCombobox() {
-		return MagazineRatingCombobox;
-	}
+
 	//////////////////////////////////////////////////////////
 	
 
@@ -2247,5 +2243,14 @@ public class View extends JFrame {
 	}
 	public JButton getMovieSearchImageBn() {
 		return MovieSearchImageBn;
+	}
+	public JSpinner getBookRatingSpinner() {
+		return BookRatingSpinner;
+	}
+	public JSpinner getMovieRatingSpinner() {
+		return MovieRatingSpinner;
+	}
+	public JSpinner getMagazineRatingSpinner() {
+		return MagazineRatingSpinner;
 	}
 }
