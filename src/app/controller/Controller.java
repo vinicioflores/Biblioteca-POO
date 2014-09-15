@@ -780,9 +780,10 @@ public class Controller implements ActionListener{
 		if(validTF&&validEmail){
 			Colega coworker = new Colega(name, lastn1, lastn2,
 					phone, email, workpos);
+			System.out.println(coworker.toString());
 			model.addBorrower(coworker);
 			
-			ShowDialog("New coworker was registered");
+			ShowDialog("New coworker was registered: " + name + " " + lastn1);
 		}else{
 			if(!validEmail){
 				ShowDialog("The email is no valid, try another");
@@ -848,6 +849,10 @@ public class Controller implements ActionListener{
 			}
 		}
 		return true;
+		
+	}
+	private void updateCurrentValues(){
+		
 		
 	}
 	

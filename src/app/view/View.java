@@ -312,6 +312,7 @@ public class View extends JFrame {
 	private JSpinner BookRatingSpinner;
 	private JSpinner MovieRatingSpinner;
 	private JSpinner MagazineRatingSpinner;
+	private JLabel TotalBorrowedLblM;
 	
 	
 	/**
@@ -423,7 +424,7 @@ public class View extends JFrame {
 		lblTotal2.setFont(new Font("Consolas", Font.ITALIC, 18));
 		StartPnl.add(lblTotal2, "cell 2 3");
 
-		JLabel TotalBorrowedLblM = new JLabel("Blank");
+		TotalBorrowedLblM = new JLabel("Blank");
 		TotalBorrowedLblM.setFont(new Font("Consolas", Font.ITALIC, 18));
 		StartPnl.add(TotalBorrowedLblM, "cell 3 3");
 
@@ -2252,5 +2253,8 @@ public class View extends JFrame {
 	}
 	public JSpinner getMagazineRatingSpinner() {
 		return MagazineRatingSpinner;
+	}
+	public JLabel getTotalBorrowedLblM() {
+		return TotalBorrowedLblM;
 	}
 }
