@@ -499,7 +499,8 @@ public class Controller implements ActionListener{
 			validTF = true;
 		}
 		
-		int rating = (Integer)view.getBookRatingSpinner().getValue();
+		int rating = Integer.parseInt(view.getMagazineRatingSpinner().getValue().toString());
+		System.out.println(rating + " " + "HERE");
 		
 		if(archivo == null){
 			validPath = false;
@@ -524,13 +525,6 @@ public class Controller implements ActionListener{
 			view.getStartPnl().setVisible(true); 
 			view.getMagazineRegistrationPnl().setVisible(false);
 			
-			//clean
-			archivo = null;
-			view.getMagazineRegistrationName().setText("");
-			view.getMagazineRegistrationPublicPeriod().setText("");
-			view.getMagazineRegistrationTheme().setText("");
-			view.getBookRatingSpinner().setValue(0);
-			view.getMagazineImagelbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
 			
 		}else{
 			if(!validTF){
@@ -543,6 +537,12 @@ public class Controller implements ActionListener{
 			}
 		}
 		
+		archivo = null;
+		view.getMagazineRegistrationName().setText("");
+		view.getMagazineRegistrationPublicPeriod().setText("");
+		view.getMagazineRegistrationTheme().setText("");
+		view.getBookRatingSpinner().setValue(0);
+		view.getMagazineImagelbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
 		
 		
 	}
@@ -578,7 +578,7 @@ public class Controller implements ActionListener{
 	private void registerRelative() {
 		System.out.println("registering relative");
 		boolean validTF = false;
-		boolean validPath = false;
+		boolean validEmail = false;
 		
 		String name = view.getRelativeName().getText();
 		String lastName1 = view.getRelativeFirstName().getText();
@@ -586,12 +586,15 @@ public class Controller implements ActionListener{
 		String kin = view.getRelativeKinship().getText();
 		String email = view.getRelativeEmail().getText();
 		String phone = view.getRelativePhoneNumber().getText();
+		
+		
+		
 		Familiar relative = new Familiar(name, lastName1, lastName2,phone, email, kin);
 		System.out.println(relative.toString());
 		model.addBorrower(relative);
 		
 		
-		//TODO show success dialog
+
 	}
 
 	private void ShowDialog(String string) {
@@ -604,10 +607,17 @@ public class Controller implements ActionListener{
 	private void registerStudent() {
 		System.out.println("registering student");
 		boolean validTF = false;
-		boolean validPath = false;
+		boolean validEmail = false;
 		
 		String studentId;
-		// TODO Auto-generated method stub
+		view.getStudentEmail();
+		view.getStudentFirstLastName();
+		view.getStudentID();
+		view.getStudentName(); 
+		view.getStudentPhoneNumber();
+		view.getStudentSecondLastName();
+	
+		
 		
 	}
 
@@ -635,8 +645,12 @@ public class Controller implements ActionListener{
 			validEmail = true;
 		}
 		
-		if(validTF){
+		if(validTF&&validEmail){
+			Colega coworker = new Colega(name, lastn1, lastn2,
+					phone, email, workpos);
+			model.addBorrower(coworker);
 			
+			ShowDialog("New coworker was registered");
 		}
 	}
 	
@@ -648,10 +662,8 @@ public class Controller implements ActionListener{
 	            if (button.isSelected()) {
 	                return button.getText();
 	            }
-	        
 	    }
 		return null;
-		
 	}
 	private static boolean isCorreoValido(String correo){
 		char caracterLeido;
