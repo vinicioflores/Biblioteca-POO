@@ -476,8 +476,8 @@ public class Controller implements ActionListener{
 					genre,director,releaseDate);
 			
 			model.addBelonging(movie);
-			
-			ShowDialog("new movie registered");
+			System.out.println(movie.toString());
+			ShowDialog("New movie registered");
 			
 			view.getStartPnl().setVisible(true); 
 			view.getMovieRegistrationPnl().setVisible(false);
@@ -490,9 +490,17 @@ public class Controller implements ActionListener{
 			view.getMovieRegistrationReleaseDate().setText("");
 			
 			view.getMovieImagelbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
+		}else{
+			if(!validTF){
+				ShowDialog("Incomplete data");
+				
+			}
+			else if(!validPath){
+				ShowDialog("You must choose an image file first");
+				
+			}
+			
 		}
-		
-		JOptionPane.showMessageDialog(view, "New Movie Registered: " + name);
 		
 		//move to start panel
 		/*
