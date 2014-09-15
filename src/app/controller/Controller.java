@@ -477,7 +477,7 @@ public class Controller implements ActionListener{
 			
 			model.addBelonging(movie);
 			System.out.println(movie.toString());
-			ShowDialog("New movie registered");
+			ShowDialog("New movie registered: " + name);
 			
 			view.getStartPnl().setVisible(true); 
 			view.getMovieRegistrationPnl().setVisible(false);
@@ -642,15 +642,16 @@ public class Controller implements ActionListener{
 
 	private void registerRelative() {
 		System.out.println("registering relative");
+		
 		boolean validTF = false;
 		boolean validEmail = false;
 		
-		String name = view.getRelativeName().getText();
-		String lastn1 = view.getRelativeFirstName().getText();
-		String lastn2 = view.getRelativeSecondLastName().getText();
-		String kin = view.getRelativeKinship().getText();
-		String email = view.getRelativeEmail().getText();
-		String phone = view.getRelativePhoneNumber().getText();
+		String name = view.getRelativeName().getText().trim();
+		String lastn1 = view.getRelativeFirstName().getText().trim();
+		String lastn2 = view.getRelativeSecondLastName().getText().trim();
+		String kin = view.getRelativeKinship().getText().trim();
+		String email = view.getRelativeEmail().getText().trim();
+		String phone = view.getRelativePhoneNumber().getText().trim();
 		
 		if(email.isEmpty()||lastn1.isEmpty()||name.isEmpty()||phone.isEmpty()||lastn2.isEmpty()||kin.isEmpty()){
 			validTF = false;
@@ -660,16 +661,37 @@ public class Controller implements ActionListener{
 		
 		if(isCorreoValido(email)){
 			validEmail = true;
+		}else{
+			validEmail = false;
 		}
+		
 		if (validTF&&validEmail){
+			
 		Familiar relative = new Familiar(name, lastn1, lastn2,phone, email, kin);
 		System.out.println(relative.toString());
 		model.addBorrower(relative);
+		
+		ShowDialog("A new relative was registered: " + name + " " + lastn1);
+		
+		view.getStartPnl().setVisible(true);
+		view.getRelativeRegistrationPnl().setVisible(false);
+		
+		view.getRelativeName().setText("");
+		view.getRelativeFirstName().setText("");
+		view.getRelativeSecondLastName().setText("");
+		view.getRelativeKinship().setText("");
+		view.getRelativeEmail().setText("");
+		view.getRelativePhoneNumber().setText("");
+		
+		
 		}else{
+			
 			if(!validEmail){
+				
 				ShowDialog("The email is no valid, try another");
 			}
 			else{
+				
 				ShowDialog("Complete all of the fields");
 			}
 		}
@@ -678,10 +700,7 @@ public class Controller implements ActionListener{
 	}
 
 	private void ShowDialog(String string) {
-		System.out.println("registering coworker");
-		JOptionPane.showMessageDialog(view, string);
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(view, string);	
 	}
 
 	private void registerStudent() {
@@ -707,11 +726,22 @@ public class Controller implements ActionListener{
 		}
 		
 		if(validEmail&&validTF){
-			Estudiante student = new Estudiante(name, lastn1,
-			lastn2, phone, email,
-			studentId);
+			Estudiante student = new Estudiante(name, lastn1, lastn2, phone, email,studentId);
+			System.out.println(student.toString());
 			model.addBorrower(student);
-			ShowDialog("New student was registered");
+			
+			ShowDialog("New student was registered: " + name + " " + lastn1);
+			
+			view.getStartPnl().setVisible(true);
+			view.getStudentRegistrationPnl().setVisible(false);
+			
+			view.getStudentEmail().setText("");
+			view.getStudentFirstLastName().setText("");
+			view.getStudentID().setText("");
+			view.getStudentName().setText("");
+			view.getStudentPhoneNumber().setText("");
+			view.getStudentSecondLastName().setText("");	
+			
 		}else{
 			if(!validEmail){
 				ShowDialog("The email is no valid, try another");
@@ -753,6 +783,14 @@ public class Controller implements ActionListener{
 			model.addBorrower(coworker);
 			
 			ShowDialog("New coworker was registered");
+		}else{
+			if(!validEmail){
+				ShowDialog("The email is no valid, try another");
+			}
+			else{
+				ShowDialog("Complete all of the fields");
+			}
+			
 		}
 	}
 	
