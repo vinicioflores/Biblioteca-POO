@@ -784,6 +784,19 @@ public class Controller implements ActionListener{
 			model.addBorrower(coworker);
 			
 			ShowDialog("New coworker was registered: " + name + " " + lastn1);
+			
+			view.getStartPnl().setVisible(true);
+			view.getCoworkerRegistrationPnl().setVisible(false);
+			
+			view.getCoworkerEmail().setText("");
+			view.getCoworkerFirstLastName().setText("");
+			view.getCoworkerName().setText("");
+			view.getCoworkerPhoneNumber().setText("");
+			view.getCoworkerSecondLastName().setText("");
+			view.getCoworkerWorkPosition().setText("");
+			
+			
+			
 		}else{
 			if(!validEmail){
 				ShowDialog("The email is no valid, try another");

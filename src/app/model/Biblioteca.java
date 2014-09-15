@@ -37,7 +37,15 @@ public class Biblioteca {
 	//-----------------------------------------------------------
 	//  Libros
 	//-----------------------------------------------------------
-
+	public int getNumberOfLendedBelongings(){
+		int cnt = 0;
+		for(int i = 0; i < pertenencias.size();i++){
+			if(pertenencias.get(i).isPrestado == true){
+				cnt++;
+			}
+		}
+		return cnt;
+	}
 	//Título
 	public ArrayList<Libro> buscarLibrosPorTitulo(String titulo){
 		ArrayList<Libro> matches = new ArrayList<Libro>();

@@ -20,10 +20,10 @@ public class Colega extends Prestatario{
 	
 	@Override
 	public String toString(){
-		String msj = "\nEstudiante: " + nombre + " " + primerApellido + " " + segundoApellido + ""
+		String msj = "\nColega: " + nombre + " " + primerApellido + " " + segundoApellido + ""
 					+ "\nPuesto: " + puesto + "\nTelefono: "
 					+ telefono + "Correo electronico: " + correoE 
-					+ "\nPertenencias prestadas=" + PertenenciasPrestadas;
+					+ "\nPertenencias prestadas: " + PertenenciasPrestadas;
 			for(int i = 0; i < PertenenciasPrestadas.size(); i++){
 				
 				msj+="\t";

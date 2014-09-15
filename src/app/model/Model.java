@@ -19,5 +19,8 @@ public class Model {
 	public void addBorrower(Prestatario borrower){
 		prestatarios.agregarPrestatario(borrower);
 	}
+	public int getNumberLentBelongings(){
+		return biblioteca.getNumberOfLendedBelongings();
+	}
 
 }
