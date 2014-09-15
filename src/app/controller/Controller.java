@@ -471,6 +471,11 @@ public class Controller implements ActionListener{
 		CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+name+".png");
 		}
 		
+		if(validTF&&validPath){
+			Pelicula movie = new Pelicula(name, ".\\src\\image\\"+name+".png", rating,
+					genre,director,releaseDate);
+			model.addBelonging(movie);
+		}
 		
 		JOptionPane.showMessageDialog(view, "New Movie Registered: " + name);
 		
@@ -487,9 +492,7 @@ public class Controller implements ActionListener{
 		boolean validPath = false;
 				
 		String name = view.getMagazineRegistrationName().getText().trim();
-		
 		String publicationPeriod = view.getMagazineRegistrationPublicPeriod().getText().trim();
-				
 		String theme = view.getMagazineRegistrationTheme().getText().trim();
 		
 		if(name.isEmpty()||publicationPeriod.isEmpty()||theme.isEmpty()){
@@ -500,8 +503,7 @@ public class Controller implements ActionListener{
 		}
 		
 		int rating = Integer.parseInt(view.getMagazineRatingSpinner().getValue().toString());
-		System.out.println(rating + " " + "HERE");
-		
+
 		if(archivo == null){
 			validPath = false;
 		}
@@ -525,6 +527,13 @@ public class Controller implements ActionListener{
 			view.getStartPnl().setVisible(true); 
 			view.getMagazineRegistrationPnl().setVisible(false);
 			
+			//clean
+			archivo = null;
+			view.getMagazineRegistrationName().setText("");
+			view.getMagazineRegistrationPublicPeriod().setText("");
+			view.getMagazineRegistrationTheme().setText("");
+			view.getBookRatingSpinner().setValue(0);
+			view.getMagazineImagelbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
 			
 		}else{
 			if(!validTF){
@@ -536,15 +545,7 @@ public class Controller implements ActionListener{
 				
 			}
 		}
-		
-		archivo = null;
-		view.getMagazineRegistrationName().setText("");
-		view.getMagazineRegistrationPublicPeriod().setText("");
-		view.getMagazineRegistrationTheme().setText("");
-		view.getBookRatingSpinner().setValue(0);
-		view.getMagazineImagelbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
-		
-		
+				
 	}
 
 	private void registerNewBook() {
@@ -581,18 +582,33 @@ public class Controller implements ActionListener{
 		boolean validEmail = false;
 		
 		String name = view.getRelativeName().getText();
-		String lastName1 = view.getRelativeFirstName().getText();
-		String lastName2 = view.getRelativeSecondLastName().getText();
+		String lastn1 = view.getRelativeFirstName().getText();
+		String lastn2 = view.getRelativeSecondLastName().getText();
 		String kin = view.getRelativeKinship().getText();
 		String email = view.getRelativeEmail().getText();
 		String phone = view.getRelativePhoneNumber().getText();
 		
+		if(email.isEmpty()||lastn1.isEmpty()||name.isEmpty()||phone.isEmpty()||lastn2.isEmpty()||kin.isEmpty()){
+			validTF = false;
+		}else{
+			validTF = true;
+		}
 		
-		
-		Familiar relative = new Familiar(name, lastName1, lastName2,phone, email, kin);
+		if(isCorreoValido(email)){
+			validEmail = true;
+		}
+		if (validTF&&validEmail){
+		Familiar relative = new Familiar(name, lastn1, lastn2,phone, email, kin);
 		System.out.println(relative.toString());
 		model.addBorrower(relative);
-		
+		}else{
+			if(!validEmail){
+				ShowDialog("The email is no valid, try another");
+			}
+			else{
+				ShowDialog("Complete all of the fields");
+			}
+		}
 		
 
 	}
@@ -609,15 +625,37 @@ public class Controller implements ActionListener{
 		boolean validTF = false;
 		boolean validEmail = false;
 		
-		String studentId;
-		view.getStudentEmail();
-		view.getStudentFirstLastName();
-		view.getStudentID();
-		view.getStudentName(); 
-		view.getStudentPhoneNumber();
-		view.getStudentSecondLastName();
-	
+		String email = view.getStudentEmail().getText().trim();
+		String lastn1 =view.getStudentFirstLastName().getText().trim();
+		String studentId =view.getStudentID().getText().trim();
+		String name = view.getStudentName().getText().trim();
+		String phone = view.getStudentPhoneNumber().getText().trim();
+		String lastn2 = view.getStudentSecondLastName().getText().trim();	
 		
+		if(email.isEmpty()||lastn1.isEmpty()||name.isEmpty()||phone.isEmpty()||lastn2.isEmpty()||studentId.isEmpty()){
+			validTF = false;
+		}else{
+			validTF = true;
+		}
+		
+		if(isCorreoValido(email)){
+			validEmail = true;
+		}
+		
+		if(validEmail&&validTF){
+			Estudiante student = new Estudiante(name, lastn1,
+			lastn2, phone, email,
+			studentId);
+			model.addBorrower(student);
+			ShowDialog("New student was registered");
+		}else{
+			if(!validEmail){
+				ShowDialog("The email is no valid, try another");
+			}
+			else{
+				ShowDialog("Complete all of the fields");
+			}
+		}
 		
 	}
 
