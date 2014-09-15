@@ -489,6 +489,7 @@ public class Controller implements ActionListener{
 			view.getMovieRegistrationDirector().setText("");
 			view.getMovieRegistrationReleaseDate().setText("");
 			
+			view.getMovieRatingSpinner().setValue(0);
 			view.getMovieImagelbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
 		}else{
 			if(!validTF){
@@ -555,7 +556,8 @@ public class Controller implements ActionListener{
 			view.getMagazineRegistrationName().setText("");
 			view.getMagazineRegistrationPublicPeriod().setText("");
 			view.getMagazineRegistrationTheme().setText("");
-			view.getBookRatingSpinner().setValue(0);
+			
+			view.getMagazineRatingSpinner().setValue(0);
 			view.getMagazineImagelbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
 			
 		}else{
@@ -582,20 +584,59 @@ public class Controller implements ActionListener{
 		String author = view.getBookAuthor().getText().trim();
 		String editorial = view.getBookEditorial().getText().trim();
 		String edition = view.getBookEdition().getText().trim();
+		
 		int rating = (Integer)view.getBookRatingSpinner().getValue();
+		
+		if(name.isEmpty()||author.isEmpty()||editorial.isEmpty()||edition.isEmpty()){
+			validTF = false;
+		}else{
+			validTF = true;
+		}
 		
 		
 		if(archivo!=null){
 			validPath = true;
-		String imgPath = archivo;
-		CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+name+".png");
+			String imgPath = archivo;
+			CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+name+".png");
 		}else{
-			
+			validPath = false;
 			
 		}
 		
-		archivo = null;
-		JOptionPane.showMessageDialog(view, "new book registered: "+ name);
+		if(validTF&&validPath){
+			Libro book = new Libro(name,".\\src\\image\\"+name+".png", rating,author, editorial, edition );
+			System.out.println(book.toString());
+			
+			ShowDialog("New book was registered: "+ name);
+			
+			//Add to the database
+			model.addBelonging(book);
+			
+			//Move to start?
+			view.getStartPnl().setVisible(true); 
+			view.getBookRegistrationPnl().setVisible(false);
+			
+			//clean
+			archivo = null;
+			
+			view.getBookName().setText("");
+			view.getBookAuthor().setText("");
+			view.getBookEditorial().setText("");
+			view.getBookEdition().setText("");
+			
+			view.getBookRatingSpinner().setValue(0);
+			view.getBookImageLbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
+			
+		}else{
+			if(!validTF){
+				ShowDialog("Incomplete data");
+				
+			}
+			else if(!validPath){
+				ShowDialog("You must choose an image file first");
+				
+			}
+		}
 		
 	}
 
