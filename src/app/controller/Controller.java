@@ -474,7 +474,22 @@ public class Controller implements ActionListener{
 		if(validTF&&validPath){
 			Pelicula movie = new Pelicula(name, ".\\src\\image\\"+name+".png", rating,
 					genre,director,releaseDate);
+			
 			model.addBelonging(movie);
+			
+			ShowDialog("new movie registered");
+			
+			view.getStartPnl().setVisible(true); 
+			view.getMovieRegistrationPnl().setVisible(false);
+			
+			///clean
+			archivo = null;
+			view.getMovieRegistrationName().setText("");
+			view.getMovieRegistrationGenre().setText("");
+			view.getMovieRegistrationDirector().setText("");
+			view.getMovieRegistrationReleaseDate().setText("");
+			
+			view.getMovieImagelbl().setIcon(new ImageIcon(View.class.getResource("/image/default_image.png")));
 		}
 		
 		JOptionPane.showMessageDialog(view, "New Movie Registered: " + name);
