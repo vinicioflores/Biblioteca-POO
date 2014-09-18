@@ -20,8 +20,7 @@ public class BookEdit extends JPanel{
 	private JTextField publisherTextField;
 	private JTextField editionTextField;
 	
-	public BookEdit(Libro book){
-		this.book = book;
+	public BookEdit(){
 		setLayout(new MigLayout("", "[][][359.00][]", "[][][][][][][][][][]"));
 		
 		JButton btnBack = new JButton("Back");

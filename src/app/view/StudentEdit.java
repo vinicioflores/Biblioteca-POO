@@ -18,8 +18,7 @@ public class StudentEdit extends JPanel{
 	private JTextField mailField;
 	private JTextField IDField;
 		
-	public StudentEdit(Estudiante student){
-		this.student = student;
+	public StudentEdit(){
 		setLayout(new MigLayout("", "[236.00][][grow]", "[][][][][][][][][][][]"));
 			
 		JButton btnBack = new JButton("Back");

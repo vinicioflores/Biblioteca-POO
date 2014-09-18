@@ -20,8 +20,7 @@ public class MovieEdit extends JPanel{
 	private JTextField directorTextField;
 	private JTextField rdTextField;
 	
-	public MovieEdit(Pelicula Movie){
-		this.movie = movie;
+	public MovieEdit(){
 		setLayout(new MigLayout("", "[][][335.00,grow][]", "[][][][][][][][][][][]"));
 		
 		JButton btnBack = new JButton("Back");

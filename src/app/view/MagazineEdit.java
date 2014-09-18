@@ -19,8 +19,7 @@ public class MagazineEdit extends JPanel{
 	private JTextField pubPerTextField;
 	private JTextField themeTextField;
 	
-	public MagazineEdit(Revista magazine){
-		this.magazine = magazine;
+	public MagazineEdit(){
 		setLayout(new MigLayout("", "[][][335.00,grow][]", "[][][][][][][][][][]"));
 		
 		JButton btnBack = new JButton("Back");

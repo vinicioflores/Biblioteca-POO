@@ -18,8 +18,7 @@ public class RelativeEdit extends JPanel{
 	private JTextField mailField;
 	private JTextField kinshipField;
 		
-	public RelativeEdit(Familiar relative){
-		this.relative = relative;
+	public RelativeEdit(){
 		setLayout(new MigLayout("", "[236.00][][grow]", "[][][][][][][][][][][]"));
 			
 		JButton btnBack = new JButton("Back");

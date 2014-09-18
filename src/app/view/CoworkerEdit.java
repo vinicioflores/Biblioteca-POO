@@ -18,8 +18,7 @@ public class CoworkerEdit extends JPanel{
 	private JTextField mailField;
 	private JTextField WPField;
 		
-	public CoworkerEdit(Colega coworker){
-		this.coworker = coworker;
+	public CoworkerEdit(){
 		setLayout(new MigLayout("", "[236.00][][grow]", "[][][][][][][][][][][]"));
 			
 		JButton btnBack = new JButton("Back");
