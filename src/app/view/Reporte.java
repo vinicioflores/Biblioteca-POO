@@ -8,9 +8,6 @@ import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import javax.swing.JTable;
 
-/**Is the responsable for creating the report of all
- * the belongings borrowed in the system
- * /
 
 public class Reporte extends JPanel {
 
