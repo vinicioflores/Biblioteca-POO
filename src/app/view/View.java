@@ -315,7 +315,7 @@ public class View extends JFrame {
 	private JSpinner MagazineRatingSpinner;
 	private JLabel TotalBorrowedLblM;
 	private JLabel TotalBelongingsLblM;
-	private BookEdit bookEditPnl;
+	//private BookEdit bookEditPnl;
 	private CoworkerEdit coworkerEditPnl;
 	private MagazineEdit magazineEditPnl;
 	private MovieEdit movieEditPnl;
@@ -1511,17 +1511,17 @@ public class View extends JFrame {
 		contentPane.add(CreditsPnl, "name_5917427800206");
 		CreditsPnl.setLayout(new MigLayout("", "[356.00px][714.00px]", "[15px][][][][][][][][][][][][][][][][][]"));
 
-		bookEditPnl = new BookEdit();
+		//bookEditPnl = new BookEdit();
 		
-		magazineEditPnl = new MagazineEdit();
+		//magazineEditPnl = new MagazineEdit();
 		
-		movieEditPnl = new MovieEdit();
+		//movieEditPnl = new MovieEdit();
 		
-		coworkerEditPnl = new CoworkerEdit();
+		//coworkerEditPnl = new CoworkerEdit();
 		
-		relativeEditPnl = new RelativeEdit();
+		//relativeEditPnl = new RelativeEdit();
 		
-		studentEditPnl = new StudentEdit();
+		//studentEditPnl = new StudentEdit();
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));

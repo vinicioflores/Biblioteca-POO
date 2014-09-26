@@ -16,8 +16,8 @@ public class BelongingItem extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public BelongingItem(Pertenencia belong) {
-		this.belong= belong;
+	public BelongingItem() {
+		
 		initialize();
 	}
 	private void initialize() {

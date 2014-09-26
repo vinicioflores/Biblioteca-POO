@@ -21,7 +21,7 @@ public class MovieItem extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public MovieItem(Pelicula movie) {
+	public MovieItem() {
 
 		initialize();
 	}
