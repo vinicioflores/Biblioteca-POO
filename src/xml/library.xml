@@ -1,0 +1,85 @@
+<Biblioteca>
+  <pertenencias>
+    <Libro>
+      <nombre>Mi amigo Johnny</nombre>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>BO0</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <autor>Tablón</autor>
+      <editorial>CN</editorial>
+      <edicion>1ra</edicion>
+    </Libro>
+    <Libro>
+      <nombre>La naranja mecánica</nombre>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>BO1</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <autor>Anthony Burguess</autor>
+      <editorial>Alfaguara</editorial>
+      <edicion>1ra</edicion>
+    </Libro>
+    <Revista>
+      <nombre>El hombre en la tierra</nombre>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MA2</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <tematica>Cuentos</tematica>
+      <periodoPublicacion>1990</periodoPublicacion>
+    </Revista>
+    <Revista>
+      <nombre>American Scientific</nombre>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MA3</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <tematica>Penguin</tematica>
+      <periodoPublicacion>2013</periodoPublicacion>
+    </Revista>
+    <Pelicula>
+      <nombre>FullMetal Jacket</nombre>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MO4</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <genero>Bélico</genero>
+      <director>Stanley Kubrick</director>
+      <anhoPublicacion>1990</anhoPublicacion>
+    </Pelicula>
+    <Pelicula>
+      <nombre>Pulp Fiction</nombre>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MO5</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <genero>Humor</genero>
+      <director>Quentin Tarantino</director>
+      <anhoPublicacion>1994</anhoPublicacion>
+    </Pelicula>
+  </pertenencias>
+  <diasBase>30</diasBase>
+  <diasTolerancia>10</diasTolerancia>
+  <topX>10</topX>
+  <tiempoBusquedaMeses>3</tiempoBusquedaMeses>
+  <cantidasVecesBusqueda>2</cantidasVecesBusqueda>
+  <systemDate>
+    <iMillis>1411797267122</iMillis>
+    <iChronology class="org.joda.time.chrono.ISOChronology" resolves-to="org.joda.time.chrono.ISOChronology$Stub" serialization="custom">
+      <org.joda.time.chrono.ISOChronology_-Stub>
+        <org.joda.time.tz.CachedDateTimeZone resolves-to="org.joda.time.DateTimeZone$Stub" serialization="custom">
+          <org.joda.time.DateTimeZone_-Stub>
+            <string>America/Costa_Rica</string>
+          </org.joda.time.DateTimeZone_-Stub>
+        </org.joda.time.tz.CachedDateTimeZone>
+      </org.joda.time.chrono.ISOChronology_-Stub>
+    </iChronology>
+  </systemDate>
+</Biblioteca>
