@@ -33,24 +33,10 @@ public class Familiar extends Prestatario{
 						+ telefono + "\nCorreo electronico: " + correoE 
 				+ "\nPertenencias prestadas: \n";
 		
-		for(int i = 0; i < PertenenciasPrestadas.size(); i++){
+		for(int i = 0; i < lendingLog.size(); i++){
 			
 			msj+="\t";
-			if(PertenenciasPrestadas.get(i) instanceof Libro){
-				
-				msj += ((Libro)PertenenciasPrestadas.get(i)).toString() + "\n";
-				
-			}
-			else if(PertenenciasPrestadas.get(i) instanceof Revista){
-				
-				msj += ((Revista)PertenenciasPrestadas.get(i)).toString() + "\n";
-				
-			}
-			else if(PertenenciasPrestadas.get(i) instanceof Pelicula){
-				
-				msj += ((Pelicula)PertenenciasPrestadas.get(i)).toString() + "\n";
-				
-			}
+			msj+=lendingLog.get(i) + "\n";
 		}
 		return msj;
 	}
