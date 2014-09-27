@@ -1,6 +1,6 @@
 package app.model;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;   
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -16,8 +16,6 @@ public class Biblioteca {
 	private int tiempoBusquedaMeses;
 	private int cantidasVecesBusqueda;
 	private DateTime systemDate;
-	
-	
 	
 	public Biblioteca() {
 		super();
@@ -38,9 +36,6 @@ public class Biblioteca {
 		pertenencias.add(pertenencia);
 	}
 	 	
-	//-----------------------------------------------------------
-	//  Libros
-	//-----------------------------------------------------------
 	public int getNumberOfLendedBelongings(){
 		int cnt = 0;
 		for(int i = 0; i < pertenencias.size();i++){
@@ -50,7 +45,11 @@ public class Biblioteca {
 		}
 		return cnt;
 	}
-	//Título
+	
+	//-----------------------------------------------------------
+	// Search by Books
+	//-----------------------------------------------------------
+	//Title
 	public ArrayList<Libro> buscarLibrosPorTitulo(String titulo){
 		ArrayList<Libro> matches = new ArrayList<Libro>();
 		for (int i = 0; i < pertenencias.size(); i++){
@@ -63,7 +62,7 @@ public class Biblioteca {
 		return matches;
 	}
 
-	//Autor
+	//Author
 	public ArrayList<Libro> buscarLibrosPorAutor(String autor){
 		
 		ArrayList<Libro> matches = new ArrayList<Libro>();
@@ -97,10 +96,10 @@ public class Biblioteca {
 	}
 
 	//-----------------------------------------------------------
-	//  Revista
+	//  Search by Magazines
 	//-----------------------------------------------------------
 
-	//Título
+	//Title
 	public ArrayList<Revista> buscarRevistasPorTitulo(String titulo){
 		ArrayList<Revista> matches = new ArrayList<Revista>();
 		for (int i = 0; i < pertenencias.size(); i++){
@@ -116,7 +115,7 @@ public class Biblioteca {
 		return matches;
 	}
 
-	//Tematica
+	//Theme
 	public ArrayList<Revista> buscarRevistasPorTematica(String tematica){
 		ArrayList<Revista> matches = new ArrayList<Revista>();
 		for (int i = 0; i < pertenencias.size(); i++){
@@ -133,10 +132,10 @@ public class Biblioteca {
 	}
 
 	//-----------------------------------------------------------
-	//  Película
+	//  Movie
 	//-----------------------------------------------------------
 
-	//Título
+	//Title
 	public ArrayList<Pelicula> buscarPeliculasPorTitulo(String titulo){
 		ArrayList<Pelicula> matches = new ArrayList<Pelicula>();
 		for (int i = 0; i < pertenencias.size(); i++){
@@ -152,7 +151,7 @@ public class Biblioteca {
 		return matches;
 	}
 
-	//Género
+	//Genre
 	public ArrayList<Pelicula> buscarPeliculasPorGenero(String genero){
 		ArrayList<Pelicula> matches = new ArrayList<Pelicula>();
 		for (int i = 0; i < pertenencias.size(); i++){
@@ -196,9 +195,9 @@ public class Biblioteca {
 		}
 		return index;
 	}
+	
 	//Orders top X in descending order.
 	//Receives ArrayList<Pertenencia> y returns same ArrayList<Pertenencia> ordered in descending order according to rented times.
-	//Based on Selection Sort.
 	private ArrayList<Pertenencia> order(ArrayList<Pertenencia> list){
 		int indexHigherElem = 0;
 		ArrayList<Pertenencia> modifiedTop = new ArrayList<Pertenencia>();
@@ -215,6 +214,7 @@ public class Biblioteca {
 		modifiedTop.add(list.get(0));
 		return modifiedTop;
 	}	
+	
 	//Top X
 	//It doesn't receive parameters and returns an ArrayList<Pertenencias> as an top X
 	public ArrayList<Pertenencia> topX(){
@@ -237,6 +237,7 @@ public class Biblioteca {
 		top = order(top);
 		return top;
 	}
+	
 	//Special search function: Looks for material which was lent X times on the recent Y months, being X and Y modifiable parameters.
 	//Receives two integers indicating the time the books were lent and the quantity of latter months user wishes to consult and re-
 	//turns an ArrayList<Pertenencia> with the list of books.
@@ -340,5 +341,4 @@ public class Biblioteca {
 		}
 		return msj;
 	}
-	
 }

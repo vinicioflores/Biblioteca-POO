@@ -1,12 +1,10 @@
 package app.model;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 
 import org.joda.time.DateTime;
 
 import app.model.Lending;
-
-import java.util.ArrayList;
 
 public class Pertenencia {
 	
@@ -15,6 +13,7 @@ public class Pertenencia {
 	int calificacion;
 	int vecesPrestado;
 	static int codigo = 0;
+	String ID = null;
 	Prestatario prestatario;
 	boolean isPrestado = false;
 	DateTime fechaUltimoPrestamo; 
@@ -22,10 +21,10 @@ public class Pertenencia {
 	
 	public Pertenencia(String nombre, String imagen, int calificacion) {
 		super();
-		
 		this.nombre = nombre;
 		this.imagen = imagen;
 		this.calificacion = calificacion;
+		this.lendingLog = new ArrayList<Lending>();
 	}
 
 	public boolean isPrestado() {
@@ -52,6 +51,22 @@ public class Pertenencia {
 		this.fechaUltimoPrestamo = fechaUltimoPrestamo;
 	}
 
+	public static int getCodigo(){
+		return codigo;
+	}
+	
+	public static void setCodigo(int codigo){
+		Pertenencia.codigo = codigo;
+	}
+	
+	public String getID(){
+		return ID;
+	}
+	
+	public void setID(String ID){
+		this.ID = ID;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

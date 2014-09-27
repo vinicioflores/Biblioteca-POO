@@ -12,6 +12,8 @@ public class Pelicula extends Pertenencia{
 		this.genero = genero;
 		this.director = director;
 		this.anhoPublicacion = anhoPublicacion;
+		this.ID = "MO"+Pertenencia.getCodigo();
+		Pertenencia.codigo++;
 	}
 
 	public String getGenero() {
@@ -30,24 +32,22 @@ public class Pelicula extends Pertenencia{
 		this.director = director;
 	}
 
-	public String getanhoPublicacion() {
+	public String getAnhoPublicacion() {
 		return anhoPublicacion;
 	}
 
-	public void setanhoPublicacion(String anhoPublicacion) {
+	public void setAnhoPublicacion(String anhoPublicacion) {
 		this.anhoPublicacion = anhoPublicacion;
 	}
 
 	@Override
 	public String toString() {
-		String msj = "\nPelicula: "+ nombre + "\nGenero: " + genero + "\nDirector: " + director
+		String msj = "\nID: " + ID + "\nPelicula: "+ nombre + "\nGenero: " + genero + "\nDirector: " + director
 				+ "\nAnho publicacion: " + anhoPublicacion  
-				+ "\nPath de la imagen: " + imagen + "\nCalificación=" + calificacion
+				+ "\nPath de la imagen: " + imagen + "\nCalificaciï¿½n=" + calificacion
 				+ "\nVeces prestado=" + vecesPrestado + "";
 		
-		if (prestatario != null){
-			msj += "\nPrestatario: " + prestatario.toString() + "\n";
-		}
+		msj += lendingLog.toString();
 		
 		return msj;
 	}

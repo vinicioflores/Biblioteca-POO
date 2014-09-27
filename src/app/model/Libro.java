@@ -5,40 +5,21 @@ public class Libro extends Pertenencia{
 	String autor;
 	String editorial;
 	String edicion;
-	
-	/*
-	 * private int score = 0;
-	private boolean rentado = false;
-	private int ID = 0;
-	 */
-	
-	/**  En esta clase se desarrolla el objeto Libro, el cual incorpora como atributos
-	 * caracteristicas basicas como titulo, autores, editorial, etc
-	 * Este objeto está asociado con la clase Cliente porque cada cliente
-	 * posee un arreglo de objetos Libro, donde se incorporan
-	 * sus libros rentados  **/
-	
-
-
-	public String getAutor() {
-		return autor;
-	}
-	/**
-	 * 
-	 * @param nombre
-	 * @param imagen
-	 * @param calificacion
-	 * @param autor
-	 * @param editorial
-	 * @param edicion
-	 */
+		
 	public Libro(String nombre, String imagen, int calificacion, String autor, String editorial, String edicion) {
 		super(nombre, imagen, calificacion);
 		this.autor = autor;
 		this.editorial = editorial;
 		this.edicion = edicion;
+		this.ID = "BO"+Pertenencia.getCodigo();
+		Pertenencia.codigo++;
 	}
 
+	public String getAutor() {
+		return autor;
+	}
+
+	
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
@@ -62,13 +43,13 @@ public class Libro extends Pertenencia{
 
 	@Override
 	public String toString() {
-		String msj =   "\nLibro: " + nombre +"\nAutor: " + autor + "\nEditorial: " + editorial
+		String msj = "\nID: " + ID + "\nLibro: " + nombre +"\nAutor: " + autor + "\nEditorial: " + editorial
 				+ "\nEdicion: " + edicion + "\nPath de la imagen: "
 				+ imagen + "\nCalificacion=" + calificacion
 				+ "\nVeces prestado: " + vecesPrestado;
-		if (prestatario!=null){
-			msj += "Prestatario: " + prestatario.toString();
-		}
+		
+		msj += lendingLog.toString();
+		
 		return msj;
 	}
 	

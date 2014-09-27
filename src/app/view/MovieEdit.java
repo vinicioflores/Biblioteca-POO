@@ -53,7 +53,7 @@ public class MovieEdit extends JPanel{
 		JLabel lblRD = new JLabel("Release date:");
 		add(lblRD, "cell 1 4,alignx trailing");
 		
-		rdTextField = new JTextField(movie.getanhoPublicacion());
+		rdTextField = new JTextField(movie.getAnhoPublicacion());
 		add(rdTextField, "cell 2 4,growx");
 		rdTextField.setColumns(10);
 		

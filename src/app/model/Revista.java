@@ -1,17 +1,18 @@
 package app.model;
 
-import org.joda.time.DateTime;
-
 public class Revista extends Pertenencia{
+
 	String tematica;
 	String periodoPublicacion;
+
 
 	public Revista(String nombre, String imagen, int calificacion,
 			String tematica, String periodoPublicacion) {
 		super(nombre, imagen, calificacion);
 		this.tematica = tematica;
 		this.periodoPublicacion = periodoPublicacion;
-		this.fechaUltimoPrestamo = new DateTime();
+		this.ID = "MA"+Pertenencia.getCodigo();
+		Pertenencia.codigo++;
 	}
 
 	public String getTematica() {
@@ -32,21 +33,13 @@ public class Revista extends Pertenencia{
 
 	@Override
 	public String toString() {
-		String msj = "\nRevista : " + nombre + "\nTematica: " + tematica + "\nPeriodo publicacion:"
-				+ periodoPublicacion + "\nPath de la imagen:"
+		String msj = "\nID: " + ID + "\nRevista: " + nombre + "\nTematica: " + tematica
+				+ "\nPeriodo publicacion:" + periodoPublicacion + "\nPath de la imagen:"
 				+ imagen + "\nCalificacion=" + calificacion
 				+ "\nVeces prestado:" + vecesPrestado+ "\nEsta prestado?: " + isPrestado;
 		
-		if(prestatario!=null){
-			
-			msj += "Prestado a: " + prestatario.toString();
-			msj += "El dia : " + fechaUltimoPrestamo.toString() + "\n";
-		}
+		msj += lendingLog.toString();
 		
 		return msj;
 	}
-	
-	
-	
-
 }

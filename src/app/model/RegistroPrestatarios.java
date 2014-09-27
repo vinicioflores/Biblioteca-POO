@@ -14,15 +14,7 @@ public class RegistroPrestatarios {
 		prestatarios.add(prestatario);
 	}
 	
-	
-	public void guardar(){
-		
+	public ArrayList<Prestatario> getPrestatarios(){
+		return prestatarios;
 	}
-	
-	public void cargar(){
-		
-	}
-	
-	
-
 }
