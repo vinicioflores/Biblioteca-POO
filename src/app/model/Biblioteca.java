@@ -45,6 +45,18 @@ public class Biblioteca {
 		}
 		return cnt;
 	}
+	//-----------------------------------------------------------
+	//Search by ID
+	//-----------------------------------------------------------
+	public ArrayList<Pertenencia> searchContentByID(String ID){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i).getID() == ID){
+				matches.add(pertenencias.get(i));
+			}
+		}
+		return matches;
+	}
 	
 	//-----------------------------------------------------------
 	// Search by Books
