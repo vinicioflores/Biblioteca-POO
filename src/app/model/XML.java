@@ -175,5 +175,7 @@ public class XML {
 		
 		loadBorrowerRegistryXML(pathRegistry, received2);
 		loadLibraryXML(pathLibrary, received1);
+		
+		
 		}
 }

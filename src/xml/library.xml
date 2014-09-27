@@ -1,37 +1,5 @@
 <Biblioteca>
   <pertenencias>
-    <Libro>
-      <nombre>Mi amigo Johnny</nombre>
-      <calificacion>5</calificacion>
-      <vecesPrestado>0</vecesPrestado>
-      <ID>BO0</ID>
-      <isPrestado>false</isPrestado>
-      <lendingLog/>
-      <autor>Tablón</autor>
-      <editorial>CN</editorial>
-      <edicion>1ra</edicion>
-    </Libro>
-    <Libro>
-      <nombre>La naranja mecánica</nombre>
-      <calificacion>5</calificacion>
-      <vecesPrestado>0</vecesPrestado>
-      <ID>BO1</ID>
-      <isPrestado>false</isPrestado>
-      <lendingLog/>
-      <autor>Anthony Burguess</autor>
-      <editorial>Alfaguara</editorial>
-      <edicion>1ra</edicion>
-    </Libro>
-    <Revista>
-      <nombre>El hombre en la tierra</nombre>
-      <calificacion>5</calificacion>
-      <vecesPrestado>0</vecesPrestado>
-      <ID>MA2</ID>
-      <isPrestado>false</isPrestado>
-      <lendingLog/>
-      <tematica>Cuentos</tematica>
-      <periodoPublicacion>1990</periodoPublicacion>
-    </Revista>
     <Revista>
       <nombre>American Scientific</nombre>
       <calificacion>5</calificacion>
@@ -41,6 +9,16 @@
       <lendingLog/>
       <tematica>Penguin</tematica>
       <periodoPublicacion>2013</periodoPublicacion>
+    </Revista>
+    <Revista>
+      <nombre>El hombre en la tierra</nombre>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MA2</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <tematica>Cuentos</tematica>
+      <periodoPublicacion>1990</periodoPublicacion>
     </Revista>
     <Pelicula>
       <nombre>FullMetal Jacket</nombre>
@@ -53,6 +31,28 @@
       <director>Stanley Kubrick</director>
       <anhoPublicacion>1990</anhoPublicacion>
     </Pelicula>
+    <Libro>
+      <nombre>La naranja mecánica</nombre>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>BO1</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <autor>Anthony Burguess</autor>
+      <editorial>Alfaguara</editorial>
+      <edicion>1ra</edicion>
+    </Libro>
+    <Libro>
+      <nombre>Mi amigo Johnny</nombre>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>BO0</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <autor>Tablón</autor>
+      <editorial>CN</editorial>
+      <edicion>1ra</edicion>
+    </Libro>
     <Pelicula>
       <nombre>Pulp Fiction</nombre>
       <calificacion>5</calificacion>
@@ -71,7 +71,7 @@
   <tiempoBusquedaMeses>3</tiempoBusquedaMeses>
   <cantidasVecesBusqueda>2</cantidasVecesBusqueda>
   <systemDate>
-    <iMillis>1411797267122</iMillis>
+    <iMillis>1411833748765</iMillis>
     <iChronology class="org.joda.time.chrono.ISOChronology" resolves-to="org.joda.time.chrono.ISOChronology$Stub" serialization="custom">
       <org.joda.time.chrono.ISOChronology_-Stub>
         <org.joda.time.tz.CachedDateTimeZone resolves-to="org.joda.time.DateTimeZone$Stub" serialization="custom">

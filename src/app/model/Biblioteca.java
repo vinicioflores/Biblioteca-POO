@@ -33,9 +33,35 @@ public class Biblioteca {
 	}
 	
 	public void agregarNuevaPertenencia(Pertenencia pertenencia){
-		pertenencias.add(pertenencia);
+		if (pertenencias.size() == 0){
+			pertenencias.add(pertenencia);
+		}
+		else{
+			orderingNewBelonging(pertenencia);
+		}
 	}
 	 	
+	private void orderingNewBelonging(Pertenencia belonging){
+		boolean inserted = false;
+		int i = 0;
+		while(!inserted){
+			if (i >= pertenencias.size()){
+				pertenencias.add(i,belonging);
+				inserted = true;
+			}
+			else{
+				System.out.println(pertenencias.get(i).getNombre()+" vs. "+belonging.getNombre());
+				System.out.println(pertenencias.get(i).getNombre().compareToIgnoreCase(belonging.getNombre()));
+				if (pertenencias.get(i).getNombre().compareToIgnoreCase(belonging.nombre) > 0){
+					pertenencias.add(i,belonging);
+					inserted = true;
+				} else {
+					i++;
+				}
+			}
+		}
+	}
+	
 	public int getNumberOfLendedBelongings(){
 		int cnt = 0;
 		for(int i = 0; i < pertenencias.size();i++){
