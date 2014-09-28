@@ -1,45 +1,13 @@
 <RegistroPrestatarios>
   <prestatarios>
-    <Familiar>
-      <nombre>Oscar</nombre>
-      <primerApellido>Rodríguez</primerApellido>
-      <segundoApellido>Serrano</segundoApellido>
-      <lendingLog/>
-      <parentesco>Padre</parentesco>
-    </Familiar>
-    <Familiar>
-      <nombre>Jaqueline</nombre>
-      <primerApellido>de Oliveira</primerApellido>
-      <lendingLog/>
-      <parentesco>Madre</parentesco>
-    </Familiar>
-    <Colega>
-      <nombre>Faubricio</nombre>
-      <primerApellido>Forester</primerApellido>
-      <segundoApellido>Soto</segundoApellido>
-      <lendingLog/>
-      <puesto>Programador</puesto>
-    </Colega>
-    <Colega>
-      <nombre>Roberto</nombre>
-      <primerApellido>Chen</primerApellido>
-      <segundoApellido>Zheng</segundoApellido>
-      <lendingLog/>
-      <puesto>Programador</puesto>
-    </Colega>
     <Estudiante>
       <nombre>Dayana</nombre>
       <primerApellido>Méndez</primerApellido>
       <segundoApellido>Salas</segundoApellido>
+      <telefono>12345678</telefono>
+      <correoE>day0129@hotmail.com</correoE>
       <lendingLog/>
-      <carnet>2013086583</carnet>
-    </Estudiante>
-    <Estudiante>
-      <nombre>Pedro</nombre>
-      <primerApellido>Rodríguez</primerApellido>
-      <segundoApellido>de Oliveira</segundoApellido>
-      <lendingLog/>
-      <carnet>2013086585</carnet>
+      <carnet>2013086588</carnet>
     </Estudiante>
   </prestatarios>
 </RegistroPrestatarios>

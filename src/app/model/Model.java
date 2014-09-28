@@ -9,6 +9,8 @@ public class Model {
 	private Biblioteca biblioteca;
 	private RegistroPrestatarios prestatarios;
 	private ArrayList<Pertenencia> tempSearch;
+	final String pathLibrary = "src/xml/library.xml";
+	final String pathRegistry = "src/xml/borrowerRegistry.xml";
 	
 	public Model() {
 		super();
@@ -30,11 +32,23 @@ public class Model {
 	public int totalBelongings(){
 		return biblioteca.totalBelongings();
 	}
+	public String getPathLibrary(){
+		return pathLibrary;
+	}
+	public String getPathRegistry(){
+		return pathRegistry;
+	}
 	public Biblioteca getBiblioteca() {
 		return biblioteca;
 	}
+	public void setBiblioteca(Biblioteca biblioteca){
+		this.biblioteca = biblioteca;
+	}
 	public RegistroPrestatarios getPrestatarios() {
 		return prestatarios;
+	}
+	public void setPrestatarios(RegistroPrestatarios registry){
+		this.prestatarios = registry;
 	}
 	public ArrayList<Pertenencia> getTempSearch() {
 		return tempSearch;
