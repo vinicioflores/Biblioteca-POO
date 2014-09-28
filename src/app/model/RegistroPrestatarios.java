@@ -33,7 +33,38 @@ public class RegistroPrestatarios {
 			}
 		}
 	}
-	
+	private void orderingNewBorrower(Prestatario borrower){
+		boolean inserted = false;
+		int i = 0;
+		while(!inserted){
+			if (i >= prestatarios.size()){
+				prestatarios.add(i,borrower);
+				inserted = true;
+			}
+			else{
+				if (prestatarios.get(i).getNombre().compareToIgnoreCase(borrower.getNombre()) > 0){
+					prestatarios.add(i,borrower);
+					inserted = true;
+				} else if (prestatarios.get(i).getNombre().compareToIgnoreCase(borrower.getNombre()) == 0){ //In case names are the same
+					if (prestatarios.get(i).getPrimerApellido().compareToIgnoreCase(borrower.getPrimerApellido()) > 0){
+						prestatarios.add(i,borrower);
+						inserted = true;
+					} else if (prestatarios.get(i).getPrimerApellido().compareToIgnoreCase(borrower.getPrimerApellido()) == 0){ //In case FN's are the same
+						if (prestatarios.get(i).getSegundoApellido().compareToIgnoreCase(borrower.getSegundoApellido()) > 0){
+							prestatarios.add(i,borrower);
+							inserted = true;
+						} else {
+							i++;
+						}
+					} else {
+						i++;
+					}
+				} else {
+					i++;
+				}
+			}
+		}
+	}
 	public ArrayList<Prestatario> getPrestatarios(){
 		return prestatarios;
 	}
