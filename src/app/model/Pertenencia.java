@@ -12,9 +12,8 @@ public class Pertenencia {
 	String imagen;
 	int calificacion;
 	int vecesPrestado;
-	static int codigo = 0;
-	String ID = null;
 	Prestatario prestatario;
+	String ID;
 	boolean isPrestado = false;
 	DateTime fechaUltimoPrestamo; 
 	ArrayList<Lending> lendingLog;
@@ -44,29 +43,12 @@ public class Pertenencia {
 	}
 	
 	public String getFechaUltimoPrestamoString() {
-		return fechaUltimoPrestamo.toString("MM/dd/yyyy");
+		return fechaUltimoPrestamo.toString("dd/MM/yyyy");
 	}
 
 	public void setFechaUltimoPrestamo(DateTime fechaUltimoPrestamo) {
 		this.fechaUltimoPrestamo = fechaUltimoPrestamo;
 	}
-
-	public static int getCodigo(){
-		return codigo;
-	}
-	
-	public static void setCodigo(int codigo){
-		Pertenencia.codigo = codigo;
-	}
-	
-	public String getID(){
-		return ID;
-	}
-	
-	public void setID(String ID){
-		this.ID = ID;
-	}
-	
 	public String getNombre() {
 		return nombre;
 	}
@@ -121,5 +103,7 @@ public class Pertenencia {
 		}
 		return msg;
 	}
-
+	public String getID(){
+		return ID;
+	}
 }

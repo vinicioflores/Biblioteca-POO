@@ -889,8 +889,8 @@ public class Controller implements ActionListener{
 	private void updateStartPanelPanes()
 	{
 		updateAllBelongingsPane();
-		updateTopXBelongingsPane();
-		updateBorrowedBelongingsPane();
+		//updateTopXBelongingsPane();
+		//updateBorrowedBelongingsPane();
 		
 	}
 	private void updateAllBelongingsPane(){
@@ -920,10 +920,30 @@ public class Controller implements ActionListener{
 		
 	}
 	private void updateTopXBelongingsPane(){
-		//TODO
+
+		view.getTopXViewport().removeAll();
 		
+		view.getTopXViewport().setLayout(new BoxLayout(view.getAllBelongingsViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().topX();
 		
-		
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Pertenencia tper = res.get(i);
+				BelongingItem item = new BelongingItem(tper);
+				//save book in tempBook in biblioteca
+				view.getTopXViewport().add(item);
+				view.getTopXViewport().repaint();
+				view.getTopXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There are not any belongings");
+			view.getTopXViewport().add(lab);
+			
+		}
 	}
 	/**
 	 * 

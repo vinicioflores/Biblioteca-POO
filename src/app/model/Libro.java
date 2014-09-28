@@ -11,8 +11,7 @@ public class Libro extends Pertenencia{
 		this.autor = autor;
 		this.editorial = editorial;
 		this.edicion = edicion;
-		this.ID = "BO"+Pertenencia.getCodigo();
-		Pertenencia.codigo++;
+		this.ID = "BO"+Biblioteca.getSystemDateString();
 	}
 
 	public String getAutor() {
@@ -39,7 +38,14 @@ public class Libro extends Pertenencia{
 	public void setEdicion(String edicion) {
 		this.edicion = edicion;
 	}
+
+	public String getID(){
+		return ID;
+	}
 	
+	public void setID(String ID){
+		this.ID = ID;
+	}
 
 	@Override
 	public String toString() {

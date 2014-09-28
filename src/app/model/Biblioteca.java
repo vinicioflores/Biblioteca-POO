@@ -15,7 +15,7 @@ public class Biblioteca {
 	private int topX;
 	private int tiempoBusquedaMeses;
 	private int cantidasVecesBusqueda;
-	private DateTime systemDate;
+	private static DateTime systemDate;
 	
 	public Biblioteca() {
 		super();
@@ -574,23 +574,23 @@ public class Biblioteca {
 	}
 	//Getter for the systemDate attribute.
 	//Receives nothing and returns a String indicating the date the system is working.
-	public String getSystemDateString(){
-		return systemDate.toString("dd/MM/yyyy");
+	public static String getSystemDateString(){
+		return systemDate.toString("(dd/MM/yyyy_hh:mm:ss)");
 	}
 	//Getter for the systemDate attribute.
 	//Receives nothing and returns a String indicating the date the system is working.
-	public DateTime getSystemDate(){
+	public static DateTime getSystemDate(){
 		return systemDate;
 	}
 	//Setter for the systemDate attribute.
 	//Receives and returns nothing.
-	public void setSystemDate(){
-		this.systemDate = new DateTime();
+	public static void setSystemDate(){
+		Biblioteca.systemDate = new DateTime();
 	}
 	//Setter for the systemDate attribute.
 	//Receives a DateTime with the system date and returns nothing.
-	public void setSystemDate(DateTime systemDate){
-		this.systemDate = systemDate;
+	public static void setSystemDate(DateTime systemDate){
+		Biblioteca.systemDate = systemDate;
 	}
 	
 	@Override

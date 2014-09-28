@@ -12,8 +12,7 @@ public class Pelicula extends Pertenencia{
 		this.genero = genero;
 		this.director = director;
 		this.anhoPublicacion = anhoPublicacion;
-		this.ID = "MO"+Pertenencia.getCodigo();
-		Pertenencia.codigo++;
+		this.ID = "MO"+Biblioteca.getSystemDateString();
 	}
 
 	public String getGenero() {
@@ -38,8 +37,14 @@ public class Pelicula extends Pertenencia{
 
 	public void setAnhoPublicacion(String anhoPublicacion) {
 		this.anhoPublicacion = anhoPublicacion;
+	}	
+	public String getID(){
+		return ID;
 	}
-
+	
+	public void setID(String ID){
+		this.ID = ID;
+	}
 	@Override
 	public String toString() {
 		String msj = "\nID: " + ID + "\nPelicula: "+ nombre + "\nGenero: " + genero + "\nDirector: " + director

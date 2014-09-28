@@ -32,31 +32,33 @@ public class Sarasvati {
 	
 	public static void main(String[] args) {		
 		CreateGUI(view);
-		view.getController().updateOnStart();
+
 		//Create XStream object
-		XStream xstream1 = new XStream(new DomDriver());
-		XStream xstream2 = new XStream(new DomDriver());
-		
-		//Create file to load
-		File fileToLoadLibrary = new File(model.getPathLibrary());
-		File fileToLoadRegistry = new File(model.getPathRegistry());
-		
-		//Create alias for each class. Must be almost the same name from class
-		xstream1.alias("RegistroPrestatarios", RegistroPrestatarios.class);
-		xstream1.alias("Familiar", Familiar.class);
-		xstream1.alias("Colega", Colega.class);
-		xstream1.alias("Estudiante", Estudiante.class);
-		
-		xstream2.alias("Biblioteca", Biblioteca.class);
-		xstream2.alias("Libro", Libro.class);
-		xstream2.alias("Revista", Revista.class);
-		xstream2.alias("Pelicula", Pelicula.class);
-		
-		borrowersRegistry = (RegistroPrestatarios)xstream1.fromXML(fileToLoadRegistry);
-		libraryBelongings = (Biblioteca)xstream2.fromXML(fileToLoadLibrary);
-		
-		model.setBiblioteca(libraryBelongings);
-		model.setPrestatarios(borrowersRegistry);
+	    XStream xstream1 = new XStream(new DomDriver());
+	    XStream xstream2 = new XStream(new DomDriver());
+	    
+	    //Create file to load
+	    File fileToLoadLibrary = new File(model.getPathLibrary());
+	    File fileToLoadRegistry = new File(model.getPathRegistry());
+	    
+	    //Create alias for each class. Must be almost the same name from class
+	    xstream1.alias("RegistroPrestatarios", RegistroPrestatarios.class);
+	    xstream1.alias("Familiar", Familiar.class);
+	    xstream1.alias("Colega", Colega.class);
+	    xstream1.alias("Estudiante", Estudiante.class);
+	    
+	    xstream2.alias("Biblioteca", Biblioteca.class);
+	    xstream2.alias("Libro", Libro.class);
+	    xstream2.alias("Revista", Revista.class);
+	    xstream2.alias("Pelicula", Pelicula.class);
+	    
+	    borrowersRegistry = (RegistroPrestatarios)xstream1.fromXML(fileToLoadRegistry);
+	    libraryBelongings = (Biblioteca)xstream2.fromXML(fileToLoadLibrary);
+	    
+	    model.setBiblioteca(libraryBelongings);
+	    model.setPrestatarios(borrowersRegistry);
+	    		
+		view.getController().updateOnStart();
 	}
 	
 	private static void CreateGUI(JFrame frame){

@@ -11,8 +11,7 @@ public class Revista extends Pertenencia{
 		super(nombre, imagen, calificacion);
 		this.tematica = tematica;
 		this.periodoPublicacion = periodoPublicacion;
-		this.ID = "MA"+Pertenencia.getCodigo();
-		Pertenencia.codigo++;
+		this.ID = "MA"+Biblioteca.getSystemDateString();
 	}
 
 	public String getTematica() {
@@ -29,8 +28,14 @@ public class Revista extends Pertenencia{
 
 	public void setPeriodoPublicacion(String periodoPublicacion) {
 		this.periodoPublicacion = periodoPublicacion;
+	}	
+	public String getID(){
+		return ID;
 	}
-
+	
+	public void setID(String ID){
+		this.ID = ID;
+	}
 	@Override
 	public String toString() {
 		String msj = "\nID: " + ID + "\nRevista: " + nombre + "\nTematica: " + tematica
