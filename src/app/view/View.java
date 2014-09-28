@@ -359,7 +359,7 @@ public class View extends JFrame {
 		MainPanelOptions.add(lblCurrentDate_1, "cell 0 8");
 		
 		currentSystemDate = new JLabel("New label");
-		MainPanelOptions.add(currentSystemDate, "cell 0 9");
+		MainPanelOptions.add(currentSystemDate, "cell 0 9,growx");
 
 		HistoryBtn = new JButton("History");
 		MainPanelOptions.add(HistoryBtn, "cell 0 10,alignx center");
