@@ -8,6 +8,8 @@ public class Colega extends Prestatario{
 			String telefono, String correoE, String puesto) {
 		super(nombre, primerApellido, segundoApellido, telefono, correoE);
 		this.puesto = puesto;
+		RegistroPrestatarios.setSystemDate();
+		this.ID = "CO"+RegistroPrestatarios.getSystemDateStringHour();
 	}
 	
 	public String getPuesto(){

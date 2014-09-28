@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Prestatario extends Persona{
 	
+	String ID;
 	ArrayList<String> lendingLog;
 	
 	public Prestatario(String nombre, String primerApellido,
@@ -15,13 +16,15 @@ public class Prestatario extends Persona{
 	public void addNewLending(Pertenencia belonging){
 		lendingLog.add(belonging.ID);
 	}
-	
+	public String getID(){
+		return ID;
+	}
 	@Override
 	public String toString() {
 		String msj = "";
-		msj += "Prestatario: " + nombre + "\nPrimer apellido: " + primerApellido
+		msj += "ID: " + ID +"\nPrestatario: " + nombre + "\nPrimer apellido: " + primerApellido
 				+ "\nSegundo apellido: " + segundoApellido + "\nTelefono:"
-				+ telefono + "Correo Electronico: " + correoE + "\nLibros prestados: ";
+				+ telefono + "\nCorreo Electronico: " + correoE + "\nLibros prestados: ";
 		
 		for(int i = 0; i < lendingLog.size(); i++){
 			msj+="\t";

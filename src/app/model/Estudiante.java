@@ -9,6 +9,8 @@ public class Estudiante extends Prestatario {
 			String carnet) {
 		super(nombre, primerApellido, segundoApellido, telefono, correoE);
 		this.carnet = carnet;
+		RegistroPrestatarios.setSystemDate();
+		this.ID = "ST"+RegistroPrestatarios.getSystemDateStringHour();
 	}
 	
 	public String getCarnet(){

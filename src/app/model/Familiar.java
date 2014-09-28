@@ -3,18 +3,11 @@ package app.model;
 public class Familiar extends Prestatario{
 	
 	String parentesco;
-/**
- * 
- * @param nombre
- * @param primerApellido
- * @param segundoApellido
- * @param telefono
- * @param correoE
- * @param parentesco
- */
 	public Familiar(String nombre, String primerApellido, String segundoApellido, String telefono, String correoE, String parentesco) {
 		super(nombre, primerApellido, segundoApellido, telefono, correoE);
 		this.parentesco = parentesco;
+		RegistroPrestatarios.setSystemDate();
+		this.ID = "RE"+RegistroPrestatarios.getSystemDateStringHour();
 	}
 	
 	public String getParentesco() {
