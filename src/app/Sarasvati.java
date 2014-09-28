@@ -16,6 +16,7 @@ public class Sarasvati {
 		View view = new View(model);
 		
 		CreateGUI(view);
+		view.getController().updateOnStart();
 	}
 	
 	private static void CreateGUI(JFrame frame){
@@ -28,6 +29,7 @@ public class Sarasvati {
 	private static class WindowCloseManager extends WindowAdapter {
         @Override
         public void windowClosing(WindowEvent evt) {
+        	//save xml???
                 System.exit(0);
         }
 }

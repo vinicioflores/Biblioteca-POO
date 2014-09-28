@@ -33,35 +33,9 @@ public class Biblioteca {
 	}
 	
 	public void agregarNuevaPertenencia(Pertenencia pertenencia){
-		if (pertenencias.size() == 0){
-			pertenencias.add(pertenencia);
-		}
-		else{
-			orderingNewBelonging(pertenencia);
-		}
+		pertenencias.add(pertenencia);
 	}
 	 	
-	private void orderingNewBelonging(Pertenencia belonging){
-		boolean inserted = false;
-		int i = 0;
-		while(!inserted){
-			if (i >= pertenencias.size()){
-				pertenencias.add(i,belonging);
-				inserted = true;
-			}
-			else{
-				System.out.println(pertenencias.get(i).getNombre()+" vs. "+belonging.getNombre());
-				System.out.println(pertenencias.get(i).getNombre().compareToIgnoreCase(belonging.getNombre()));
-				if (pertenencias.get(i).getNombre().compareToIgnoreCase(belonging.nombre) > 0){
-					pertenencias.add(i,belonging);
-					inserted = true;
-				} else {
-					i++;
-				}
-			}
-		}
-	}
-	
 	public int getNumberOfLendedBelongings(){
 		int cnt = 0;
 		for(int i = 0; i < pertenencias.size();i++){
@@ -70,6 +44,87 @@ public class Biblioteca {
 			}
 		}
 		return cnt;
+	}
+	public ArrayList<Pertenencia> searchAllBooks(){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Libro)
+			{
+				
+					matches.add(pertenencias.get(i));
+				
+			}
+			
+		}
+		return matches;
+	}
+	public ArrayList<Pertenencia> searchAllMovies(){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Pelicula)
+			{
+				
+					matches.add(pertenencias.get(i));
+				
+			}
+			
+		}
+		return matches;
+	}
+	
+	public ArrayList<Pertenencia> searchAllMagazines(){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Revista)
+			{
+				
+					matches.add(pertenencias.get(i));
+				
+			}
+			
+		}
+		return matches;
+	}
+	public ArrayList<Pertenencia> searchBorrowedBooks(){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Libro)
+			{
+				if (pertenencias.get(i).isPrestado){
+					matches.add(pertenencias.get(i));
+				}
+			}
+			
+		}
+		return matches;
+	}
+	
+	public ArrayList<Pertenencia> searchBorrowedMovies(){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Pelicula)
+			{
+				if (pertenencias.get(i).isPrestado){
+					matches.add(pertenencias.get(i));
+				}
+			}
+			
+		}
+		return matches;
+	}
+	
+	public ArrayList<Pertenencia> searchBorrowedMagazines(){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Revista)
+			{
+				if (pertenencias.get(i).isPrestado){
+					matches.add(pertenencias.get(i));
+				}
+			}
+			
+		}
+		return matches;
 	}
 	//-----------------------------------------------------------
 	//Search by ID

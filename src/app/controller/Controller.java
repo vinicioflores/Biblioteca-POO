@@ -3,13 +3,15 @@ package app.controller;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import app.model.*;
@@ -29,75 +31,77 @@ public class Controller implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evt){
 		Object source = evt.getSource();
+		
         //Start panel :: Search botton
 		if(source == view.getSearchBtn()){
+			
 			view.getSearchPnl().setVisible(true);
 			view.getStartPnl().setVisible(false);
-		}///search panel :: back botton
+		}
+		
+		///search panel :: back botton
 		else if(source == view.getSearchBackBtn()){
+			
 			view.getStartPnl().setVisible(true);
 			view.getSearchPnl().setVisible(false);
 		}
+		
 		///seach :: book search
 		else if(source == view.getBookCSearchBtn()){
+			
 			String parameter = getSelectedRadioButtonInGroupText(view.getBookBottonGroup());
 			
 			if( parameter.equals("All")){
 				
-				view.getAllBookSearchPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateAllXwithBooks();
 				
 			}
 			else if(parameter.equals("Borrowed")){
 				
-				view.getBorrowedBooksPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateBorrowedXwithBooks();
 				
 			}
 			else if(parameter.equals("Available")){
 				
-				view.getAvailableBooksPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateAvailableXwithBooks();			
 				
 			}
 			else if(parameter.equals("Top")){
 				
-				view.getTopBooksPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateTopXwithBooks();
 			}
 			else if(parameter.equals("Special search")){
 				
-				view.getSpecialSBooksPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateSpecialSwithBooks();
 			}
-			else{
-				
-			}
+			
 		}///search :: movie 
 		////////////Back buttons :: Book searches
-		else if(source == view.getAllBookSearchBackBtn()){
+		else if(source == view.getAllXSearchBackBtn()){
+	
 			view.getSearchPnl().setVisible(true);
-			view.getAllBookSearchPnl().setVisible(false);
+			view.getAllXSearch().setVisible(false);
 			
 		}
-		else if(source == view.getBorrowedBooksBackBtn()){
+		else if(source == view.getBorrowedXBackBtn()){
+			
 			view.getSearchPnl().setVisible(true);
-			view.getBorrowedBooksPnl().setVisible(false);
+			view.getBorrowedXPnl().setVisible(false);
 			
 		}
-		else if(source == view.getTopBooksBackBtn()){
+		else if(source == view.getTopXBackBtn()){
 			view.getSearchPnl().setVisible(true);
-			view.getTopBooksPnl().setVisible(false);
+			view.getTopXPnl().setVisible(false);
 			
 		}
-		else if(source == view.getAvailableBooksBackBtn()){
+		else if(source == view.getAvailableXBackBtn()){
 			view.getSearchPnl().setVisible(true);
-			view.getAvailableBooksPnl().setVisible(false);
+			view.getAvailableXPnl().setVisible(false);
 			
 		}
-		else if(source == view.getSpecialSBooksBackBtn()){
+		else if(source == view.getSpecialSXBackBtn()){
 			view.getSearchPnl().setVisible(true);
-			view.getSpecialSBooksPnl().setVisible(false);
+			view.getSpecialSXPnl().setVisible(false);
 			
 		}
 		////////////////////////////////////////////////
@@ -107,61 +111,55 @@ public class Controller implements ActionListener{
 			
 			if( parameter.equals("All")){
 				
-				view.getAllMovieSearchPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateAllXwithMovies();
 				
 			}
 			else if(parameter.equals("Borrowed")){
 				
-				view.getBorrowedMoviesPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateBorrowedXwithMovies();
 				
 			}
 			else if(parameter.equals("Available")){
 				
-				view.getAvailableMoviesPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateAvailableXwithMovies();
 				
 			}
 			else if(parameter.equals("Top")){
 				
-				view.getTopMoviesPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateTopXwithMovies();
+				
 			}
 			else if(parameter.equals("Special search")){
 				
-				view.getSpecialSMoviesPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateSpecialSwithMovies();
 			}
-			else{
-				
-			}
+			
 		}
 		
 			////////////Back buttons :: Movies searches
-			else if(source == view.getAllMoviesBackBtn()){
+			else if(source == view.getAllXSearchBackBtn()){
 				view.getSearchPnl().setVisible(true);
-				view.getAllMovieSearchPnl().setVisible(false);
+				view.getAllXSearch().setVisible(false);
 		
 			}
-			else if(source == view.getBorrowedMoviesBackBtn()){
+			else if(source == view.getBorrowedXBackBtn()){
 				view.getSearchPnl().setVisible(true);
-				view.getBorrowedMoviesPnl().setVisible(false);
+				view.getBorrowedXPnl().setVisible(false);
 		
 			}
-			else if(source == view.getTopMoviesBackBtn()){
+			else if(source == view.getTopXBackBtn()){
 				view.getSearchPnl().setVisible(true);
-				view.getTopMoviesPnl().setVisible(false);
+				view.getTopXPnl().setVisible(false);
 		
 			}
-			else if(source == view.getAvailableMoviesBackBtn()){
+			else if(source == view.getAvailableXBackBtn()){
 				view.getSearchPnl().setVisible(true);
-				view.getAvailableMoviesPnl().setVisible(false);
+				view.getAvailableXPnl().setVisible(false);
 		
 			}
-			else if(source == view.getSpecialSMoviesBackBtn()){
+			else if(source == view.getSpecialSXBackBtn()){
 				view.getSearchPnl().setVisible(true);
-				view.getSpecialSMoviesPnl().setVisible(false);
+				view.getSpecialSXPnl().setVisible(false);
 		
 			}
 	////////////////////////////////////////////////
@@ -170,61 +168,55 @@ public class Controller implements ActionListener{
 			
 			if( parameter.equals("All")){
 				
-				view.getAllMagazineSearchPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateAllXwithMagazines();
 				
 			}
 			else if(parameter.equals("Borrowed")){
 				
-				view.getBorrowedMagazinesPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateBorrowedXwithMagazines();
 				
 			}
 			else if(parameter.equals("Available")){
 				
-				view.getAvailableMagazinesPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateAvailableXwithMagazines();
 				
 			}
 			else if(parameter.equals("Top")){
 				
-				view.getTopMagazinesPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
+				updateTopXwithMagazines();
 			}
 			else if(parameter.equals("Special search")){
 				
-				view.getSpecialSMagazinesPnl().setVisible(true);
-				view.getSearchPnl().setVisible(false);
-			}
-			else{
+				updateSpecialSwithMagazines();
 				
 			}
+
 		}
 		
 ////////////Back buttons :: Magzines searches
-		else if(source == view.getAllMagazineSearchBackBtn()){
+		else if(source == view.getAllXSearchBackBtn()){
 			view.getSearchPnl().setVisible(true);
-			view.getAllMagazineSearchPnl().setVisible(false);
+			view.getAllXSearch().setVisible(false);
 	
 		}
-		else if(source == view.getBorrowedMagazinesBackBtn()){
+		else if(source == view.getBorrowedXBackBtn()){
 			view.getSearchPnl().setVisible(true);
-			view.getBorrowedMagazinesPnl().setVisible(false);
+			view.getBorrowedXPnl().setVisible(false);
 	
 		}
-		else if(source == view.getTopMagazinesBackBtn()){
+		else if(source == view.getTopXBackBtn()){
 			view.getSearchPnl().setVisible(true);
-			view.getTopMagazinesPnl().setVisible(false);
+			view.getTopXPnl().setVisible(false);
 	
 		}
-		else if(source == view.getAvailableMagazinesBackBtn()){
+		else if(source == view.getAvailableXBackBtn()){
 			view.getSearchPnl().setVisible(true);
-			view.getAvailableMagazinesPnl().setVisible(false);
+			view.getAvailableXPnl().setVisible(false);
 	
 		}
-		else if(source == view.getSpecialSMagazinesBackBtn()){
+		else if(source == view.getSpecialSXBackBtn()){
 			view.getSearchPnl().setVisible(true);
-			view.getSpecialSMagazinesPnl().setVisible(false);
+			view.getSpecialSXPnl().setVisible(false);
 	
 		}
 ////////////////////////////////////////////////
@@ -240,30 +232,30 @@ public class Controller implements ActionListener{
 			view.getBelongingRegistrationPnl().setVisible(false);
 							
 		}		
-		///
+		/// new book registration
 		else if(source == view.getNewBookBtn()){
 			view.getBookRegistrationPnl().setVisible(true);
 			view.getBelongingRegistrationPnl().setVisible(false);
 		}
-		////
+		//// get back from book registration
 		else if(source == view.getBookRegistrationBackBtn()){
 			
 			view.getBelongingRegistrationPnl().setVisible(true);
 			view.getBookRegistrationPnl().setVisible(false);
 		}
-		////
+		//// register a new book
 		else if(source == view.getBookRegistrationBtn()){
 			
 			registerNewBook();
 		}
 		
-		///
+		/// new magazine registration
 		else if(source == view.getNewMagazineBtn()){
 			view.getMagazineRegistrationPnl().setVisible(true);
 			view.getBelongingRegistrationPnl().setVisible(false);
 					
 		}
-		////
+		//// get back from magazine registration
 		else if(source == view.getMagazineRegistrationBackBtn()){
 			view.getBelongingRegistrationPnl().setVisible(true);
 			view.getMagazineRegistrationPnl().setVisible(false);
@@ -353,58 +345,57 @@ public class Controller implements ActionListener{
         	
         	registerCoworker();
        
-        }///
+        }/// go to student registration
         else if (source == view.getNewStudentBtn()) {
         	
         	view.getStudentRegistrationPnl().setVisible(true);
         	view.getBorrowerRegistrationPnl().setVisible(false);
         	
         	
-        }////
+        }//// go back from student registration
         else if (source == view.getStudentRegistrationBackBtn()) {
         	
         	view.getBorrowerRegistrationPnl().setVisible(true);
         	view.getStudentRegistrationPnl().setVisible(false);
        
-        }////
+        }//// register a new student
         else if (source == view.getStudentRegistrationBtn()) {
         	
         	registerStudent();
        
-        }///
+        }/// go to relative registration
         else if (source == view.getNewRelativeBtn()) {
+        	
         	view.getRelativeRegistrationPnl().setVisible(true);
         	view.getBorrowerRegistrationPnl().setVisible(false);
-	
-	
         }
-        ////
+        //// go back from relative registration
         else if (source == view.getRelativeRegistrationBackBtn()) {
         	
         	view.getBorrowerRegistrationPnl().setVisible(true);
         	view.getRelativeRegistrationPnl().setVisible(false);
        
-        }////
+        }//// register a relative
         else if (source == view.getRelativeRegistrationBtn()) {
         	
         	registerRelative();
        
         }
-        //Credits
+        //go to Credits btn
         else if(source == view.getCreditsBtn()){
         	
         	view.getCreditsPnl().setVisible(true);
         	view.getStartPnl().setVisible(false);
         	
         }
-        ///
+        /// credits back buttom
         else if(source == view.getCreditsBackBtn()){
         	
         	view.getStartPnl().setVisible(true);
         	view.getCreditsPnl().setVisible(false);
             	
         }
-        //
+        // go to settings 
         else if(source == view.getSettingsBtn()){
         	view.getSettingPnl().setVisible(true);
         	view.getStartPnl().setVisible(false);
@@ -415,6 +406,12 @@ public class Controller implements ActionListener{
         	view.getStartPnl().setVisible(true);
         	view.getSettingPnl().setVisible(false);
         }
+        ///settings change loan days btn
+        ///settings change tolerance days btn
+        ///settings change SS times borrowed btn
+        ///settings change SS months borrowed btn
+        ///settings go to the future btn
+        
         //
         else if(source == view.getSearchBtn()){
         	
@@ -422,11 +419,9 @@ public class Controller implements ActionListener{
         	view.getStartPnl().setVisible(false);
         	
         }
-        else if(source == view.getAllMagazineSearchBackBtn()){
+        else if(source == view.getAllXSearchBackBtn()){
         	view.getSearchPnl().setVisible(true);
-        	
-        	
-        	
+        	       	
         }
         else if(source == view.getBookSearchImageBn()){
         	JFileChooser chooser = new JFileChooser(); //Creamos objeto de JFileChooser
@@ -574,7 +569,6 @@ public class Controller implements ActionListener{
 	}
 
 	private void registerNewBook() {
-		// TODO 
 		
 		System.out.println("Book Registration");
 		boolean validTF = false;
@@ -754,7 +748,7 @@ public class Controller implements ActionListener{
 	}
 
 	private void registerCoworker() {
-		// TODO Auto-generated method stub;
+
 		System.out.println("registering coworker");
 		boolean validTF = false;
 		boolean validEmail = false;
@@ -864,13 +858,272 @@ public class Controller implements ActionListener{
 		return true;
 		
 	}
-	private void updateCurrentValues(){
-		view.getCurrentSystemDate().setText(model.getCurrentSystemDate().toString("dd/MM/yyyy"));
-		view.getTotalBelongingsLblM().setText(""+model.totalBelongings());
-		
+
+	/**
+	 * Updates the "Total belongings", "Total borrowed", "Current date" labels, in the start panel, to their current values
+	 */
+	private void updateStartPanelLabels()
+	{
+		view.getTotalBelongingsLblM().setText(model.totalBelongings() + "");
+		view.getTotalBorrowedLblM().setText(model.getBiblioteca().getNumberOfLendedBelongings()+"");
+		view.getCurrentSystemDate().setText(model.getBiblioteca().getSystemDateString()+"");
+	}
+	/**
+	 * Updates all of the current labels in the settings panel
+	 */
+	private void updateSettingsLabels()
+	{
+		view.getSettingsCurrentToleranceDaysLbl().setText(model.getBiblioteca().getDiasTolerancia()+"");
+		view.getSettingsCurrentLoanDaysLbl().setText(model.getBiblioteca().getDiasBase()+"");
+		view.getSettingsCurrentTopXLbl().setText(model.getBiblioteca().getTopX()+"");
+		view.getSettingsCurrentTimesBorrowedLbl().setText(model.getBiblioteca().getCantidasVecesBusqueda()+"");
+		view.getSettingsCurrentMonthsLbl().setText(model.getBiblioteca().getTiempoBusquedaMeses()+"");
+		view.getSettingsCurrentDateLbl().setText(model.getBiblioteca().getSystemDateString());
 		
 	}
+	private void updateStartPanelPanes()
+	{
+		updateAllBelongingsPane();
+		updateTopXBelongingsPane();
+		updateBorrowedBelongingsPane();
+		
+	}
+	private void updateAllBelongingsPane(){
+		
+	}
+	private void updateTopXBelongingsPane(){
+		
+	}
+	private void updateBorrowedBelongingsPane(){
+		
+	}
+	public void updateOnStart()
+	{
+		updateStartPanelLabels();
+		updateStartPanelPanes();
+		updateSettingsLabels();
+		//fill the belongings pane
+		//fill the borrowed belongings 
+	}
+	private void updateBorrowedXwithBooks()
+	{
+		view.getBorrowedXLbl().setText("books");
+		//load borrowed books
+		//model.setTempSearch(model.getBiblioteca().searchBorrowedBooks());
+		
+		view.getAllXViewport().removeAll();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedBooks();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Libro tbelong = (Libro)res.get(i);
+				BookItem item = new BookItem(tbelong);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(item);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no books borrowed");
+			view.getAllXViewport().add(lab);
+			//display theres none
+		}
+		
+		view.getBorrowedXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateBorrowedXwithMovies()
+	{
+		view.getBorrowedXLbl().setText("movies");
+		
+		view.getAllXViewport().removeAll();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedBooks();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Pelicula tbelong = (Pelicula)res.get(i);
+				MovieItem item = new MovieItem();
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(item);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no borrowed movies");
+			view.getAllXViewport().add(lab);
+			//display theres none
+		}
+		
+		view.getBorrowedXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateBorrowedXwithMagazines()
+	{
+		view.getBorrowedXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+	}
+	private void updateAllXwithBooks(){
+		
+		//update label x
+		view.getAllXLbl().setText("books");
+		//erase combobox contents
+		view.getAllXSearchParametersComboBox().removeAllItems();
+		//update combobox contents
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
 	
+		view.getAllXViewport().removeAll();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllBooks();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Libro tbook = (Libro)res.get(i);
+				BookItem booky = new BookItem(tbook);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(booky);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no books");
+			view.getAllXViewport().add(lab);
+			//display theres none
+		}
+		
+		view.getAllXSearch().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateAllXwithMovies(){
+		
+		//update label x
+		view.getAllXLbl().setText("movies");
+		//erase combobox contents
+		view.getAllXSearchParametersComboBox().removeAllItems();
+		//update combobox contents
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
+		
+		view.getAllXViewport().removeAll();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMovies();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Pelicula tbelong = (Pelicula)res.get(i);
+				MovieItem item = new MovieItem();
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(item);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no movies");
+			view.getAllXViewport().add(lab);
+			//display theres none
+		}
+		
+		view.getAllXSearch().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateAllXwithMagazines(){
+		
+		//update label x
+		view.getAllXLbl().setText("magazines");
+		//erase combobox contents
+		view.getAllXSearchParametersComboBox().removeAllItems();
+		//update combobox contents
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
+		
+		view.getAllXViewport().removeAll();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMovies();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tbelong = (Revista)res.get(i);
+				MagazineItem item = new MagazineItem();
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(item);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
+		
+		view.getAllXSearch().setVisible(true);
+		view.getSearchPnl().setVisible(false);
 	
+	}
+	private void updateAvailableXwithBooks(){
+		
+		view.getAvailableXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateAvailableXwithMovies(){
+		
+		view.getAvailableXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateAvailableXwithMagazines(){
+		
+		view.getBorrowedXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateTopXwithBooks()
+	{
+		view.getTopXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateTopXwithMovies()
+	{
+
+		view.getTopXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+	}
+	private void updateTopXwithMagazines()
+	{
+		view.getTopXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+	}
+	private void updateSpecialSwithBooks(){
+		
+		view.getSpecialSXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateSpecialSwithMovies(){
+		
+
+		view.getSpecialSXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+		
+	}
+	private void updateSpecialSwithMagazines(){
+		view.getSpecialSXPnl().setVisible(true);
+		view.getSearchPnl().setVisible(false);
+	
+	}
 
 }
