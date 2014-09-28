@@ -7,6 +7,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -40,7 +41,11 @@ public class BookItem extends JPanel {
 		setLayout(new MigLayout("", "[][][][][][][][][]", "[][][][][][][][][][]"));
 		
 		lblImage = new JLabel("");
-		lblImage.setIcon(new ImageIcon(book.getImagen()));
+		
+		ImageIcon img = new ImageIcon(book.getImagen()); //Imagen nueva
+        img = new ImageIcon(img.getImage().getScaledInstance(140, 145, Image.SCALE_DEFAULT)); //resize imagen
+		
+		lblImage.setIcon(img);
 		add(lblImage, "flowy,cell 0 0 1 9");
 		
 		lblName = new JLabel(book.getNombre());
