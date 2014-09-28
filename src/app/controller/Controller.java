@@ -817,18 +817,18 @@ public class Controller implements ActionListener{
 		char caracterLeido;
 		int posArroba = 0;
 		
-		//Revisión del arroba.
+		//Revisiï¿½n del arroba.
 		posArroba = correo.indexOf("@");
 		if (posArroba <= 0){
-			return false; //Caso el arroba no esté presente, o esté presente en primera posición del string, no es válido.
+			return false; //Caso el arroba no estï¿½ presente, o estï¿½ presente en primera posiciï¿½n del string, no es vï¿½lido.
 		}
 		
-		//Comprobar que antes del arroba hayan caracteres válidos.
-		//Dividimos correo en dos Strings: Antes y después del arroba.
+		//Comprobar que antes del arroba hayan caracteres vï¿½lidos.
+		//Dividimos correo en dos Strings: Antes y despuï¿½s del arroba.
 		String antesArroba = correo.substring(0, posArroba);
 		String despuesArroba = correo.substring(posArroba+1);
 		
-		//Verificaremos si hay caracteres válidos en el String antes del arroba (A-Z, a-z, 0-9, punto, guión y guión bajo).
+		//Verificaremos si hay caracteres vï¿½lidos en el String antes del arroba (A-Z, a-z, 0-9, punto, guiï¿½n y guiï¿½n bajo).
 		for(int i = 0; i<antesArroba.length(); i++){
 			caracterLeido = antesArroba.charAt(i);
 			if (!(caracterLeido > '/' && caracterLeido < ':' ||
@@ -836,11 +836,11 @@ public class Controller implements ActionListener{
 					caracterLeido > '`' && caracterLeido < '{' ||
 					caracterLeido == '-' || caracterLeido == '.' ||
 					caracterLeido == '_')){
-				return false; //Caso los caracteres anteriores al arroba no sean los válidos, invalida el correo.
+				return false; //Caso los caracteres anteriores al arroba no sean los vï¿½lidos, invalida el correo.
 			}
 		}
 		
-		//Comprobaremos que después del arroba hayan caracteres válidos.
+		//Comprobaremos que despuï¿½s del arroba hayan caracteres vï¿½lidos.
 		//Verificaremos si hay al menos un punto para el dominio. 
 		if (despuesArroba.indexOf(".") <= 1){
 			return false;
@@ -852,7 +852,7 @@ public class Controller implements ActionListener{
 					caracterLeido > '`' && caracterLeido < '{' ||
 					caracterLeido == '-' || caracterLeido == '.' ||
 					caracterLeido == '_')){
-				return false; //Caso los caracteres posteriores al arroba sean inválidos
+				return false; //Caso los caracteres posteriores al arroba sean invï¿½lidos
 			}
 		}
 		return true;
@@ -941,15 +941,15 @@ public class Controller implements ActionListener{
 		view.getBorrowedXLbl().setText("movies");
 		
 		view.getAllXViewport().removeAll();
-		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedBooks();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedMovies();
 		if(res.size() > 0){
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				Pelicula tbelong = (Pelicula)res.get(i);
-				MovieItem item = new MovieItem();
+				Pelicula tmovie = (Pelicula)res.get(i);
+				MovieItem moviey = new MovieItem(tmovie);
 				//save book in tempBook in biblioteca
-				view.getAllXViewport().add(item);
+				view.getAllXViewport().add(moviey);
 				view.getAllXViewport().repaint();
 				view.getAllXViewport().revalidate();
 			}	
@@ -967,6 +967,28 @@ public class Controller implements ActionListener{
 	}
 	private void updateBorrowedXwithMagazines()
 	{
+		view.getBorrowedXLbl().setText("magazines");
+		
+		view.getAllXViewport().removeAll();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Pelicula tmovie = (Pelicula)res.get(i);
+				MovieItem moviey = new MovieItem(tmovie);
+				//save magazine in tempBook in biblioteca
+				view.getAllXViewport().add(moviey);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no borrowed magazines");
+			view.getAllXViewport().add(lab);
+			//display theres none
+		}
 		view.getBorrowedXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 	}
@@ -1019,10 +1041,10 @@ public class Controller implements ActionListener{
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				Pelicula tbelong = (Pelicula)res.get(i);
-				MovieItem item = new MovieItem();
+				Pelicula tmovie = (Pelicula)res.get(i);
+				MovieItem moviey = new MovieItem(tmovie);
 				//save book in tempBook in biblioteca
-				view.getAllXViewport().add(item);
+				view.getAllXViewport().add(moviey);
 				view.getAllXViewport().repaint();
 				view.getAllXViewport().revalidate();
 			}	
@@ -1048,15 +1070,15 @@ public class Controller implements ActionListener{
 		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
 		
 		view.getAllXViewport().removeAll();
-		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMovies();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
 		if(res.size() > 0){
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				Revista tbelong = (Revista)res.get(i);
-				MagazineItem item = new MagazineItem();
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
 				//save book in tempBook in biblioteca
-				view.getAllXViewport().add(item);
+				view.getAllXViewport().add(magaziney);
 				view.getAllXViewport().repaint();
 				view.getAllXViewport().revalidate();
 			}	

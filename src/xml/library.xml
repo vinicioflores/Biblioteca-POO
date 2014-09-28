@@ -36,6 +36,29 @@
       <editorial>Shell</editorial>
       <edicion>Shellshock</edicion>
     </Libro>
+    <Pelicula>
+      <nombre>The Snow Bunny</nombre>
+      <imagen>.\src\image\#MovieThe Snow BunnyStimpy.png</imagen>
+      <calificacion>2</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MO0</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <genero>Humor</genero>
+      <director>Stimpy</director>
+      <anhoPublicacion>2005</anhoPublicacion>
+    </Pelicula>
+    <Revista>
+      <nombre>Tú</nombre>
+      <imagen>.\src\image\#MagazineTúSoy una niña mimada.png</imagen>
+      <calificacion>1</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MA0</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <tematica>Soy una niña mimada</tematica>
+      <periodoPublicacion>2013</periodoPublicacion>
+    </Revista>
   </pertenencias>
   <diasBase>30</diasBase>
   <diasTolerancia>10</diasTolerancia>

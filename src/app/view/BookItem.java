@@ -1,6 +1,6 @@
 package app.view;
 
-import javax.swing.JPanel;
+import javax.swing.JPanel;  
 
 import net.miginfocom.swing.MigLayout;
 
@@ -20,14 +20,14 @@ public class BookItem extends JPanel {
 	private JLabel lblImage;
 	private JLabel lblName;
 	private JLabel lblAuthor;
-	private JLabel lblAnthonyBurgess;
+	private JLabel lblGetAuthor;
 	private JLabel lblEditorial;
-	private JLabel lblPenguin;
-	private JLabel label;
+	private JLabel lblGetEditorial;
+	private JLabel lblPicture;
 	private JLabel lblEdition;
-	private JLabel lblrd;
-	private JButton btnNewButton;
-	private JLabel lblNewLabel;
+	private JLabel lblGetEdition;
+	private JButton btnLendReturn;
+	private JLabel lblBorrowerInfo;
 	private JButton btnEdit;
 	private JButton btnDelete;
 
@@ -58,34 +58,34 @@ public class BookItem extends JPanel {
 		}else{
 			action = "Lend";
 		}
-		btnNewButton = new JButton(action);
-		add(btnNewButton, "flowy,cell 8 0");
+		btnLendReturn = new JButton(action);
+		add(btnLendReturn, "flowy,cell 8 0");
 		
-		label = new JLabel("");
-		label.setIcon(new ImageIcon(".\\src\\image\\star"+book.getCalificacion() +".png"));
-		add(label, "cell 2 1 2 1,alignx left");
+		lblPicture = new JLabel("");
+		lblPicture.setIcon(new ImageIcon(".\\src\\image\\star"+book.getCalificacion() +".png"));
+		add(lblPicture, "cell 2 1 2 1,alignx left");
 		
 		lblAuthor = new JLabel("Author:");
 		add(lblAuthor, "cell 2 2");
 		
-		lblAnthonyBurgess = new JLabel(book.getAutor());
-		add(lblAnthonyBurgess, "cell 3 2");
+		lblGetAuthor = new JLabel(book.getAutor());
+		add(lblGetAuthor, "cell 3 2");
 		
 		lblEditorial = new JLabel("Editorial:");
 		add(lblEditorial, "cell 2 3");
 		
-		lblPenguin = new JLabel(book.getEditorial());
-		add(lblPenguin, "cell 3 3");
+		lblGetEditorial = new JLabel(book.getEditorial());
+		add(lblGetEditorial, "cell 3 3");
 		
 		lblEdition = new JLabel("Edition:");
 		add(lblEdition, "cell 2 4");
 		
-		lblrd = new JLabel(book.getEdicion());
-		add(lblrd, "cell 3 4");
+		lblGetEdition = new JLabel(book.getEdicion());
+		add(lblGetEdition, "cell 3 4");
 		
-		if (book.getPrestatario() == null){
-			lblNewLabel = new JLabel("Borrower:");
-			add(lblNewLabel, "cell 2 6");
+		if (book.getPrestatario() != null){
+			lblBorrowerInfo = new JLabel("Borrower:");
+			add(lblBorrowerInfo, "cell 2 6");
 		}
 		
 		btnEdit = new JButton("Edit");
