@@ -289,6 +289,26 @@ public class View extends JFrame {
 	private JLabel AvailableXLbl;
 	private JLabel TopXNumberLbl;
 	private JLabel TopXLbl;
+	private JLabel lblBelongings;
+	private JLabel lblBorrowers;
+	private JPanel panel_4;
+	private JLabel lblRelatives;
+	private JLabel lblRelatives_1;
+	private JButton SearchRelativesBtn;
+	private JPanel panel_5;
+	private JLabel lblCoworkers;
+	private JLabel lblCoworkers_1;
+	private JButton CoworkerSearchBtn;
+	private JPanel panel_6;
+	private JLabel lblStudents;
+	private JLabel lblStudents_1;
+	private JButton StudentSearchBtn;
+	private JPanel BorrowersSearchPnl;
+	private JButton BorrowersSearchBackBtn;
+	private JScrollPane BorrowersScrollPane;
+	protected JPanel BorrowersSearchViewport;
+	protected JLabel BorrowersSearchXLbl;
+	protected JLabel lblSelectTheType;
 	
 	/**
 	 * Launch the application.
@@ -424,6 +444,25 @@ public class View extends JFrame {
 		topBorrowedBelongingsViewport = new JPanel();
 		topBorrowedBelongingsViewport.setLayout(new BoxLayout(topBorrowedBelongingsViewport, BoxLayout.LINE_AXIS));
 		topBorrowedBelongingsPnl.setViewportView(topBorrowedBelongingsViewport);
+		        
+		BorrowersSearchPnl = new JPanel();
+		        BorrowersSearchPnl.setForeground(new Color(0, 0, 0));
+		        BorrowersSearchPnl.setBackground(new Color(255, 255, 255));
+		        contentPane.add(BorrowersSearchPnl, "name_4030812266153");
+		        BorrowersSearchPnl.setLayout(new MigLayout("", "[55px,grow]", "[23px][grow]"));
+		        
+		        BorrowersSearchBackBtn = new JButton("Back");
+		        BorrowersSearchPnl.add(BorrowersSearchBackBtn, "flowx,cell 0 0,alignx left,aligny top");
+		        
+		        BorrowersScrollPane = new JScrollPane();
+		        BorrowersSearchPnl.add(BorrowersScrollPane, "cell 0 1,grow");
+		        
+		        BorrowersSearchViewport = new JPanel();
+		        BorrowersScrollPane.setViewportView(BorrowersSearchViewport);
+		        BorrowersSearchViewport.setLayout(new BoxLayout(BorrowersSearchViewport, BoxLayout.PAGE_AXIS));
+		        
+		        BorrowersSearchXLbl = new JLabel("X");
+		        BorrowersSearchPnl.add(BorrowersSearchXLbl, "cell 0 0");
 		
 		
 		        LendingPnl = new JPanel();
@@ -462,21 +501,24 @@ public class View extends JFrame {
 
 		SearchPnl = new JPanel();
 		contentPane.add(SearchPnl, "name_10085986187124");
-		SearchPnl.setLayout(new MigLayout("", "[269.00,grow]",
-				"[][][grow][][][grow]"));
+		SearchPnl.setLayout(new MigLayout("", "[269.00,grow]", "[][][][grow][][][grow][grow]"));
 
 		SearchBackBtn = new JButton("Back");
 		SearchPnl.add(SearchBackBtn, "flowx,cell 0 0");
 
 		JLabel lblBsqueda = new JLabel("Search");
-		SearchPnl.add(lblBsqueda, "cell 0 0 3 1");
-
-		JLabel lblTipoDeMaterial = new JLabel(
-				"Select the type of Belonging, and type of search you wish to use");
-		SearchPnl.add(lblTipoDeMaterial, "cell 0 1");
+		SearchPnl.add(lblBsqueda, "cell 0 0");
+		
+		lblBelongings = new JLabel("Belongings");
+		lblBelongings.setFont(new Font("Consolas", Font.PLAIN, 20));
+		SearchPnl.add(lblBelongings, "cell 0 1");
+		
+				JLabel lblTipoDeMaterial = new JLabel(
+						"Select the type of belonging, and type of search you wish to consult");
+				SearchPnl.add(lblTipoDeMaterial, "cell 0 2");
 
 		panel_1 = new JPanel();
-		SearchPnl.add(panel_1, "flowx,cell 0 2,alignx center,growy");
+		SearchPnl.add(panel_1, "flowx,cell 0 3,alignx center,growy");
 		panel_1.setLayout(new MigLayout("", "[][][]", "[][][][][][][][]"));
 
 		lblBooks = new JLabel("Books");
@@ -515,7 +557,7 @@ public class View extends JFrame {
 		panel_1.add(BookCSearchBtn, "cell 0 7 2 1,alignx center");
 
 		panel_2 = new JPanel();
-		SearchPnl.add(panel_2, "cell 0 2,alignx center,growy");
+		SearchPnl.add(panel_2, "cell 0 3,alignx center,growy");
 		panel_2.setLayout(new MigLayout("", "[][]", "[][][][][][][][]"));
 
 		lblMagazines = new JLabel("Magazines");
@@ -555,7 +597,7 @@ public class View extends JFrame {
 		panel_2.add(MagazineCSearchBtn, "cell 0 7 2 1,alignx center");
 
 		panel_3 = new JPanel();
-		SearchPnl.add(panel_3, "cell 0 2,alignx center,growy");
+		SearchPnl.add(panel_3, "cell 0 3,alignx center,growy");
 		panel_3.setLayout(new MigLayout("", "[][]", "[][][][][][][][]"));
 
 		lblMovies = new JLabel("Movies");
@@ -593,6 +635,58 @@ public class View extends JFrame {
 
 		MovieCSearchBtn = new JButton("Search");
 		panel_3.add(MovieCSearchBtn, "cell 0 7 2 1,alignx center");
+		
+		lblBorrowers = new JLabel("Borrowers");
+		lblBorrowers.setFont(new Font("Consolas", Font.PLAIN, 20));
+		SearchPnl.add(lblBorrowers, "cell 0 4");
+		
+		lblSelectTheType = new JLabel("Select the type of borrower you wish to consult");
+		SearchPnl.add(lblSelectTheType, "cell 0 5");
+		
+		panel_4 = new JPanel();
+		SearchPnl.add(panel_4, "flowx,cell 0 6,alignx center,growy");
+		panel_4.setLayout(new MigLayout("", "[]", "[][][]"));
+		
+		lblRelatives = new JLabel("Relatives");
+		lblRelatives.setFont(new Font("Consolas", Font.PLAIN, 20));
+		panel_4.add(lblRelatives, "cell 0 0");
+		
+		lblRelatives_1 = new JLabel("");
+		lblRelatives_1.setIcon(new ImageIcon(View.class.getResource("/image/family25.png")));
+		panel_4.add(lblRelatives_1, "cell 0 1,alignx center");
+		
+		SearchRelativesBtn = new JButton("Search");
+		panel_4.add(SearchRelativesBtn, "cell 0 2,alignx center");
+		
+		panel_6 = new JPanel();
+		SearchPnl.add(panel_6, "cell 0 6,alignx center,growy");
+		panel_6.setLayout(new MigLayout("", "[][]", "[][][][]"));
+		
+		lblStudents = new JLabel("Students");
+		lblStudents.setFont(new Font("Consolas", Font.PLAIN, 20));
+		panel_6.add(lblStudents, "cell 0 0,alignx center");
+		
+		lblStudents_1 = new JLabel("");
+		lblStudents_1.setIcon(new ImageIcon(View.class.getResource("/image/graduate9.png")));
+		panel_6.add(lblStudents_1, "cell 0 1,alignx center");
+		
+		StudentSearchBtn = new JButton("Search");
+		panel_6.add(StudentSearchBtn, "cell 0 2,alignx center,aligny top");
+		
+		panel_5 = new JPanel();
+		SearchPnl.add(panel_5, "cell 0 6,alignx center,growy");
+		panel_5.setLayout(new MigLayout("", "[][]", "[][][][]"));
+		
+		lblCoworkers = new JLabel("Coworkers");
+		lblCoworkers.setFont(new Font("Consolas", Font.PLAIN, 20));
+		panel_5.add(lblCoworkers, "cell 0 0,alignx center");
+		
+		lblCoworkers_1 = new JLabel("");
+		lblCoworkers_1.setIcon(new ImageIcon(View.class.getResource("/image/business53.png")));
+		panel_5.add(lblCoworkers_1, "cell 0 1,alignx center");
+		
+		CoworkerSearchBtn = new JButton("Search");
+		panel_5.add(CoworkerSearchBtn, "cell 0 2,alignx center");
 
 		AllXSearch = new JPanel();
 		AllXSearch.setBackground(new Color(255, 255, 255));
@@ -1457,6 +1551,14 @@ public class View extends JFrame {
 		BookSearchImageBn.addActionListener(controller);
 		MagazineSearchImageBn.addActionListener(controller);
 		MovieSearchImageBn.addActionListener(controller);
+		
+		
+		SearchRelativesBtn.addActionListener(controller);
+		StudentSearchBtn.addActionListener(controller);
+		CoworkerSearchBtn.addActionListener(controller);
+		
+		BorrowersSearchBackBtn.addActionListener(controller);
+		
 		//TODO
 	}
 
@@ -1983,5 +2085,26 @@ public class View extends JFrame {
 	}
 	public JLabel getTopXNumberLbl() {
 		return TopXNumberLbl;
+	}
+	public JButton getSearchRelativesBtn() {
+		return SearchRelativesBtn;
+	}
+	public JButton getStudentSearchBtn() {
+		return StudentSearchBtn;
+	}
+	public JButton getCoworkerSearchBtn() {
+		return CoworkerSearchBtn;
+	}
+	public JPanel getBorrowersSearchPnl(){
+		return BorrowersSearchPnl;
+	}
+	public JLabel getBorrowersSearchXLbl() {
+		return BorrowersSearchXLbl;
+	}
+	public JPanel getBorrowersSearchViewport() {
+		return BorrowersSearchViewport;
+	}
+	public JButton getBorrowersSearchBackBtn() {
+		return BorrowersSearchBackBtn;
 	}
 }

@@ -128,6 +128,50 @@ public class Biblioteca {
 		}
 		return matches;
 	}
+	public ArrayList<Pertenencia> searchAvailableBooks(){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Libro)
+			{
+				if(!pertenencias.get(i).isPrestado){
+					matches.add(pertenencias.get(i));
+				}
+			}
+			
+		}
+		return matches;
+	}
+	public ArrayList<Pertenencia> searchAvailableMovies(){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Pelicula)
+			{
+				if(!pertenencias.get(i).isPrestado){
+					matches.add(pertenencias.get(i));
+				}
+				
+				
+			}
+			
+		}
+		return matches;
+	}
+	
+	public ArrayList<Pertenencia> searchAvailableMagazines(){
+		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
+		for (int i = 0; i < pertenencias.size(); i++){
+			if (pertenencias.get(i) instanceof Revista)
+			{
+				if(!pertenencias.get(i).isPrestado){
+					matches.add(pertenencias.get(i));
+				}
+				
+				
+			}
+			
+		}
+		return matches;
+	}
 	public ArrayList<Pertenencia> searchBorrowedBooks(){
 		ArrayList<Pertenencia> matches = new ArrayList<Pertenencia>();
 		for (int i = 0; i < pertenencias.size(); i++){

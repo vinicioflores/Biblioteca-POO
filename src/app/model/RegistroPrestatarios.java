@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.joda.time.DateTime;
 
+
 public class RegistroPrestatarios {
 	private ArrayList<Prestatario> prestatarios;
 	private static DateTime systemDate;
@@ -93,5 +94,32 @@ public class RegistroPrestatarios {
 	//Receives a DateTime with the system date and returns nothing.
 	public static void setSystemDate(DateTime systemDate){
 		RegistroPrestatarios.systemDate = systemDate;
+	}
+	public ArrayList<Prestatario> getCoworkers(){
+		ArrayList<Prestatario> matches = new ArrayList<Prestatario>();
+		for(int i = 0; i< prestatarios.size(); i++){
+			if(prestatarios.get(i) instanceof Colega){
+				matches.add(prestatarios.get(i));
+			}
+		}
+		return matches;
+	}
+	public ArrayList<Prestatario> getRelatives(){
+		ArrayList<Prestatario> matches = new ArrayList<Prestatario>();
+		for(int i = 0; i< prestatarios.size(); i++){
+			if(prestatarios.get(i) instanceof Familiar){
+				matches.add(prestatarios.get(i));
+			}
+		}
+		return matches;
+	}
+	public ArrayList<Prestatario> getStudents(){
+		ArrayList<Prestatario> matches = new ArrayList<Prestatario>();
+		for(int i = 0; i< prestatarios.size(); i++){
+			if(prestatarios.get(i) instanceof Estudiante){
+				matches.add(prestatarios.get(i));
+			}
+		}
+		return matches;
 	}
 }
