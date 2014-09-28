@@ -27,11 +27,10 @@ public class Sarasvati {
 	static Model model = new Model();
 	static View view = new View(model);
 	static XML save = new XML();
+	static Biblioteca libraryBelongings = new Biblioteca();
+	static RegistroPrestatarios borrowersRegistry = new RegistroPrestatarios();
 	
-	public static void main(String[] args) {	
-		Biblioteca libraryBelongings = new Biblioteca();
-		RegistroPrestatarios borrowersRegistry = new RegistroPrestatarios();
-		
+	public static void main(String[] args) {		
 		CreateGUI(view);
 		view.getController().updateOnStart();
 		//Create XStream object
@@ -70,8 +69,10 @@ public class Sarasvati {
 	private static class WindowCloseManager extends WindowAdapter {
         @Override
         public void windowClosing(WindowEvent evt) {
-        	save.saveBorrowerRegistryXML(model.getPathRegistry(), model.getPrestatarios());
-        	save.saveLibraryXML(model.getPathLibrary(), model.getBiblioteca());
+        	libraryBelongings = model.getBiblioteca();
+        	borrowersRegistry = model.getPrestatarios();
+        	save.saveBorrowerRegistryXML(model.getPathRegistry(), borrowersRegistry);
+        	save.saveLibraryXML(model.getPathLibrary(), libraryBelongings);
         	System.exit(0);
         }
 }

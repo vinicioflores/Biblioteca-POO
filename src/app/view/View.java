@@ -112,6 +112,7 @@ public class View extends JFrame {
 	private JButton newBookBtn;
 	private JButton newMagazineBtn;
 	private JButton newMovieBtn;
+	private JButton ManualBtn;
 	private JLabel lblRating;
 	private JLabel lblGenre;
 	private JLabel lblDirector;
@@ -361,7 +362,7 @@ public class View extends JFrame {
 		HistoryBtn = new JButton("History");
 		MainPanelOptions.add(HistoryBtn, "cell 0 10,alignx center");
 
-		JButton ManualBtn = new JButton("Manual");
+		ManualBtn = new JButton("Manual");
 		MainPanelOptions.add(ManualBtn, "cell 0 11,alignx center");
 
 		CreditsBtn = new JButton("Credits");
@@ -1394,6 +1395,7 @@ public class View extends JFrame {
 		settingsBtn.addActionListener(controller);
 		searchBtn.addActionListener(controller);
 		HistoryBtn.addActionListener(controller);
+		ManualBtn.addActionListener(controller);
 		
 		//Settings panel
 		SettingBackBtn.addActionListener(controller);
@@ -1592,6 +1594,10 @@ public class View extends JFrame {
 		return searchBtn;
 	}
 
+	public JButton getManualBtn(){
+		return ManualBtn;
+	}
+	
 	public JPanel getSearchPnl() {
 		return SearchPnl;
 	}

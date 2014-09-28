@@ -1,13 +1,3 @@
 <RegistroPrestatarios>
-  <prestatarios>
-    <Estudiante>
-      <nombre>Dayana</nombre>
-      <primerApellido>Méndez</primerApellido>
-      <segundoApellido>Salas</segundoApellido>
-      <telefono>12345678</telefono>
-      <correoE>day0129@hotmail.com</correoE>
-      <lendingLog/>
-      <carnet>2013086588</carnet>
-    </Estudiante>
-  </prestatarios>
+  <prestatarios/>
 </RegistroPrestatarios>

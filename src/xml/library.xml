@@ -1,72 +1,12 @@
 <Biblioteca>
-  <pertenencias>
-    <Libro>
-      <nombre>Bol</nombre>
-      <imagen>.\src\image\#BookBolCol.png</imagen>
-      <calificacion>3</calificacion>
-      <vecesPrestado>0</vecesPrestado>
-      <ID>BO0</ID>
-      <isPrestado>false</isPrestado>
-      <lendingLog/>
-      <autor>Col</autor>
-      <editorial>Nol</editorial>
-      <edicion>Eol</edicion>
-    </Libro>
-    <Libro>
-      <nombre>Lol</nombre>
-      <imagen>.\src\image\#BookLolNol.png</imagen>
-      <calificacion>3</calificacion>
-      <vecesPrestado>0</vecesPrestado>
-      <ID>BO0</ID>
-      <isPrestado>false</isPrestado>
-      <lendingLog/>
-      <autor>Nol</autor>
-      <editorial>Col</editorial>
-      <edicion>Yol</edicion>
-    </Libro>
-    <Libro>
-      <nombre>Nel</nombre>
-      <imagen>.\src\image\#BookNelKel.png</imagen>
-      <calificacion>3</calificacion>
-      <vecesPrestado>0</vecesPrestado>
-      <ID>BO0</ID>
-      <isPrestado>false</isPrestado>
-      <lendingLog/>
-      <autor>Kel</autor>
-      <editorial>Shell</editorial>
-      <edicion>Shellshock</edicion>
-    </Libro>
-    <Pelicula>
-      <nombre>The Snow Bunny</nombre>
-      <imagen>.\src\image\#MovieThe Snow BunnyStimpy.png</imagen>
-      <calificacion>2</calificacion>
-      <vecesPrestado>0</vecesPrestado>
-      <ID>MO0</ID>
-      <isPrestado>false</isPrestado>
-      <lendingLog/>
-      <genero>Humor</genero>
-      <director>Stimpy</director>
-      <anhoPublicacion>2005</anhoPublicacion>
-    </Pelicula>
-    <Revista>
-      <nombre>Tú</nombre>
-      <imagen>.\src\image\#MagazineTúSoy una niña mimada.png</imagen>
-      <calificacion>1</calificacion>
-      <vecesPrestado>0</vecesPrestado>
-      <ID>MA0</ID>
-      <isPrestado>false</isPrestado>
-      <lendingLog/>
-      <tematica>Soy una niña mimada</tematica>
-      <periodoPublicacion>2013</periodoPublicacion>
-    </Revista>
-  </pertenencias>
+  <pertenencias/>
   <diasBase>30</diasBase>
   <diasTolerancia>10</diasTolerancia>
   <topX>10</topX>
   <tiempoBusquedaMeses>3</tiempoBusquedaMeses>
   <cantidasVecesBusqueda>2</cantidasVecesBusqueda>
   <systemDate>
-    <iMillis>1411884204654</iMillis>
+    <iMillis>1411892250925</iMillis>
     <iChronology class="org.joda.time.chrono.ISOChronology" resolves-to="org.joda.time.chrono.ISOChronology$Stub" serialization="custom">
       <org.joda.time.chrono.ISOChronology_-Stub>
         <org.joda.time.tz.CachedDateTimeZone resolves-to="org.joda.time.DateTimeZone$Stub" serialization="custom">

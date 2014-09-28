@@ -1,8 +1,10 @@
 package app.controller;
 
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -32,21 +34,21 @@ public class Controller implements ActionListener{
 	public void actionPerformed(ActionEvent evt){
 		Object source = evt.getSource();
 		
-        //Start panel :: Search botton
+        //Start panel :: Search button
 		if(source == view.getSearchBtn()){
 			
 			view.getSearchPnl().setVisible(true);
 			view.getStartPnl().setVisible(false);
 		}
 		
-		///search panel :: back botton
+		///search panel :: back button
 		else if(source == view.getSearchBackBtn()){
 			
 			view.getStartPnl().setVisible(true);
 			view.getSearchPnl().setVisible(false);
 		}
 		
-		///seach :: book search
+		///search :: book search
 		else if(source == view.getBookCSearchBtn()){
 			
 			String parameter = getSelectedRadioButtonInGroupText(view.getBookBottonGroup());
@@ -419,6 +421,17 @@ public class Controller implements ActionListener{
         	view.getStartPnl().setVisible(false);
         	
         }
+        
+        else if(source == view.getManualBtn()){
+        	File pdf = new File("UserManual.pdf");
+        	
+        	try{
+        		Desktop.getDesktop().open(pdf);
+        	} catch (Exception e) {
+        		System.out.println(e);
+        	}
+        }
+        
         else if(source == view.getAllXSearchBackBtn()){
         	view.getSearchPnl().setVisible(true);
         	       	
