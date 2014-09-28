@@ -11,7 +11,8 @@ public class Revista extends Pertenencia{
 		super(nombre, imagen, calificacion);
 		this.tematica = tematica;
 		this.periodoPublicacion = periodoPublicacion;
-		this.ID = "MA"+Biblioteca.getSystemDateString();
+		Biblioteca.setSystemDate();
+		this.ID = "MA"+Biblioteca.getSystemDateStringHour();
 	}
 
 	public String getTematica() {

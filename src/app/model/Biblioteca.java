@@ -575,6 +575,11 @@ public class Biblioteca {
 	//Getter for the systemDate attribute.
 	//Receives nothing and returns a String indicating the date the system is working.
 	public static String getSystemDateString(){
+		return systemDate.toString("dd/MM/yyyy");
+	}
+	//Getter for the systemDate attribute.
+	//Receives nothing and returns a String indicating the date the system is working, plus the hour.
+	public static String getSystemDateStringHour(){
 		return systemDate.toString("(dd/MM/yyyy_hh:mm:ss)");
 	}
 	//Getter for the systemDate attribute.

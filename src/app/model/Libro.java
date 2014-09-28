@@ -11,7 +11,8 @@ public class Libro extends Pertenencia{
 		this.autor = autor;
 		this.editorial = editorial;
 		this.edicion = edicion;
-		this.ID = "BO"+Biblioteca.getSystemDateString();
+		Biblioteca.setSystemDate();
+		this.ID = "BO"+Biblioteca.getSystemDateStringHour();
 	}
 
 	public String getAutor() {

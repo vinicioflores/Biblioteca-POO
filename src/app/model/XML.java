@@ -55,7 +55,6 @@ public class XML {
 		String xml = new String();
 		File fileToSave = new File(path);
 		xml = xstream.toXML(library);
-		System.out.println(xml);
 		
 		fileWriting(fileToSave, xml);
 	}

@@ -430,8 +430,6 @@ public class Controller implements ActionListener{
 	}
 
 	private void registerNewMovie() {
-		System.out.println("Movie Registration");
-		
 		boolean validTF = false;
 		boolean validPath = false;
 		
@@ -462,7 +460,6 @@ public class Controller implements ActionListener{
 					genre,director,releaseDate);
 			
 			model.addBelonging(movie);
-			System.out.println(movie.toString());
 			ShowDialog("New movie registered: " + name);
 			
 			view.getStartPnl().setVisible(true); 
@@ -499,7 +496,6 @@ public class Controller implements ActionListener{
 	}
 
 	private void registerNewMagazine() {
-		System.out.println("Magazine Registration");
 		boolean validTF = false;
 		boolean validPath = false;
 				
@@ -528,7 +524,6 @@ public class Controller implements ActionListener{
 		if(validTF&&validPath){
 			
 			Revista mag = new Revista(name,".\\src\\image\\" + "#Magazine" +name + theme+".png", rating,theme, publicationPeriod );
-			System.out.println(mag.toString());
 			
 			JOptionPane.showMessageDialog(view, "New magazine was registered: "+ name);
 			
@@ -564,7 +559,6 @@ public class Controller implements ActionListener{
 
 	private void registerNewBook() {
 		
-		System.out.println("Book Registration");
 		boolean validTF = false;
 		boolean validPath = false;
 		
@@ -593,7 +587,6 @@ public class Controller implements ActionListener{
 		
 		if(validTF&&validPath){
 			Libro book = new Libro(name,".\\src\\image\\" + "#Book" +name + author+".png", rating,author, editorial, edition );
-			System.out.println(book.toString());
 			
 			ShowDialog("New book was registered: "+ name);
 			

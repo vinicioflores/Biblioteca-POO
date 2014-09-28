@@ -1,5 +1,76 @@
 <Biblioteca>
-  <pertenencias/>
+  <pertenencias>
+    <Pelicula>
+      <nombre>Dilwale Dulhania Le Jayenge</nombre>
+      <imagen>.\src\image\#MovieDilwale Dulhania Le JayengeAditya Chopra.png</imagen>
+      <calificacion>2</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MO(28/09/2014_01:54:12)</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <genero>Musical</genero>
+      <director>Aditya Chopra</director>
+      <anhoPublicacion>1995</anhoPublicacion>
+    </Pelicula>
+    <Revista>
+      <nombre>Kadambini (23th Edition)</nombre>
+      <imagen>.\src\image\#MagazineKadambini (23th Edition)Hindi Women.png</imagen>
+      <calificacion>4</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MA(28/09/2014_01:50:24)</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <tematica>Hindi Women</tematica>
+      <periodoPublicacion>2013</periodoPublicacion>
+    </Revista>
+    <Revista>
+      <nombre>Kadambini (24th Edition)</nombre>
+      <imagen>.\src\image\#MagazineKadambini (24th Edition)Hindi Women.png</imagen>
+      <calificacion>3</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MA(28/09/2014_01:50:54)</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <tematica>Hindi Women</tematica>
+      <periodoPublicacion>2014</periodoPublicacion>
+    </Revista>
+    <Libro>
+      <nombre>Mahabharata</nombre>
+      <imagen>.\src\image\#BookMahabharataViasa.png</imagen>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>BO(28/09/2014_01:49:29)</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <autor>Viasa</autor>
+      <editorial>Kairós</editorial>
+      <edicion>Illustrated</edicion>
+    </Libro>
+    <Libro>
+      <nombre>Ramayana</nombre>
+      <imagen>.\src\image\#BookRamayanaValmiki.png</imagen>
+      <calificacion>5</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>BO(28/09/2014_01:48:51)</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <autor>Valmiki</autor>
+      <editorial>Tomo</editorial>
+      <edicion>2010 Edition</edicion>
+    </Libro>
+    <Pelicula>
+      <nombre>Swades</nombre>
+      <imagen>.\src\image\#MovieSwadesAshutosh Gowariker.png</imagen>
+      <calificacion>3</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>MO(28/09/2014_01:53:18)</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <genero>Drama</genero>
+      <director>Ashutosh Gowariker</director>
+      <anhoPublicacion>2004</anhoPublicacion>
+    </Pelicula>
+  </pertenencias>
   <diasBase>30</diasBase>
   <diasTolerancia>10</diasTolerancia>
   <topX>10</topX>

@@ -12,7 +12,8 @@ public class Pelicula extends Pertenencia{
 		this.genero = genero;
 		this.director = director;
 		this.anhoPublicacion = anhoPublicacion;
-		this.ID = "MO"+Biblioteca.getSystemDateString();
+		Biblioteca.setSystemDate();
+		this.ID = "MO"+Biblioteca.getSystemDateStringHour();
 	}
 
 	public String getGenero() {

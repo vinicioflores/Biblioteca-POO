@@ -57,7 +57,7 @@ public class Sarasvati {
 	    
 	    model.setBiblioteca(libraryBelongings);
 	    model.setPrestatarios(borrowersRegistry);
-	    		
+	    
 		view.getController().updateOnStart();
 	}
 	
