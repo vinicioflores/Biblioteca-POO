@@ -45,7 +45,7 @@ public class Biblioteca {
 			if (i == pertenencias.size()){
 				isEqual = true;
 			}else{
-				if (pertenencias.get(i).getID() == toCompare){
+				if (pertenencias.get(i).getID().compareTo(toCompare) == 0){
 					pertenencias.remove(i);
 					isEqual = true;
 				}else{
@@ -231,10 +231,56 @@ public class Biblioteca {
 		return matches;
 	}
 
+	//Top X for Books
+	//It doesn't receive parameters and returns an ArrayList<Pertenencias> as an top X
+	public ArrayList<Pertenencia> topXForBooks(){
+		ArrayList<Pertenencia> top = new ArrayList<Pertenencia>();
+		int listelem = 0;
+		int index;
+		for(int i = 0; i < pertenencias.size(); i++){
+			if (listelem != getTopX() && pertenencias.get(i) instanceof Libro){
+				top.add((Libro) pertenencias.get(i));
+				listelem++;
+			}
+			else{
+				index = indexLowerElement(top);
+				if (top.get(index).getVecesPrestado() < pertenencias.get(i).getVecesPrestado() && pertenencias.get(i) instanceof Libro){
+					top.remove(index);
+					top.add((Libro) pertenencias.get(i));
+				}
+			}
+		}
+		top = order(top);
+		return top;
+	}	
+	//Special search function for books: Looks for books which were lent X times on the recent Y months, being X and Y modifiable parameters.
+	//Receives two integers indicating the time the books were lent and the quantity of latter months user wishes to consult and re-
+	//turns an ArrayList<Pertenencia> with the list of books.
+	public ArrayList<Pertenencia> specialSearchForBooks(int timesLent, int monthsToConsult){
+		ArrayList<Pertenencia> specialList = new ArrayList<Pertenencia>();
+		int daysDifference = Days.daysBetween(getSystemDate().minusMonths(monthsToConsult), getSystemDate()).getDays();
+		int counter;
+		int quantityLendings;
+		int fecha1;
+		for(int i = 0; i < pertenencias.size(); i++){
+			counter = 0;
+			quantityLendings = 0;
+			while (counter < pertenencias.get(i).getLendingLog().size()){
+				fecha1 = Days.daysBetween(pertenencias.get(i).getLendingLog().get(counter).getLendingDate(), getSystemDate()).getDays();
+				if (fecha1 < daysDifference){
+					quantityLendings++;
+				}
+				counter++;
+			}
+			if (quantityLendings >= timesLent && pertenencias.get(i) instanceof Libro){
+				specialList.add((Libro)pertenencias.get(i));
+			}
+		}
+		return specialList;
+	}
 	//-----------------------------------------------------------
 	//  Search by Magazines
 	//-----------------------------------------------------------
-
 	//Title
 	public ArrayList<Revista> buscarRevistasPorTitulo(String titulo){
 		ArrayList<Revista> matches = new ArrayList<Revista>();
@@ -266,7 +312,54 @@ public class Biblioteca {
 		}
 		return matches;
 	}
-
+	//Top X for Magazines
+	//It doesn't receive parameters and returns an ArrayList<Pertenencias> as an top X
+	public ArrayList<Pertenencia> topXForMagazines(){
+		ArrayList<Pertenencia> top = new ArrayList<Pertenencia>();
+		int listelem = 0;
+		int index;
+		for(int i = 0; i < pertenencias.size(); i++){
+			if (listelem != getTopX() && pertenencias.get(i) instanceof Pelicula){
+				top.add((Pelicula) pertenencias.get(i));
+				listelem++;
+			}
+			else{
+				index = indexLowerElement(top);
+				if (top.get(index).getVecesPrestado() < pertenencias.get(i).getVecesPrestado() && pertenencias.get(i) instanceof Pelicula){
+					top.remove(index);
+					top.add((Pelicula) pertenencias.get(i));
+				}
+			}
+		}
+		top = order(top);
+		return top;
+	}
+	//Special search function for magazines: Looks for magazines which were lent X times on the recent Y months, being X and Y modifiable parameters.
+	//Receives two integers indicating the time the magazines were lent and the quantity of latter months user wishes to consult and re-
+	//turns an ArrayList<Pertenencia> with the list of magazines.
+	public ArrayList<Pertenencia> specialSearchForMagazines(int timesLent, int monthsToConsult){
+		ArrayList<Pertenencia> specialList = new ArrayList<Pertenencia>();
+		int daysDifference = Days.daysBetween(getSystemDate().minusMonths(monthsToConsult), getSystemDate()).getDays();
+		int counter;
+		int quantityLendings;
+		int fecha1;
+		for(int i = 0; i < pertenencias.size(); i++){
+			counter = 0;
+			quantityLendings = 0;
+			while (counter < pertenencias.get(i).getLendingLog().size()){
+				fecha1 = Days.daysBetween(pertenencias.get(i).getLendingLog().get(counter).getLendingDate(), getSystemDate()).getDays();
+				if (fecha1 < daysDifference){
+					quantityLendings++;
+				}
+				counter++;
+			}
+			if (quantityLendings >= timesLent && pertenencias.get(i) instanceof Revista){
+				specialList.add((Revista)pertenencias.get(i));
+			}
+		}
+		return specialList;
+	}
+	
 	//-----------------------------------------------------------
 	//  Movie
 	//-----------------------------------------------------------
@@ -318,6 +411,54 @@ public class Biblioteca {
 		}
 		return matches;
 	}
+	//Special search function for movies: Looks for movies which were lent X times on the recent Y months, being X and Y modifiable parameters.
+	//Receives two integers indicating the time the movies were lent and the quantity of latter months user wishes to consult and re-
+	//turns an ArrayList<Pertenencia> with the list of movies.
+	public ArrayList<Pertenencia> specialSearchForMovies(int timesLent, int monthsToConsult){
+		ArrayList<Pertenencia> specialList = new ArrayList<Pertenencia>();
+		int daysDifference = Days.daysBetween(getSystemDate().minusMonths(monthsToConsult), getSystemDate()).getDays();
+		int counter;
+		int quantityLendings;
+		int fecha1;
+		for(int i = 0; i < pertenencias.size(); i++){
+			counter = 0;
+			quantityLendings = 0;
+			while (counter < pertenencias.get(i).getLendingLog().size()){
+				fecha1 = Days.daysBetween(pertenencias.get(i).getLendingLog().get(counter).getLendingDate(), getSystemDate()).getDays();
+				if (fecha1 < daysDifference){
+					quantityLendings++;
+				}
+				counter++;
+			}
+			if (quantityLendings >= timesLent && pertenencias.get(i) instanceof Pelicula){
+				specialList.add((Pelicula)pertenencias.get(i));
+			}
+		}
+		return specialList;
+	}	
+	//Top X for Movies
+	//It doesn't receive parameters and returns an ArrayList<Pertenencias> as an top X
+	public ArrayList<Pertenencia> topXForMovies(){
+		ArrayList<Pertenencia> top = new ArrayList<Pertenencia>();
+		int listelem = 0;
+		int index;
+		for(int i = 0; i < pertenencias.size(); i++){
+			if (listelem != getTopX() && pertenencias.get(i) instanceof Revista){
+				top.add((Revista) pertenencias.get(i));
+				listelem++;
+			}
+			else{
+				index = indexLowerElement(top);
+				if (top.get(index).getVecesPrestado() < pertenencias.get(i).getVecesPrestado() && pertenencias.get(i) instanceof Revista){
+					top.remove(index);
+					top.add((Revista) pertenencias.get(i));
+				}
+			}
+		}
+		top = order(top);
+		return top;
+	}	
+	
 	//Lower element of ArrayList<Pertenencia>
 	//Receives an ArrayList<Pertenencia> y returns index of least rented material from list
 	private int indexLowerElement(ArrayList<Pertenencia> top){
@@ -350,7 +491,6 @@ public class Biblioteca {
 		modifiedTop.add(list.get(0));
 		return modifiedTop;
 	}	
-	
 	//Top X
 	//It doesn't receive parameters and returns an ArrayList<Pertenencias> as an top X
 	public ArrayList<Pertenencia> topX(){
