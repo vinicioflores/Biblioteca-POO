@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -77,35 +78,8 @@ public class Controller implements ActionListener{
 				updateSpecialSwithBooks();
 			}
 			
-		}///search :: movie 
-		////////////Back buttons :: Book searches
-		else if(source == view.getAllXSearchBackBtn()){
-	
-			view.getSearchPnl().setVisible(true);
-			view.getAllXSearch().setVisible(false);
-			
 		}
-		else if(source == view.getBorrowedXBackBtn()){
-			
-			view.getSearchPnl().setVisible(true);
-			view.getBorrowedXPnl().setVisible(false);
-			
-		}
-		else if(source == view.getTopXBackBtn()){
-			view.getSearchPnl().setVisible(true);
-			view.getTopXPnl().setVisible(false);
-			
-		}
-		else if(source == view.getAvailableXBackBtn()){
-			view.getSearchPnl().setVisible(true);
-			view.getAvailableXPnl().setVisible(false);
-			
-		}
-		else if(source == view.getSpecialSXBackBtn()){
-			view.getSearchPnl().setVisible(true);
-			view.getSpecialSXPnl().setVisible(false);
-			
-		}
+		
 		////////////////////////////////////////////////
 		
 		else if(source == view.getMovieCSearchBtn()){
@@ -138,32 +112,7 @@ public class Controller implements ActionListener{
 			
 		}
 		
-			////////////Back buttons :: Movies searches
-			else if(source == view.getAllXSearchBackBtn()){
-				view.getSearchPnl().setVisible(true);
-				view.getAllXSearch().setVisible(false);
-		
-			}
-			else if(source == view.getBorrowedXBackBtn()){
-				view.getSearchPnl().setVisible(true);
-				view.getBorrowedXPnl().setVisible(false);
-		
-			}
-			else if(source == view.getTopXBackBtn()){
-				view.getSearchPnl().setVisible(true);
-				view.getTopXPnl().setVisible(false);
-		
-			}
-			else if(source == view.getAvailableXBackBtn()){
-				view.getSearchPnl().setVisible(true);
-				view.getAvailableXPnl().setVisible(false);
-		
-			}
-			else if(source == view.getSpecialSXBackBtn()){
-				view.getSearchPnl().setVisible(true);
-				view.getSpecialSXPnl().setVisible(false);
-		
-			}
+			
 	////////////////////////////////////////////////
 		else if(source == view.getMagazineCSearchBtn()){
 			String parameter = getSelectedRadioButtonInGroupText(view.getMagazineBottonGroup());
@@ -195,7 +144,7 @@ public class Controller implements ActionListener{
 
 		}
 		
-////////////Back buttons :: Magzines searches
+		////////////Back buttons :: searches
 		else if(source == view.getAllXSearchBackBtn()){
 			view.getSearchPnl().setVisible(true);
 			view.getAllXSearch().setVisible(false);
@@ -408,11 +357,44 @@ public class Controller implements ActionListener{
         	view.getStartPnl().setVisible(true);
         	view.getSettingPnl().setVisible(false);
         }
-        ///settings change loan days btn
+        
+        ///settings change top x btn
+		else if(source == view.getSettingsChangeTopXBtn()){
+			//TODO
+			view.getSettingsChangeTopXSpn();
+			
+        	
+        }
         ///settings change tolerance days btn
+		else if(source == view.getSettingsChangeLoanDaysBtn()){
+			//TODO
+			view.getSettingsChangeLoanDaysSpn();
+        	
+        }
         ///settings change SS times borrowed btn
+		else if(source == view.getSettingsChangeToleranceDaysBtn()){
+			//TODO
+			view.getSettingsChangeToleranceDaysSpn();
+        	
+        }
         ///settings change SS months borrowed btn
+		else if(source == view.getSettingsChangeMonthsBtn()){
+			//TODO
+			view.getSettingsChangeMonthsSpn();
+        	
+        }
+        ///settings change SS times borrowed btn
+		else if(source == view.getSettingsChangeTimesBorrowedBtn()){
+			//TODO
+			view.getSettingChangeTimesBorrowedSpn();
+        	
+        }       
         ///settings go to the future btn
+		else if(source == view.getSettingsGoToTheFutureBtn()){
+			
+			//TODO
+			view.getSettingsGoToTheFutureSpn();
+        }
         
         //
         else if(source == view.getSearchBtn()){
@@ -432,10 +414,6 @@ public class Controller implements ActionListener{
         	}
         }
         
-        else if(source == view.getAllXSearchBackBtn()){
-        	view.getSearchPnl().setVisible(true);
-        	       	
-        }
         else if(source == view.getBookSearchImageBn()){
         	JFileChooser chooser = new JFileChooser(); //Creamos objeto de JFileChooser
 			int opcion = chooser.showOpenDialog(view);//Abrir ventana de dialogo para escoger imagen
@@ -511,6 +489,8 @@ public class Controller implements ActionListener{
 			
 		}
 		
+		updateStartPanelPanes();
+		updateStartPanelLabels();
 		//move to start panel
 		/*
 		view.getStartPnl().setVisible(true); 
@@ -578,7 +558,8 @@ public class Controller implements ActionListener{
 				
 			}
 		}
-				
+		updateStartPanelPanes();
+		updateStartPanelLabels();		
 	}
 
 	private void registerNewBook() {
@@ -644,6 +625,8 @@ public class Controller implements ActionListener{
 				
 			}
 		}
+		updateStartPanelPanes();
+		updateStartPanelLabels();
 		
 	}
 
@@ -892,6 +875,15 @@ public class Controller implements ActionListener{
 		view.getSettingsCurrentTimesBorrowedLbl().setText(model.getBiblioteca().getCantidasVecesBusqueda()+"");
 		view.getSettingsCurrentMonthsLbl().setText(model.getBiblioteca().getTiempoBusquedaMeses()+"");
 		view.getSettingsCurrentDateLbl().setText(model.getBiblioteca().getSystemDateString());
+		updateSettingsSpinners();
+	}
+	private void updateSettingsSpinners(){
+		//TODO
+		view.getSettingsChangeLoanDaysSpn().setValue(model.getBiblioteca().getDiasBase());
+		view.getSettingsChangeToleranceDaysSpn().setValue(model.getBiblioteca().getDiasTolerancia());
+		view.getSettingsChangeTopXSpn().setValue(model.getBiblioteca().getTopX());
+		view.getSettingChangeTimesBorrowedSpn().setValue(model.getBiblioteca().getCantidasVecesBusqueda());
+		view.getSettingsChangeMonthsSpn().setValue(model.getBiblioteca().getTiempoBusquedaMeses());
 		
 	}
 	private void updateStartPanelPanes()
@@ -903,11 +895,70 @@ public class Controller implements ActionListener{
 	}
 	private void updateAllBelongingsPane(){
 		
-	}
-	private void updateTopXBelongingsPane(){
+		view.getAllBelongingsViewport().removeAll();;
+		
+		view.getAllBelongingsViewport().setLayout(new BoxLayout(view.getAllBelongingsViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().getPertenencias();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Pertenencia tper = res.get(i);
+				BelongingItem item = new BelongingItem(tper);
+				//save book in tempBook in biblioteca
+				view.getAllBelongingsViewport().add(item);
+				view.getAllBelongingsViewport().repaint();
+				view.getAllBelongingsViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There are not any belongings");
+			view.getAllBelongingsViewport().add(lab);
+			
+		}
 		
 	}
+	private void updateTopXBelongingsPane(){
+		//TODO
+		
+		
+		
+	}
+	/**
+	 * 
+	 */
 	private void updateBorrowedBelongingsPane(){
+		
+		view.getTopBorrowedBelongingsViewport();
+		
+		
+		view.getTopBorrowedBelongingsViewport().removeAll();;
+		
+		view.getTopBorrowedBelongingsViewport().setLayout(new BoxLayout(view.getAllBelongingsViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().getPertenencias();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				if(res.get(i).isPrestado()){
+					
+					Pertenencia tper = res.get(i);
+					BelongingItem item = new BelongingItem(tper);
+					//save book in tempBook in biblioteca
+					view.getTopBorrowedBelongingsViewport().add(item);
+					view.getTopBorrowedBelongingsViewport().repaint();
+					view.getTopBorrowedBelongingsViewport().revalidate();
+				}
+					
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There are not any borrowed belongings");
+			view.getTopBorrowedBelongingsViewport().add(lab);
+			
+		}
 		
 	}
 	public void updateOnStart()
@@ -915,8 +966,7 @@ public class Controller implements ActionListener{
 		updateStartPanelLabels();
 		updateStartPanelPanes();
 		updateSettingsLabels();
-		//fill the belongings pane
-		//fill the borrowed belongings 
+		 
 	}
 	private void updateBorrowedXwithBooks()
 	{
@@ -925,6 +975,7 @@ public class Controller implements ActionListener{
 		//model.setTempSearch(model.getBiblioteca().searchBorrowedBooks());
 		
 		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedBooks();
 		if(res.size() > 0){
 			
@@ -951,25 +1002,28 @@ public class Controller implements ActionListener{
 	}
 	private void updateBorrowedXwithMovies()
 	{
+		//Modify the labels
 		view.getBorrowedXLbl().setText("movies");
 		
+		//Fill the panel with items
 		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.PAGE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedMovies();
 		if(res.size() > 0){
 			
 			for(int i = 0; i < res.size(); i++)
 			{
 				Pelicula tmovie = (Pelicula)res.get(i);
-				MovieItem moviey = new MovieItem(tmovie);
+				MovieItem item = new MovieItem(tmovie);
 				//save book in tempBook in biblioteca
-				view.getAllXViewport().add(moviey);
+				view.getAllXViewport().add(item);
 				view.getAllXViewport().repaint();
 				view.getAllXViewport().revalidate();
 			}	
 		}
 		else
 		{
-			JLabel lab = new JLabel("There's no borrowed movies");
+			JLabel lab = new JLabel("There are no borrowed movies");
 			view.getAllXViewport().add(lab);
 			//display theres none
 		}
@@ -983,6 +1037,7 @@ public class Controller implements ActionListener{
 		view.getBorrowedXLbl().setText("magazines");
 		
 		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedMagazines();
 		if(res.size() > 0){
 			
@@ -998,9 +1053,8 @@ public class Controller implements ActionListener{
 		}
 		else
 		{
-			JLabel lab = new JLabel("There's no borrowed magazines");
+			JLabel lab = new JLabel("There are no borrowed magazines");
 			view.getAllXViewport().add(lab);
-			//display theres none
 		}
 		view.getBorrowedXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
@@ -1015,6 +1069,7 @@ public class Controller implements ActionListener{
 		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
 	
 		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllBooks();
 		if(res.size() > 0){
 			
@@ -1030,7 +1085,7 @@ public class Controller implements ActionListener{
 		}
 		else
 		{
-			JLabel lab = new JLabel("There's no books");
+			JLabel lab = new JLabel("There are no books");
 			view.getAllXViewport().add(lab);
 			//display theres none
 		}
@@ -1049,6 +1104,7 @@ public class Controller implements ActionListener{
 		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
 		
 		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMovies();
 		if(res.size() > 0){
 			
@@ -1083,6 +1139,7 @@ public class Controller implements ActionListener{
 		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
 		
 		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
 		if(res.size() > 0){
 			
@@ -1109,11 +1166,55 @@ public class Controller implements ActionListener{
 	}
 	private void updateAvailableXwithBooks(){
 		
+		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(magaziney);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
+		
 		view.getAvailableXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 		
 	}
 	private void updateAvailableXwithMovies(){
+		
+		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(magaziney);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
 		
 		view.getAvailableXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
@@ -1121,28 +1222,137 @@ public class Controller implements ActionListener{
 	}
 	private void updateAvailableXwithMagazines(){
 		
+		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(magaziney);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
+		
 		view.getBorrowedXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 		
 	}
-	private void updateTopXwithBooks()
-	{
+	private void updateTopXwithBooks(){
+		
+		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(magaziney);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
+		
 		view.getTopXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 		
 	}
-	private void updateTopXwithMovies()
-	{
+	private void updateTopXwithMovies(){
+		
+		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(magaziney);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
 
 		view.getTopXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 	}
-	private void updateTopXwithMagazines()
-	{
+	private void updateTopXwithMagazines(){
+		
+		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(magaziney);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
+		
 		view.getTopXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 	}
 	private void updateSpecialSwithBooks(){
+		
+		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(magaziney);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
 		
 		view.getSpecialSXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
@@ -1150,12 +1360,58 @@ public class Controller implements ActionListener{
 	}
 	private void updateSpecialSwithMovies(){
 		
+		
+		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(magaziney);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
+		
 
 		view.getSpecialSXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 		
 	}
 	private void updateSpecialSwithMagazines(){
+		
+		view.getAllXViewport().removeAll();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		if(res.size() > 0){
+			
+			for(int i = 0; i < res.size(); i++)
+			{
+				Revista tmagazine = (Revista)res.get(i);
+				MagazineItem magaziney = new MagazineItem(tmagazine);
+				//save book in tempBook in biblioteca
+				view.getAllXViewport().add(magaziney);
+				view.getAllXViewport().repaint();
+				view.getAllXViewport().revalidate();
+			}	
+		}
+		else
+		{
+			JLabel lab = new JLabel("There's no magazines");
+			view.getAllXViewport().add(lab);
+			
+		}
+		
 		view.getSpecialSXPnl().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 	

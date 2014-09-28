@@ -265,12 +265,14 @@ public class View extends JFrame {
 	private JSpinner MagazineRatingSpinner;
 	private JLabel TotalBorrowedLblM;
 	private JLabel TotalBelongingsLblM;
+	//
 	//private BookEdit bookEditPnl;
 	private CoworkerEdit coworkerEditPnl;
 	private MagazineEdit magazineEditPnl;
 	private MovieEdit movieEditPnl;
 	private RelativeEdit relativeEditPnl;
 	private StudentEdit studentEditPnl;
+	//
 	private JScrollPane allBelongingsPnl;
 	private JPanel allBelongingsViewport;
 	private JScrollPane borrowedBelonginsPnl;
@@ -1334,18 +1336,6 @@ public class View extends JFrame {
 		CreditsPnl = new JPanel();
 		contentPane.add(CreditsPnl, "name_5917427800206");
 		CreditsPnl.setLayout(new MigLayout("", "[356.00px][714.00px]", "[15px][][][][][][][][][][][][][][][][][]"));
-
-		//bookEditPnl = new BookEdit();
-		
-		//magazineEditPnl = new MagazineEdit();
-		
-		//movieEditPnl = new MovieEdit();
-		
-		//coworkerEditPnl = new CoworkerEdit();
-		
-		//relativeEditPnl = new RelativeEdit();
-		
-		//studentEditPnl = new StudentEdit();
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));
@@ -1441,21 +1431,21 @@ public class View extends JFrame {
 		MovieRegistrationBackBtn.addActionListener(controller);
 		MovieRegistrationBtn.addActionListener(controller);
 		
-		//All book search panel
+		//All X search panel
 		AllXSearchBackBtn.addActionListener(controller);
 		AllXFilterBtn.addActionListener(controller);
 		
-		//Borrowed books
+		//Borrowed X
 		BorrowedXBackBtn.addActionListener(controller);
 		BorrowedXFilterBtn.addActionListener(controller);
 		
-		//Special book search
+		//Special X search
 		SpecialSXBackBtn.addActionListener(controller);
 		
-		//Top books
+		//Top X
 		TopXBackBtn.addActionListener(controller);
 		
-		//Available books
+		//Available X
 		AvailableXBackBtn.addActionListener(controller);
 		
 		//Searches panel
@@ -1979,7 +1969,7 @@ public class View extends JFrame {
 		return SpecialSXViewport;
 	}
 	
-	public JComboBox getAllXSearchParametersComboBox() {
+	public JComboBox<String> getAllXSearchParametersComboBox() {
 		return AllXSearchParametersComboBox;
 	}
 	public JLabel getAllXLbl() {

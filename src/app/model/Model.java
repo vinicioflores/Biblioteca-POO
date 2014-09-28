@@ -9,6 +9,7 @@ public class Model {
 	private Biblioteca biblioteca;
 	private RegistroPrestatarios prestatarios;
 	private ArrayList<Pertenencia> tempSearch;
+	private Pertenencia belongingToEdit;
 	final String pathLibrary = "src/xml/library.xml";
 	final String pathRegistry = "src/xml/borrowerRegistry.xml";
 	
@@ -55,6 +56,12 @@ public class Model {
 	}
 	public void setTempSearch(ArrayList<Pertenencia> tempSearch) {
 		this.tempSearch = tempSearch;
+	}
+	public Pertenencia getBelongingToEdit() {
+		return belongingToEdit;
+	}
+	public void setBelongingToEdit(Pertenencia belongingToEdit) {
+		this.belongingToEdit = belongingToEdit;
 	}
 	
 
