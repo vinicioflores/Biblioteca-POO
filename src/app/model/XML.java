@@ -57,8 +57,6 @@ public class XML {
 		xml = xstream.toXML(library);
 		
 		fileWriting(fileToSave, xml);
-		System.out.println(xml);
-		System.out.println();
 	}
 
 	//Save the borrowers registry on XML
@@ -78,8 +76,6 @@ public class XML {
 		xml = xstream.toXML(registry);
 		
 		fileWriting(fileToSave, xml);
-		System.out.println(xml);
-		System.out.println();
 	}
 	//Load XML with library
 	public static void loadLibraryXML(String path, Biblioteca registry){
