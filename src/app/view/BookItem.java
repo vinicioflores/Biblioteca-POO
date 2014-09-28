@@ -29,6 +29,7 @@ public class BookItem extends JPanel {
 	private JButton btnNewButton;
 	private JLabel lblNewLabel;
 	private JButton btnEdit;
+	private JButton btnDelete;
 
 	/**
 	 * Create the panel.
@@ -89,6 +90,9 @@ public class BookItem extends JPanel {
 		
 		btnEdit = new JButton("Edit");
 		add(btnEdit, "cell 8 0");
+		
+		btnDelete = new JButton("Delete");
+		add(btnDelete, "cell 8 0");
 	}
 
 }

@@ -37,7 +37,24 @@ public class Biblioteca {
 			orderingNewBelonging(pertenencia);
 		}
 	}
-	 	
+	
+	public void deleteBelonging(String toCompare){
+		boolean isEqual = false;
+		int i = 0;
+		while (!isEqual){
+			if (i == pertenencias.size()){
+				isEqual = true;
+			}else{
+				if (pertenencias.get(i).getID() == toCompare){
+					pertenencias.remove(i);
+					isEqual = true;
+				}else{
+					i++;
+				}
+			}
+		}
+	}
+	
 	private void orderingNewBelonging(Pertenencia belonging){
 		boolean inserted = false;
 		int i = 0;

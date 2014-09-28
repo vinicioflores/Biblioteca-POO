@@ -12,6 +12,30 @@
       <editorial>Nol</editorial>
       <edicion>Eol</edicion>
     </Libro>
+    <Libro>
+      <nombre>Lol</nombre>
+      <imagen>.\src\image\#BookLolNol.png</imagen>
+      <calificacion>3</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>BO0</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <autor>Nol</autor>
+      <editorial>Col</editorial>
+      <edicion>Yol</edicion>
+    </Libro>
+    <Libro>
+      <nombre>Nel</nombre>
+      <imagen>.\src\image\#BookNelKel.png</imagen>
+      <calificacion>3</calificacion>
+      <vecesPrestado>0</vecesPrestado>
+      <ID>BO0</ID>
+      <isPrestado>false</isPrestado>
+      <lendingLog/>
+      <autor>Kel</autor>
+      <editorial>Shell</editorial>
+      <edicion>Shellshock</edicion>
+    </Libro>
   </pertenencias>
   <diasBase>30</diasBase>
   <diasTolerancia>10</diasTolerancia>
