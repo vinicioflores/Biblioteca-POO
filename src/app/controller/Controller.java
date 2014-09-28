@@ -463,11 +463,11 @@ public class Controller implements ActionListener{
 		}else{
 			validPath = true;
 		String imgPath = archivo;
-		CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+name+".png");
+		CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\" + "#Movie" +name + director+".png");
 		}
 		
 		if(validTF&&validPath){
-			Pelicula movie = new Pelicula(name, ".\\src\\image\\"+name+".png", rating,
+			Pelicula movie = new Pelicula(name, ".\\src\\image\\" + "#Movie" +name + director+".png", rating,
 					genre,director,releaseDate);
 			
 			model.addBelonging(movie);
@@ -529,12 +529,12 @@ public class Controller implements ActionListener{
 		else{
 			validPath = true;
 			String imgPath = archivo;
-			CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+name+".png");
+			CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+ "#Magazine" +name + theme +".png");
 		}
 		
 		if(validTF&&validPath){
 			
-			Revista mag = new Revista(name,".\\src\\image\\"+name+".png", rating,theme, publicationPeriod );
+			Revista mag = new Revista(name,".\\src\\image\\" + "#Magazine" +name + theme+".png", rating,theme, publicationPeriod );
 			System.out.println(mag.toString());
 			
 			JOptionPane.showMessageDialog(view, "New magazine was registered: "+ name);
@@ -591,14 +591,14 @@ public class Controller implements ActionListener{
 		if(archivo!=null){
 			validPath = true;
 			String imgPath = archivo;
-			CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\"+name+".png");
+			CopiarArchivo.getInstance().copiar(imgPath, ".\\src\\image\\" + "#Book" +name + author+".png");
 		}else{
 			validPath = false;
 			
 		}
 		
 		if(validTF&&validPath){
-			Libro book = new Libro(name,".\\src\\image\\"+name+".png", rating,author, editorial, edition );
+			Libro book = new Libro(name,".\\src\\image\\" + "#Book" +name + author+".png", rating,author, editorial, edition );
 			System.out.println(book.toString());
 			
 			ShowDialog("New book was registered: "+ name);
