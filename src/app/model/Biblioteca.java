@@ -585,8 +585,8 @@ public class Biblioteca {
 	}
 	//Checks how late or not is the lending made.
 	//Receives a date and returns a String indicating how is the lending (Green if O.K., Yellow if on Tolerance Days or Red if late).
-	private String latenessChecker(Pertenencia belonging){
-		int periodDays = Days.daysBetween(belonging.getFechaUltimoPrestamo(), systemDate).getDays();
+	public String latenessChecker(Pertenencia belonging){
+		int periodDays = Days.daysBetween(belonging.getFechaUltimoPrestamo(), systemDate).getDays(); //
 		if (periodDays <= diasBase){
 			return "Green";
 		}
