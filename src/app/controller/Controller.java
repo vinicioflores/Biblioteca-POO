@@ -17,6 +17,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import org.joda.time.DateTime;
+
 import app.model.*;
 import app.view.*;
 
@@ -32,6 +34,7 @@ public class Controller implements ActionListener{
 		this.view = view;
 	}
 	
+	@SuppressWarnings("static-access")
 	public void actionPerformed(ActionEvent evt){
 		Object source = evt.getSource();
 		
@@ -360,40 +363,50 @@ public class Controller implements ActionListener{
         
         ///settings change top x btn
 		else if(source == view.getSettingsChangeTopXBtn()){
-			//TODO
-			view.getSettingsChangeTopXSpn();
-			
-        	
+			int value = Integer.parseInt(view.getSettingsChangeTopXSpn().getValue().toString());
+			model.getBiblioteca().setTopX(value);
+			String currentVal = Integer.toString(value);
+			view.getSettingsCurrentTopXLbl().setText(currentVal);		
         }
         ///settings change tolerance days btn
 		else if(source == view.getSettingsChangeLoanDaysBtn()){
-			//TODO
-			view.getSettingsChangeLoanDaysSpn();
-        	
+			int value = Integer.parseInt(view.getSettingsChangeLoanDaysSpn().getValue().toString());
+			model.getBiblioteca().setDiasBase(value);
+			String currentVal = Integer.toString(value);
+			view.getSettingsCurrentLoanDaysLbl().setText(currentVal);
         }
         ///settings change SS times borrowed btn
 		else if(source == view.getSettingsChangeToleranceDaysBtn()){
-			//TODO
-			view.getSettingsChangeToleranceDaysSpn();
-        	
+			int value = Integer.parseInt(view.getSettingsChangeToleranceDaysSpn().getValue().toString());
+			model.getBiblioteca().setDiasTolerancia(value);
+			String currentVal = Integer.toString(value);
+			view.getSettingsCurrentToleranceDaysLbl().setText(currentVal);
         }
         ///settings change SS months borrowed btn
 		else if(source == view.getSettingsChangeMonthsBtn()){
-			//TODO
-			view.getSettingsChangeMonthsSpn();
-        	
+			int value = Integer.parseInt(view.getSettingsChangeMonthsSpn().getValue().toString());
+			model.getBiblioteca().setTiempoBusquedaMeses(value);;
+			String currentVal = Integer.toString(value);
+			view.getSettingsCurrentMonthsLbl().setText(currentVal);		
         }
         ///settings change SS times borrowed btn
 		else if(source == view.getSettingsChangeTimesBorrowedBtn()){
-			//TODO
-			view.getSettingChangeTimesBorrowedSpn();
-        	
+			int value = Integer.parseInt(view.getSettingChangeTimesBorrowedSpn().getValue().toString());
+			model.getBiblioteca().setCantidasVecesBusqueda(value);
+			String currentVal = Integer.toString(value);
+			view.getSettingsCurrentTimesBorrowedLbl().setText(currentVal);	
         }       
         ///settings go to the future btn
 		else if(source == view.getSettingsGoToTheFutureBtn()){
-			
-			//TODO
-			view.getSettingsGoToTheFutureSpn();
+			int value = Integer.parseInt(view.getSettingsGoToTheFutureSpn().getValue().toString());
+			System.out.println(value);
+			DateTime dateToChange = new DateTime();
+			dateToChange.plusDays(value);
+			model.getBiblioteca().setSystemDate(value);
+			System.out.println(model.getBiblioteca().getSystemDateString());
+			view.getSettingsCurrentDateLbl().setText((model.getBiblioteca().getSystemDateString()));
+			view.getSettingsGoToTheFutureSpn().setValue(0);
+			view.getCurrentSystemDate().setText(model.getBiblioteca().getSystemDateString());
         }
         
         //
@@ -527,12 +540,7 @@ public class Controller implements ActionListener{
         else if(source == view.getBorrowersSearchBackBtn()){
         	view.getSearchPnl().setVisible(true);
         	view.getBorrowersSearchPnl().setVisible(false);
-        	
-        	
         }
-        
-        
-
 	}
 
 	private void registerNewMovie() {
@@ -546,6 +554,7 @@ public class Controller implements ActionListener{
 		
 		
 		int rating = (Integer)view.getMovieRatingSpinner().getValue();
+		System.out.println();
 		
 		if(name.isEmpty()||genre.isEmpty()||director.isEmpty()||releaseDate.isEmpty()){
 			validTF = false;
@@ -617,7 +626,8 @@ public class Controller implements ActionListener{
 		}
 		
 		int rating = Integer.parseInt(view.getMagazineRatingSpinner().getValue().toString());
-
+		System.out.println();
+		
 		if(archivo == null){
 			validPath = false;
 		}
@@ -674,6 +684,7 @@ public class Controller implements ActionListener{
 		String edition = view.getBookEdition().getText().trim();
 		
 		int rating = (Integer)view.getBookRatingSpinner().getValue();
+		System.out.println();
 		
 		if(name.isEmpty()||author.isEmpty()||editorial.isEmpty()||edition.isEmpty()){
 			validTF = false;
@@ -995,8 +1006,7 @@ public class Controller implements ActionListener{
 	private void updateAllBelongingsPane(){
 		
 		view.getAllBelongingsViewport().removeAll();;
-		
-		view.getAllBelongingsViewport().setLayout(new BoxLayout(view.getAllBelongingsViewport(), BoxLayout.LINE_AXIS));
+		view.getAllBelongingsViewport().setLayout(new BoxLayout(view.getAllBelongingsViewport(), BoxLayout.PAGE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().getPertenencias();
 		if(res.size() > 0){
 			

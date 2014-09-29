@@ -1264,7 +1264,8 @@ public class View extends JFrame {
 		SettingsChangeLoanDaysSpn = new JSpinner();
 		SettingsChangeLoanDaysSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
 		SettingsChangeLoanDaysSpn.setModel(new SpinnerNumberModel(
-				new Integer(1), new Integer(1), null, new Integer(1)));
+				1, 1, null, 1));
+		
 		SettingPnl.add(SettingsChangeLoanDaysSpn, "flowx,cell 1 3");
 
 		lblToleranceDays = new JLabel("Tolerance days");
@@ -1282,7 +1283,8 @@ public class View extends JFrame {
 
 		SettingsChangeToleranceDaysSpn = new JSpinner();
 		SettingsChangeToleranceDaysSpn.setModel(new SpinnerNumberModel(
-				new Integer(0), new Integer(0), null, new Integer(1)));
+				0, 0, null, 1));
+
 		SettingsChangeToleranceDaysSpn.setFont(new Font("Consolas", Font.PLAIN,
 				11));
 		SettingPnl.add(SettingsChangeToleranceDaysSpn, "flowx,cell 1 6");
@@ -1296,8 +1298,7 @@ public class View extends JFrame {
 		SettingPnl.add(lblCurrent, "flowx,cell 1 8");
 
 		SettingsChangeTopXSpn = new JSpinner();
-		SettingsChangeTopXSpn.setModel(new SpinnerNumberModel(new Integer(2),
-				new Integer(2), null, new Integer(1)));
+		SettingsChangeTopXSpn.setModel(new SpinnerNumberModel(2, 2, null, 1));
 		SettingsChangeTopXSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
 		SettingPnl.add(SettingsChangeTopXSpn, "flowx,cell 1 9");
 
@@ -1317,7 +1318,7 @@ public class View extends JFrame {
 		SettingsChangeTimesBorrowedSpn.setFont(new Font("Consolas", Font.PLAIN,
 				11));
 		SettingsChangeTimesBorrowedSpn.setModel(new SpinnerNumberModel(
-				new Integer(0), new Integer(0), null, new Integer(1)));
+				0, 0, null, 1));
 		SettingPnl.add(SettingsChangeTimesBorrowedSpn, "flowx,cell 1 14");
 
 		lblMonths = new JLabel("Months:");
@@ -1330,8 +1331,8 @@ public class View extends JFrame {
 
 		SettingsChangeMonthsSpn = new JSpinner();
 		SettingsChangeMonthsSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
-		SettingsChangeMonthsSpn.setModel(new SpinnerNumberModel(new Integer(1),
-				new Integer(1), null, new Integer(1)));
+		SettingsChangeMonthsSpn.setModel(new SpinnerNumberModel(
+				1, 1, null, 1));
 		SettingPnl.add(SettingsChangeMonthsSpn, "flowx,cell 1 17");
 
 		lblSystemDate = new JLabel("System date");
@@ -1383,7 +1384,7 @@ public class View extends JFrame {
 
 		SettingsGoToTheFutureSpn = new JSpinner();
 		SettingsGoToTheFutureSpn.setModel(new SpinnerNumberModel(
-				new Integer(1), new Integer(1), null, new Integer(1)));
+				0, 0, null, 1));
 		SettingsGoToTheFutureSpn.setFont(new Font("Consolas", Font.PLAIN, 11));
 		SettingPnl.add(SettingsGoToTheFutureSpn, "flowx,cell 1 22");
 

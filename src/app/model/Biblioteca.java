@@ -638,8 +638,8 @@ public class Biblioteca {
 	}
 	//Setter for the systemDate attribute.
 	//Receives a DateTime with the system date and returns nothing.
-	public static void setSystemDate(DateTime systemDate){
-		Biblioteca.systemDate = systemDate;
+	public static void setSystemDate(int daysToAdd){
+		Biblioteca.systemDate = systemDate.plusDays(daysToAdd);
 	}
 	
 	@Override
