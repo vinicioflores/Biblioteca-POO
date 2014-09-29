@@ -435,58 +435,58 @@ public class View extends JFrame {
 		topBorrowedBelongingsPnl.setViewportView(topBorrowedBelongingsViewport);
 		        
 		BorrowersSearchPnl = new JPanel();
-		        BorrowersSearchPnl.setForeground(new Color(0, 0, 0));
-		        BorrowersSearchPnl.setBackground(new Color(255, 255, 255));
-		        contentPane.add(BorrowersSearchPnl, "name_4030812266153");
-		        BorrowersSearchPnl.setLayout(new MigLayout("", "[55px,grow]", "[23px][grow]"));
+		BorrowersSearchPnl.setForeground(new Color(0, 0, 0));
+		BorrowersSearchPnl.setBackground(new Color(255, 255, 255));
+		contentPane.add(BorrowersSearchPnl, "name_4030812266153");
+		BorrowersSearchPnl.setLayout(new MigLayout("", "[55px,grow]", "[23px][grow]"));
 		        
-		        BorrowersSearchBackBtn = new JButton("Back");
-		        BorrowersSearchPnl.add(BorrowersSearchBackBtn, "flowx,cell 0 0,alignx left,aligny top");
+		BorrowersSearchBackBtn = new JButton("Back");
+		BorrowersSearchPnl.add(BorrowersSearchBackBtn, "flowx,cell 0 0,alignx left,aligny top");
 		        
-		        BorrowersScrollPane = new JScrollPane();
-		        BorrowersSearchPnl.add(BorrowersScrollPane, "cell 0 1,grow");
+		BorrowersScrollPane = new JScrollPane();
+		BorrowersSearchPnl.add(BorrowersScrollPane, "cell 0 1,grow");
 		        
-		        BorrowersSearchViewport = new JPanel();
-		        BorrowersScrollPane.setViewportView(BorrowersSearchViewport);
-		        BorrowersSearchViewport.setLayout(new BoxLayout(BorrowersSearchViewport, BoxLayout.PAGE_AXIS));
+		BorrowersSearchViewport = new JPanel();
+		BorrowersScrollPane.setViewportView(BorrowersSearchViewport);
+		BorrowersSearchViewport.setLayout(new BoxLayout(BorrowersSearchViewport, BoxLayout.PAGE_AXIS));
 		        
-		        BorrowersSearchXLbl = new JLabel("X");
-		        BorrowersSearchPnl.add(BorrowersSearchXLbl, "cell 0 0");
+		BorrowersSearchXLbl = new JLabel("X");
+		BorrowersSearchPnl.add(BorrowersSearchXLbl, "cell 0 0");
 		
 		
-		        LendingPnl = new JPanel();
-		        contentPane.add(LendingPnl, "name_12656327016431");
-		        LendingPnl.setLayout(new MigLayout("", "[grow]", "[][][][][][][][][][]"));
+		LendingPnl = new JPanel();
+		contentPane.add(LendingPnl, "name_12656327016431");
+		LendingPnl.setLayout(new MigLayout("", "[grow]", "[][][][][][][][][][]"));
 		        
-		                btnBack = new JButton("Back");
-		                LendingPnl.add(btnBack, "flowx,cell 0 0");
+		btnBack = new JButton("Back");
+		LendingPnl.add(btnBack, "flowx,cell 0 0");
 		                
-		                        lblLendingAndDevolution = new JLabel("Lending and Devolution");
-		                        LendingPnl.add(lblLendingAndDevolution, "cell 0 0");
+		lblLendingAndDevolution = new JLabel("Lending and Devolution");
+		LendingPnl.add(lblLendingAndDevolution, "cell 0 0");
 		                        
-		                                lblMaterialStatus = new JLabel("Material current status:");
-		                                LendingPnl.add(lblMaterialStatus, "flowx,cell 0 1");
+		lblMaterialStatus = new JLabel("Material current status:");
+		LendingPnl.add(lblMaterialStatus, "flowx,cell 0 1");
 		                                
-		                                        lblDevolution = new JLabel("Devolution");
-		                                        LendingPnl.add(lblDevolution, "cell 0 3");
+		lblDevolution = new JLabel("Devolution");
+		LendingPnl.add(lblDevolution, "cell 0 3");
 		                                        
-		                                                btnDevolveMaterial = new JButton("Devolve Material");
-		                                                LendingPnl.add(btnDevolveMaterial, "cell 0 4,alignx right");
+		btnDevolveMaterial = new JButton("Devolve Material");
+		LendingPnl.add(btnDevolveMaterial, "cell 0 4,alignx right");
 		                                                
-		                                                        lblLending = new JLabel("Lending");
-		                                                        LendingPnl.add(lblLending, "cell 0 6");
+		lblLending = new JLabel("Lending");
+		LendingPnl.add(lblLending, "cell 0 6");
 		                                                        
-		                                                                lblWhoIsBorrowing = new JLabel("Who is borrowing it?");
-		                                                                LendingPnl.add(lblWhoIsBorrowing, "cell 0 7");
+		lblWhoIsBorrowing = new JLabel("Who is borrowing it?");
+		LendingPnl.add(lblWhoIsBorrowing, "cell 0 7");
 		                                                                
-		                                                                        comboBox = new JComboBox();
-		                                                                        LendingPnl.add(comboBox, "cell 0 8,growx");
+		comboBox = new JComboBox();
+		LendingPnl.add(comboBox, "cell 0 8,growx");
 		                                                                        
-		                                                                                btnLendMaterial = new JButton("Lend Material");
-		                                                                                LendingPnl.add(btnLendMaterial, "cell 0 9,alignx right");
+		btnLendMaterial = new JButton("Lend Material");
+		LendingPnl.add(btnLendMaterial, "cell 0 9,alignx right");
 		                                                                                
-		                                                                                        lblNewLabel_2 = new JLabel("New label");
-		                                                                                        LendingPnl.add(lblNewLabel_2, "cell 0 1");
+		lblNewLabel_2 = new JLabel("New label");
+		LendingPnl.add(lblNewLabel_2, "cell 0 1");
 
 		SearchPnl = new JPanel();
 		contentPane.add(SearchPnl, "name_10085986187124");

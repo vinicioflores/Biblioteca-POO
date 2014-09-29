@@ -430,8 +430,9 @@ public class Controller implements ActionListener{
         else if(source == view.getCoworkerSearchBtn()){
         	//change label
         	view.getBorrowersSearchXLbl().setText("Coworkers");
-        	
-        	//fill with coworkers items
+        	       	
+        	//fill with relatives items
+        	view.getBorrowersSearchViewport();
         	view.getBorrowersSearchViewport().removeAll();
         	view.getBorrowersSearchViewport().setLayout(new BoxLayout(view.getBorrowersSearchViewport(), BoxLayout.PAGE_AXIS));
         	ArrayList<Prestatario> res = model.getPrestatarios().getCoworkers();
@@ -439,23 +440,21 @@ public class Controller implements ActionListener{
     			
     			for(int i = 0; i < res.size(); i++)
     			{
-    				
-    				CoworkerItem item = new CoworkerItem((Colega)res.get(i));
+    				Colega tcoworker = (Colega)res.get(i);
+    				CoworkerItem coworkery = new CoworkerItem(tcoworker);
     				//save book in tempBook in biblioteca
-    				view.getAllXViewport().add(item);
-    				view.getAllXViewport().repaint();
-    				view.getAllXViewport().revalidate();
+    				view.getBorrowersSearchViewport().add(coworkery);
+    				view.getBorrowersSearchViewport().repaint();
+    				view.getBorrowersSearchViewport().revalidate();
     			}	
     		}
     		else
     		{
     			JLabel lab = new JLabel("There are no coworkers registered");
-    			view.getAllXViewport().add(lab);
+    			view.getBorrowersSearchViewport().add(lab);
     			
     		}
         	
-        	
-        	//move to the coworker search panel
         	view.getBorrowersSearchPnl().setVisible(true);
         	view.getSearchPnl().setVisible(false);
         	
@@ -463,8 +462,9 @@ public class Controller implements ActionListener{
         else if(source == view.getStudentSearchBtn()){
         	//change label
         	view.getBorrowersSearchXLbl().setText("Students");
-        	
-        	//fill with student items
+        	       	
+        	//fill with relatives items
+        	view.getBorrowersSearchViewport();
         	view.getBorrowersSearchViewport().removeAll();
         	view.getBorrowersSearchViewport().setLayout(new BoxLayout(view.getBorrowersSearchViewport(), BoxLayout.PAGE_AXIS));
         	ArrayList<Prestatario> res = model.getPrestatarios().getStudents();
@@ -472,18 +472,18 @@ public class Controller implements ActionListener{
     			
     			for(int i = 0; i < res.size(); i++)
     			{
-    				
-    				StudentItem item = new StudentItem((Estudiante)res.get(i));
+    				Estudiante tstudent = (Estudiante)res.get(i);
+    				StudentItem studenty = new StudentItem(tstudent);
     				//save book in tempBook in biblioteca
-    				view.getAllXViewport().add(item);
-    				view.getAllXViewport().repaint();
-    				view.getAllXViewport().revalidate();
+    				view.getBorrowersSearchViewport().add(studenty);
+    				view.getBorrowersSearchViewport().repaint();
+    				view.getBorrowersSearchViewport().revalidate();
     			}	
     		}
     		else
     		{
     			JLabel lab = new JLabel("There are no students registered");
-    			view.getAllXViewport().add(lab);
+    			view.getBorrowersSearchViewport().add(lab);
     			
     		}
         	
@@ -494,7 +494,7 @@ public class Controller implements ActionListener{
         else if(source == view.getSearchRelativesBtn()){
         	//change label
         	view.getBorrowersSearchXLbl().setText("Relatives");
-        	
+        	       	
         	//fill with relatives items
         	view.getBorrowersSearchViewport();
         	view.getBorrowersSearchViewport().removeAll();
@@ -504,18 +504,18 @@ public class Controller implements ActionListener{
     			
     			for(int i = 0; i < res.size(); i++)
     			{
-    				
-    			RelativeItem item = new RelativeItem((Familiar)res.get(i));
+    				Familiar trelative = (Familiar)res.get(i);
+    				RelativeItem relativey = new RelativeItem(trelative);
     				//save book in tempBook in biblioteca
-    				view.getAllXViewport().add(item);
-    				view.getAllXViewport().repaint();
-    				view.getAllXViewport().revalidate();
+    				view.getBorrowersSearchViewport().add(relativey);
+    				view.getBorrowersSearchViewport().repaint();
+    				view.getBorrowersSearchViewport().revalidate();
     			}	
     		}
     		else
     		{
     			JLabel lab = new JLabel("There are no relatives registered");
-    			view.getAllXViewport().add(lab);
+    			view.getBorrowersSearchViewport().add(lab);
     			
     		}
         	
@@ -1177,7 +1177,7 @@ public class Controller implements ActionListener{
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				if (!(res.get(i).getIsPrestado())){
+				if (res.get(i).getIsPrestado()){
 					Revista tmagazine = (Revista)res.get(i);
 					MagazineItem magaziney = new MagazineItem(tmagazine);
 					//save book in tempBook in biblioteca
