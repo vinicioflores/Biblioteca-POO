@@ -328,17 +328,6 @@ public class View extends JFrame {
 				View.class.getResource("/image/icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 801, 607);
-
-		JMenuBar menuSup = new JMenuBar();
-		setJMenuBar(menuSup);
-
-		JMenu subMenuFile = new JMenu("File");
-		menuSup.add(subMenuFile);
-
-		JMenuItem optionExit = new JMenuItem("Exit");
-		optionExit.setIcon(new ImageIcon(View.class
-				.getResource("/javax/swing/plaf/metal/icons/ocean/error.png")));
-		subMenuFile.add(optionExit);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -1435,7 +1424,7 @@ public class View extends JFrame {
 		lblLogo.setIcon(new ImageIcon(View.class.getResource("/image/logo.png")));
 		CreditsPnl.add(lblLogo, "cell 0 0 2 1,alignx center,aligny top");
 
-		JLabel lblCreadores = new JLabel("Proyecto creado por:");
+		JLabel lblCreadores = new JLabel("Project created by:");
 		CreditsPnl.add(lblCreadores, "cell 0 1 2 1");
 
 		JLabel lblRoberto = new JLabel("Roberto Chen Zheng");
@@ -1450,16 +1439,16 @@ public class View extends JFrame {
 		JLabel lblPedro = new JLabel("Pedro Rodríguez de Oliveira");
 		CreditsPnl.add(lblPedro, "cell 1 5");
 
-		JLabel lblCreadoraLogo = new JLabel("Creadora del logo:");
+		JLabel lblCreadoraLogo = new JLabel("Logo creator:");
 		CreditsPnl.add(lblCreadoraLogo, "cell 0 7");
 
 		JLabel lblDayana = new JLabel("Dayana Méndez Salas");
 		CreditsPnl.add(lblDayana, "cell 1 8");
 
-		JLabel lblVersion = new JLabel("Versión:");
+		JLabel lblVersion = new JLabel("Version:");
 		CreditsPnl.add(lblVersion, "cell 0 10");
 
-		JLabel lblVersionNum = new JLabel("0.5");
+		JLabel lblVersionNum = new JLabel("0.8");
 		CreditsPnl.add(lblVersionNum, "cell 1 11");
 		
 				CreditsBackBtn = new JButton("Back");

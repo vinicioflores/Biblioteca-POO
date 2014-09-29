@@ -1,3 +1,14 @@
 <RegistroPrestatarios>
-  <prestatarios/>
+  <prestatarios>
+    <Estudiante>
+      <nombre>Pedro</nombre>
+      <primerApellido>Rodríguez</primerApellido>
+      <segundoApellido>De Oliveira</segundoApellido>
+      <telefono>89711622</telefono>
+      <correoE>de.oliveira.rodriguez@gmail.com</correoE>
+      <ID>ST(28/09/2014_05:51:57)</ID>
+      <lendingLog/>
+      <carnet>2013086585</carnet>
+    </Estudiante>
+  </prestatarios>
 </RegistroPrestatarios>
