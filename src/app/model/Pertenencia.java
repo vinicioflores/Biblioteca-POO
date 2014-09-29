@@ -72,7 +72,12 @@ public class Pertenencia {
 	public void setCalificacion(int calificacion) {
 		this.calificacion = calificacion;
 	}
-
+	public boolean getIsPrestado(){
+		return isPrestado;
+	}
+	public void setIsPrestado(boolean isPrestado){
+		this.isPrestado = isPrestado;
+	}
 	public int getVecesPrestado() {
 		return vecesPrestado;
 	}

@@ -1087,96 +1087,116 @@ public class Controller implements ActionListener{
 		updateSettingsLabels();
 		 
 	}
-	private void updateBorrowedXwithBooks()
-	{
-		view.getBorrowedXLbl().setText("books");
-		//load borrowed books
-		//model.setTempSearch(model.getBiblioteca().searchBorrowedBooks());
+	private void updateBorrowedXwithBooks(){
 		
+		//update label x
+		view.getAllXLbl().setText("books");
+		//erase combobox contents
+		view.getAllXSearchParametersComboBox().removeAllItems();
+		//update combobox contents
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
+	
 		view.getAllXViewport().removeAll();
 		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.PAGE_AXIS));
-		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedBooks();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllBooks();
 		if(res.size() > 0){
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				Libro tbelong = (Libro)res.get(i);
-				BookItem item = new BookItem(tbelong);
-				//save book in tempBook in biblioteca
-				view.getAllXViewport().add(item);
-				view.getAllXViewport().repaint();
-				view.getAllXViewport().revalidate();
+				if (res.get(i).getIsPrestado()){
+					Libro tbook = (Libro)res.get(i);
+					BookItem booky = new BookItem(tbook);
+					//save book in tempBook in biblioteca
+					view.getAllXViewport().add(booky);
+					view.getAllXViewport().repaint();
+					view.getAllXViewport().revalidate();
+				}
 			}	
 		}
 		else
 		{
-			JLabel lab = new JLabel("There's no books borrowed");
+			JLabel lab = new JLabel("There are no books");
 			view.getAllXViewport().add(lab);
 			//display theres none
 		}
 		
-		view.getBorrowedXPnl().setVisible(true);
+		view.getAllXSearch().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 		
 	}
-	private void updateBorrowedXwithMovies()
-	{
-		//Modify the labels
-		view.getBorrowedXLbl().setText("movies");
+	private void updateBorrowedXwithMovies(){
 		
-		//Fill the panel with items
+		//update label x
+		view.getAllXLbl().setText("movies");
+		//erase combobox contents
+		view.getAllXSearchParametersComboBox().removeAllItems();
+		//update combobox contents
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Director","Genre", "Year" }));
+	
 		view.getAllXViewport().removeAll();
 		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.PAGE_AXIS));
-		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedMovies();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMovies();
 		if(res.size() > 0){
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				Pelicula tmovie = (Pelicula)res.get(i);
-				MovieItem item = new MovieItem(tmovie);
-				//save book in tempBook in biblioteca
-				view.getAllXViewport().add(item);
-				view.getAllXViewport().repaint();
-				view.getAllXViewport().revalidate();
+				if (res.get(i).getIsPrestado()){
+					Pelicula tmovie = (Pelicula)res.get(i);
+					MovieItem moviey = new MovieItem(tmovie);
+					//save book in tempBook in biblioteca
+					view.getAllXViewport().add(moviey);
+					view.getAllXViewport().repaint();
+					view.getAllXViewport().revalidate();
+				}
 			}	
 		}
 		else
 		{
-			JLabel lab = new JLabel("There are no borrowed movies");
+			JLabel lab = new JLabel("There are no movies");
 			view.getAllXViewport().add(lab);
 			//display theres none
 		}
 		
-		view.getBorrowedXPnl().setVisible(true);
+		view.getAllXSearch().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 		
 	}
-	private void updateBorrowedXwithMagazines()
-	{
-		view.getBorrowedXLbl().setText("magazines");
+	private void updateBorrowedXwithMagazines(){
 		
+		//update label x
+		view.getAllXLbl().setText("magazines");
+		//erase combobox contents
+		view.getAllXSearchParametersComboBox().removeAllItems();
+		//update combobox contents
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Publishing period","Theme"}));
+	
 		view.getAllXViewport().removeAll();
 		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.PAGE_AXIS));
-		ArrayList<Pertenencia> res = model.getBiblioteca().searchBorrowedMagazines();
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
 		if(res.size() > 0){
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				Pelicula tmovie = (Pelicula)res.get(i);
-				MovieItem moviey = new MovieItem(tmovie);
-				//save magazine in tempBook in biblioteca
-				view.getAllXViewport().add(moviey);
-				view.getAllXViewport().repaint();
-				view.getAllXViewport().revalidate();
+				if (!(res.get(i).getIsPrestado())){
+					Revista tmagazine = (Revista)res.get(i);
+					MagazineItem magaziney = new MagazineItem(tmagazine);
+					//save book in tempBook in biblioteca
+					view.getAllXViewport().add(magaziney);
+					view.getAllXViewport().repaint();
+					view.getAllXViewport().revalidate();
+				}
 			}	
 		}
 		else
 		{
-			JLabel lab = new JLabel("There are no borrowed magazines");
+			JLabel lab = new JLabel("There are no magazine");
 			view.getAllXViewport().add(lab);
+			//display theres none
 		}
-		view.getBorrowedXPnl().setVisible(true);
+		
+		view.getAllXSearch().setVisible(true);
 		view.getSearchPnl().setVisible(false);
+		
 	}
 	private void updateAllXwithBooks(){
 		
@@ -1220,10 +1240,10 @@ public class Controller implements ActionListener{
 		//erase combobox contents
 		view.getAllXSearchParametersComboBox().removeAllItems();
 		//update combobox contents
-		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial" }));
-		
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Director","Genre", "Year" }));
+	
 		view.getAllXViewport().removeAll();
-		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.PAGE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMovies();
 		if(res.size() > 0){
 			
@@ -1239,7 +1259,7 @@ public class Controller implements ActionListener{
 		}
 		else
 		{
-			JLabel lab = new JLabel("There's no movies");
+			JLabel lab = new JLabel("There are no movies");
 			view.getAllXViewport().add(lab);
 			//display theres none
 		}
@@ -1255,10 +1275,10 @@ public class Controller implements ActionListener{
 		//erase combobox contents
 		view.getAllXSearchParametersComboBox().removeAllItems();
 		//update combobox contents
-		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
-		
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Publishing period","Theme"}));
+	
 		view.getAllXViewport().removeAll();
-		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.PAGE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
 		if(res.size() > 0){
 			
@@ -1274,96 +1294,123 @@ public class Controller implements ActionListener{
 		}
 		else
 		{
-			JLabel lab = new JLabel("There's no magazines");
+			JLabel lab = new JLabel("There are no magazine");
 			view.getAllXViewport().add(lab);
-			
+			//display theres none
 		}
 		
 		view.getAllXSearch().setVisible(true);
 		view.getSearchPnl().setVisible(false);
-	
+		
 	}
 	private void updateAvailableXwithBooks(){
 		
+		//update label x
+		view.getAllXLbl().setText("books");
+		//erase combobox contents
+		view.getAllXSearchParametersComboBox().removeAllItems();
+		//update combobox contents
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Author","Editorial", "Edition" }));
+	
 		view.getAllXViewport().removeAll();
-		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
-		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.PAGE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllBooks();
 		if(res.size() > 0){
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				Revista tmagazine = (Revista)res.get(i);
-				MagazineItem magaziney = new MagazineItem(tmagazine);
-				//save book in tempBook in biblioteca
-				view.getAllXViewport().add(magaziney);
-				view.getAllXViewport().repaint();
-				view.getAllXViewport().revalidate();
+				if (!(res.get(i).getIsPrestado())){
+					Libro tbook = (Libro)res.get(i);
+					BookItem booky = new BookItem(tbook);
+					//save book in tempBook in biblioteca
+					view.getAllXViewport().add(booky);
+					view.getAllXViewport().repaint();
+					view.getAllXViewport().revalidate();
+				}
 			}	
 		}
 		else
 		{
-			JLabel lab = new JLabel("There's no magazines");
+			JLabel lab = new JLabel("There are no books");
 			view.getAllXViewport().add(lab);
-			
+			//display theres none
 		}
 		
-		view.getAvailableXPnl().setVisible(true);
+		view.getAllXSearch().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 		
 	}
 	private void updateAvailableXwithMovies(){
 		
+		//update label x
+		view.getAllXLbl().setText("movies");
+		//erase combobox contents
+		view.getAllXSearchParametersComboBox().removeAllItems();
+		//update combobox contents
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Director","Genre", "Year" }));
+	
 		view.getAllXViewport().removeAll();
-		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
-		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.PAGE_AXIS));
+		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMovies();
 		if(res.size() > 0){
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				Revista tmagazine = (Revista)res.get(i);
-				MagazineItem magaziney = new MagazineItem(tmagazine);
-				//save book in tempBook in biblioteca
-				view.getAllXViewport().add(magaziney);
-				view.getAllXViewport().repaint();
-				view.getAllXViewport().revalidate();
+				if (!(res.get(i).getIsPrestado())){
+					Pelicula tmovie = (Pelicula)res.get(i);
+					MovieItem moviey = new MovieItem(tmovie);
+					//save book in tempBook in biblioteca
+					view.getAllXViewport().add(moviey);
+					view.getAllXViewport().repaint();
+					view.getAllXViewport().revalidate();
+				}
 			}	
 		}
 		else
 		{
-			JLabel lab = new JLabel("There's no magazines");
+			JLabel lab = new JLabel("There are no movies");
 			view.getAllXViewport().add(lab);
-			
+			//display theres none
 		}
 		
-		view.getAvailableXPnl().setVisible(true);
+		view.getAllXSearch().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 		
 	}
 	private void updateAvailableXwithMagazines(){
 		
+		//update label x
+		view.getAllXLbl().setText("magazines");
+		//erase combobox contents
+		view.getAllXSearchParametersComboBox().removeAllItems();
+		//update combobox contents
+		view.getAllXSearchParametersComboBox().setModel(new DefaultComboBoxModel<String>(new String[] { "Title","Publishing period","Theme"}));
+	
 		view.getAllXViewport().removeAll();
-		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.LINE_AXIS));
+		view.getAllXViewport().setLayout(new BoxLayout(view.getAllXViewport(), BoxLayout.PAGE_AXIS));
 		ArrayList<Pertenencia> res = model.getBiblioteca().searchAllMagazines();
 		if(res.size() > 0){
 			
 			for(int i = 0; i < res.size(); i++)
 			{
-				Revista tmagazine = (Revista)res.get(i);
-				MagazineItem magaziney = new MagazineItem(tmagazine);
-				//save book in tempBook in biblioteca
-				view.getAllXViewport().add(magaziney);
-				view.getAllXViewport().repaint();
-				view.getAllXViewport().revalidate();
+				if (!(res.get(i).getIsPrestado())){
+					Revista tmagazine = (Revista)res.get(i);
+					MagazineItem magaziney = new MagazineItem(tmagazine);
+					//save book in tempBook in biblioteca
+					view.getAllXViewport().add(magaziney);
+					view.getAllXViewport().repaint();
+					view.getAllXViewport().revalidate();
+				}
 			}	
 		}
 		else
 		{
-			JLabel lab = new JLabel("There's no magazines");
+			JLabel lab = new JLabel("There are no magazine");
 			view.getAllXViewport().add(lab);
-			
+			//display theres none
 		}
 		
-		view.getBorrowedXPnl().setVisible(true);
+		view.getAllXSearch().setVisible(true);
 		view.getSearchPnl().setVisible(false);
 		
 	}
